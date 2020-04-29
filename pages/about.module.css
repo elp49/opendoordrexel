@@ -45,7 +45,7 @@
   background-image: url('/icons/chevron-down-blue.svg');
 }
 
-.chevronDown>i:hover {
+.chevronDown>i:hover, .chevronDown>i:focus {
   height: 45px;
   width: 45px;
   background-color: #24316F;

@@ -8,9 +8,9 @@ export default function Overlay({ pages }) {
   return (
     <div id={'overlay'} className={styles.overlay}>
       <ul className={styles.pageList}>
-        {pages.map((page) => {
+        {pages.map((page, i) => {
           return (
-            <li className={styles.page}>
+            <li key={`overlayPage-${i}`} className={styles.page}>
               <a href={`/${page.id}`} title={page.name}>{page.name}</a>
             </li>
           )

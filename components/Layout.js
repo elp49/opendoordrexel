@@ -31,10 +31,10 @@ export default function Layout(props) {
           <img alt={'Open Door'} src={layout.logo} style={{ height: 100 + '%' }} />
         </a>
         <ul className={styles.pageList}>
-          {layout.pages.map((page) => {
+          {layout.pages.map((page, i) => {
             var className = page.id === 'donate' ? styles.donate : styles.page;
             return (
-              <li className={className}>
+              <li key={`page-${i}`} className={className}>
                 <a href={`/${page.id}`} title={page.name}>{page.name}</a>
               </li>
             )

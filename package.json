@@ -1,0 +1,27 @@
+{
+  "name": "opendoordrexel",
+  "version": "1.0.0",
+  "description": "Official website of Open Door Christian Community",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start -p $PORT"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elp49/opendoordrexel.git"
+  },
+  "author": "Edward Parrish",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/elp49/opendoordrexel/issues"
+  },
+  "homepage": "https://github.com/elp49/opendoordrexel#readme",
+  "dependencies": {
+    "next": "^9.3.6",
+    "path": "^0.12.7",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}

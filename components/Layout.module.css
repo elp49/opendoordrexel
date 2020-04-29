@@ -1,0 +1,124 @@
+.layout {
+  width: 100%;
+}
+
+.header {
+  position: relative;
+  height: 45px;
+  background-color: #24316F;
+  overflow: hidden;
+  z-index: 101;
+}
+
+.hamburger {
+  position: absolute;
+  top: 50%;
+  left: 20px;
+  -ms-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  cursor: pointer;
+}
+
+.hamburger>span {
+  display: block;
+  height: 3px;
+  width: 25px;
+  margin: 3px 0;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height: 90%;
+  cursor: pointer;
+}
+
+.pageList a {
+  text-decoration: none;
+  font-size: 2rem;
+}
+
+.page {
+  margin: 5px 35px 5px 0;
+}
+
+.page, .donate {
+  display: inline-block;
+  list-style: none;
+}
+
+.page>a {
+  color: #fff;
+  transition-duration: .5s;
+}
+
+.page>a:hover, .page>a:focus {
+  color: #818181;
+  opacity: 1;
+}
+
+.donate {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  -ms-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+}
+
+.donate>a {
+  padding: 5px;
+  background-color: #fff;
+  color: #24316F;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 0.3px;
+  border-radius: 10px;
+}
+
+@media only screen and (max-width: 999px) {
+  .overlayActive {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+  .page {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .header {
+    height: 70px;
+  }
+  .hamburger {
+    display: none;
+  }
+  .logo {
+    left: 60px;
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+  }
+  .pageList {
+    position: absolute;
+    top: 50%;
+    right: 60px;
+    -ms-transform: translate(0%, -50%);
+    transform: translate(0%, -50%);
+  }
+  .donate {
+    position: static;
+    transform: none;
+  }
+  .donate>a {
+    padding: 10px;
+    font-size: 2rem;
+  }
+}

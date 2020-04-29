@@ -1,0 +1,14 @@
+.container {
+  height: 2000px;
+}
+
+.slideshowContainer {
+  height: 500px;
+  height: calc(100vh - 45px);
+}
+
+@media only screen and (min-width: 1000px) {
+  .slideshowContainer {
+    height: calc(100vh - 70px);
+  }
+}

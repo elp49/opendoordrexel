@@ -1,0 +1,153 @@
+.aboutIntro {
+  padding: 45px 0;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+}
+
+.intro {
+  width: 90%;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.intro>h1 {
+  margin-bottom: 20px;
+}
+
+.intro>p {
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.chevronDown {
+  position: relative;
+  display: inline-block;
+  height: 45px;
+  width: 45px;
+}
+
+.chevronDown>i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  transition-duration: .3s;
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  background-color: #eee;
+  border-radius: 50%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url('/icons/chevron-down-blue.svg');
+}
+
+.chevronDown>i:hover {
+  height: 45px;
+  width: 45px;
+  background-color: #24316F;
+  background-image: url('/icons/chevron-down-white.svg');
+}
+
+.aboutTimeline {
+  padding: 45px 0;
+  background-color: #24316F;
+  color: #fff;
+}
+
+.timeline {
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.timelineTitle>h1 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.timelineTitle>h3 {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.timeline>ul {
+  margin: 40px 30px;
+  border-left: 2px solid #fff;
+  border-style: dotted;
+}
+
+.event {
+  position: relative;
+  top: -3rem;
+  width: 100%;
+  margin-bottom: 45px;
+  color: #fff;
+  list-style: none;
+}
+
+.magnifyingGlass {
+  position: absolute;
+  top: 2rem;
+  left: -3.83rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+.eventDate {
+  margin-left: 10%;
+}
+
+.eventDetails {
+  margin-left: 10%;
+  padding: 20px;
+  background-color: #fff;
+  color: #000;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 500px) {
+  .intro {
+    width: 450px;
+  }
+  .timeline {
+    width: 450px;
+  }
+}
+
+@media only screen and (min-width: 562.5px) {
+  .intro {
+    width: 80%;
+  }
+  .timeline {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .intro>h1 {
+    margin-bottom: 30px;
+  }
+  .intro>p {
+    margin-bottom: 15px;
+  }
+  .timelineTitle>h1 {
+    margin-bottom: 30px;
+  }
+  .timelineTitle>h3 {
+    margin-bottom: 15px;
+  }
+  .event {
+    margin-bottom: 7%;
+  }
+  .eventDate>h2 {
+    margin-bottom: 10px
+  }
+  .eventDetails {
+    margin-right: 10%;
+  }
+}

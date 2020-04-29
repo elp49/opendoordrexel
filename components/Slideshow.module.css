@@ -59,15 +59,23 @@
 
 .badge {
   display: inline-block;
-  height: 8px;
-  width: 8px;
-  margin: 0 1rem;
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.badge>span {
+  display: inline-block;
+  height: 50%;
+  width: 50%;
+  margin: 25%;
   background-color: #555;
   border: none;
   border-radius: 50%;
   cursor: pointer;
 }
 
-.badgeActive {
+.badgeActive>span {
   background-color: #fff;
 }

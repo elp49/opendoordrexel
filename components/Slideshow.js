@@ -56,7 +56,11 @@ export default function Slideshow({ slides }) {
       })}
       <div className={styles.badgesContainer}>
         {slides.map((slide, i) => {
-          return <span key={`badge-${i}`} className={styles.badge} onClick={() => showSlide(i)}></span>
+          return (
+            <div key={`badge-${i}`} className={styles.badge} onClick={() => showSlide(i)}>
+              <span></span>
+            </div>
+          )
         })}
       </div>
     </div>

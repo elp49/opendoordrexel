@@ -8,8 +8,7 @@ const layout = {
     { id: 'tuesdays', name: 'Dinner & Worship' },
     { id: 'outreach', name: 'Outreach' },
     { id: 'testimonies', name: 'Testimonies' },
-    { id: 'about', name: 'About' },
-    { id: 'donate', name: 'Donate' }
+    { id: 'about', name: 'About' }
   ]
 };
 
@@ -32,9 +31,8 @@ export default function Layout(props) {
         </a>
         <ul className={styles.pageList}>
           {layout.pages.map((page, i) => {
-            var className = page.id === 'donate' ? styles.donate : styles.page;
             return (
-              <li key={`page-${i}`} className={className}>
+              <li key={`page-${i}`} className={styles.page}>
                 <a href={`/${page.id}`} title={page.name}>{page.name}</a>
               </li>
             )

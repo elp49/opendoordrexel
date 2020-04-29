@@ -4,7 +4,7 @@
 
 .slideshowContainer {
   height: 500px;
-  height: calc(100vh - 45px);
+  height: calc(100vh - 145px);
 }
 
 @media only screen and (min-width: 1000px) {

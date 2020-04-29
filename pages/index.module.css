@@ -1,6 +1,7 @@
 .indexSlideshow {
   height: 500px;
   height: calc(100vh - 145px);
+  min-height: 300px;
   background-color: #fff;
 }
 

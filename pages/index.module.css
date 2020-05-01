@@ -12,12 +12,12 @@
 }
 
 .announcements {
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
 .announcementsTitle {
-  margin: 0 auto;
+  margin: 0 5%;
   text-align: center;
 }
 
@@ -29,11 +29,15 @@
   border-top: #555 solid 2px;
 }
 
+.announcements>ul {
+  margin: 0 5%;
+}
+
 .post {
   position: relative;
-  width: 90%;
+  width: 95%;
   max-width: 1200px;
-  margin: 0 auto 90px;
+  margin: 0 5% 90px 0;
   padding-top: 45px;
   background-color: #24316F;
   color: #fff;
@@ -47,7 +51,7 @@
 }
 
 .postDetails {
-  transform: translate(10%, 20px);
+  transform: translate(5%, 20px);
   width: 100%;
   margin-left: auto;
   padding: 20px;

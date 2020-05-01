@@ -14,10 +14,10 @@ const index = {
     title: 'Announcements',
     subTitle: 'Sign up for our mailing list to stay up to date on our latest announcements.',
     posts: [
-      { header: 'We have some news', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
-      { header: 'This is another announcement', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
-      { header: 'We have something to announce', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
-      { header: 'Read this to know what happened', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
+      { header: 'We have some news', date: '4/30/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
+      { header: 'This is another announcement', date: '4/29/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
+      { header: 'We have something to announce', date: '4/28/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
+      { header: 'Read this to know what happened', date: '4/27/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
     ]
   }
 };
@@ -39,7 +39,10 @@ export default function Index() {
               {index.announcements.posts.map((post, i) => {
                 return (
                   <li key={`post-${i}`} className={styles.post}>
-                    <div className={styles.postHeader}><h1>{post.header}</h1></div>
+                    <div className={styles.postHeader}>
+                      <h1>{post.header}</h1>
+                      <p>{post.date}</p>
+                    </div>
                     <div className={styles.postDetails}>
                       <p>{post.details}</p>
                     </div>

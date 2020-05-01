@@ -37,3 +37,27 @@ i {
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+@media only screen and (max-width: 369px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  /* h3, p {
+    font-size: 1.5rem;
+  } */
+}
+
+@media only screen and (max-height: 500px) {
+  h1 {
+    font-size: 3rem;
+  }
+  h2 {
+    font-size: 2.5rem;
+  }
+  /* h3 {
+    font-size: 1.5rem;
+  } */
+}

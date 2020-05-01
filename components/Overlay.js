@@ -1,41 +1,50 @@
 import styles from './Overlay.module.css'
 
-export const hamburgerClick = () => {
-  document.getElementById('overlay').classList.toggle(styles.overlayActive);
+const overlay = {
+  mailingList: {
+    description: 'Sign up for our mailing list to find out what\'s for dinner each week.',
+    placeholder: 'Email',
+    buttonIcon: '/icons/arrow-up-blue.svg'
+  },
+  socialMedia: [
+    { _id: 'facebook', href: 'https://www.facebook.com/groups/opendoorchristiancommunity/', icon: '/icons/facebook-white.svg' },
+    { _id: 'insta', href: 'https://www.instagram.com/drexelopendoor/', icon: '/icons/insta-white.svg' },
+    { _id: 'youtube', href: '/', icon: '/icons/youtube-white.svg' }
+  ]
 };
 
 export default function Overlay({ pages }) {
   return (
-    <div id={'overlay'} className={styles.overlay}>
-      <ul className={styles.pageList}>
+    <div id={'overlay'}>
+      <ul className={styles.overlayPages}>
         {pages.map((page, i) => {
           return (
             <li key={`overlayPage-${i}`} className={styles.page}>
-              <a href={`/${page.id}`} title={page.name}>{page.name}</a>
+              <a href={`/${page._id}`} title={page.name}>{page.name}</a>
             </li>
           )
         })}
       </ul>
-      <div className={styles.mailingList}>
-        <p>Sign up for our mailing list to find out what's for dinner each week.</p>
+      <div className={styles.overlayEmail}>
+        <p>{overlay.mailingList.description}</p>
         <form name='mailingList' className={styles.emailForm}>
-          <input id='email' type='email' placeholder='Email' name='email' />
+          <input id='email' type='email' placeholder={overlay.mailingList.placeholder} name='email' />
           <button type='submit'>
-            <i style={{ backgroundImage: 'url(/icons/arrow-up-blue.svg)' }}></i>
+            <i style={{ backgroundImage: `url(${overlay.mailingList.buttonIcon})` }}></i>
           </button>
         </form>
       </div>
-      <div className={styles.socialMedia}>
-        <a href='https://www.facebook.com/groups/opendoorchristiancommunity/' target='_blank'>
-          <i style={{ backgroundImage: 'url(/icons/facebook-white.svg)' }}></i>
-        </a>
-        <a href='https://www.instagram.com/drexelopendoor/' target='_blank'>
-          <i style={{ backgroundImage: 'url(/icons/insta-white.svg)' }}></i>
-        </a>
-        <a href='https://www.youtube.com/' target='_blank'>
-          <i style={{ backgroundImage: 'url(/icons/youtube-white.svg)' }}></i>
-        </a>
-      </div>
+      <ul className={styles.overlaySocialMedia}>
+        {overlay.socialMedia.map((media, i) => {
+          return (
+            <li key={`media-${i}`} className={styles.socialMedia}>
+              <a href={media.href} target='_blank'>
+                <i style={{ backgroundImage: `url(${media.icon})` }}></i>
+              </a>
+            </li>
+          )
+        })}
+      </ul>
     </div>
   )
 }

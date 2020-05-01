@@ -79,3 +79,15 @@
 .badgeActive>span {
   background-color: #fff;
 }
+
+@media only screen and (max-width: 369px) {
+  .slideButton {
+    padding: 10px;
+  }
+}
+
+@media only screen and (max-height: 500px) {
+  .slideButton {
+    padding: 10px;
+  }
+}

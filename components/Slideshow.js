@@ -49,8 +49,12 @@ export default function Slideshow({ slides }) {
       {slides.map((slide, i) => {
         return (
           <div key={`slide-${i}`} className={styles.slide} style={{ backgroundImage: `url(${slide.imageUrl})` }}>
-            <div className={styles.slideHeader}><h1>{slide.title}</h1></div>
-            <a href={slide.linkTo} className={styles.slideButton}><h3>{slide.buttonText}</h3></a>
+            <div className={styles.slideHeader}>
+              <h1>{slide.title}</h1>
+            </div>
+            <a href={slide.linkTo} className={styles.slideButton}>
+              <h3>{slide.buttonText}</h3>
+            </a>
           </div>
         )
       })}

@@ -1,16 +1,25 @@
 import Layout from '../components/Layout.js'
+import Section from '../components/Section'
 import styles from './about.module.css'
 
 const about = {
-  title: 'About Us',
-  description: [
-    { value: 'We are an open, welcoming Christian community that believes God’s love and mercy is for all people.  We invite you to gather with us.' },
-    { value: 'We ask questions and together search out answers, believing God speaks to us in a multitude of ways.  We help one another along our faith journey, whether that is just beginning or life-long.' },
-    { value: 'We believe our faith shapes our lives, giving us meaning and purpose in everything we do.  From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation.' },
-  ],
+  intro: {
+    theme: 'white',
+    title: 'About Us',
+    subtitle: [],
+    description: [
+      { value: 'We are an open, welcoming Christian community that believes God’s love and mercy is for all people.  We invite you to gather with us.' },
+      { value: 'We ask questions and together search out answers, believing God speaks to us in a multitude of ways.  We help one another along our faith journey, whether that is just beginning or life-long.' },
+      { value: 'We believe our faith shapes our lives, giving us meaning and purpose in everything we do.  From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation.' },
+    ]
+  },
   timeline: {
+    theme: 'blue',
     title: 'Our Story',
-    subTitle: 'It all started with 2 crockpots and a few people...',
+    subtitle: [
+      { value: 'It all started with 2 crockpots and a few people...' }
+    ],
+    description: [],
     events: [
       { month: 'Jan', year: '2015', details: 'Piltz begins' },
       { month: 'Sep', year: '2015', details: 'Diana begins' },
@@ -36,43 +45,29 @@ export default function About() {
   return (
     <Layout>
       <div id={'about'}>
-        <div className={styles.aboutIntro}>
-          <div className={styles.intro}>
-            <h1>{about.title}</h1>
-            {about.description.map((p, i) => {
+        <Section section={about.intro}>
+          <a href='#timeline' className={styles.chevronDown}><i></i></a>
+        </Section>
+        <Section id={'timeline'} section={about.timeline}>
+          <ul>
+            {about.timeline.events.map((event, i) => {
               return (
-                <p key={`p-${i}`}>{p.value}</p>
+                <li key={`event-${i}`} className={styles.event}>
+                  <div className={styles.magnifyingGlass}>
+                    <i style={{ backgroundImage: 'url(/icons/magnifying-glass.svg)' }}></i>
+                  </div>
+                  <div className={styles.eventDate}>
+                    <h2>{event.month}</h2>
+                    <h2>{event.year}</h2>
+                  </div>
+                  <div className={styles.eventDetails}>
+                    <p>{event.details}</p>
+                  </div>
+                </li>
               )
             })}
-            <a href='#timeline' className={styles.chevronDown}><i></i></a>
-          </div>
-        </div>
-        <div id={'timeline'} className={styles.aboutTimeline}>
-          <div className={styles.timeline}>
-            <div className={styles.timelineTitle}>
-              <h1>{about.timeline.title}</h1>
-              <h3>{about.timeline.subTitle}</h3>
-            </div>
-            <ul>
-              {about.timeline.events.map((event, i) => {
-                return (
-                  <li key={`event-${i}`} className={styles.event}>
-                    <div className={styles.magnifyingGlass}>
-                      <i style={{ backgroundImage: 'url(/icons/magnifying-glass.svg)' }}></i>
-                    </div>
-                    <div className={styles.eventDate}>
-                      <h2>{event.month}</h2>
-                      <h2>{event.year}</h2>
-                    </div>
-                    <div className={styles.eventDetails}>
-                      <p>{event.details}</p>
-                    </div>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
+          </ul>
+        </Section>
       </div>
     </Layout>
   )

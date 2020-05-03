@@ -41,12 +41,12 @@ export async function componentDidMount() {
   }
 }
 
-export default function Slideshow({ slides }) {
+export default function Slideshow(props) {
   componentDidMount();
 
   return (
     <div id={'slideshow'} className={styles.slideshow}>
-      {slides.map((slide, i) => {
+      {props.slideshow.slides.map((slide, i) => {
         return (
           <div key={`slide-${i}`} className={styles.slide} style={{ backgroundImage: `url(${slide.imageUrl})` }}>
             <div className={styles.slideHeader}>
@@ -59,7 +59,7 @@ export default function Slideshow({ slides }) {
         )
       })}
       <div className={styles.badgesContainer}>
-        {slides.map((slide, i) => {
+        {props.slideshow.slides.map((slide, i) => {
           return (
             <div key={`badge-${i}`} className={styles.badge} onClick={() => showSlide(i)}>
               <span></span>

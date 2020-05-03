@@ -1,3 +1,7 @@
+.layout {
+  width: 100%;
+}
+
 .layoutOverlay {
   position: fixed;
   top: 0;
@@ -17,6 +21,7 @@
 
 .layoutHeader {
   position: relative;
+  padding: 0 20px;
   background-color: #24316F;
   overflow: hidden;
   z-index: 101;
@@ -25,7 +30,6 @@
 .header {
   position: relative;
   height: 45px;
-  margin: 0 20px;
 }
 
 .hamburger {
@@ -59,7 +63,7 @@
 .headerPages {
   position: absolute;
   top: 50%;
-  right: 60px;
+  right: 0;
   -ms-transform: translate(0%, -50%);
   transform: translate(0%, -50%);
 }
@@ -88,6 +92,9 @@
     top: 0;
     left: 0;
   }
+  .container {
+    overflow-y: scroll;
+  }
   .headerPages {
     display: none;
   }
@@ -98,6 +105,9 @@
     height: 0%;
     overflow: hidden;
   }
+  .layoutHeader {
+    padding: 0 60px;
+  }
   .header {
     height: 70px;
   }
@@ -105,7 +115,7 @@
     display: none;
   }
   .logo {
-    left: 60px;
+    left: 0;
     -ms-transform: translate(0%, -50%);
     transform: translate(0%, -50%);
   }

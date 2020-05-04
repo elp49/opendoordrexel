@@ -32,6 +32,7 @@
 }
 
 .timeline {
+  max-width: 1000px;
   margin: 30px 20px;
   border-left: 2px solid #fff;
   border-style: dotted;
@@ -67,7 +68,7 @@
 
 @media only screen and (min-width: 1000px) {
   .timeline {
-    margin: 55px 45px;
+    margin: 55px auto;
   }
   .event {
     margin: 45px 0;

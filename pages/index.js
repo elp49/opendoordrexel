@@ -64,7 +64,6 @@ export default function Index() {
           <ul className={styles.announcements}>
             {index.announcements.posts.map((post, i) => {
               var className = i % 2 === 0 ? styles.leftPost : styles.rightPost;
-              console.log(className);
               return (
                 <li key={`post-${i}`} className={className} >
                   <div className={styles.postHeader}>

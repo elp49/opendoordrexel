@@ -31,48 +31,34 @@
   background-image: url('/icons/chevron-down-white.svg');
 }
 
-/* .aboutTimeline {
-  padding: 45px 0;
-  background-color: #24316F;
-  color: #fff;
-} */
-
-/* .timeline {
-  position: relative;
-  width: 90%;
-  max-width: 1200px;
-  margin: 0 auto;
-} */
-
-/* .timeline>ul {
-  margin: 3rem 0;
+.timeline {
+  margin: 30px 20px;
   border-left: 2px solid #fff;
   border-style: dotted;
-} */
+}
 
 .event {
   position: relative;
-  top: -3rem;
+  top: -10px;
   width: 100%;
-  margin-bottom: 45px;
+  margin: 20px 0;
   color: #fff;
   list-style: none;
 }
 
 .magnifyingGlass {
   position: absolute;
-  top: 2rem;
   left: -3.83rem;
   height: 5rem;
   width: 5rem;
 }
 
 .eventDate {
-  margin-left: 10%;
+  margin-left: 20px;
 }
 
 .eventDetails {
-  margin-left: 10%;
+  margin-left: 20px;
   padding: 20px;
   background-color: #fff;
   color: #000;
@@ -80,13 +66,17 @@
 }
 
 @media only screen and (min-width: 1000px) {
-  .event {
-    margin-bottom: 7%;
+  .timeline {
+    margin: 55px 45px;
   }
-  .eventDate>h2 {
-    margin-bottom: 10px
+  .event {
+    margin: 45px 0;
+  }
+  .eventDate {
+    margin-left: 45px;
   }
   .eventDetails {
-    margin-right: 10%;
+    margin-left: 45px;
+    padding: 45px;
   }
 }

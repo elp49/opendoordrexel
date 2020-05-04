@@ -49,7 +49,7 @@ export default function About() {
           <a href='#timeline' className={styles.chevronDown}><i></i></a>
         </Section>
         <Section id={'timeline'} section={about.timeline}>
-          <ul>
+          <ul className={styles.timeline}>
             {about.timeline.events.map((event, i) => {
               return (
                 <li key={`event-${i}`} className={styles.event}>

@@ -36,7 +36,7 @@ const index = {
       { header: 'This is another announcement', date: '4/29/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
       { header: 'We have something to announce', date: '4/28/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that. Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' },
       { header: 'Read this to know what happened', date: '4/27/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that. Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you.' },
-      { header: 'This is another announcement', date: '4/29/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' }
+      { header: 'This is another announcement', date: '4/26/2020', details: 'Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that.' }
     ]
   }
 };

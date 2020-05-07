@@ -12,7 +12,7 @@ const layout = {
   ]
 };
 
-export const toggleOverlay = () => {
+const toggleOverlay = () => {
   document.getElementById('layout').classList.toggle(styles.layoutFixed);
   document.getElementById('layoutOverlay').classList.toggle(styles.overlayActive);
   document.getElementById('container').classList.toggle(styles.container);

@@ -66,12 +66,12 @@
   right: 0;
   -ms-transform: translate(0%, -50%);
   transform: translate(0%, -50%);
+  list-style-type: none;
 }
 
 .page {
   display: inline-block;
   margin: 5px 35px 5px 0;
-  list-style: none;
 }
 
 .page>a {

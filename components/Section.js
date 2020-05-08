@@ -2,14 +2,14 @@ import styles from './Section.module.css'
 
 export default function Section(props) {
   return (
-    <section className={props.section.theme}>
+    <section id={props.section._id} className={props.section.theme} style={{ position: 'relative' }}>
       <div className={styles.sectionTitle}>
         <h1>{props.section.title}</h1>
         {props.section.subtitle.map((title, i) => {
           return (
             <h3 key={`sectionSubtitle-${i}`} className={'grey'}>
               {title.value}
-              </h3>
+            </h3>
           )
         })}
         {props.section.description.map((title, i) => {
@@ -25,7 +25,6 @@ export default function Section(props) {
       </div>
       <style jsx>{`
       .white {
-        position: relative;
         background-color: #fff;
         color: #000;
       }
@@ -33,7 +32,6 @@ export default function Section(props) {
         color: #555;
       }
       .blue {
-        position: relative;
         background-color: #24316F;
         color: #fff;
       }

@@ -4,21 +4,20 @@ import styles from './testimonies.module.css'
 
 const testimonies = {
   intro: {
+    _id: 'testimonies',
     theme: 'white',
-    title: 'Testimonies',
-    subtitle: [{value:'Hear what some of our members have to say'}],
-    description: [{value:''}],
+    title: [{ value: 'Testimonies' }],
+    subtitle: [{ value: 'Hear what some of our members have to say' }],
+    description: [{ value: 'Comming soon...' }],
   }
 };
 
 export default function Testimonies() {
   return (
     <Layout>
-      <div id={'testimonies'}>
-        <Section section={testimonies.intro}>
-          <div></div>
-        </Section>
-      </div>
+      <Section section={testimonies.intro}>
+        <div style={{ height: 55 + 'vh' }}></div>
+      </Section>
     </Layout>
   )
 }

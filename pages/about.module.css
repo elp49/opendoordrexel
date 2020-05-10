@@ -10,25 +10,21 @@
   position: absolute;
   top: 50%;
   left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-500%, -50%);
   -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   transition-duration: .3s;
   display: block;
   height: 30px;
   width: 30px;
   background-color: #eee;
-  border-radius: 50%;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url('/icons/chevron-down-blue.svg');
-}
-
-.chevronDown>i:hover, .chevronDown>i:focus {
-  height: 45px;
-  width: 45px;
-  background-color: #24316F;
-  background-image: url('/icons/chevron-down-white.svg');
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 .timeline {

@@ -4,21 +4,21 @@ import styles from './about.module.css'
 
 const about = {
   intro: {
+    _id: 'about',
     theme: 'white',
-    title: 'About Us',
+    title: [{ value: 'About Us' }],
     subtitle: [],
     description: [
-      { value: 'We are an open, welcoming Christian community that believes God’s love and mercy is for all people.  We invite you to gather with us.' },
-      { value: 'We ask questions and together search out answers, believing God speaks to us in a multitude of ways.  We help one another along our faith journey, whether that is just beginning or life-long.' },
-      { value: 'We believe our faith shapes our lives, giving us meaning and purpose in everything we do.  From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation.' },
+      { value: 'We are an open, welcoming Christian community that believes God’s love and mercy is for all people. We invite you to gather with us.' },
+      { value: 'We ask questions and together search out answers, believing God speaks to us in a multitude of ways. We help one another along our faith journey, whether that is just beginning or life-long.' },
+      { value: 'We believe our faith shapes our lives, giving us meaning and purpose in everything we do. From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation.' },
     ]
   },
   timeline: {
+    _id: 'timeline',
     theme: 'blue',
-    title: 'Our Story',
-    subtitle: [
-      { value: 'It all started with 2 crockpots and a few people...' }
-    ],
+    title: [{ value: 'Our Story' }],
+    subtitle: [{ value: 'It all started with 2 crockpots and a few people...' }],
     description: [],
     events: [
       { month: 'Jan', year: '2015', details: 'Piltz begins' },
@@ -38,37 +38,71 @@ const about = {
       { month: 'Oct', year: '2018', details: 'Kensington outreach begins' },
       { month: 'Oct', year: '2019', details: 'Kensington outreach grow: 13 clothing drive locations and partnerships created' }
     ]
+  },
+  icons: {
+    chevronDown: '/icons/chevron-down-blue.svg',
+    chevronDownHover: '/icons/chevron-down-white.svg',
+    magnifyingGlass: '/icons/magnifying-glass.svg'
   }
 };
 
+function scrollToTop(id) {
+  document.getElementById(id).scrollIntoView();
+}
+
+function setChevronHover(className) {
+  let style = document.createElement('style');
+  let selector = /Mobi|Android/i.test(navigator.userAgent) ? `.${className}>i:active` : `.${className}>i:hover, .${className}>i:active`;
+  style.innerHTML = `
+    .${className}>i {
+      background-image: url(${about.icons.chevronDown});
+    }
+    ${selector} {
+      height: 45px;
+      width: 45px;
+      background-color: #24316F;
+      background-image: url(${about.icons.chevronDownHover});
+    }
+  `;
+  document.head.appendChild(style);
+}
+
+export async function componentDidMount() {
+  if (typeof window === 'undefined') {
+    return;
+  }
+  setChevronHover(styles.chevronDown);
+}
+
 export default function About() {
+  componentDidMount();
   return (
     <Layout>
-      <div id={'about'}>
-        <Section section={about.intro}>
-          <a href='#timeline' className={styles.chevronDown}><i></i></a>
-        </Section>
-        <Section id={'timeline'} section={about.timeline}>
-          <ul className={styles.timeline}>
-            {about.timeline.events.map((event, i) => {
-              return (
-                <li key={`event-${i}`} className={styles.event}>
-                  <div className={styles.magnifyingGlass}>
-                    <i style={{ backgroundImage: 'url(/icons/magnifying-glass.svg)' }}></i>
-                  </div>
-                  <div className={styles.eventDate}>
-                    <h2>{event.month}</h2>
-                    <h2>{event.year}</h2>
-                  </div>
-                  <div className={styles.eventDetails}>
-                    <p>{event.details}</p>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
-        </Section>
-      </div>
+      <Section section={about.intro}>
+        <div onClick={() => { scrollToTop(about.timeline._id) }} className={styles.chevronDown}>
+          <i></i>
+        </div>
+      </Section>
+      <Section section={about.timeline}>
+        <ul className={styles.timeline}>
+          {about.timeline.events.map((event, i) => {
+            return (
+              <li key={`event-${i}`} className={styles.event}>
+                <div className={styles.magnifyingGlass}>
+                  <i style={{ backgroundImage: `url(${about.icons.magnifyingGlass})` }}></i>
+                </div>
+                <div className={styles.eventDate}>
+                  <h2>{event.month}</h2>
+                  <h2>{event.year}</h2>
+                </div>
+                <div className={styles.eventDetails}>
+                  <p>{event.details}</p>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </Section>
     </Layout>
   )
 }

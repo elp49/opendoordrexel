@@ -1,16 +1,18 @@
 import styles from './Slideshow.module.css'
 
-var carousel;
+var timeout;
 var currentSlide;
-const showSlide = (n) => {
+function showSlide(id, n) {
   if (typeof n === 'undefined') {
     return;
   }
   let nextSlide = n;
+  let i;
+  let slides;
+  let badges;
   if (nextSlide !== currentSlide) {
-    let i;
-    let slides = document.getElementsByClassName(styles.slide);
-    let badges = document.getElementsByClassName(styles.badge);
+    slides = document.getElementById(`${id}Slideshow`).getElementsByClassName(styles.slide);
+    badges = document.getElementById(`${id}BadgeContainer`).getElementsByClassName(styles.badge);
     if (slides.length < 1 || badges.length < 1) {
       return;
     }
@@ -31,42 +33,56 @@ const showSlide = (n) => {
     badges[nextSlide].classList.add(styles.badgeActive);
     currentSlide = nextSlide;
   }
-  clearTimeout(carousel);
-  carousel = setTimeout(() => { showSlide(currentSlide + 1) }, 7000);
+  clearTimeout(timeout);
+  timeout = setTimeout(() => { showSlide(id, currentSlide + 1) }, 5000);
 };
 
-export async function componentDidMount() {
-  if (typeof window !== 'undefined') {
-    showSlide(0);
+export async function componentDidMount(id) {
+  if (typeof window === 'undefined') {
+    return;
   }
+  showSlide(id, 0);
 }
 
 export default function Slideshow(props) {
-  componentDidMount();
-
+  const id = props.slideshow._id;
+  const slides = props.slideshow.slides.sort((a, b) => { a._id - b._id });
+  componentDidMount(id);
   return (
-    <div id={'slideshow'} className={styles.slideshow}>
-      {props.slideshow.slides.map((slide, i) => {
-        return (
-          <div key={`slide-${i}`} className={styles.slide} style={{ backgroundImage: `url(${slide.imageUrl})` }}>
-            <div className={styles.slideHeader}>
-              <h1>{slide.title}</h1>
-            </div>
-            <a href={slide.linkTo} className={styles.slideButton}>
-              <h3>{slide.buttonText}</h3>
-            </a>
-          </div>
-        )
-      })}
-      <div className={styles.badgesContainer}>
-        {props.slideshow.slides.map((slide, i) => {
+    <div className={props.slideshow.theme} style={{ height: 100 + '%', position: 'relative' }}>
+      <ul id={`${id}Slideshow`} className={styles.slideshow}>
+        {slides.map((slide, i) => {
           return (
-            <div key={`badge-${i}`} className={styles.badge} onClick={() => showSlide(i)}>
-              <span></span>
-            </div>
+            <li key={`${id}Slide-${i}`} className={styles.slide} style={{ backgroundImage: `url(${slide.url})` }}>
+              <div className={styles.slideHeader}>
+                <h1>{slide.title}</h1>
+              </div>
+              <a href={slide.href} className={styles.slideButton}>
+                <h3>{slide.buttonText}</h3>
+              </a>
+            </li>
           )
         })}
-      </div>
+      </ul>
+      <ul id={`${id}BadgeContainer`} className={styles.badgesContainer}>
+        {slides.map((slide, i) => {
+          return (
+            <li key={`${id}Badge-${i}`} className={styles.badge} onClick={() => showSlide(id, i)}>
+              <span></span>
+            </li>
+          )
+        })}
+      </ul>
+      <style jsx>{`
+      .white {
+        background-color: #fff;
+        color: #000;
+      }
+      .blue {
+        background-color: #24316F;
+        color: #fff;
+      }
+      `}</style>
     </div>
   )
 }

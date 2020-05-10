@@ -17,6 +17,10 @@
   transition-duration: .5s;
 }
 
+.link>a:visited {
+  color: #24316F;
+}
+
 .link>a:hover, .link>a:focus {
   color: #818181;
   text-decoration: underline;
@@ -68,6 +72,7 @@
 
 @media only screen and (min-width: 1000px) {
   .indexSlideshow {
+    height: 80%;
     height: calc(100vh - 70px);
   }
   .leftPost, .rightPost {

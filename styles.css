@@ -38,8 +38,30 @@ i {
   background-size: cover;
 }
 
+i:hover, i:focus {
+  transition-duration: .5s;
+  opacity: 1;
+}
+
+header {
+  padding: 0 20px;
+}
+
 section {
   padding: 45px 0;
+}
+
+footer {
+  padding: 10px;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover, a:focus {
+  transition-duration: .5s;
+  opacity: 1;
 }
 
 @media only screen and (max-width: 369px) {
@@ -64,4 +86,13 @@ section {
   /* h3 {
     font-size: 1.5rem;
   } */
+}
+
+@media only screen and (min-width: 1000px) {
+  header {
+    padding: 0 60px;
+  }
+  footer {
+    padding: 10px 60px;
+  }
 }

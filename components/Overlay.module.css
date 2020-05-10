@@ -1,38 +1,39 @@
-.overlayPages {
-  margin: 45px 20px;
+.overlay {
+  position: fixed;
+  top: 0;
+  height: 0%;
+  width: 100%;
+  text-align: center;
+  transition: 0.7s;
+  overflow: hidden;
+  z-index: 100;
 }
 
-.page {
+.overlayPages {
+  margin: 45px 20px;
+  list-style-type: none;
+}
+
+.overlayPages>li {
   padding: 8px;
   margin: 5px 0;
-  border-bottom: #fff solid 2px;
-  list-style: none;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
   font-size: 4rem;
 }
 
-.page>a {
-  color: #fff;
-  text-decoration: none;
-  transition-duration: .5s;
+.mailingList {
+  margin: 0 20px 45px;
 }
 
-.page>a:hover, .page>a:focus {
-  color: #818181;
-  opacity: 1;
-}
-
-.overlayEmail {
-  margin: 0 20px;
-}
-
-.overlayEmail>p {
+.mailingList>p {
   margin-bottom: 20px;
-  color: #fff;
 }
 
 .emailForm {
   margin-bottom: 45px;
-  border-bottom: 2px solid #fff;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
 }
 
 .emailForm>input {
@@ -40,13 +41,8 @@
   padding-right: 45px;
   padding-bottom: 8px;
   background-color: transparent;
-  color: #fff;
   font-size: 3rem;
   border: none;
-}
-
-.emailForm>input::placeholder {
-  color: #fff;
 }
 
 .emailForm>input:focus {
@@ -58,26 +54,38 @@
   right: 20px;
   height: 30px;
   width: 30px;
-  background-color: #fff;
   text-align: center;
   border: none;
   border-radius: 50%;
-}
-
-.overlaySocialMedia {
-  margin: 0 45px 20px;
-  text-align: center;
+  cursor: pointer;
 }
 
 .socialMedia {
+  margin: 0 auto 45px;
+  list-style-type: none;
+}
+
+.socialMedia>li {
   display: inline-block;
   height: 3rem;
   width: 3rem;
-  margin: 0 10%;
+  margin: 0 45px;
 }
 
 @media only screen and (max-width: 369px) {
-  .page {
+  .overlayPages>li {
     font-size: 3rem;
+  }
+  .socialMedia>li {
+    height: 2rem;
+    width: 2rem;
+    margin: 0 20px;
+  }
+}
+
+@media only screen and (max-width: 999px) {
+  .active {
+    height: 100%;
+    overflow-y: scroll;
   }
 }

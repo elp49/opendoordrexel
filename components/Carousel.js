@@ -32,7 +32,7 @@ export async function componentDidMount(id) {
   }
   if (/Mobi|Android/i.test(navigator.userAgent) && window.screen.width < 1000) {
     removeScrollbar(`${id}Carousel`);
-    setDummyWidth('9999px');
+    setDummyWidth('999px');
   }
 }
 

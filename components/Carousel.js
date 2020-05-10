@@ -19,20 +19,12 @@ function removeScrollbar(id) {
   }
 }
 
-function setDummyWidth(width) {
-  let dummies = document.getElementsByClassName(styles.dummy);
-  for (let i = 0; i < dummies.length; i++) {
-    dummies[i].style.width = width;
-  }
-}
-
 export async function componentDidMount(id) {
   if (typeof window === 'undefined') {
     return;
   }
   if (/Mobi|Android/i.test(navigator.userAgent) && window.screen.width < 1000) {
     removeScrollbar(`${id}Carousel`);
-    // setDummyWidth('170px');
   }
 }
 

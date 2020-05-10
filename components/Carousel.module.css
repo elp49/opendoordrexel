@@ -1,0 +1,98 @@
+.carousel {
+  height: 210px;
+  width: 100%;
+  margin-top: 20px;
+  padding: 20px;
+  white-space: nowrap;
+  text-align: center;
+  list-style-type: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: move;
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.carousel:active {
+  cursor: move;
+  cursor: grabbing;
+  cursor: -moz-grabbing;
+  cursor: -webkit-grabbing;
+}
+
+.carousel::-webkit-scrollbar {
+  height: 10px;
+}
+
+.carousel::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.carousel::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+.carousel::-webkit-scrollbar-thumb:hover {
+  background: #999;
+}
+
+.dummy {
+  display: inline-block;
+  width: 20px;
+  width: calc(45vw - ((170px / 2) + 20px + 10px));
+  background-color: transparent;
+}
+
+.card {
+  display: inline-block;
+  height: 170px;
+  width: 170px;
+  margin: 0 10px;
+  padding: 10px;
+  border-radius: 10px;
+  scroll-snap-align: center;
+}
+
+.card>div {
+  height: 150px;
+  width: 150px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .carousel {
+    height: 570px;
+    margin-top: 45px;
+    padding: 40px;
+  }
+  .carousel::-webkit-scrollbar {
+    height: 20px;
+  }
+  .dummy {
+    width: 40px;
+    width: calc(45vw - ((490px / 2) + 40px + 20px));
+  }
+  .card {
+    height: 490px;
+    width: 490px;
+    margin: 0 20px;
+    padding: 20px;
+  }
+  .card>div {
+    height: 450px;
+    width: 450px;
+  }
+}

@@ -35,10 +35,12 @@ const layout = {
   },
 };
 
-const toggleOverlay = () => {
-  const id = layout._id;
-  document.getElementById(id).classList.toggle(styles.fixed);
+const toggleOverlay = (id) => {
   toggle(id);
+  setTimeout(() => {
+    document.getElementById(id).classList.toggle(styles.fixed);
+    document.getElementById(`${id}Header`).classList.toggle(styles.fixed);
+  }, 700);
 };
 
 export default function Layout(props) {
@@ -50,9 +52,9 @@ export default function Layout(props) {
   const theme = lastSectionTheme === 'blue' ? 'white' : 'blue';
   return (
     <div id={id} style={{ width: 100 + '%' }}>
-      <header className={layout.theme} style={{zIndex: 101}}>
+      <header id={`${id}Header`} className={layout.theme} style={{ zIndex: 101, width: 100 + '%' }}>
         <div className={styles.header}>
-          <div className={styles.hamburger} onClick={toggleOverlay}>
+          <div className={styles.hamburger} onClick={() => { toggleOverlay(id) }}>
             <span></span>
             <span></span>
             <span></span>

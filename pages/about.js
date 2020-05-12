@@ -47,7 +47,7 @@ const about = {
 };
 
 function scrollToTop(id) {
-  document.getElementById(id).scrollIntoView();
+  document.getElementById(id).scrollIntoView(true);
 }
 
 function setChevronHover(className) {

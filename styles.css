@@ -35,6 +35,10 @@ i {
   width: 100%;
   background-position: center;
   background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -ms-background-size: cover;
+  -o-background-size: cover;
   background-size: cover;
 }
 
@@ -44,7 +48,10 @@ i:hover, i:focus {
 }
 
 header {
+  position: relative;
+  width: 100%;
   padding: 0 20px;
+  z-index: 102;
 }
 
 section {
@@ -62,6 +69,68 @@ a {
 a:hover, a:focus {
   transition-duration: .5s;
   opacity: 1;
+}
+
+.white input {
+  color: #24316F;
+}
+.white input::-webkit-input-placeholder {
+  color: #24316F;
+}
+.white input:-ms-input-placeholder {
+  color: #24316F;
+}
+.white input::-moz-placeholder {
+  color: #24316F;
+}
+.white input:-moz-placeholder {
+  color: #24316F;
+}
+.white input::placeholder {
+  color: #24316F;
+}
+
+.blue input {
+  color: #fff;
+}
+.blue input::-webkit-input-placeholder {
+  color: #fff;
+}
+.blue input:-ms-input-placeholder {
+  color: #fff;
+}
+.blue input::-moz-placeholder {
+  color: #fff;
+}
+.blue input:-moz-placeholder {
+  color: #fff;
+}
+.blue input::placeholder {
+  color: #fff;
+}
+
+input:focus::-webkit-input-placeholder {
+  color: #818181;
+}
+input:focus::-ms-input-placeholder {
+  color: #818181;
+}
+input:focus::-moz-placeholder {
+  color: #818181;
+}
+input:focus:-moz-placeholder {
+  color: #818181;
+}
+input:focus::placeholder {
+  color: #818181;
+}
+      
+.white form {
+  border-bottom-color: #24316F;
+}
+
+.blue form {
+  border-bottom-color: #fff;
 }
 
 @media only screen and (max-width: 369px) {
@@ -90,6 +159,7 @@ a:hover, a:focus {
 
 @media only screen and (min-width: 1000px) {
   header {
+    height: 70px;
     padding: 0 60px;
   }
   footer {

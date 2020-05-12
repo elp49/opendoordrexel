@@ -1,9 +1,12 @@
-import Overlay, { toggle } from './Overlay'
+import Overlay from './Overlay'
 import styles from './Layout.module.css'
 
 const layout = {
   _id: 'layout',
-  theme: 'blue',
+  themes: {
+    layout: 'blue',
+    overlay: 'blue'
+  },
   pages: [
     { _id: '1', title: 'Home', href: '' },
     { _id: '3', title: 'Dinner & Worship', href: 'tuesdays' },
@@ -35,12 +38,9 @@ const layout = {
   },
 };
 
-const toggleOverlay = (id) => {
-  toggle(id);
-  setTimeout(() => {
-    document.getElementById(id).classList.toggle(styles.fixed);
-    document.getElementById(`${id}Header`).classList.toggle(styles.fixed);
-  }, 700);
+function toggleOverlay(id) {
+  document.getElementById(id).classList.toggle(styles.layoutFixed);
+  document.getElementById(`${id}Overlay`).classList.toggle(styles.overlayActive);
 };
 
 export default function Layout(props) {
@@ -49,19 +49,23 @@ export default function Layout(props) {
   const socialMedia = layout.socialMedia.sort((a, b) => a._id - b._id);
   const lastSection = props.children[props.children.length - 1];
   const lastSectionTheme = typeof lastSection !== 'undefined' ? lastSection.props.section.theme : 'white';
-  const theme = lastSectionTheme === 'blue' ? 'white' : 'blue';
+  const footerTheme = lastSectionTheme === 'blue' ? 'white' : 'blue';
   return (
-    <div id={id} style={{ width: 100 + '%' }}>
-      <header id={`${id}Header`} className={layout.theme} style={{ zIndex: 101, width: 100 + '%' }}>
+    <div id={id} className={styles.layout}>
+      <header className={layout.themes.layout}>
         <div className={styles.header}>
-          <div className={styles.hamburger} onClick={() => { toggleOverlay(id) }}>
-            <span></span>
-            <span></span>
-            <span></span>
+          <div className={styles.headerLogo}>
+            <a href='/' title={'Open Door'}>
+              <i alt={'Open Door'} className={'logo'}></i>
+            </a>
           </div>
-          <a href='/' className={styles.headerLogo} title={'Open Door'}>
-            <i alt={'Open Door'} className={'logo'}></i>
-          </a>
+          <div className={styles.hamburgerContainer}>
+            <div className={styles.hamburger} onClick={() => { toggleOverlay(id) }}>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+          </div>
           <ol className={styles.headerPages}>
             {pages.map((page, i) => {
               return (
@@ -75,7 +79,9 @@ export default function Layout(props) {
           </ol>
         </div>
       </header>
-      <Overlay overlay={layout} />
+      <div id={`${id}Overlay`} className={styles.overlay}>
+        <Overlay overlay={layout} />
+      </div>
       {props.children}
       <div className={lastSectionTheme}>
         <ol className={styles.socialMedia}>
@@ -90,11 +96,11 @@ export default function Layout(props) {
           })}
         </ol>
       </div>
-      <footer className={theme}>
+      <footer className={footerTheme}>
         <div className={styles.footer}>
-          <a href='/' className={styles.footerLogo} title={'Open Door'}>
+          {/* <a href='/' className={styles.footerLogo} title={'Open Door'}>
             <i alt={'Open Door'} className={'logo'}></i>
-          </a>
+          </a> */}
           <ol className={styles.footerPages}>
             {pages.map((page, i) => {
               return (
@@ -106,6 +112,20 @@ export default function Layout(props) {
               )
             })}
           </ol>
+          {/* <a href='/' className={styles.footerLogo} title={'Open Door'}>
+            <i alt={'Open Door'} className={'logo'}></i>
+          </a> */}
+
+          <div className={styles.mailingList}>
+            <p>{layout.mailingList.description}</p>
+            <form className={styles.emailForm}>
+              <input type='email' id='email' name='email' placeholder={layout.mailingList.placeholder} />
+              <button type='submit'>
+                <i className={'arrowUp'}></i>
+              </button>
+            </form>
+          </div>
+
           <div className={styles.footerCaption}>
             <p>{layout.footer.contact.location}</p>
             <p>{layout.footer.contact.address}</p>
@@ -116,15 +136,19 @@ export default function Layout(props) {
       </footer>
       <style jsx>{`
       .logo {
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+        -webkit-background-size: contain;
+        -moz-background-size: contain;
+        -ms-background-size: contain;
+        -o-background-size: contain;
         background-size: contain;
       }
       .white .logo {
         background-image: url(${layout.icons.logo.blue});
       }
       .blue .logo {
-        background-image: url(${layout.icons.logo.white});
-      }
-      .white .logo:hover, .blue .logo:hover {
         background-image: url(${layout.icons.logo.white});
       }
       .white .arrowUp {
@@ -151,35 +175,22 @@ export default function Layout(props) {
       .white .insta:hover, .blue .insta:hover {
         background-image: url(${layout.icons.insta.grey});
       }
-
       .white, .blue button {
         background-color: #fff;
         color: #24316F;
       }
-      
       .blue, .white button {
         background-color: #24316F;
         color: #fff;
       }
-      
-      .white p>a:hover, .white a, .white input, .white input::placeholder {
+      .white p>a:hover, .white a {
         color: #24316F;
       }
-      
-      .blue p, .blue a, .blue input, .blue input::placeholder {
+      .blue p, .blue a {
         color: #fff;
       }
-      
       .white p, .white p>a, .white a:hover, .white a:focus, .blue a:hover, .blue a:focus {
         color: #818181;
-      }
-      
-      .white form {
-        border-bottom-color: #24316F;
-      }
-      
-      .blue form {
-        border-bottom-color: #fff;
       }
       `}</style>
     </div>

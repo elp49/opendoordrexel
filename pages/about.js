@@ -79,7 +79,7 @@ export default function About() {
   return (
     <Layout>
       <Section section={about.intro}>
-        <div onClick={() => { scrollToTop(about.timeline._id) }} className={styles.chevronDown}>
+        <div onClick={() => { scrollToTop(`${about.timeline._id}Section`) }} className={styles.chevronDown}>
           <i></i>
         </div>
       </Section>

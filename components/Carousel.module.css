@@ -114,16 +114,22 @@
   position: absolute;
   top: 50%;
   transform: translate(0, -50%);
-  height: 5rem;
-  width: 5rem;
+  height: 3rem;
+  width: 3rem;
   background-color: rgba(0, 0, 0, 0.5);
-  font-size: 3rem;
-  line-height: 4.5rem;
+  font-size: 2rem;
   color: #fff;
   text-align: center;
   border: none;
   border-radius: 50%;
   cursor: pointer;
+}
+
+.next>span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .overlayCard {
@@ -164,5 +170,10 @@
   .card>div {
     height: 450px;
     width: 450px;
+  }
+  .next {
+    height: 7rem;
+    width: 7rem;
+    font-size: 5rem;
   }
 }

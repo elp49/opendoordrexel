@@ -11,7 +11,7 @@ const outreach = {
     subtitle: [{ value: 'See how we reach out to those with the greatest needs' }],
     description: [{ value: 'Comming soon...' }],
     carousel: {
-      id: 'dinner',
+      _id: 'dinner',
       theme: 'blue',
       cards: [
         { _id: '1', url: '/images/outreach/outreach-1.jpg' },
@@ -70,7 +70,7 @@ const outreach = {
     subtitle: [{ value: 'Clothing and toiletry donations are always accepted. Several times a year, we organize all of the donations and then give them to those who need them the most.' }],
     description: [{ value: 'Comming soon...' }],
     carousel: {
-      id: 'donations',
+      _id: 'donations',
       theme: 'white',
       cards: [
         { _id: '1', url: '/images/donations/donations-1.jpg' },

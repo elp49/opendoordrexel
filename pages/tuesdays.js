@@ -11,7 +11,7 @@ const tuesdays = {
     subtitle: [{ value: 'We serve a free dinner every tuesday night' }],
     description: [{ value: 'Comming soon...' }],
     carousel: {
-      id: 'dinner',
+      _id: 'dinner',
       theme: 'blue',
       cards: [
         { _id: '1', url: '/images/dinner/dinner-1.jpg' },

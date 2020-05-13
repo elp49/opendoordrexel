@@ -1,14 +1,10 @@
 import styles from './Carousel.module.css'
 
 function removeScrollbar(id) {
-  console.log('removing scrollbar')
   const classList = document.getElementById(id).classList;
-  console.log(`classList: ${classList}`)
-  let className;
-  let style;
+  let className, style;
   for (let i = 0; i < classList.length; i++) {
     className = classList[i];
-    console.log(`className: ${className}`);
     if (className.includes('carousel')) {
       style = document.createElement('style');
       style.innerHTML = `
@@ -17,7 +13,6 @@ function removeScrollbar(id) {
         }
       `;
       document.head.appendChild(style);
-      console.log(`appended style: ${style}`);
       break;
     }
   }
@@ -26,38 +21,23 @@ function removeScrollbar(id) {
 function openOverlay(id, currentCard, length) {
   let overlay = document.getElementById(`${id}CarouselOverlay`);
   overlay.style.display = 'block';
-  overlay.setAttribute('currentCard', currentCard);
+  overlay.setAttribute('currentcard', currentCard);
   document.getElementById(`${id}CarouselOverlayCard-${currentCard}`).style.display = 'block';
   document.onkeydown = () => { checkKey(id, length) };
 }
 
 function closeOverlay(id) {
   let overlay = document.getElementById(`${id}CarouselOverlay`);
-  const currentCard = overlay.getAttribute('currentCard');
+  const currentCard = overlay.getAttribute('currentcard');
   overlay.style.display = 'none';
   document.getElementById(`${id}CarouselOverlayCard-${currentCard}`).style.display = 'none';
   document.onkeydown = null;
 }
 
-function next(id, n, length) {
-  let overlay = document.getElementById(`${id}CarouselOverlay`);
-  const currentCard = parseInt(overlay.getAttribute('currentCard'));
-  let nextCard = currentCard + n;
-  if (nextCard == length) {
-    nextCard = 0;
-  } else if (nextCard < 0) {
-    nextCard = length - 1;
-  }
-  document.getElementById(`${id}CarouselOverlayCard-${nextCard}`).style.display = 'block';
-  document.getElementById(`${id}CarouselOverlayCard-${currentCard}`).style.display = 'none';
-  overlay.setAttribute('currentCard', nextCard);
-}
-
 function checkKey(id, length) {
   let overlay = document.getElementById(`${id}CarouselOverlay`);
   let overlayStyles = window.getComputedStyle(overlay) || overlay.currentStyle;
-  let key;
-  let n;
+  let key, n;
   if (!overlayStyles || overlayStyles.display === 'none') {
     return;
   }
@@ -67,11 +47,35 @@ function checkKey(id, length) {
   }
   else if (key == '39') {
     n = 1; // Right arrow, add 1 for the following card.
+  } else {
+    return;
   }
   next(id, n, length);
 }
 
-export async function componentDidMount(id) {
+function next(id, n, length) {
+  let overlay = document.getElementById(`${id}CarouselOverlay`);
+  const currentCard = parseInt(overlay.getAttribute('currentcard'));
+  let nextCard = currentCard + n;
+  if (nextCard == length) {
+    nextCard = 0;
+  } else if (nextCard < 0) {
+    nextCard = length - 1;
+  }
+  document.getElementById(`${id}CarouselOverlayCard-${currentCard}`).style.display = 'none';
+  document.getElementById(`${id}CarouselOverlayCard-${nextCard}`).style.display = 'block';
+  overlay.setAttribute('currentcard', nextCard);
+  scrollCarousel(id, nextCard, length);
+}
+
+function scrollCarousel(id, nextCard, length) {
+  const carousel = document.getElementById(`${id}Carousel`);
+  const cardScrollDist = carousel.scrollWidth / length;
+  const xScroll = parseInt(cardScrollDist * nextCard);
+  carousel.scrollTo(xScroll, 0);
+}
+
+export async function componentDidMount(id, length) {
   if (typeof window === 'undefined') {
     return;
   }
@@ -83,7 +87,7 @@ export async function componentDidMount(id) {
 export default function Carousel(props) {
   const id = props.carousel._id;
   const cards = props.carousel.cards.sort((a, b) => b._id - a._id);
-  componentDidMount(id);
+  componentDidMount(id, cards.length);
 
   return (
     <div className={props.carousel.theme} style={{ borderRadius: 10 + 'px' }}>
@@ -91,14 +95,14 @@ export default function Carousel(props) {
         <li value={999999} className={styles.dummy}></li>
         {cards.map((card, i) => {
           return (
-            <li key={`${id}CarouselCard-${i}`} value={card._id} className={styles.card} onClick={() => { openOverlay(id, i, cards.length) }}>
+            <li key={`${id}CarouselCard-${i}`} id={`${id}CarouselCard-${i}`} value={card._id} className={styles.card} onClick={() => { openOverlay(id, i, cards.length) }}>
               <div style={{ backgroundImage: `url(${card.url})` }}></div>
             </li>
           )
         })}
         <li value={0} className={styles.dummy}></li>
       </ol>
-      <ol id={`${id}CarouselOverlay`} className={styles.overlay} currentCard={0}>
+      <ol id={`${id}CarouselOverlay`} className={styles.overlay} currentcard={0}>
         <div className={styles.close} onClick={() => { closeOverlay(id) }}>
           <span>&times;</span>
         </div>

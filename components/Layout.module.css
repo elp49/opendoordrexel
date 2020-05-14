@@ -93,15 +93,22 @@
   margin-left: 30px;
 }
 
-.socialMedia {
+.container {
+  position: relative;
   width: 90%;
   width: 90vw;
   margin: auto;
+  padding-top: 20px;
+}
+
+.socialMedia {
+  display: inline-block;
+  margin-right: auto;
   list-style-type: none;
 }
 
 .socialMedia>li {
-  display: inline-block;
+  float: left;
   height: 2rem;
   width: 2rem;
   margin-right: 20px;

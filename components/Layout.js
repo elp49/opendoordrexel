@@ -22,6 +22,10 @@ const layout = {
     { _id: '1', class: 'facebook', title: 'Facebook', href: 'https://www.facebook.com/groups/opendoorchristiancommunity' },
     { _id: '2', class: 'insta', title: 'Instagram', href: 'https://www.instagram.com/drexelopendoor' }
   ],
+  donate: {
+    buttonText: 'Donate',
+    href: '/'
+  },
   footer: {
     contact: {
       location: 'Drexel University, James E. Marks Intercultural Center, ',
@@ -84,17 +88,20 @@ export default function Layout(props) {
       </div>
       {props.children}
       <div className={lastSectionTheme}>
-        <ol className={styles.socialMedia}>
-          {socialMedia.map((media, i) => {
-            return (
-              <li key={`${id}FooterMedia-${i}`} value={media._id}>
-                <a href={media.href} title={media.title} target='_blank' >
-                  <i className={media.class}></i>
-                </a>
-              </li>
-            )
-          })}
-        </ol>
+        <div className={styles.container}>
+          <ol className={styles.socialMedia}>
+            {socialMedia.map((media, i) => {
+              return (
+                <li key={`${id}FooterMedia-${i}`} value={media._id}>
+                  <a href={media.href} title={media.title} target='_blank' >
+                    <i className={media.class}></i>
+                  </a>
+                </li>
+              )
+            })}
+          </ol>
+          <a className={'donate'} href={layout.donate.href}>{layout.donate.buttonText}</a>
+        </div>
       </div>
       <footer className={footerTheme}>
         <div className={styles.footer}>
@@ -175,11 +182,11 @@ export default function Layout(props) {
       .white .insta:hover, .blue .insta:hover {
         background-image: url(${layout.icons.insta.grey});
       }
-      .white, .blue button {
+      .white, .blue button, .blue .donate {
         background-color: #fff;
         color: #24316F;
       }
-      .blue, .white button {
+      .blue, .white button, .white .donate {
         background-color: #24316F;
         color: #fff;
       }
@@ -191,6 +198,18 @@ export default function Layout(props) {
       }
       .white p, .white p>a, .white a:hover, .white a:focus, .blue a:hover, .blue a:focus {
         color: #818181;
+      }
+      .donate {
+        position: absolute;
+        bottom: 2px;
+        right: 0;
+        margin-left: auto;
+        padding: 7px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        border-radius: 10px;
       }
       `}</style>
     </div>

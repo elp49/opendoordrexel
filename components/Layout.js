@@ -211,6 +211,13 @@ export default function Layout(props) {
         letter-spacing: 1px;
         border-radius: 10px;
       }
+
+      @media only screen and (min-width: 1000px) {
+        .donate {
+          padding: 10px;
+          font-size: 3rem;
+        }
+      }
       `}</style>
     </div>
   )

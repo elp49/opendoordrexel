@@ -1,7 +1,7 @@
 .overlay {
   height: 100%;
   width: 100%;
-  padding-top: 45px;
+  padding: 45px 0;
   text-align: center;
 }
 

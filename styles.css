@@ -133,16 +133,16 @@ input:focus::placeholder {
   border-bottom-color: #fff;
 }
 
-@media only screen and (max-width: 369px) {
+@media only screen and (max-width: 500px) {
   h1 {
     font-size: 3rem;
   }
   h2 {
     font-size: 2.5rem;
   }
-  /* h3, p {
+  h3, p {
     font-size: 1.5rem;
-  } */
+  }
 }
 
 @media only screen and (max-height: 500px) {
@@ -152,9 +152,9 @@ input:focus::placeholder {
   h2 {
     font-size: 2.5rem;
   }
-  /* h3 {
+  h3 {
     font-size: 1.5rem;
-  } */
+  }
 }
 
 @media only screen and (min-width: 1000px) {

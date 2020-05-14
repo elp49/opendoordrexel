@@ -100,7 +100,7 @@ export default function Layout(props) {
               )
             })}
           </ol>
-          <a className={'donate'} href={layout.donate.href}>{layout.donate.buttonText}</a>
+          <a className={'donate'} href={layout.donate.href} title={layout.donate.buttonText}>{layout.donate.buttonText}</a>
         </div>
       </div>
       <footer className={footerTheme}>

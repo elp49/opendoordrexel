@@ -151,7 +151,7 @@ export default function Carousel(props) {
       .overlay .dummy {
         width: 0;
       }
-      .overlay li, .overlay li {
+      .overlay li {
         display: inline-block;
         height: 100%;
         width: 100%;
@@ -161,7 +161,7 @@ export default function Carousel(props) {
         border-radius: 0;
         cursor: initial;
       }
-      .overlay li>div, .overlay li>div {
+      .overlay li>div {
         height: 100%;
         width: 100%;
         background-size: contain;

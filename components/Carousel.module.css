@@ -1,7 +1,11 @@
-.carousel {
-  height: 210px;
+.carouselContainer {
+  height: 100%;
   width: 100%;
-  margin-top: 20px;
+}
+
+.carousel {
+  height: 100%;
+  width: 100%;
   padding: 20px;
   white-space: nowrap;
   text-align: center;
@@ -46,18 +50,48 @@
   background: #999;
 }
 
-.dummy {
-  display: inline-block;
-  width: 20px;
-  width: calc(45vw - ((170px / 2) + 20px + 10px));
-  background-color: transparent;
+.close {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 7rem;
+  padding: 1rem;
+  color: #ddd;
+  line-height: 5rem;
+  font-size: 7rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #bbb;
+  font-size: 9rem;
+}
+
+.arrow {
+  position: fixed;
+  top: 50%;
+  transform: translate(0, -50%);
+  height: 6rem;
+  width: 3rem;
+  color: #ddd;
+  line-height: 5rem;
+  font-size: 5rem;
+  text-align: center;
+  cursor: pointer;
+}
+
+.arrow:hover {
+  height: 7rem;
+  color: #bbb;
+  font-size: 7rem;
 }
 
 .card {
   display: inline-block;
   height: 170px;
   width: 170px;
-  margin: 0 10px;
+  margin: 0 5px 0 15px;
   padding: 10px;
   border-radius: 10px;
   scroll-snap-align: center;
@@ -73,93 +107,12 @@
   border-radius: 10px;
 }
 
-.overlay {
-  position: fixed;
-  display: none;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 150;
-}
-
-.overlayActive {
-  display: block;
-}
-
-.close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  height: 5rem;
-  width: 5rem;
-  font-size: 5rem;
-  line-height: 5rem;
-  color: #fff;
-  text-align: center;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.close:hover {
-  color: #ccc;
-  background-color: rgba(0, 0, 0, 0.5);
-}
-
-.next {
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  height: 3rem;
-  width: 3rem;
-  background-color: rgba(0, 0, 0, 0.5);
-  font-size: 2rem;
-  color: #fff;
-  text-align: center;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.next>span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.overlayCard {
-  display: none;
-  height: 100%;
-  width: 100%;
-  /* padding: 0 5rem; */
-  background-color: #000;
-}
-
-.overlayCard>div {
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
 @media only screen and (min-width: 1000px) {
   .carousel {
-    height: 570px;
-    margin-top: 45px;
     padding: 40px;
   }
   .carousel::-webkit-scrollbar {
     height: 20px;
-  }
-  .dummy {
-    width: 40px;
-    width: calc(45vw - ((490px / 2) + 40px + 20px));
   }
   .card {
     height: 490px;
@@ -171,9 +124,12 @@
     height: 450px;
     width: 450px;
   }
-  .next {
-    height: 7rem;
-    width: 7rem;
-    font-size: 5rem;
+  .arrow {
+    margin: 0 2rem;
+    width: 5rem;
+    font-size: 9rem;
+  }
+  .arrow:hover {
+    font-size: 11rem;
   }
 }

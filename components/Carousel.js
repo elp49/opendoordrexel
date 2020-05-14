@@ -18,27 +18,31 @@ function removeScrollbar(id) {
   }
 }
 
-function openOverlay(id, currentCard, length) {
-  let overlay = document.getElementById(`${id}CarouselOverlay`);
-  overlay.style.display = 'block';
-  overlay.setAttribute('currentcard', currentCard);
-  document.getElementById(`${id}CarouselOverlayCard-${currentCard}`).style.display = 'block';
-  document.onkeydown = () => { checkKey(id, length) };
+function enterFullScreen(id, nextCard) {
+  const container = document.getElementById(`${id}CarouselContainer`);
+  if (container.classList.contains('overlay')) {
+    return;
+  }
+  setCurrentCard(id, nextCard);
+  scrollCarousel(id, 0);
+  container.classList.add('overlay');
+  document.onkeydown = () => { checkKey(id) };
 }
 
-function closeOverlay(id) {
-  let overlay = document.getElementById(`${id}CarouselOverlay`);
-  const currentCard = overlay.getAttribute('currentcard');
-  overlay.style.display = 'none';
-  document.getElementById(`${id}CarouselOverlayCard-${currentCard}`).style.display = 'none';
+function exitFullScreen(id) {
+  const container = document.getElementById(`${id}CarouselContainer`);
+  if (!container.classList.contains('overlay')) {
+    return;
+  }
+  container.classList.remove('overlay');
   document.onkeydown = null;
 }
 
-function checkKey(id, length) {
-  let overlay = document.getElementById(`${id}CarouselOverlay`);
-  let overlayStyles = window.getComputedStyle(overlay) || overlay.currentStyle;
+function checkKey(id) {
+  const container = document.getElementById(`${id}CarouselContainer`);
+  let containerStyles = window.getComputedStyle(container) || container.currentStyle;
   let key, n;
-  if (!overlayStyles || overlayStyles.display === 'none') {
+  if (!containerStyles || containerStyles.position !== 'fixed') {
     return;
   }
   key = window.event.keyCode;
@@ -50,32 +54,44 @@ function checkKey(id, length) {
   } else {
     return;
   }
-  next(id, n, length);
+  scrollCarousel(id, n);
 }
 
-function next(id, n, length) {
-  let overlay = document.getElementById(`${id}CarouselOverlay`);
-  const currentCard = parseInt(overlay.getAttribute('currentcard'));
-  let nextCard = currentCard + n;
-  if (nextCard == length) {
-    nextCard = 0;
-  } else if (nextCard < 0) {
-    nextCard = length - 1;
+function scrollCarousel(id, n) {
+  const cards = document.getElementById(`${id}Carousel`).getElementsByClassName(styles.card);
+  const dummies = document.getElementById(`${id}Carousel`).getElementsByClassName('dummy');
+  const cardStyle = window.getComputedStyle(cards[0]) || cards[0].currentStyle;
+  const dummyStyle = window.getComputedStyle(dummies[0]) || dummies[0].currentStyle;
+  const cardWidth = parseInt(cardStyle.width);
+  const cardMarginLeft = parseInt(cardStyle.marginLeft);
+  const cardMarginRight = parseInt(cardStyle.marginRight);
+  const dummyWidth = parseInt(dummyStyle.width) + cardMarginLeft;
+  const scrollPerCard = cardWidth + cardMarginLeft + cardMarginRight;
+  const currentCard = getCurrentCard(id)
+  const nextCard = setCurrentCard(id, currentCard + n);
+  const xScroll = parseInt((scrollPerCard * nextCard) + dummyWidth + cardMarginLeft);
+  document.getElementById(`${id}Carousel`).scrollTo(xScroll, 0);
+}
+
+function getCurrentCard(id) {
+  return parseInt(document.getElementById(`${id}Carousel`).getAttribute('currentcard'));
+}
+
+function setCurrentCard(id, card) {
+  const length = document.getElementById(`${id}Carousel`).getElementsByClassName(styles.card).length;
+  let currentCard;
+  if (card >= length) {
+    currentCard = 0;
+  } else if (card < 0) {
+    currentCard = length - 1;
+  } else {
+    currentCard = card;
   }
-  document.getElementById(`${id}CarouselOverlayCard-${currentCard}`).style.display = 'none';
-  document.getElementById(`${id}CarouselOverlayCard-${nextCard}`).style.display = 'block';
-  overlay.setAttribute('currentcard', nextCard);
-  scrollCarousel(id, nextCard, length);
+  document.getElementById(`${id}Carousel`).setAttribute('currentcard', currentCard);
+  return currentCard;
 }
 
-function scrollCarousel(id, nextCard, length) {
-  const carousel = document.getElementById(`${id}Carousel`);
-  const cardScrollDist = carousel.scrollWidth / length;
-  const xScroll = parseInt(cardScrollDist * nextCard);
-  carousel.scrollTo(xScroll, 0);
-}
-
-export async function componentDidMount(id, length) {
+export async function componentDidMount(id) {
   if (typeof window === 'undefined') {
     return;
   }
@@ -87,45 +103,104 @@ export async function componentDidMount(id, length) {
 export default function Carousel(props) {
   const id = props.carousel._id;
   const cards = props.carousel.cards.sort((a, b) => b._id - a._id);
-  componentDidMount(id, cards.length);
-
+  componentDidMount(id);
   return (
-    <div className={props.carousel.theme} style={{ borderRadius: 10 + 'px' }}>
-      <ol id={`${id}Carousel`} className={styles.carousel}>
-        <li value={999999} className={styles.dummy}></li>
-        {cards.map((card, i) => {
-          return (
-            <li key={`${id}CarouselCard-${i}`} id={`${id}CarouselCard-${i}`} value={card._id} className={styles.card} onClick={() => { openOverlay(id, i, cards.length) }}>
-              <div style={{ backgroundImage: `url(${card.url})` }}></div>
-            </li>
-          )
-        })}
-        <li value={0} className={styles.dummy}></li>
-      </ol>
-      <ol id={`${id}CarouselOverlay`} className={styles.overlay} currentcard={0}>
-        <div className={styles.close} onClick={() => { closeOverlay(id) }}>
-          <span>&times;</span>
-        </div>
-        <div className={styles.next} style={{ left: 0 }} onClick={() => { next(id, -1, cards.length) }}>
-          <span>&lang;</span>
-        </div>
-        <div className={styles.next} style={{ right: 0 }} onClick={() => { next(id, 1, cards.length) }}>
-          <span>&rang;</span>
-        </div>
-        {cards.map((card, i) => {
-          return (
-            <li key={`${id}CarouselOverlayCard-${i}`} id={`${id}CarouselOverlayCard-${i}`} value={card._id} className={styles.overlayCard} style={{ backgroundColor: 'transparent' }}>
-              <div style={{ backgroundImage: `url(${card.url})` }}></div>
-            </li>
-          )
-        })}
-      </ol>
+    <div className={props.carousel.theme}>
+      <div id={`${id}CarouselContainer`} className={styles.carouselContainer}>
+        <ol id={`${id}Carousel`} className={styles.carousel} currentcard={0}>
+          <span className={styles.close} onClick={() => { exitFullScreen(id) }}>&times;</span>
+          <span className={styles.arrow} style={{ left: 0 }} onClick={() => { scrollCarousel(id, -1) }}>&lang;</span>
+          <span className={styles.arrow} style={{ right: 0 }} onClick={() => { scrollCarousel(id, 1) }}>&rang;</span>
+          <li value={999999} className={'dummy'}></li>
+          {cards.map((card, i) => {
+            return (
+              <li key={`${id}CarouselCard-${i}`} id={`${id}CarouselCard-${i}`} value={card._id} className={styles.card} onClick={() => { enterFullScreen(id, i) }}>
+                <div style={{ backgroundImage: `url(${card.url})` }}></div>
+              </li>
+            )
+          })}
+          <li value={0} className={'dummy'}></li>
+        </ol>
+      </div>
       <style jsx>{`
+      .white, .blue {
+        height: 210px;
+        margin-top: 20px;
+        border-radius: 10px;
+      }
+
       .white, .blue li {
         background-color: #fff;
       }
+
       .blue, .white li {
         background-color: #24316F;
+      }
+
+      .dummy {
+        display: inline-block;
+        width: 20px;
+        width: calc(45vw - ((170px / 2) + 20px + 10px));
+        background-color: transparent;
+      }
+
+      .overlay {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.5);;
+        z-index: 150;
+      }
+
+      .overlay::-webkit-scrollbar {
+        display: none;
+      }
+
+      .overlay .dummy {
+        width: 0;
+      }
+
+      .overlay>ol {
+        margin: 0;
+        padding: 0;
+      }
+
+      .overlay li, .overlay li {
+        display: inline-block;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: transparent;
+        border-radius: 0;
+        cursor: initial;
+      }
+
+      .overlay li>div, .overlay li>div {
+        height: 100%;
+        width: 100%;
+        background-size: contain;
+        border-radius: 0;
+      }
+      
+      span {
+        display: none;
+      }
+
+      .overlay>ol>span {
+        display: block;
+      }
+
+      @media only screen and (min-width: 1000px) {
+        .white, .blue {
+          height: 570px;
+          margin-top: 45px;
+        }
+        .dummy {
+          width: 40px;
+          width: calc(45vw - ((490px / 2) + 40px + 20px));
+        }
       }
       `}</style>
     </div>

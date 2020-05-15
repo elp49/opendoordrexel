@@ -21,12 +21,6 @@
   color: #24316F;
 }
 
-.link>a:hover, .link>a:focus {
-  color: #818181;
-  text-decoration: underline;
-  opacity: 1;
-}
-
 .leftPost, .rightPost {
   position: relative;
   display: inline-block;
@@ -96,5 +90,13 @@
   .postDetails {
     margin: 0 -45px -45px 45px;
     padding: 45px;
+  }
+}
+
+@media not all and (pointer: coarse) {
+  .link>a:hover, .link>a:focus {
+    color: #818181;
+    text-decoration: underline;
+    opacity: 1;
   }
 }

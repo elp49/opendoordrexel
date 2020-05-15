@@ -52,17 +52,11 @@ export default function Overlay(props) {
       .blue .facebook {
         background-image: url(${props.overlay.icons.facebook.white});
       }
-      .white .facebook:hover, .blue .facebook:hover {
-        background-image: url(${props.overlay.icons.facebook.grey});
-      }
       .white .insta {
         background-image: url(${props.overlay.icons.insta.blue});
       }
       .blue .insta {
         background-image: url(${props.overlay.icons.insta.white});
-      }
-      .white .insta:hover, .blue .insta:hover {
-        background-image: url(${props.overlay.icons.insta.grey});
       }
       .white, .blue button {
         background-color: #fff;
@@ -72,14 +66,28 @@ export default function Overlay(props) {
         background-color: #24316F;
         color: #fff;
       }
-      .white p>a:hover, .white a {
+      .white a {
         color: #24316F;
       }
       .blue p, .blue a {
         color: #fff;
       }
-      .white p, .white p>a, .white a:hover, .white a:focus, .blue a:hover, .blue a:focus {
+      .white p, .white p>a {
         color: #818181;
+      }
+      @media not all and (pointer: coarse) {
+        .white .facebook:hover, .blue .facebook:hover {
+          background-image: url(${props.overlay.icons.facebook.grey});
+        }
+        .white .insta:hover, .blue .insta:hover {
+          background-image: url(${props.overlay.icons.insta.grey});
+        }
+        .white p>a:hover {
+          color: #24316F;
+        }
+        .white a:hover, .white a:focus, .blue a:hover, .blue a:focus {
+          color: #818181;
+        }
       }
       `}</style>
     </div>

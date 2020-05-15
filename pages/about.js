@@ -40,8 +40,7 @@ const about = {
     ]
   },
   icons: {
-    chevronDown: '/icons/chevron-down-blue.svg',
-    chevronDownHover: '/icons/chevron-down-white.svg',
+    chevronDown: { white: '/icons/chevron-down-white.svg', blue: '/icons/chevron-down-blue.svg' },
     magnifyingGlass: '/icons/magnifying-glass.svg'
   }
 };
@@ -50,36 +49,12 @@ function scrollToTop(id) {
   document.getElementById(id).scrollIntoView(true);
 }
 
-function setChevronHover(className) {
-  let style = document.createElement('style');
-  let selector = /Mobi|Android/i.test(navigator.userAgent) ? `.${className}>i:active` : `.${className}>i:hover, .${className}>i:active`;
-  style.innerHTML = `
-    .${className}>i {
-      background-image: url(${about.icons.chevronDown});
-    }
-    ${selector} {
-      height: 45px;
-      width: 45px;
-      background-color: #24316F;
-      background-image: url(${about.icons.chevronDownHover});
-    }
-  `;
-  document.head.appendChild(style);
-}
-
-export async function componentDidMount() {
-  if (typeof window === 'undefined') {
-    return;
-  }
-  setChevronHover(styles.chevronDown);
-}
-
 export default function About() {
-  componentDidMount();
+  const timelineId = `${about.timeline._id}Section`;
   return (
     <Layout>
       <Section section={about.intro}>
-        <div onClick={() => { scrollToTop(`${about.timeline._id}Section`) }} className={styles.chevronDown}>
+        <div onClick={() => { scrollToTop(timelineId) }} className={'chevronDown'}>
           <i></i>
         </div>
       </Section>
@@ -103,6 +78,44 @@ export default function About() {
           })}
         </ul>
       </Section>
+      <style jsx>{`
+        .chevronDown {
+          position: relative;
+          display: block;
+          height: 45px;
+          width: 45px;
+          margin: auto;
+        }
+        .chevronDown>i {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          -webkit-transform: translate(-50%, -50%);
+          -moz-transform: translate(-500%, -50%);
+          -ms-transform: translate(-50%, -50%);
+          -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+          transition-duration: .3s;
+          display: block;
+          height: 30px;
+          width: 30px;
+          background-color: #eee;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          background-image: url(${about.icons.chevronDown.blue});
+          border-radius: 50%;
+          cursor: pointer;
+        }
+        @media not all and (pointer: coarse) {
+          .chevronDown}>i:hover, .chevronDown>i:active {
+            height: 45px;
+            width: 45px;
+            background-color: #24316F;
+            background-image: url(${about.icons.chevronDown.white});
+          }
+        }
+      `}</style>
     </Layout>
   )
 }

@@ -46,10 +46,6 @@
   border-radius: 10px;
 }
 
-.carousel::-webkit-scrollbar-thumb:hover {
-  background: #999;
-}
-
 .close {
   position: absolute;
   top: 0;
@@ -63,11 +59,6 @@
   cursor: pointer;
 }
 
-.close:hover {
-  color: #bbb;
-  font-size: 9rem;
-}
-
 .arrow {
   position: absolute;
   top: 50%;
@@ -79,12 +70,6 @@
   font-size: 5rem;
   text-align: center;
   cursor: pointer;
-}
-
-.arrow:hover {
-  height: 7rem;
-  color: #bbb;
-  font-size: 7rem;
 }
 
 .card {
@@ -129,7 +114,24 @@
     width: 5rem;
     font-size: 9rem;
   }
+}
+
+@media not all and (pointer: coarse) {
+  .carousel::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+  .close:hover {
+    color: #bbb;
+    font-size: 9rem;
+  }
   .arrow:hover {
-    font-size: 11rem;
+    height: 7rem;
+    color: #bbb;
+    font-size: 7rem;
+  }
+  @media only screen and (min-width: 1000px) {
+    .arrow:hover {
+      font-size: 11rem;
+    }
   }
 }

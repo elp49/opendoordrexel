@@ -42,11 +42,6 @@ i {
   background-size: cover;
 }
 
-i:hover, i:focus {
-  transition-duration: .5s;
-  opacity: 1;
-}
-
 header {
   position: relative;
   width: 100%;
@@ -66,26 +61,26 @@ a {
   text-decoration: none;
 }
 
-a:hover, a:focus {
-  transition-duration: .5s;
-  opacity: 1;
-}
-
 .white input {
   color: #24316F;
 }
+
 .white input::-webkit-input-placeholder {
   color: #24316F;
 }
+
 .white input:-ms-input-placeholder {
   color: #24316F;
 }
+
 .white input::-moz-placeholder {
   color: #24316F;
 }
+
 .white input:-moz-placeholder {
   color: #24316F;
 }
+
 .white input::placeholder {
   color: #24316F;
 }
@@ -93,18 +88,23 @@ a:hover, a:focus {
 .blue input {
   color: #fff;
 }
+
 .blue input::-webkit-input-placeholder {
   color: #fff;
 }
+
 .blue input:-ms-input-placeholder {
   color: #fff;
 }
+
 .blue input::-moz-placeholder {
   color: #fff;
 }
+
 .blue input:-moz-placeholder {
   color: #fff;
 }
+
 .blue input::placeholder {
   color: #fff;
 }
@@ -112,19 +112,23 @@ a:hover, a:focus {
 input:focus::-webkit-input-placeholder {
   color: #818181;
 }
+
 input:focus::-ms-input-placeholder {
   color: #818181;
 }
+
 input:focus::-moz-placeholder {
   color: #818181;
 }
+
 input:focus:-moz-placeholder {
   color: #818181;
 }
+
 input:focus::placeholder {
   color: #818181;
 }
-      
+
 .white form {
   border-bottom-color: #24316F;
 }
@@ -164,5 +168,16 @@ input:focus::placeholder {
   }
   footer {
     padding: 10px 60px;
+  }
+}
+
+@media not all and (pointer: coarse) {
+  i:hover, i:focus {
+    transition-duration: .5s;
+    opacity: 1;
+  }
+  a:hover, a:focus {
+    transition-duration: .5s;
+    opacity: 1;
   }
 }

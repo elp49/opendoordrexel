@@ -51,7 +51,12 @@ export default function Layout(props) {
   const id = layout._id;
   const pages = layout.pages.sort((a, b) => { a._id - b._id });
   const socialMedia = layout.socialMedia.sort((a, b) => a._id - b._id);
-  const lastSection = props.children[props.children.length - 1];
+  console.log(`props.children:`);
+  console.log(props.children);
+  const lastSection = props.children[props.children.length - 2];
+  console.log(`props.children.length: ${props.children.length}`);
+  console.log(lastSection);
+  console.log(lastSection.props.section);
   const lastSectionTheme = typeof lastSection !== 'undefined' ? lastSection.props.section.theme : 'white';
   const footerTheme = lastSectionTheme === 'blue' ? 'white' : 'blue';
   return (
@@ -170,17 +175,11 @@ export default function Layout(props) {
       .blue .facebook {
         background-image: url(${layout.icons.facebook.white});
       }
-      .white .facebook:hover, .blue .facebook:hover {
-        background-image: url(${layout.icons.facebook.grey});
-      }
       .white .insta {
         background-image: url(${layout.icons.insta.blue});
       }
       .blue .insta {
         background-image: url(${layout.icons.insta.white});
-      }
-      .white .insta:hover, .blue .insta:hover {
-        background-image: url(${layout.icons.insta.grey});
       }
       .white, .blue button, .blue .donate {
         background-color: #fff;
@@ -190,13 +189,13 @@ export default function Layout(props) {
         background-color: #24316F;
         color: #fff;
       }
-      .white p>a:hover, .white a {
+      .white a {
         color: #24316F;
       }
       .blue p, .blue a {
         color: #fff;
       }
-      .white p, .white p>a, .white a:hover, .white a:focus, .blue a:hover, .blue a:focus {
+      .white p, .white p>a {
         color: #818181;
       }
       .donate {
@@ -211,11 +210,24 @@ export default function Layout(props) {
         letter-spacing: 1px;
         border-radius: 10px;
       }
-
       @media only screen and (min-width: 1000px) {
         .donate {
           padding: 10px;
           font-size: 3rem;
+        }
+      }
+      @media not all and (pointer: coarse) {
+        .white .facebook:hover, .blue .facebook:hover {
+          background-image: url(${layout.icons.facebook.grey});
+        }
+        .white .insta:hover, .blue .insta:hover {
+          background-image: url(${layout.icons.insta.grey});
+        }
+        .white p>a:hover {
+          color: #24316F;
+        }
+        .white a:hover, .white a:focus, .blue a:hover, .blue a:focus {
+          color: #818181;
         }
       }
       `}</style>

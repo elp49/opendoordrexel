@@ -1,15 +1,16 @@
 .slideshow {
   position: relative;
   height: 100%;
+}
+
+.slideList {
+  position: relative;
+  height: 100%;
   list-style-type: none;
-  /* -webkit-transition: all 1.0s ease-in-out;
-  -moz-transition: all 1.0s ease-in-out;
-  -o-transition: all 1.0s ease-in-out;
-  transition: all 1.0s ease-in-out; */
 }
 
 .slide {
-  display: none;
+  position: absolute;
   height: 100%;
   padding: 30px 0;
   background-position: center;
@@ -17,12 +18,11 @@
   background-size: cover;
   text-align: center;
   font-weight: bold;
-  transition-duration: .5s;
-  z-index: 50;
-}
-
-.slideActive {
-  display: block;
+  -webkit-transition: all 1.0s ease-in-out;
+  -moz-transition: all 1.0s ease-in-out;
+  -o-transition: all 1.0s ease-in-out;
+  transition: all 1.0s ease-in-out;
+  opacity: 0;
 }
 
 .slideHeader {
@@ -35,7 +35,7 @@
 
 .slideHeader>h1 {
   width: 100%;
-  padding: 10px 0;
+  padding: 10px;
   background-color: rgb(36, 49, 111, .8);
 }
 
@@ -49,7 +49,7 @@
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   display: block;
-  padding: 20px;
+  padding: 10px;
   background-color: #fff;
   color: #000;
   text-transform: uppercase;
@@ -57,7 +57,7 @@
   letter-spacing: 0.3px;
 }
 
-.badgesContainer {
+.badgeList {
   position: absolute;
   left: 50%;
   bottom: 30px;
@@ -66,6 +66,7 @@
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+  z-index: 51;
 }
 
 .badge {
@@ -81,28 +82,33 @@
   height: 50%;
   width: 50%;
   margin: 25%;
-  background-color: #ffffff4d;
-  box-shadow: 1px 1px 4px #00000066;
+  background-color: #fff;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
   border: none;
   border-radius: 50%;
   cursor: pointer;
   overflow: hidden;
-  transition: height .3s ease;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  opacity: 0.3;
 }
 
-.badgeActive>span {
-  background-color: #fff;
-  background-color: #ffffffe6;
-}
-
-@media only screen and (max-width: 369px) {
+@media only screen and (min-width: 500px) {
   .slideButton {
-    padding: 10px;
+    padding: 20px;
   }
 }
 
-@media only screen and (max-height: 500px) {
+@media only screen and (min-height: 500px) {
   .slideButton {
+    padding: 20px;
+  }
+}
+
+@media only screen and (min-height: 1000px) {
+  .slideHeader>h1 {
     padding: 10px;
   }
 }

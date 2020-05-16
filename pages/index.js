@@ -13,11 +13,14 @@ const home = {
     description: [],
     timeout: 7,
     slides: [
-      { _id: '1', url: '/images/outreach/outreach-35-edit-1.jpg', title: 'Find out where your donations go', buttonText: 'Learn more', href: '/outreach' },
-      { _id: '2', url: '/images/dinner/dinner-17.jpg', title: 'Free dinner every Tuesday night', buttonText: 'Learn more', href: '/tuesdays' },
-      { _id: '3', url: '/images/donations/donations-13.jpg', title: 'Always accepting clothing donations', buttonText: 'Learn more', href: '/outreach' },
-      { _id: '4', url: '/images/outreach/outreach-34.jpg', title: 'Find out where your donations go', buttonText: 'Learn more', href: '/outreach' },
-      { _id: '5', url: '/images/outreach/outreach-37-edit-1.jpg', title: 'Help those with the greatest needs', buttonText: 'Learn more', href: '/outreach' }
+      { _id: '1', url: '/images/outreach/outreach-35-edit-1.jpg', title: 'Find out where your donations go', buttonText: 'Learn more', href: '/outreach', showOnMobile: true, showOnDesktop: true },
+      { _id: '2', url: '/images/dinner/dinner-26.jpg', title: 'Free dinner every Tuesday night', buttonText: 'Learn more', href: '/tuesdays', showOnMobile: true, showOnDesktop: false },
+      { _id: '3', url: '/images/dinner/dinner-17.jpg', title: 'Free dinner every Tuesday night', buttonText: 'Learn more', href: '/tuesdays', showOnMobile: false, showOnDesktop: true },
+      { _id: '4', url: '/images/donations/donations-9.jpg', title: 'Always accepting clothing donations', buttonText: 'Learn more', href: '/outreach', showOnMobile: true, showOnDesktop: false },
+      { _id: '4', url: '/images/donations/donations-13.jpg', title: 'Always accepting clothing donations', buttonText: 'Learn more', href: '/outreach', showOnMobile: false, showOnDesktop: true },
+      { _id: '5', url: '/images/worship/worship-20.jpg', title: 'Worship with us on Tuesday nights', buttonText: 'Learn more', href: '/tuesdays', showOnMobile: true, showOnDesktop: true },
+      { _id: '6', url: '/images/outreach/outreach-34.jpg', title: 'Find out where your donations go', buttonText: 'Learn more', href: '/outreach', showOnMobile: true, showOnDesktop: true },
+      { _id: '7', url: '/images/outreach/outreach-37-edit-1.jpg', title: 'Help those with the greatest needs', buttonText: 'Learn more', href: '/outreach', showOnMobile: true, showOnDesktop: true }
     ]
   },
   intro: {

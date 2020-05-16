@@ -51,13 +51,26 @@ export default function Layout(props) {
   const id = layout._id;
   const pages = layout.pages.sort((a, b) => { a._id - b._id });
   const socialMedia = layout.socialMedia.sort((a, b) => a._id - b._id);
-  console.log(`props.children:`);
-  console.log(props.children);
-  const lastSection = props.children[props.children.length - 2];
-  console.log(`props.children.length: ${props.children.length}`);
-  console.log(lastSection);
-  console.log(lastSection.props.section);
-  const lastSectionTheme = typeof lastSection !== 'undefined' ? lastSection.props.section.theme : 'white';
+  let lastSectionTheme = 'white';
+  let lastSection;
+  if (typeof props.children === 'undefined') {
+    // No children.
+  } else if (typeof props.children.length === 'undefined') {
+    // Only one child.
+    lastSection = props.children.props.section;
+    if (typeof lastSection !== 'undefined') {
+      lastSectionTheme = lastSection.theme;
+    }
+  } else {
+    // One or more children.
+    for (let i = props.children.length - 1; i >= 0; i--) {
+      lastSection = props.children[i].props.section;
+      if (typeof lastSection !== 'undefined') {
+        lastSectionTheme = lastSection.theme;
+        break;
+      }
+    }
+  }
   const footerTheme = lastSectionTheme === 'blue' ? 'white' : 'blue';
   return (
     <div id={id} className={styles.layout}>

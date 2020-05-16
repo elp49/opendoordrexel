@@ -11,6 +11,7 @@ const home = {
     title: [],
     subtitle: [],
     description: [],
+    timeout: 7,
     slides: [
       { _id: '1', url: '/images/outreach/outreach-35-edit-1.jpg', title: 'Find out where your donations go', buttonText: 'Learn more', href: '/outreach' },
       { _id: '2', url: '/images/dinner/dinner-17.jpg', title: 'Free dinner every Tuesday night', buttonText: 'Learn more', href: '/tuesdays' },

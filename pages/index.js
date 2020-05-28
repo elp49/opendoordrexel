@@ -1,12 +1,36 @@
+import fetch from 'node-fetch'
 import Layout from '../components/Layout'
 import Slideshow from '../components/Slideshow'
 import Section from '../components/Section'
 import Carousel from '../components/Carousel'
 import styles from './index.module.css'
 
+const test = {
+  _id: '123456789',
+  name: 'home',
+  sections: {
+    slideshow: {
+      _id: '2135465jhgf',
+      order: 1
+    },
+    intro: {
+      _id: '2135465jhgf',
+      order: 2
+    },
+    announcements: {
+      _id: '2135465jhgf',
+      order: 3
+    },
+    activities: {
+      _id: '2135465jhgf',
+      order: 4
+    },
+  }
+}
+
 const home = {
   slideshow: {
-    _id: 'home',
+    _id: 'slideshow',
     theme: 'white',
     title: [],
     subtitle: [],
@@ -24,7 +48,7 @@ const home = {
     ]
   },
   intro: {
-    _id: 'home',
+    _id: 'welcome',
     theme: 'white',
     title: [{ value: 'Welcome to Open Door Christian Community' }],
     subtitle: [],
@@ -93,15 +117,38 @@ const home = {
   }
 };
 
-export default function Index() {
+export default function Index(props) {
+  let sections = props.sections.sort((a, b) => a.order - b.order);
+  sections.slideshow.content =
+    <div className={styles.indexSlideshow}>
+      <Slideshow slideshow={props.sections[0].slideshow} />
+    </div>;
+  sections.intro.content =
+    <p className={styles.introLinks}>
+      {props.sections[1].content.links.map((link, i) => {
+        var spacer = i > 0 ? ' | ' : '';
+        return (
+          <span key={`indexIntroLink-${i}`} className={styles.link}>
+            {spacer}<a href={link.href}>{link.text}</a>
+          </span>
+        );
+      })}
+    </p>;
+
   return (
     <Layout>
-      <div className={styles.indexSlideshow}>
-        <Slideshow slideshow={home.slideshow} />
-      </div>
-      <Section section={home.intro}>
+      {sections.map((section, i) => {
+        return <Section section={section}>{section.content}</Section>
+      })}
+
+      {/* <Section section={props.sections[0]}>
+        <div className={styles.indexSlideshow}>
+          <Slideshow slideshow={props.sections[0].slideshow} />
+        </div>
+      </Section>
+      <Section section={props.sections[1]}>
         <p className={styles.introLinks}>
-          {home.intro.links.map((link, i) => {
+          {props.sections[1].content.links.map((link, i) => {
             var spacer = i > 0 ? ' | ' : '';
             return (
               <span key={`indexIntroLink-${i}`} className={styles.link}>
@@ -110,8 +157,8 @@ export default function Index() {
             )
           })}
         </p>
-      </Section>
-      <Section section={home.announcements}>
+      </Section> */}
+      <Section section={props.sections[2]}>
         <ul className={styles.announcements}>
           {home.announcements.posts.map((post, i) => {
             var className = i % 2 === 0 ? styles.leftPost : styles.rightPost;
@@ -129,9 +176,25 @@ export default function Index() {
           })}
         </ul>
       </Section>
-      <Section section={home.activities}>
-        <Carousel carousel={home.activities.carousel} />
+      <Section section={props.sections[3]}>
+        <Carousel carousel={props.sections[3].carousel} />
       </Section>
     </Layout>
   )
+}
+
+export async function getStaticProps() {
+
+  // STATUS: populated mongo with index sections.
+  // TODO: map slideshow to slide, create carousel schema and endpoint, map carousel to cards,
+  //    map sections to index.
+
+  const res = await fetch(process.env.OPEN_DOOR_API + '/pages/index/sections');
+  const sections = await res.json();
+  console.log(sections);
+  return {
+    props: {
+      sections: sections.sections
+    }
+  }
 }

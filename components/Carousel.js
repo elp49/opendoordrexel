@@ -94,8 +94,8 @@ export async function componentDidMount(id) {
 }
 
 export default function Carousel(props) {
-  const id = props.carousel._id;
-  const cards = props.carousel.cards.sort((a, b) => b._id - a._id);
+  const id = props.carousel.name;
+  const cards = props.carousel.cards.sort((a, b) => b.order - a.order);
   componentDidMount(id);
   return (
     <div className={props.carousel.theme}>
@@ -107,8 +107,8 @@ export default function Carousel(props) {
           <li value={999999} className={'dummy'}></li>
           {cards.map((card, i) => {
             return (
-              <li key={`${id}CarouselCard-${i}`} id={`${id}CarouselCard-${i}`} value={card._id} className={styles.card} onClick={() => { enterFullScreen(id, i) }}>
-                <div style={{ backgroundImage: `url(${card.url})` }}></div>
+              <li key={`${id}CarouselCard-${i}`} id={`${id}CarouselCard-${i}`} value={card.order} className={styles.card} onClick={() => { enterFullScreen(id, i) }}>
+                <div style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${card.image})` }}></div>
               </li>
             )
           })}

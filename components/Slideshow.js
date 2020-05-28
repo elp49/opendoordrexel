@@ -65,18 +65,16 @@ export async function componentDidMount(id) {
 }
 
 export default function Slideshow(props) {
-  if (typeof props.slideshow === 'undefined' || typeof props.slideshow._id === 'undefined'
-    || typeof props.slideshow.slides === 'undefined' || props.slideshow.slides.length === 0) {
+  if (typeof props.slideshow === 'undefined' || typeof props.slideshow.name === 'undefined') {
     return null;
   }
-  const id = props.slideshow._id;
-  var slides = [];
-  props.slideshow.slides.forEach(slide => {
+  const id = props.slideshow.name;
+  var slides = props.slideshow.slides.sort((a, b) => a.order - b.order);
+  slides.forEach(slide => {
     if (slide.showOnMobile || slide.showOnDesktop) {
-      slides.push(slide);
+      slides.image = slide.image.replace('\\', '/');
     }
   });
-  slides.sort((a, b) => a._id - b._id);
   const slideshowTime = parseInt(props.slideshow.timeout) * 1000;
   componentDidMount(id);
   return (
@@ -92,7 +90,7 @@ export default function Slideshow(props) {
             className = styles.slideBoth;
           }
           return (
-            <li key={`${id}Slide-${i}`} id={`${id}Slide-${i}`} value={i} className={className} style={{ backgroundImage: `url(${slide.url})` }}>
+            <li key={`${id}Slide-${i}`} id={`${id}Slide-${i}`} value={i} className={className} style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${slide.image})` }}>
               <div className={styles.slideHeader}>
                 <h1>{slide.title}</h1>
               </div>

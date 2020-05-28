@@ -1,28 +1,28 @@
 import styles from './Section.module.css'
 
 export default function Section(props) {
-  const id = props.section._id;
+  const id = props.section.name;
   return (
     <section id={`${id}Section`} className={props.section.theme} style={{ position: 'relative' }}>
       <div className={styles.sectionTitle}>
         {props.section.title.map((title, i) => {
           return (
             <h1 key={`${id}SectionTitle-${i}`}>
-              {title.value}
+              {title}
             </h1>
           )
         })}
         {props.section.subtitle.map((subtitle, i) => {
           return (
             <h3 key={`${id}SectionSubtitle-${i}`} className={'grey'}>
-              {subtitle.value}
+              {subtitle}
             </h3>
           )
         })}
         {props.section.description.map((description, i) => {
           return (
             <p key={`${id}SectionDescription-${i}`} className={'grey'}>
-              {description.value}
+              {description}
             </p>
           )
         })}

@@ -9,7 +9,7 @@
   list-style-type: none;
 }
 
-.slideBoth, .slideMobileOnly, .slideDesktopOnly {
+.slide {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -20,19 +20,16 @@
   background-size: cover;
   text-align: center;
   font-weight: bold;
-  -webkit-transition: all 1.0s ease-in-out;
-  -moz-transition: all 1.0s ease-in-out;
-  -o-transition: all 1.0s ease-in-out;
-  transition: all 1.0s ease-in-out;
+  -webkit-transition: opacity 1.0s ease-in-out;
+  -moz-transition: opacity 1.0s ease-in-out;
+  -o-transition: opacity 1.0s ease-in-out;
+  transition: opacity 1.0s ease-in-out;
   opacity: 0;
-}
-
-.slideNone, .slideDesktopOnly {
-  display: none;
 }
 
 .slideHeader {
   width: 100%;
+  margin-bottom: 10px;
   padding: 10px 0;
   background-color: rgba(24, 38, 110, 0.6);
   color: #fff;
@@ -45,18 +42,27 @@
   background-color: rgb(36, 49, 111, .8);
 }
 
-.slideButton {
+.buttonList {
   position: absolute;
   bottom: 50px;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-500%, -50%);
+  -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+.slideButton {
+  display: inline-block;
+  margin: 4px 10px 0;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.button {
   display: block;
   padding: 10px;
-  background-color: #fff;
   color: #000;
   text-transform: uppercase;
   text-decoration: none;
@@ -68,14 +74,14 @@
   left: 50%;
   bottom: 30px;
   -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-500%, -50%);
+  -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   -o-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   z-index: 51;
 }
 
-.badgeBoth, .badgeMobileOnly, .badgeDesktopOnly {
+.badge {
   display: inline-block;
   height: 20px;
   width: 20px;
@@ -83,11 +89,7 @@
   cursor: pointer;
 }
 
-.badgeNone, .badgeDesktopOnly {
-  display: none;
-}
-
-.badgeList span {
+.badge>span {
   display: inline-block;
   height: 50%;
   width: 50%;
@@ -98,39 +100,36 @@
   border-radius: 50%;
   cursor: pointer;
   overflow: hidden;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
+  -webkit-transition: opacity 0.3s ease-in-out;
+  -moz-transition: opacity 0.3s ease-in-out;
+  -o-transition: opacity 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out;
   opacity: 0.3;
 }
 
 @media only screen and (min-height: 500px) {
-  .slideButton {
+  .button {
     padding: 10px;
   }
 }
 
+@media only screen and (max-width: 499px) {
+  .showOnDesktopOnly {
+    display: none;
+  }
+}
+
 @media only screen and (min-width: 500px) {
-  .slideMobileOnly {
+  .showOnMobileOnly {
     display: none;
   }
-  .slideDesktopOnly {
-    display: block;
-  }
-  .badgeMobileOnly {
-    display: none;
-  }
-  .badgeDesktopOnly {
-    display: inline-block;
-  }
-  .slideButton {
+  .button {
     padding: 20px;
   }
 }
 
 @media only screen and (min-width: 650px) {
-  .slideBoth, .slideMobileOnly, .slideDesktopOnly {
+  .slide {
     padding: 30px 0;
   }
   .slideHeader>h1 {

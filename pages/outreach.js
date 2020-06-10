@@ -5,16 +5,16 @@ import styles from './outreach.module.css'
 
 const outreach = {
   intro: {
-    _id: 'outreach',
+    name: 'outreach',
     theme: 'white',
     title: [{ value: 'Outreach' }],
     subtitle: [{ value: 'See how we reach out to those with the greatest needs' }],
     description: [{ value: 'Comming soon...' }],
     carousel: {
-      _id: 'dinner',
+      name: 'dinner',
       theme: 'blue',
       cards: [
-        { _id: '1', url: '/images/outreach/outreach-1.jpg' },
+        { order: '1', url: '/images/outreach/outreach-1.jpg' },
         { _id: '2', url: '/images/outreach/outreach-2.jpg' },
         { _id: '3', url: '/images/outreach/outreach-3.jpg' },
         { _id: '4', url: '/images/outreach/outreach-4.jpg' },

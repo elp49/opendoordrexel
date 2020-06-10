@@ -75,7 +75,7 @@
   border-radius: 10px;
 }
 
-.headerPages {
+.headerPageList {
   position: absolute;
   top: 50%;
   right: 0;
@@ -88,7 +88,7 @@
   list-style-type: none;
 }
 
-.headerPages>li {
+.headerPageList>li {
   display: inline-block;
   margin-left: 30px;
 }
@@ -122,7 +122,7 @@
   overflow: hidden;
 }
 
-.footerPages {
+.footerPageList {
   max-width: 800px;
   margin: 10px auto 0;
   font-size: 1.5rem;
@@ -130,7 +130,7 @@
   list-style-type: none;
 }
 
-.footerPages>li {
+.footerPageList>li {
   display: inline-block;
   width: 100%;
   text-align: center;
@@ -206,13 +206,13 @@
   .overlayActive {
     height: 100%;
   }
-  .headerPages {
+  .headerPageList {
     display: none;
   }
 }
 
 @media only screen and (min-width: 500px) {
-  .footerPages>li {
+  .footerPageList>li {
     width: 33.33%;
     width: calc(100% / 3);
   }
@@ -234,10 +234,10 @@
   .footer {
     margin-bottom: 20px;
   }
-  .footerPages {
+  .footerPageList {
     margin-top: 20px;
   }
-  .footerPages>li {
+  .footerPageList>li {
     width: 20%;
     font-size: 2rem;
   }

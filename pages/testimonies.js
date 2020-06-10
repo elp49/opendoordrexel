@@ -4,11 +4,11 @@ import styles from './testimonies.module.css'
 
 const testimonies = {
   intro: {
-    _id: 'testimonies',
+    name: 'testimonies',
     theme: 'white',
-    title: [{ value: 'Testimonies' }],
-    subtitle: [{ value: 'Hear what some of our members have to say' }],
-    description: [{ value: 'Comming soon...' }],
+    titles: ['Testimonies'],
+    subtitles: ['Hear what some of our members have to say'],
+    descriptions: ['Comming soon...'],
   }
 };
 

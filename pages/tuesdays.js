@@ -5,11 +5,11 @@ import styles from './tuesdays.module.css'
 
 const tuesdays = {
   dinner: {
-    _id: 'dinner',
+    name: 'dinner',
     theme: 'white',
-    title: [{ value: 'Dinner' }],
-    subtitle: [{ value: 'We serve a free dinner every tuesday night' }],
-    description: [{ value: 'Comming soon...' }],
+    titles: ['Dinner'],
+    subtitles: ['We serve a free dinner every tuesday night'],
+    descriptions: ['Comming soon...'],
     carousel: {
       _id: 'dinner',
       theme: 'blue',
@@ -45,13 +45,13 @@ const tuesdays = {
     }
   },
   worship: {
-    _id: 'worship',
+    name: 'worship',
     theme: 'blue',
-    title: [{ value: 'Worship' }],
-    subtitle: [{ value: 'We ask questions and together search out answers, believing God speaks to us in a multitude of ways.  We help one another along our faith journey, whether that is just beginning or life-long.' }],
-    description: [{ value: 'Comming soon...' }],
+    title: ['Worship'],
+    subtitle: ['We ask questions and together search out answers, believing God speaks to us in a multitude of ways.  We help one another along our faith journey, whether that is just beginning or life-long.'],
+    description: ['Comming soon...'],
     carousel: {
-      _id: 'worship',
+      name: 'worship',
       theme: 'white',
       cards: [
         { _id: '1', url: '/images/worship/worship-1.jpg' },

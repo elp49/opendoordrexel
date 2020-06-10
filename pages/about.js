@@ -4,22 +4,22 @@ import styles from './about.module.css'
 
 const about = {
   intro: {
-    _id: 'about',
+    name: 'about',
     theme: 'white',
-    title: [{ value: 'About Us' }],
-    subtitle: [],
-    description: [
-      { value: 'We are an open, welcoming Christian community that believes God’s love and mercy is for all people. We invite you to gather with us.' },
-      { value: 'We ask questions and together search out answers, believing God speaks to us in a multitude of ways. We help one another along our faith journey, whether that is just beginning or life-long.' },
-      { value: 'We believe our faith shapes our lives, giving us meaning and purpose in everything we do. From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation.' },
+    titles: ['About Us'],
+    subtitles: [],
+    descriptions: [
+      'We are an open, welcoming Christian community that believes God’s love and mercy is for all people. We invite you to gather with us.',
+      'We ask questions and together search out answers, believing God speaks to us in a multitude of ways. We help one another along our faith journey, whether that is just beginning or life-long.',
+      'We believe our faith shapes our lives, giving us meaning and purpose in everything we do. From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation.'
     ]
   },
   timeline: {
-    _id: 'timeline',
+    name: 'timeline',
     theme: 'blue',
-    title: [{ value: 'Our Story' }],
-    subtitle: [{ value: 'It all started with 2 crockpots and a few people...' }],
-    description: [],
+    titles: ['Our Story'],
+    subtitles: ['It all started with 2 crockpots and a few people...'],
+    descriptions: [],
     events: [
       { month: 'Jan', year: '2015', details: 'Piltz begins' },
       { month: 'Sep', year: '2015', details: 'Diana begins' },
@@ -50,7 +50,7 @@ function scrollToTop(id) {
 }
 
 export default function About() {
-  const timelineId = `${about.timeline._id}Section`;
+  const timelineId = `${about.timeline.name}Section`;
   return (
     <Layout>
       <Section section={about.intro}>
@@ -60,62 +60,68 @@ export default function About() {
       </Section>
       <Section section={about.timeline}>
         <ul className={styles.timeline}>
-          {about.timeline.events.map((event, i) => {
-            return (
-              <li key={`event-${i}`} className={styles.event}>
-                <div className={styles.magnifyingGlass}>
-                  <i style={{ backgroundImage: `url(${about.icons.magnifyingGlass})` }}></i>
-                </div>
-                <div className={styles.eventDate}>
-                  <h2>{event.month}</h2>
-                  <h2>{event.year}</h2>
-                </div>
-                <div className={styles.eventDetails}>
-                  <p>{event.details}</p>
-                </div>
-              </li>
-            )
-          })}
+          {
+            about.timeline.events.map((event, i) => {
+              const { month, year, details } = event;
+              
+              return (
+                <li key={`event-${i}`} className={styles.event}>
+                  <div className={styles.magnifyingGlass}>
+                    <i style={{ backgroundImage: `url(${about.icons.magnifyingGlass})` }}></i>
+                  </div>
+                  <div className={styles.eventDate}>
+                    <h2>{month}</h2>
+                    <h2>{year}</h2>
+                  </div>
+                  <div className={styles.eventDetails}>
+                    <p>{details}</p>
+                  </div>
+                </li>
+              )
+            })
+          }
         </ul>
       </Section>
-      <style jsx>{`
-        .chevronDown {
-          position: relative;
-          display: block;
-          height: 45px;
-          width: 45px;
-          margin: auto;
-        }
-        .chevronDown>i {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          -webkit-transform: translate(-50%, -50%);
-          -moz-transform: translate(-500%, -50%);
-          -ms-transform: translate(-50%, -50%);
-          -o-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-          transition-duration: .3s;
-          display: block;
-          height: 30px;
-          width: 30px;
-          background-color: #eee;
-          background-position: center;
-          background-repeat: no-repeat;
-          background-size: cover;
-          background-image: url(${about.icons.chevronDown.blue});
-          border-radius: 50%;
-          cursor: pointer;
-        }
-        @media not all and (pointer: coarse) {
-          .chevronDown}>i:hover, .chevronDown>i:active {
+      <style jsx>
+        {`
+          .chevronDown {
+            position: relative;
+            display: block;
             height: 45px;
             width: 45px;
-            background-color: #24316F;
-            background-image: url(${about.icons.chevronDown.white});
+            margin: auto;
           }
-        }
-      `}</style>
+          .chevronDown>i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-500%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            transition-duration: .3s;
+            display: block;
+            height: 30px;
+            width: 30px;
+            background-color: #eee;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url(${about.icons.chevronDown.blue});
+            border-radius: 50%;
+            cursor: pointer;
+          }
+          @media not all and (pointer: coarse) {
+            .chevronDown}>i:hover, .chevronDown>i:active {
+              height: 45px;
+              width: 45px;
+              background-color: #24316F;
+              background-image: url(${about.icons.chevronDown.white});
+            }
+          }
+        `}
+      </style>
     </Layout>
   )
 }

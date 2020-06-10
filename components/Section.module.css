@@ -6,6 +6,7 @@
 
 .sectionTitle>h1 {
   margin-bottom: 20px;
+  padding-top: 45px;
 }
 
 .sectionTitle>h3, .sectionTitle>p {
@@ -17,6 +18,7 @@
   width: 90%;
   width: 90vw;
   margin: auto;
+  padding-bottom: 45px;
 }
 
 @media only screen and (min-width: 1000px) {

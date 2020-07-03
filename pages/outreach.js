@@ -4,6 +4,8 @@ import Layout from '../components/Layout'
 import Section from '../components/Section'
 import Carousel from '../components/Carousel'
 
+const PAGE_NAME = 'outreach';
+
 function isDefined(a) {
   if (typeof a !== 'undefined')
     return true;
@@ -99,20 +101,17 @@ export default function Outreach() {
 
   return (
     <Layout>
-      {sectionList.map(section => section.jsx)}
+      {
+        sectionList.map(section => {
+          const key = `${PAGE_NAME}Section-${section.order}`;
+
+          return (
+            <div key={key} id={key}>
+              {section.jsx}
+            </div>
+          );
+        })
+      }
     </Layout>
   );
-
-  // return (
-  //   <Layout>
-  //     <Section sectionDetails={outreach.intro.sectionDetails}>
-  //       <div style={{ height: 35 + 'vh' }}></div>
-  //       <Carousel carousel={outreach.intro.carousel} />
-  //     </Section>
-  //     <Section sectionDetails={outreach.donations.sectionDetails}>
-  //       <div style={{ height: 35 + 'vh' }}></div>
-  //       <Carousel carousel={outreach.donations.carousel} />
-  //     </Section>
-  //   </Layout>
-  // )
 }

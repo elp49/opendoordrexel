@@ -229,10 +229,11 @@ export default function Slideshow({ slideshow }) {
           slideList.map((slide, i) => {
             const key = `${id}Slide-${i}`;
             const { className, image, titles, buttons } = slide;
+            const slideOpacity = i === 0 ? 1 : 0;
 
             return (
               // <li key={key} id={key} value={i} className={`${styles.slide} ${className}`} style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${slide.image})` }}>
-              <li key={key} id={key} value={i} className={`${styles.slide} ${className}`} style={{ backgroundImage: `url(${image})` }}>
+              <li key={key} id={key} value={i} className={`${styles.slide} ${className}`} style={{ backgroundImage: `url(${image})`, opacity: slideOpacity }}>
                 {
                   titles.map(title => {
                     const titleKey = `${id}SlideTitle-${i}`;
@@ -270,10 +271,11 @@ export default function Slideshow({ slideshow }) {
           slideList.map((slide, i) => {
             const key = `${id}Badge-${i}`;
             const { className } = slide;
+            const badgeOpacity = i === 0 ? 0.9 : 0.3;
 
             return (
               <li key={key} id={key} className={`${styles.badge} ${className}`} onClick={() => showSlide(id, i)}>
-                <span></span>
+                <span style={{ opacity: badgeOpacity }}></span>
               </li>
             )
           })

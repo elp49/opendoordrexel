@@ -1,15 +1,23 @@
 import styles from './Section.module.css'
 
-export default function Section({ section, children }) {
-  if (typeof section === 'undefined') return;
+function isDefined(a) {
+  if (typeof a !== 'undefined')
+    return true;
 
-  const id = typeof section.name !== 'undefined' ? section.name : 'section';
+  return false;
+}
+
+export default function Section({ sectionDetails, children }) {
+  if (!isDefined(sectionDetails))
+    return;
+
+  const id = isDefined(sectionDetails.name) ? sectionDetails.name : 'section';
 
   return (
-    <section id={`${id}Section`} className={section.theme} style={{ position: 'relative' }}>
+    <section id={`${id}Section`} className={sectionDetails.theme} style={{ position: 'relative' }}>
       <div className={styles.sectionTitle}>
         {
-          section.titles.map((title, i) => {
+          sectionDetails.titles.map((title, i) => {
             const key = `${id}SectionTitle-${i}`;
 
             return (
@@ -20,7 +28,7 @@ export default function Section({ section, children }) {
           })
         }
         {
-          section.subtitles.map((subtitle, i) => {
+          sectionDetails.subtitles.map((subtitle, i) => {
             const key = `${id}SectionSubtitle-${i}`;
 
             return (
@@ -31,7 +39,7 @@ export default function Section({ section, children }) {
           })
         }
         {
-          section.descriptions.map((description, i) => {
+          sectionDetails.descriptions.map((description, i) => {
             const key = `${id}SectionDescription-${i}`;
 
             return (
@@ -61,5 +69,5 @@ export default function Section({ section, children }) {
         `}
       </style>
     </section>
-  )
+  );
 }

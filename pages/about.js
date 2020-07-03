@@ -1,87 +1,99 @@
+import about from './about.json'
+import styles from './about.module.css'
 import Layout from '../components/Layout.js'
 import Section from '../components/Section'
-import styles from './about.module.css'
+import Timeline from '../components/Timeline'
 
-const about = {
-  intro: {
-    name: 'about',
-    theme: 'white',
-    titles: ['About Us'],
-    subtitles: [],
-    descriptions: [
-      'We are an open, welcoming Christian community that believes God’s love and mercy is for all people. We invite you to gather with us.',
-      'We ask questions and together search out answers, believing God speaks to us in a multitude of ways. We help one another along our faith journey, whether that is just beginning or life-long.',
-      'We believe our faith shapes our lives, giving us meaning and purpose in everything we do. From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation.'
-    ]
-  },
-  timeline: {
-    name: 'timeline',
-    theme: 'blue',
-    titles: ['Our Story'],
-    subtitles: ['It all started with 2 crockpots and a few people...'],
-    descriptions: [],
-    events: [
-      { month: 'Jan', year: '2015', details: 'Piltz begins' },
-      { month: 'Sep', year: '2015', details: 'Diana begins' },
-      { month: 'Oct', year: '2015', details: '2 crockpots' },
-      { month: 'Mar', year: '2016', details: 'Blind-Side All-Campus Discussion: Human Potential' },
-      { month: 'May', year: '2016', details: 'Outside BBQ with 100 attendees' },
-      { month: 'Jun', year: '2016', details: 'Conversations Unfiltered at Saxby\'s' },
-      { month: 'Sep', year: '2016', details: 'Eddie begins' },
-      { month: 'Oct', year: '2016', details: 'Student executive board begins' },
-      { month: 'Mar', year: '2017', details: 'Collaborated with local church ministries' },
-      { month: 'Mar', year: '2017', details: 'Dinner & Worship numbers grow' },
-      { month: 'Oct', year: '2017', details: 'Labrynth' },
-      { month: 'May', year: '2018', details: 'Blood Diamnond movie discussion' },
-      { month: 'Sep', year: '2018', details: 'Jack begins and starts Bible study/spiritual discussion' },
-      { month: 'Sep', year: '2018', details: 'Dinner & Worship numbers grow again' },
-      { month: 'Oct', year: '2018', details: 'Kensington outreach begins' },
-      { month: 'Oct', year: '2019', details: 'Kensington outreach grow: 13 clothing drive locations and partnerships created' }
-    ]
-  },
-  icons: {
-    chevronDown: { white: '/icons/chevron-down-white.svg', blue: '/icons/chevron-down-blue.svg' },
-    magnifyingGlass: '/icons/magnifying-glass.svg'
-  }
-};
+function isDefined(a) {
+  if (typeof a !== 'undefined')
+    return true;
+
+  return false;
+}
+
+function sortListByOrder(list) {
+  return list.sort((a, b) => a.order - b.order);
+}
 
 function scrollToTop(id) {
   document.getElementById(id).scrollIntoView(true);
 }
 
+function buildIntroSection(intro) {
+  if (!isDefined(intro))
+    return;
+
+  const nextSectionId = `homeSection-${intro.order + 1}`
+  const introJsx = (
+    <Section sectionDetails={intro.sectionDetails}>
+      <div className={'chevronDown'} onClick={() => scrollToTop(nextSectionId)}>
+        <i></i>
+      </div>
+    </Section>
+  );
+
+  return {
+    order: intro.order,
+    jsx: introJsx
+  };
+}
+
+function buildTimelineSection(timeline) {
+  if (!isDefined(timeline))
+    return;
+
+  const timelineJsx = (
+    <Section sectionDetails={timeline.sectionDetails}>
+      <Timeline timeline={timeline} />
+    </Section>
+  );
+
+  return {
+    order: timeline.order,
+    jsx: timelineJsx
+  };
+}
+
+function buildSections(pageSections) {
+  const introSection = buildIntroSection(pageSections.intro);
+  const timelineSection = buildTimelineSection(pageSections.timeline);
+
+  return {
+    intro: introSection,
+    timeline: timelineSection,
+  };
+}
+
+function buildSectionList(pageSections) {
+  if (!isDefined(pageSections))
+    return;
+
+  const sections = buildSections(pageSections);
+  let sectionList = [];
+  for (const s in sections)
+    if (isDefined(sections[s]))
+      sectionList.push({ order: sections[s].order, jsx: sections[s].jsx });
+
+  sectionList = sortListByOrder(sectionList);
+
+  return sectionList;
+}
+
 export default function About() {
-  const timelineId = `${about.timeline.name}Section`;
+  const sectionList = buildSectionList(about.sections);
+
   return (
     <Layout>
-      <Section section={about.intro}>
-        <div onClick={() => { scrollToTop(timelineId) }} className={'chevronDown'}>
-          <i></i>
-        </div>
-      </Section>
-      <Section section={about.timeline}>
-        <ul className={styles.timeline}>
-          {
-            about.timeline.events.map((event, i) => {
-              const { month, year, details } = event;
-              
-              return (
-                <li key={`event-${i}`} className={styles.event}>
-                  <div className={styles.magnifyingGlass}>
-                    <i style={{ backgroundImage: `url(${about.icons.magnifyingGlass})` }}></i>
-                  </div>
-                  <div className={styles.eventDate}>
-                    <h2>{month}</h2>
-                    <h2>{year}</h2>
-                  </div>
-                  <div className={styles.eventDetails}>
-                    <p>{details}</p>
-                  </div>
-                </li>
-              )
-            })
-          }
-        </ul>
-      </Section>
+      {
+        sectionList.map(section => {
+          const key = `aboutSection-${section.order}`;
+          return (
+            <div key={key} id={key}>
+              {section.jsx}
+            </div>
+          );
+        })
+      }
       <style jsx>
         {`
           .chevronDown {
@@ -108,7 +120,7 @@ export default function About() {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            background-image: url(${about.icons.chevronDown.blue});
+            background-image: url(${about.sections.intro.icons.chevronDown.blue});
             border-radius: 50%;
             cursor: pointer;
           }
@@ -117,11 +129,11 @@ export default function About() {
               height: 45px;
               width: 45px;
               background-color: #24316F;
-              background-image: url(${about.icons.chevronDown.white});
+              background-image: url(${about.sections.intro.icons.chevronDown.white});
             }
           }
         `}
       </style>
     </Layout>
-  )
+  );
 }

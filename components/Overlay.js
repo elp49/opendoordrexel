@@ -1,11 +1,23 @@
 import styles from './Overlay.module.css'
 
-export default function Overlay({ overlay }) {
-  if (typeof overlay === 'undefined') return;
+function isDefined(a) {
+  if (typeof a !== 'undefined')
+    return true;
 
-  const id = typeof overlay.name !== 'undefined' ? overlay.name : 'overlay';
-  const pageList = overlay.pageList.sort((a, b) => { a.order - b.order });
-  const socialMedia = overlay.socialMedia.sort((a, b) => a.order - b.order);
+  return false;
+}
+
+function sortListByOrder(list) {
+  return list.sort((a, b) => a.order - b.order);
+}
+
+export default function Overlay({ overlay }) {
+  if (!isDefined(overlay))
+    return;
+
+  const id = isDefined(overlay.name) ? overlay.name : 'overlay';
+  const pageList = sortListByOrder(overlay.pageList);
+  const socialMedia = sortListByOrder(overlay.socialMedia);
 
   return (
     <div className={overlay.themes.overlay} style={{ minHeight: 100 + '%' }}>
@@ -106,5 +118,5 @@ export default function Overlay({ overlay }) {
         `}
       </style>
     </div>
-  )
+  );
 }

@@ -1,7 +1,15 @@
 import styles from './Slideshow.module.css'
 
 const NO_SLIDES = -1;
-const MILLISECONDS_BEFORE_NEXT_CHECK_TIMEOUT = 1000;
+const MS_UNTIL_NEXT_CALL_TO_CHECKTIMEOUT = 1000;
+const DEFAULT_TIMEOUT_DURATION = 7000;
+
+function isDefined(a) {
+  if (typeof a !== 'undefined')
+    return true;
+
+  return false;
+}
 
 function getSlideshowElementById(slideshowId) {
   return document.getElementById(`${slideshowId}Slideshow`);
@@ -29,25 +37,29 @@ function resetSlideshowTimeoutTimeRemaining(slideshowId) {
 
 function getSlideElementsOnMobileScreenWidth(slideshowId) {
   const slideshow = getSlideshowElementById(slideshowId);
-  return slideshow.querySelectorAll(`.${styles.slide} .${styles.showOnMobileOnly}`);
+  return slideshow.querySelectorAll(`.${styles.slide}.${styles.showOnMobileOnly}, .${styles.slide}:not(.${styles.showOnDesktopOnly})`);
 }
 
 function getSlideElementsOnDesktopScreenWidth(slideshowId) {
   const slideshow = getSlideshowElementById(slideshowId);
-  return slideshow.querySelectorAll(`.${styles.slide} .${styles.showOnDesktopOnly}`);
+  return slideshow.querySelectorAll(`.${styles.slide}.${styles.showOnDesktopOnly}, .${styles.slide}:not(.${styles.showOnMobileOnly})`);
 }
 
 function isMobileScreen() {
-  if (window.innerWidth < 500) return true;
+  if (window.innerWidth < 500)
+    return true;
+
   return false;
 }
 
 function getCurrentlyVisibleSlideElements(slideshowId) {
-  if (isMobileScreen()) return getSlideElementsOnMobileScreenWidth(slideshowId);
+  if (isMobileScreen())
+    return getSlideElementsOnMobileScreenWidth(slideshowId);
+
   return getSlideElementsOnDesktopScreenWidth(slideshowId);
 }
 
-function getThisCurrentSlidesIndex(slide) {
+function getSlideIndex(slide) {
   return parseInt(slide.getAttribute('value'));
 }
 
@@ -63,17 +75,19 @@ function setCurrentSlideIndex(slideshowId, currentSlideIndex) {
 
 function getNextSlideIndex(slideshowId) {
   let slides = getCurrentlyVisibleSlideElements(slideshowId);
-  if (slides.length === 0) return NO_SLIDES;
+  if (slides.length === 0)
+    return NO_SLIDES;
 
   const currentSlideIndex = getCurrentSlideIndex(slideshowId);
   for (let i = 0; i < slides.length; i++) {
 
-    const slideIndex = getThisCurrentSlidesIndex(slides[i]);
-    if (slideIndex > currentSlideIndex) return slideIndex;
+    const slideIndex = getSlideIndex(slides[i]);
+    if (slideIndex > currentSlideIndex)
+      return slideIndex;
 
   }
 
-  return parseInt(slides[0].getAttribute('value'));
+  return getSlideIndex(slides[0]);
 }
 
 function setSlideOpacity(slideshowId, currentSlideIndex, nextSlideIndex) {
@@ -88,9 +102,11 @@ function setBadgeOpacity(slideshowId, currentSlideIndex, nextSlideIndex) {
 
 function showSlide(slideshowId, slideIndex) {
   const currentSlideIndex = getCurrentSlideIndex(slideshowId);
-  const nextSlideIndex = typeof slideIndex !== 'undefined' ? slideIndex : getNextSlideIndex(slideshowId);
+  const nextSlideIndex = isDefined(slideIndex) ? slideIndex
+    : getNextSlideIndex(slideshowId);
 
-  if (nextSlideIndex === NO_SLIDES) return;
+  if (nextSlideIndex === NO_SLIDES)
+    return;
 
   setSlideOpacity(slideshowId, currentSlideIndex, nextSlideIndex);
   setBadgeOpacity(slideshowId, currentSlideIndex, nextSlideIndex);
@@ -103,57 +119,57 @@ function checkTimeout(slideshowId, timePassed) {
   let timeRemaining = getSlideshowTimeoutTimeRemaining(slideshowId);
 
   timeRemaining -= timePassed;
-  if (timeRemaining > 0) setSlideshowTimeoutTimeRemaining(slideshowId, timeRemaining);
-  else showSlide(slideshowId);
-  
+  if (timeRemaining >= 0)
+    setSlideshowTimeoutTimeRemaining(slideshowId, timeRemaining);
+  else
+    showSlide(slideshowId);
+
   setTimeout(() => checkTimeout(slideshowId, timePassed), timePassed);
 }
 
-function screenResizePassesMobileDesktopBarrier(screenWidth, newWidth) {
-  if ((screenWidth >= 500 && newWidth < 500) || (screenWidth < 500 && newWidth >= 500)) return true;
+function screenResizePassedMobileDesktopBarrier(screenWidth, newWidth) {
+  if ((screenWidth >= 500 && newWidth < 500)
+    || (screenWidth < 500 && newWidth >= 500))
+    return true;
+
   return false;
 }
 
 function handleResize(slideshowId, screenWidth) {
   const newWidth = window.innerWidth;
-  if (screenResizePassesMobileDesktopBarrier(screenWidth, newWidth)) showSlide(slideshowId);
+  if (screenResizePassedMobileDesktopBarrier(screenWidth, newWidth))
+    showSlide(slideshowId);
 
   return newWidth;
 }
 
-export async function componentDidMount(slideshowId, numSlides) {
-  if (typeof window === 'undefined') return;
-  let screenWidth = window.innerWidth;
-
-  if (numSlides > 1) setTimeout(() => checkTimeout(slideshowId, MILLISECONDS_BEFORE_NEXT_CHECK_TIMEOUT), MILLISECONDS_BEFORE_NEXT_CHECK_TIMEOUT);
-
-  showSlide(slideshowId, 0);
-
-  window.addEventListener('resize', () => {
-    screenWidth = handleResize(slideshowId, screenWidth);
-  });
-}
-
 function slideIsActive(showOnMobile, showOnDesktop) {
-  if (showOnMobile || showOnDesktop) return true;
+  if (showOnMobile || showOnDesktop)
+    return true;
+
   return false;
 }
 
 function getSlideClassName(showOnMobile, showOnDesktop) {
-  if (!showOnDesktop) return styles.showOnMobileOnly;
-  else if (!showOnMobile) return styles.showOnDesktopOnly;
-  else return '';
+  if (!showOnMobile)
+    return styles.showOnDesktopOnly;
+  else if (!showOnDesktop)
+    return styles.showOnMobileOnly;
+  else
+    return '';
 }
 
 function slideListReducerCallback(list, slide) {
-  if (slideIsActive(slide.showOnMobile, slide.showOnDesktop)) {
+  const { showOnMobile, showOnDesktop } = slide;
+  if (slideIsActive(showOnMobile, showOnDesktop)) {
 
-    const className = getSlideClassName(slide.showOnMobile, slide.showOnDesktop);
+    const className = getSlideClassName(showOnMobile, showOnDesktop);
+    const { image, titles, buttons } = slide;
     list.push({
       className: className,
-      image: slide.image.replace(/\\/g, '/'),
-      titles: slide.titles,
-      buttons: slide.buttons
+      image: image.replace(/\\/g, '/'),
+      titles: titles,
+      buttons: buttons
     });
 
   }
@@ -166,26 +182,57 @@ function reduceSlideList(slideList) {
     .reduce((list, slide) => slideListReducerCallback(list, slide), []);
 }
 
-export default function Slideshow({ slideshow }) {
-  if (typeof slideshow === 'undefined' || slideshow.slideList.length === 0) return;
+function sortListByReverseOrder(list) {
+  return list.sort((a, b) => b.reverseOrder - a.reverseOrder);
+}
 
-  const id = typeof slideshow.name !== 'undefined' ? slideshow.name : 'slideshow';
-  const timeoutDuration = typeof slideshow.timeoutDuration === 'undefined' ? 7000 : parseInt(slideshow.timeoutDuration) * 1000;
-  const slideList = reduceSlideList(slideshow.slideList);
+function buildSlideList(list) {
+  if (!isDefined(list) || list.length === 0)
+    return [];
+
+  let slideList = reduceSlideList(list);
+  slideList = sortListByReverseOrder(slideList);
+
+  return slideList;
+}
+
+export async function componentDidMount(slideshowId, numSlides) {
+  if (!isDefined(window))
+    return;
+
+  let screenWidth = window.innerWidth;
+  if (numSlides > 1)
+    setTimeout(() => checkTimeout(slideshowId, MS_UNTIL_NEXT_CALL_TO_CHECKTIMEOUT), MS_UNTIL_NEXT_CALL_TO_CHECKTIMEOUT);
+
+  showSlide(slideshowId, 0);
+
+  window.addEventListener('resize', () => {
+    screenWidth = handleResize(slideshowId, screenWidth);
+  });
+}
+
+export default function Slideshow({ slideshow }) {
+  if (!isDefined(slideshow))
+    return;
+
+  const id = isDefined(slideshow.name) ? slideshow.name : 'slideshow';
+  const timeoutDuration = isDefined(slideshow.timeoutDuration) ?
+    parseInt(slideshow.timeoutDuration) * 1000 : DEFAULT_TIMEOUT_DURATION;
+  const slideList = buildSlideList(slideshow.slideList);
 
   componentDidMount(id, slideList.length);
 
   return (
     <div id={`${id}Slideshow`} className={styles.slideshow} current-slide-index={0} timeout-duration={timeoutDuration} time-remaining={timeoutDuration}>
-      <ul className={styles.slideList}>
+      <ol className={styles.slideList}>
         {
           slideList.map((slide, i) => {
             const key = `${id}Slide-${i}`;
             const { className, image, titles, buttons } = slide;
 
             return (
-              // <li key={`${id}Slide-${i}`} id={`${id}Slide-${i}`} className={className} style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${slide.image})` }}>
-              <li key={key} id={key} className={`${styles.slide} ${className}`} style={{ backgroundImage: `url(${image})` }}>
+              // <li key={key} id={key} value={i} className={`${styles.slide} ${className}`} style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${slide.image})` }}>
+              <li key={key} id={key} value={i} className={`${styles.slide} ${className}`} style={{ backgroundImage: `url(${image})` }}>
                 {
                   titles.map(title => {
                     const titleKey = `${id}SlideTitle-${i}`;
@@ -197,7 +244,7 @@ export default function Slideshow({ slideshow }) {
                     );
                   })
                 }
-                <ul className={styles.buttonList}>
+                <ol className={styles.buttonList}>
                   {
                     buttons.map(button => {
                       const buttonKey = `${id}SlideButton-${i}`;
@@ -212,13 +259,13 @@ export default function Slideshow({ slideshow }) {
                       );
                     })
                   }
-                </ul>
+                </ol>
               </li>
             )
           })
         }
-      </ul>
-      <ul className={styles.badgeList}>
+      </ol>
+      <ol className={styles.badgeList}>
         {
           slideList.map((slide, i) => {
             const key = `${id}Badge-${i}`;
@@ -231,7 +278,7 @@ export default function Slideshow({ slideshow }) {
             )
           })
         }
-      </ul>
+      </ol>
     </div>
-  )
+  );
 }

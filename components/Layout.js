@@ -1,79 +1,65 @@
+import layout from './Layout.json'
 import Overlay from './Overlay'
 import styles from './Layout.module.css'
 
-const layout = {
-  name: 'layout',
-  themes: {
-    layout: 'blue',
-    overlay: 'blue'
-  },
-  pageList: [
-    { order: '1', title: 'Home', href: '/' },
-    { order: '3', title: 'Dinner & Worship', href: '/tuesdays' },
-    { order: '2', title: 'Outreach', href: '/outreach' },
-    { order: '4', title: 'Testimonies', href: '/testimonies' },
-    { order: '5', title: 'About', href: '/about' }
-  ],
-  mailingList: {
-    description: 'Sign up for our mailing list to find out what’s for dinner each week.',
-    placeholder: 'Email'
-  },
-  socialMedia: [
-    { order: '1', name: 'Facebook', href: 'https://www.facebook.com/groups/opendoorchristiancommunity' },
-    { order: '2', name: 'Instagram', href: 'https://www.instagram.com/drexelopendoor' }
-  ],
-  donate: {
-    buttonText: 'Donate',
-    href: '/'
-  },
-  footer: {
-    contact: {
-      location: 'Drexel University, James E. Marks Intercultural Center, ',
-      address: '3225 Arch St, Philadelphia, PA 19104',
-      phone: '555.555.5555',
-      email: 'info@opendoordrexel.org'
-    }
-  },
-  icons: {
-    logo: { white: '/logo-white.svg', blue: '/logo-blue.svg' },
-    facebook: { white: '/icons/facebook-white.svg', blue: '/icons/facebook-blue.svg', grey: '/icons/facebook-grey.svg' },
-    instagram: { white: '/icons/instagram-white.svg', blue: '/icons/instagram-blue.svg', grey: '/icons/instagram-grey.svg' },
-    arrowUp: { white: '/icons/arrow-up-white.svg', blue: '/icons/arrow-up-blue.svg', grey: '/icons/arrow-up-grey.svg' }
-  },
-};
+function isDefined(a) {
+  if (typeof a !== 'undefined')
+    return true;
+
+  return false;
+}
 
 function toggleOverlay(id) {
   document.getElementById(id).classList.toggle(styles.layoutFixed);
   document.getElementById(`${id}Overlay`).classList.toggle(styles.overlayActive);
 };
 
+function sortListByOrder(list) {
+  return list.sort((a, b) => a.order - b.order);
+}
+
+function getLastSection(layoutChildren) {
+  //console.log(layoutChildren);
+
+
+  // if ((!isDefined(layoutChildren) || layoutChildren.length === 0)
+  //   || (!isDefined(layoutChildren.props) && layoutChildren.length === 1))
+  //   return;
+
+  // let lastSection;
+  // if (layoutChildren.length > 1) {
+  //   for (let i = layoutChildren.length - 1; i >= 0; i--) {
+  //     // if (!isDefined(layoutChildren[i].props))
+  //     //   continue;
+  //     console.log(`layoutChildren[${i}].props:`);
+  //     console.log(layoutChildren[i])
+  //     // lastSection = layoutChildren[i].props.children.props.section;
+  //     // if (isDefined(lastSection))
+  //     //   return lastSection;
+  //   }
+  // } else {
+  //   lastSection = layoutChildren.props.section;
+  //   if (isDefined(lastSection))
+  //     return lastSection;
+  // }
+
+  // return;
+}
+
+function getLastSectionTheme(layoutChildren) {
+  let lastSection = getLastSection(layoutChildren);
+  if (!isDefined(lastSection) || !isDefined(lastSection.theme))
+    return 'white';
+
+  return lastSection.theme;
+}
+
 export default function Layout({ children }) {
-  const id = typeof layout.name !== 'undefined' ? layout.name : 'layout';
-  const pageList = layout.pageList.sort((a, b) => a.order - b.order);
-  const socialMedia = layout.socialMedia.sort((a, b) => a.order - b.order);
-  let lastSectionTheme = 'white';
-  let lastSection;
-
-  if (typeof children !== 'undefined') {
-    // If there are children.
-    if (typeof children.length === 'undefined') {
-      // If there is only one child.
-      lastSection = children.props.section;
-      if (typeof lastSection !== 'undefined') {
-        lastSectionTheme = lastSection.theme;
-      }
-    } else if (children.length > 1) {
-      // If there is more than one child.
-      for (let i = children.length - 1; i >= 0; i--) {
-        lastSection = children[i].props.section;
-        if (typeof lastSection !== 'undefined') {
-          lastSectionTheme = lastSection.theme;
-          break;
-        }
-      }
-    }
-  }
-
+  const id = isDefined(layout.name) ? layout.name : 'layout';
+  const pageList = sortListByOrder(layout.pageList);
+  const socialMedia = sortListByOrder(layout.socialMedia);
+  const lastSectionTheme = getLastSectionTheme(children);
+  console.log(lastSectionTheme);
   const footerTheme = lastSectionTheme === 'blue' ? 'white' : 'blue';
 
   return (
@@ -260,5 +246,5 @@ export default function Layout({ children }) {
         `}
       </style>
     </div>
-  )
+  );
 }

@@ -164,8 +164,9 @@ function slideListReducerCallback(list, slide) {
   if (slideIsActive(showOnMobile, showOnDesktop)) {
 
     const className = getSlideClassName(showOnMobile, showOnDesktop);
-    const { image, titles, buttons } = slide;
+    const { reverseOrder, image, titles, buttons } = slide;
     list.push({
+      reverseOrder: reverseOrder,
       className: className,
       image: image.replace(/\\/g, '/'),
       titles: titles,
@@ -178,8 +179,7 @@ function slideListReducerCallback(list, slide) {
 }
 
 function reduceSlideList(slideList) {
-  return slideList.sort((a, b) => b.reverseOrder - a.reverseOrder)
-    .reduce((list, slide) => slideListReducerCallback(list, slide), []);
+  return slideList.reduce((list, slide) => slideListReducerCallback(list, slide), []);
 }
 
 function sortListByReverseOrder(list) {

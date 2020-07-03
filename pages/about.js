@@ -4,6 +4,8 @@ import Layout from '../components/Layout.js'
 import Section from '../components/Section'
 import Timeline from '../components/Timeline'
 
+const PAGE_NAME = 'about';
+
 function isDefined(a) {
   if (typeof a !== 'undefined')
     return true;
@@ -23,12 +25,53 @@ function buildIntroSection(intro) {
   if (!isDefined(intro))
     return;
 
-  const nextSectionId = `homeSection-${intro.order + 1}`
+  const nextSectionId = `${PAGE_NAME}Section-${about.sections.timeline.order}`
+  const icons = about.sections.intro.icons;
   const introJsx = (
     <Section sectionDetails={intro.sectionDetails}>
       <div className={'chevronDown'} onClick={() => scrollToTop(nextSectionId)}>
         <i></i>
       </div>
+      <style jsx>
+        {`
+          .chevronDown {
+            position: relative;
+            display: block;
+            height: 45px;
+            width: 45px;
+            margin: auto;
+          }
+          .chevronDown>i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-500%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            transition-duration: .3s;
+            display: block;
+            height: 30px;
+            width: 30px;
+            background-color: #eee;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-image: url(${icons.chevronDown.blue});
+            border-radius: 50%;
+            cursor: pointer;
+          }
+          @media not all and (pointer: coarse) {
+            .chevronDown}>i:hover, .chevronDown>i:active {
+              height: 45px;
+              width: 45px;
+              background-color: #24316F;
+              background-image: url(${icons.chevronDown.white});
+            }
+          }
+        `}
+      </style>
     </Section>
   );
 
@@ -86,7 +129,8 @@ export default function About() {
     <Layout>
       {
         sectionList.map(section => {
-          const key = `aboutSection-${section.order}`;
+          const key = `${PAGE_NAME}Section-${section.order}`;
+
           return (
             <div key={key} id={key}>
               {section.jsx}
@@ -94,46 +138,6 @@ export default function About() {
           );
         })
       }
-      <style jsx>
-        {`
-          .chevronDown {
-            position: relative;
-            display: block;
-            height: 45px;
-            width: 45px;
-            margin: auto;
-          }
-          .chevronDown>i {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-500%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            transition-duration: .3s;
-            display: block;
-            height: 30px;
-            width: 30px;
-            background-color: #eee;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-image: url(${about.sections.intro.icons.chevronDown.blue});
-            border-radius: 50%;
-            cursor: pointer;
-          }
-          @media not all and (pointer: coarse) {
-            .chevronDown}>i:hover, .chevronDown>i:active {
-              height: 45px;
-              width: 45px;
-              background-color: #24316F;
-              background-image: url(${about.sections.intro.icons.chevronDown.white});
-            }
-          }
-        `}
-      </style>
     </Layout>
   );
 }

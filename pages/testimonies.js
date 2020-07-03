@@ -3,12 +3,118 @@ import styles from './testimonies.module.css'
 import Layout from '../components/Layout'
 import Section from '../components/Section'
 
+const PAGE_NAME = 'testimonies';
+
+function isDefined(a) {
+  if (typeof a !== 'undefined')
+    return true;
+
+  return false;
+}
+
+function sortListByOrder(list) {
+  return list.sort((a, b) => a.order - b.order);
+}
+
+function buildIntroLinks(links) {
+  if (!isDefined(links))
+    return '';
+
+  return (
+    <p className={styles.introLinks}>
+      {
+        links.map((link, i) => {
+          const key = `introLink-${i}`;
+          const { text, href } = link;
+          const spacer = i > 0 ? ' | ' : '';
+
+          return (
+            <span key={key} className={styles.link}>
+              {spacer}<a href={href}>{text}</a>
+            </span>
+          );
+        })
+      }
+    </p>
+  );
+}
+
+function buildIntroSection(intro) {
+  if (!isDefined(intro))
+    return;
+
+  const introLinkJsx = buildIntroLinks(intro.links);
+  const introJsx = (
+    <Section sectionDetails={intro.sectionDetails}>
+      {introLinkJsx}
+    </Section>
+  );
+
+  return {
+    order: intro.order,
+    jsx: introJsx
+  };
+}
+
+function buildTestimoniesSection(testimonies) {
+  if (!isDefined(testimonies))
+    return;
+
+  // const testimonyList = sortListByOrder(testimonies.testimonyList);
+  // const testimonyListJsx = (
+  //   <Section sectionDetails={testimonies.sectionDetails}>
+  //     <Testimonies testimonies={testimonyList} />
+  //   </Section>
+  // );
+  const testimonyListJsx = <div></div>;
+
+  return {
+    order: testimonies.order,
+    jsx: testimonyListJsx
+  };
+}
+
+function buildSections(pageSections) {
+  const introSection = buildIntroSection(pageSections.intro);
+  const testimoniesSection = buildTestimoniesSection(pageSections.testimonies);
+
+  return {
+    intro: introSection,
+    testimonies: testimoniesSection
+  };
+}
+
+function buildSectionList(pageSections) {
+  if (!isDefined(pageSections))
+    return;
+
+  const sections = buildSections(pageSections);
+  let sectionList = [];
+  for (const s in sections)
+    if (isDefined(sections[s]))
+      sectionList.push({ order: sections[s].order, jsx: sections[s].jsx });
+
+  sectionList = sortListByOrder(sectionList);
+
+  return sectionList;
+}
+
 export default function Testimonies() {
+  const sectionList = buildSectionList(testimonies.sections);
+
   return (
     <Layout>
-      <Section sectionDetails={testimonies.intro.sectionDetails}>
-        <div style={{ height: 55 + 'vh' }}></div>
-      </Section>
+      {
+        sectionList.map(section => {
+          const key = `${PAGE_NAME}Section-${section.order}`;
+
+          return (
+            <div key={key} id={key}>
+              {section.jsx}
+            </div>
+          );
+        })
+      }
     </Layout>
   );
 }

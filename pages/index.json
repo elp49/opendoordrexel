@@ -2,18 +2,20 @@
   "name": "home",
   "sections": {
     "slideshow": {
-      "name": "slideshow",
       "order": 1,
-      "theme": "white",
-      "titles": [],
-      "subtitles": [],
-      "descriptions": [],
+      "sectionDetails": {
+        "name": "slideshow",
+        "theme": "white",
+        "titles": [],
+        "subtitles": [],
+        "descriptions": []
+      },
       "slideshowList": [
         {
           "order": 1,
           "slideshow": {
             "name": "home",
-            "timeout": 7,
+            "timeoutDuration": 7,
             "slideList": [
               {
                 "reverseOrder": 1,
@@ -141,15 +143,18 @@
       ]
     },
     "intro": {
-      "name": "intro",
-      "theme": "white",
-      "titles": [
-        "Welcome to Open Door Christian Community"
-      ],
-      "subtitles": [],
-      "descriptions": [
-        "We are an open, welcoming Christian community that believes God’s love and mercy is for all people.  We invite you to gather with us."
-      ],
+      "order": 2,
+      "sectionDetails": {
+        "name": "intro",
+        "theme": "white",
+        "titles": [
+          "Welcome to Open Door Christian Community"
+        ],
+        "subtitles": [],
+        "descriptions": [
+          "We are an open, welcoming Christian community that believes God’s love and mercy is for all people.  We invite you to gather with us."
+        ]
+      },
       "links": [
         {
           "text": "Learn more about us",
@@ -157,54 +162,69 @@
         }
       ]
     },
-    "announcements": {
-      "name": "announcements",
-      "theme": "blue",
-      "titles": [
-        "Announcements"
-      ],
-      "subtitles": [
-        "Sign up for our mailing list to stay up to date on our latest announcements."
-      ],
-      "descriptions": [],
-      "posts": [
+    "news": {
+      "order": 3,
+      "sectionDetails": {
+        "name": "news",
+        "theme": "blue",
+        "titles": [
+          "Announcements"
+        ],
+        "subtitles": [
+          "Sign up for our mailing list to stay up to date on our latest announcements."
+        ],
+        "descriptions": []
+      },
+      "announcementsList": [
         {
-          "date": "2020-05-03T14:29:45.708Z",
-          "header": "We have some news",
-          "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you."
-        },
-        {
-          "date": "2020-05-02T14:29:45.708Z",
-          "header": "This is another announcement",
-          "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
-        },
-        {
-          "date": "2020-05-01T14:29:45.708Z",
-          "header": "We have something to announce",
-          "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that. Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
-        },
-        {
-          "date": "2020-04-30T14:29:45.708Z",
-          "header": "Read this to know what happened",
-          "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that. Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you."
-        },
-        {
-          "date": "2020-04-29T14:29:45.708Z",
-          "header": "This is another announcement",
-          "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
+          "order": 1,
+          "announcements": {
+            "name": "general",
+            "theme": "blue",
+            "postList": [
+              {
+                "date": "2020-05-03T14:29:45.708Z",
+                "header": "We have some news",
+                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you."
+              },
+              {
+                "date": "2020-05-02T14:29:45.708Z",
+                "header": "This is another announcement",
+                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
+              },
+              {
+                "date": "2020-05-01T14:29:45.708Z",
+                "header": "We have something to announce",
+                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that. Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
+              },
+              {
+                "date": "2020-04-30T14:29:45.708Z",
+                "header": "Read this to know what happened",
+                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that. Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you."
+              },
+              {
+                "date": "2020-04-29T14:29:45.708Z",
+                "header": "This is another announcement",
+                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
+              }
+            ]
+          }
         }
       ]
     },
     "activities": {
-      "name": "activities",
-      "theme": "white",
-      "titles": [
-        "Activities"
-      ],
-      "subtitles": [
-        "Open Door’s ministry on campus is constantly growing. We create fun and inclusive events where people from all walks of life are welcome."
-      ],
-      "descriptions": [],
+      "order": 4,
+      "sectionDetails": {
+        "name": "activities",
+        "theme": "white",
+        "titles": [
+          "Activities"
+        ],
+        "subtitles": [
+          "Open Door’s ministry on campus is constantly growing. We create fun and inclusive events where people from all walks of life are welcome."
+        ],
+        "descriptions": []
+      },
       "carouselList": [
         {
           "order": 1,

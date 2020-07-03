@@ -1,0 +1,129 @@
+{
+  "name": "about",
+  "sections": {
+    "intro": {
+      "order": 1,
+      "sectionDetails": {
+        "name": "about",
+        "theme": "white",
+        "titles": [
+          "About Us"
+        ],
+        "subtitles": [],
+        "descriptions": [
+          "We are an open, welcoming Christian community that believes God’s love and mercy is for all people. We invite you to gather with us.",
+          "We ask questions and together search out answers, believing God speaks to us in a multitude of ways. We help one another along our faith journey, whether that is just beginning or life-long.",
+          "We believe our faith shapes our lives, giving us meaning and purpose in everything we do. From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation."
+        ]
+      },
+      "icons": {
+        "chevronDown": {
+          "white": "/icons/chevron-down-white.svg",
+          "blue": "/icons/chevron-down-blue.svg"
+        }
+      }
+    },
+    "timeline": {
+      "order": 2,
+      "sectionDetails": {
+        "name": "timeline",
+        "theme": "blue",
+        "titles": [
+          "Our Story"
+        ],
+        "subtitles": [
+          "It all started with 2 crockpots and a few people..."
+        ],
+        "descriptions": []
+      },
+      "icons": {
+        "magnifyingGlass": {
+          "white": "/icons/magnifying-glass.svg",
+          "blue": "/icons/magnifying-glass.svg"
+        }
+      },
+      "events": [
+        {
+          "month": "Jan",
+          "year": "2015",
+          "details": "Piltz begins"
+        },
+        {
+          "month": "Sep",
+          "year": "2015",
+          "details": "Diana begins"
+        },
+        {
+          "month": "Oct",
+          "year": "2015",
+          "details": "2 crockpots"
+        },
+        {
+          "month": "Mar",
+          "year": "2016",
+          "details": "Blind-Side All-Campus Discussion: Human Potential"
+        },
+        {
+          "month": "May",
+          "year": "2016",
+          "details": "Outside BBQ with 100 attendees"
+        },
+        {
+          "month": "Jun",
+          "year": "2016",
+          "details": "Conversations Unfiltered at Saxby’s"
+        },
+        {
+          "month": "Sep",
+          "year": "2016",
+          "details": "Eddie begins"
+        },
+        {
+          "month": "Oct",
+          "year": "2016",
+          "details": "Student executive board begins"
+        },
+        {
+          "month": "Mar",
+          "year": "2017",
+          "details": "Collaborated with local church ministries"
+        },
+        {
+          "month": "Mar",
+          "year": "2017",
+          "details": "Dinner & Worship numbers grow"
+        },
+        {
+          "month": "Oct",
+          "year": "2017",
+          "details": "Labrynth"
+        },
+        {
+          "month": "May",
+          "year": "2018",
+          "details": "Blood Diamnond movie discussion"
+        },
+        {
+          "month": "Sep",
+          "year": "2018",
+          "details": "Jack begins and starts Bible study/spiritual discussion"
+        },
+        {
+          "month": "Sep",
+          "year": "2018",
+          "details": "Dinner & Worship numbers grow again"
+        },
+        {
+          "month": "Oct",
+          "year": "2018",
+          "details": "Kensington outreach begins"
+        },
+        {
+          "month": "Oct",
+          "year": "2019",
+          "details": "Kensington outreach grow: 13 clothing drive locations and partnerships created"
+        }
+      ]
+    }
+  }
+}

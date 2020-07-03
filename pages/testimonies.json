@@ -1,0 +1,35 @@
+{
+    "name": "testimonies",
+    "sections": {
+        "intro": {
+            "order": 1,
+            "sectionDetails": {
+                "name": "intro",
+                "theme": "white",
+                "titles": [
+                    "Testimonies"
+                ],
+                "subtitles": [
+                    "Learn what some of our members have to say."
+                ],
+                "descriptions": [
+                    "Comming soon..."
+                ]
+            },
+            "links": []
+        },
+        "testimonies": {
+            "order": 2,
+            "sectionDetails": {
+                "name": "testimonies",
+                "theme": "blue",
+                "titles": [
+                    "Their Stories"
+                ],
+                "subtitles": [],
+                "descriptions": []
+            },
+            "testimonyList": []
+        }
+    }
+}

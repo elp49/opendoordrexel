@@ -46,7 +46,7 @@ function buildIntroSection(intro) {
             top: 50%;
             left: 50%;
             -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-500%, -50%);
+            -moz-transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
@@ -63,7 +63,7 @@ function buildIntroSection(intro) {
             cursor: pointer;
           }
           @media not all and (pointer: coarse) {
-            .chevronDown}>i:hover, .chevronDown>i:active {
+            .chevronDown>i:hover, .chevronDown>i:active {
               height: 45px;
               width: 45px;
               background-color: #24316F;

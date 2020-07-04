@@ -86,7 +86,7 @@ function showMoreAnnouncements(id) {
 
 function showLessAnnouncements(id) {
   const announcements = getAnnouncementsById(id);
-  announcements.style.maxHeight = '';
+  announcements.style.maxHeight = '650px';
 
   if (lessIsActive(id))
     deactivateLess(id)
@@ -254,17 +254,17 @@ function buildFeedControllerJsx(id, announcementsTheme, icons) {
     <div>
       <div className={`${announcementsTheme} feedController`}>
         <div className={'blurredArea'}></div>
-        <div id={`${id}MorePosts`} className={'morePosts active'}>
-          <p className={'controller'} onClick={() => showMoreAnnouncements(id)}>more</p>
+        <div id={`${id}MorePosts`} className={'controller active'}>
+          <p onClick={() => showMoreAnnouncements(id)}>more</p>
           {/* <div className={'chevronDown'} onClick={() => showMoreAnnouncements(id)}>
             <i></i>
           </div> */}
         </div>
-        <div id={`${id}LessPosts`} className={'lessPosts'}>
+        <div id={`${id}LessPosts`} className={'controller'}>
           {/* <div className={'chevronUp'} onClick={() => showLessAnnouncements(id)}>
             <i></i>
           </div> */}
-          <p className={'controller'} onClick={() => showLessAnnouncements(id)}>less</p>
+          <p onClick={() => showLessAnnouncements(id)}>less</p>
         </div>
       </div>
       <style jsx>
@@ -294,9 +294,9 @@ function buildFeedControllerJsx(id, announcementsTheme, icons) {
           .blue>.blurredArea {
             background-color: #24316F;
           }
-          .morePosts, .lessPosts {
+          .controller {
             position: absolute;
-            bottom: 0;
+            bottom: 20%;
             left: 50%;
             -webkit-transform: translate(-50%, 0%);
             -moz-transform: translate(-50%, 0%);
@@ -307,20 +307,21 @@ function buildFeedControllerJsx(id, announcementsTheme, icons) {
             width: 30%;
             margin: auto;
             text-align: center;
+            font-size: 1.5rem;
             font-weight: bold;
           }
-          .white .morePosts, .white .lessPosts {
+          .controller>p {
+            transition-duration: .3s;
+            font-size: 1.5rem;
+          }
+          .white .controller>p {
             color: #24316F
           }
-          .blue .morePosts, .blue .lessPosts {
-            color: #fff
+          .blue .controller>p {
+            color: #bbb;
           }
           .active {
             display: block;
-          }
-          .controller {
-            transition-duration: .3s;
-            font-size: 1.5rem;
           }
           .chevronUp, .chevronDown {
             position: relative;
@@ -359,6 +360,11 @@ function buildFeedControllerJsx(id, announcementsTheme, icons) {
           @media not all and (pointer: coarse) {
             .controller:hover, .controller:active {
               cursor: pointer;
+            }
+            .blue .controller:hover>p, .blue .controller:active>p {
+              color: #fff;
+            }
+            .controller:hover>p, .controller:active>p {
               font-size: 2rem;
             }
             .white .chevronUp>i:hover, .white .chevronUp>i:active,

@@ -1,21 +1,9 @@
 import about from './about.json'
-import styles from './about.module.css'
-import Layout from '../components/Layout.js'
+import Layout, { isDefined, sortListByOrder, ICONS } from '../components/Layout'
 import Section from '../components/Section'
 import Timeline from '../components/Timeline'
 
 const PAGE_NAME = 'about';
-
-function isDefined(a) {
-  if (typeof a !== 'undefined')
-    return true;
-
-  return false;
-}
-
-function sortListByOrder(list) {
-  return list.sort((a, b) => a.order - b.order);
-}
 
 function scrollToTop(id) {
   document.getElementById(id).scrollIntoView(true);
@@ -26,7 +14,6 @@ function buildIntroSection(intro) {
     return;
 
   const nextSectionId = `${PAGE_NAME}Section-${about.sections.timeline.order}`
-  const icons = about.sections.intro.icons;
   const introJsx = (
     <Section sectionDetails={intro.sectionDetails}>
       <div className={'chevronDown'} onClick={() => scrollToTop(nextSectionId)}>
@@ -58,7 +45,7 @@ function buildIntroSection(intro) {
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            background-image: url(${icons.chevronDown.blue});
+            background-image: url(${ICONS.chevronDown.blue});
             border-radius: 50%;
             cursor: pointer;
           }
@@ -67,7 +54,7 @@ function buildIntroSection(intro) {
               height: 45px;
               width: 45px;
               background-color: #24316F;
-              background-image: url(${icons.chevronDown.white});
+              background-image: url(${ICONS.chevronDown.white});
             }
           }
         `}

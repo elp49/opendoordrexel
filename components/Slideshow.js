@@ -1,15 +1,8 @@
-import styles from './Slideshow.module.css'
+import { isDefined, getTheme, sortListByReverseOrder } from './Layout'
 
 const NO_SLIDES = -1;
 const MS_UNTIL_NEXT_CALL_TO_CHECKTIMEOUT = 1000;
 const DEFAULT_TIMEOUT_DURATION = 7000;
-
-function isDefined(a) {
-  if (typeof a !== 'undefined')
-    return true;
-
-  return false;
-}
 
 function getSlideshowElementById(slideshowId) {
   return document.getElementById(`${slideshowId}Slideshow`);
@@ -37,12 +30,12 @@ function resetSlideshowTimeoutTimeRemaining(slideshowId) {
 
 function getSlideElementsOnMobileScreenWidth(slideshowId) {
   const slideshow = getSlideshowElementById(slideshowId);
-  return slideshow.querySelectorAll(`.${styles.slide}.${styles.showOnMobileOnly}, .${styles.slide}:not(.${styles.showOnDesktopOnly})`);
+  return slideshow.querySelectorAll('.slide.showOnMobileOnly, .slide:not(.showOnDesktopOnly)');
 }
 
 function getSlideElementsOnDesktopScreenWidth(slideshowId) {
   const slideshow = getSlideshowElementById(slideshowId);
-  return slideshow.querySelectorAll(`.${styles.slide}.${styles.showOnDesktopOnly}, .${styles.slide}:not(.${styles.showOnMobileOnly})`);
+  return slideshow.querySelectorAll('.slide.showOnDesktopOnly, .slide:not(.showOnMobileOnly)');
 }
 
 function isMobileScreen() {
@@ -152,9 +145,9 @@ function slideIsActive(showOnMobile, showOnDesktop) {
 
 function getSlideClassName(showOnMobile, showOnDesktop) {
   if (!showOnMobile)
-    return styles.showOnDesktopOnly;
+    return 'showOnDesktopOnly';
   else if (!showOnDesktop)
-    return styles.showOnMobileOnly;
+    return 'showOnMobileOnly';
   else
     return '';
 }
@@ -180,10 +173,6 @@ function slideListReducerCallback(list, slide) {
 
 function reduceSlideList(slideList) {
   return slideList.reduce((list, slide) => slideListReducerCallback(list, slide), []);
-}
-
-function sortListByReverseOrder(list) {
-  return list.sort((a, b) => b.reverseOrder - a.reverseOrder);
 }
 
 function buildSlideList(list) {
@@ -216,6 +205,7 @@ export default function Slideshow({ slideshow }) {
     return;
 
   const id = isDefined(slideshow.name) ? slideshow.name : 'slideshow';
+  const theme = getTheme(slideshow.theme);
   const timeoutDuration = isDefined(slideshow.timeoutDuration) ?
     parseInt(slideshow.timeoutDuration) * 1000 : DEFAULT_TIMEOUT_DURATION;
   const slideList = buildSlideList(slideshow.slideList);
@@ -223,8 +213,8 @@ export default function Slideshow({ slideshow }) {
   componentDidMount(id, slideList.length);
 
   return (
-    <div id={`${id}Slideshow`} className={styles.slideshow} current-slide-index={0} timeout-duration={timeoutDuration} time-remaining={timeoutDuration}>
-      <ol className={styles.slideList}>
+    <div id={`${id}Slideshow`} className={`${theme} slideshow`} current-slide-index={0} timeout-duration={timeoutDuration} time-remaining={timeoutDuration}>
+      <ol className={'slideList'}>
         {
           slideList.map((slide, i) => {
             const key = `${id}Slide-${i}`;
@@ -232,28 +222,29 @@ export default function Slideshow({ slideshow }) {
             const slideOpacity = i === 0 ? 1 : 0;
 
             return (
-              // <li key={key} id={key} value={i} className={`${styles.slide} ${className}`} style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${slide.image})` }}>
-              <li key={key} id={key} value={i} className={`${styles.slide} ${className}`} style={{ backgroundImage: `url(${image})`, opacity: slideOpacity }}>
+              // <li key={key} id={key} value={i} className={`slide ${className}`} style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${slide.image})`, opacity: slideOpacity }}>
+              <li key={key} id={key} value={i} className={`slide ${className}`} style={{ backgroundImage: `url(${image})`, opacity: slideOpacity }}>
                 {
                   titles.map(title => {
                     const titleKey = `${id}SlideTitle-${i}`;
 
                     return (
-                      <div key={titleKey} className={styles.slideHeader}>
-                        <h1>{title}</h1>
+                      <div key={titleKey} className={'slideHeader'}>
+                        <h1 className={'blurred'}>{title}</h1>
+                        <h1 className={'clear'}>{title}</h1>
                       </div>
                     );
                   })
                 }
-                <ol className={styles.buttonList}>
+                <ol className={'buttonList'}>
                   {
                     buttons.map(button => {
                       const buttonKey = `${id}SlideButton-${i}`;
                       const { href, text } = button;
 
                       return (
-                        <li key={buttonKey} className={styles.slideButton}>
-                          <a href={href} className={styles.button}>
+                        <li key={buttonKey} className={'slideButton'}>
+                          <a href={href} className={'button'}>
                             <h3>{text}</h3>
                           </a>
                         </li>
@@ -266,7 +257,7 @@ export default function Slideshow({ slideshow }) {
           })
         }
       </ol>
-      <ol className={styles.badgeList}>
+      <ol className={'badgeList'}>
         {
           slideList.map((slide, i) => {
             const key = `${id}Badge-${i}`;
@@ -274,13 +265,164 @@ export default function Slideshow({ slideshow }) {
             const badgeOpacity = i === 0 ? 0.9 : 0.3;
 
             return (
-              <li key={key} id={key} className={`${styles.badge} ${className}`} onClick={() => showSlide(id, i)}>
+              <li key={key} id={key} className={`badge ${className}`} onClick={() => showSlide(id, i)}>
                 <span style={{ opacity: badgeOpacity }}></span>
               </li>
             )
           })
         }
       </ol>
+      <style jsx>
+        {`
+          .white {
+            background-color: #fff;
+          }
+          .blue {
+            background-color: #24316F;
+          }
+          .slideshow {
+            position: relative;
+            height: 100%;
+          }
+          .slideList {
+            position: relative;
+            height: 100%;
+            list-style-type: none;
+          }
+          .slide {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            display: block;
+            padding: 15px 0;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            text-align: center;
+            font-weight: bold;
+            -webkit-transition: opacity 1.0s ease-in-out;
+            -moz-transition: opacity 1.0s ease-in-out;
+            -o-transition: opacity 1.0s ease-in-out;
+            transition: opacity 1.0s ease-in-out;
+            opacity: 0;
+          }
+          .slideHeader {
+            position: absolute;
+            top: 15px;
+            left: 0;
+            width: 100%;
+            margin-bottom: 10px;
+            padding: 10px 0;
+          }
+          .slideHeader>h1 {
+            width: 100%;
+            padding: 5px;
+          }
+          .slideHeader>.blurred {
+            background-color: rgb(36, 49, 111, .8);
+            color: rgb(36, 49, 111, .8);
+            -webkit-filter: blur(8px);
+            filter: blur(8px);
+          }
+          .slideHeader>.clear {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-shadow: 0 0 2px #000;
+          }
+          .buttonList {
+            position: absolute;
+            bottom: 50px;
+            left: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+          }
+          .slideButton {
+            display: inline-block;
+            margin: 4px 10px 0;
+            background-color: #fff;
+            cursor: pointer;
+          }
+          .button {
+            display: block;
+            padding: 10px;
+            color: #000;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 0.3px;
+          }
+          .badgeList {
+            position: absolute;
+            left: 50%;
+            bottom: 30px;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            z-index: 51;
+          }
+          .badge {
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            background-color: transparent;
+            cursor: pointer;
+          }
+          .badge>span {
+            display: inline-block;
+            height: 50%;
+            width: 50%;
+            margin: 25%;
+            background-color: #fff;
+            box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            overflow: hidden;
+            -webkit-transition: opacity 0.3s ease-in-out;
+            -moz-transition: opacity 0.3s ease-in-out;
+            -o-transition: opacity 0.3s ease-in-out;
+            transition: opacity 0.3s ease-in-out;
+            opacity: 0.3;
+          }
+          @media only screen and (min-height: 500px) {
+            .button {
+              padding: 10px;
+            }
+          }
+          @media only screen and (max-width: 499px) {
+            .showOnDesktopOnly {
+              display: none;
+            }
+          }
+          @media only screen and (min-width: 500px) {
+            .showOnMobileOnly {
+              display: none;
+            }
+            .button {
+              padding: 20px;
+            }
+          }
+          @media only screen and (min-width: 650px) {
+            .slide {
+              padding: 30px 0;
+            }
+            .slideHeader>h1 {
+              padding: 20px;
+            }
+          }
+        `}
+      </style>
     </div>
   );
 }

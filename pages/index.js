@@ -1,7 +1,6 @@
 import fetch from 'node-fetch'
 import home from './index.json'
-import styles from './index.module.css'
-import Layout from '../components/Layout'
+import Layout, { isDefined, sortListByOrder } from '../components/Layout'
 import Slideshow from '../components/Slideshow'
 import Section from '../components/Section'
 import Carousel from '../components/Carousel'
@@ -9,40 +8,26 @@ import Announcements from '../components/Announcements'
 
 const PAGE_NAME = 'home';
 
-function isDefined(a) {
-  if (typeof a !== 'undefined')
-    return true;
-
-  return false;
-}
-
-function sortListByOrder(list) {
-  return list.sort((a, b) => a.order - b.order);
-}
-
-function buildSlideshowSection(slideshow) {
-  if (!isDefined(slideshow))
+function buildWelcomeSection(welcome) {
+  if (!isDefined(welcome))
     return;
 
-  const slideshowList = sortListByOrder(slideshow.slideshowList);
+  const slideshowList = sortListByOrder(welcome.slideshowList);
   const slideshowListJsx = (
-    <div>
+    <Section sectionDetails={welcome.sectionDetails} isRaw={true} isViewHeight={true}>
       {
         slideshowList.map((slideshowListItem, i) => {
-          const key = `${slideshowListItem.name}Slideshow-${i}`;
+          const { slideshow } = slideshowListItem;
+          const key = `${slideshow.name}Slideshow-${i}`;
 
-          return (
-            <div key={key} className={styles.slideshow}>
-              <Slideshow slideshow={slideshowListItem.slideshow} />
-            </div>
-          );
+          return <Slideshow key={key} slideshow={slideshow} />
         })
       }
-    </div>
+    </Section>
   );
 
   return {
-    order: slideshow.order,
+    order: welcome.order,
     jsx: slideshowListJsx
   };
 }
@@ -52,7 +37,7 @@ function buildIntroLinks(links) {
     return '';
 
   return (
-    <p className={styles.introLinks}>
+    <p className={'introLinks'}>
       {
         links.map((link, i) => {
           const key = `introLink-${i}`;
@@ -60,12 +45,36 @@ function buildIntroLinks(links) {
           const spacer = i > 0 ? ' | ' : '';
 
           return (
-            <span key={key} className={styles.link}>
+            <span key={key} className={'link'}>
               {spacer}<a href={href}>{text}</a>
             </span>
           );
         })
       }
+      <style jsx>
+        {`
+          .introLinks {
+            text-align: center;
+          }
+          .link {
+            color: #24316F;
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition-duration: .5s;
+          }
+          .link>a:visited {
+            color: #24316F;
+          }
+          @media not all and (pointer: coarse) {
+            .link>a:hover, .link>a:focus {
+              color: #818181;
+              text-decoration: underline;
+              opacity: 1;
+            }
+          }
+        `}
+      </style>
     </p>
   );
 }
@@ -137,13 +146,13 @@ function buildActivitiesSection(activities) {
 }
 
 function buildSections(pageSections) {
-  const slideshowSection = buildSlideshowSection(pageSections.slideshow);
+  const welcomeSection = buildWelcomeSection(pageSections.welcome);
   const introSection = buildIntroSection(pageSections.intro);
   const newsSection = buildNewsSection(pageSections.news);
   const activitiesSection = buildActivitiesSection(pageSections.activities);
 
   return {
-    slideshow: slideshowSection,
+    welcome: welcomeSection,
     intro: introSection,
     news: newsSection,
     activities: activitiesSection

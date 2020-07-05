@@ -78,6 +78,14 @@
             "white": "/icons/arrow-up-white.svg",
             "blue": "/icons/arrow-up-blue.svg",
             "grey": "/icons/arrow-up-grey.svg"
+        },
+        "magnifyingGlass": {
+          "white": "/icons/magnifying-glass-white.svg",
+          "blue": "/icons/magnifying-glass-blue.svg"
+        },
+        "chevronDown": {
+          "white": "/icons/chevron-down-white.svg",
+          "blue": "/icons/chevron-down-blue.svg"
         }
     }
 }

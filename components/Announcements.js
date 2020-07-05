@@ -1,25 +1,4 @@
-import styles from './Announcements.module.css'
-
-const DEFAULT_THEME = 'white';
-const THEME_LIST = [DEFAULT_THEME, 'blue'];
-
-function isDefined(a) {
-  if (typeof a !== 'undefined')
-    return true;
-
-  return false;
-}
-
-function getTheme(theme) {
-  if (isDefined(theme) && THEME_LIST.includes(theme))
-    return theme;
-
-  return DEFAULT_THEME;
-}
-
-function sortListByReverseOrder(list) {
-  return list.sort((a, b) => b.reverseOrder - a.reverseOrder);
-}
+import { isDefined, getTheme, sortListByReverseOrder } from './Layout'
 
 function getAnnouncementsById(id) {
   return document.getElementById(`${id}Announcements`);
@@ -249,23 +228,15 @@ function buildPostListJsx(id, announcementsTheme, list) {
   );
 }
 
-function buildFeedControllerJsx(id, announcementsTheme, icons) {
+function buildFeedControllerJsx(id, announcementsTheme) {
   return (
-    <div>
-      <div className={`${announcementsTheme} feedController`}>
-        <div className={'blurredArea'}></div>
-        <div id={`${id}MorePosts`} className={'controller active'}>
-          <p onClick={() => showMoreAnnouncements(id)}>more</p>
-          {/* <div className={'chevronDown'} onClick={() => showMoreAnnouncements(id)}>
-            <i></i>
-          </div> */}
-        </div>
-        <div id={`${id}LessPosts`} className={'controller'}>
-          {/* <div className={'chevronUp'} onClick={() => showLessAnnouncements(id)}>
-            <i></i>
-          </div> */}
-          <p onClick={() => showLessAnnouncements(id)}>less</p>
-        </div>
+    <div className={`${announcementsTheme} feedController`}>
+      <div className={'blurredArea'}></div>
+      <div id={`${id}MorePosts`} className={'controller active'}>
+        <p onClick={() => showMoreAnnouncements(id)}>more</p>
+      </div>
+      <div id={`${id}LessPosts`} className={'controller'}>
+        <p onClick={() => showLessAnnouncements(id)}>less</p>
       </div>
       <style jsx>
         {`
@@ -323,40 +294,6 @@ function buildFeedControllerJsx(id, announcementsTheme, icons) {
           .active {
             display: block;
           }
-          .chevronUp, .chevronDown {
-            position: relative;
-            display: block;
-            height: 35px;
-            width: 35px;
-            margin: 10px auto 0;
-          }
-          .white .chevronUp>i, .white .chevronDown>i {
-            background-color: #24316F;
-            background-image: url(${icons.chevronDown.white});
-          }
-          .blue .chevronUp>i, .blue .chevronDown>i {
-            background-color: #eee;
-            background-image: url(${icons.chevronDown.blue});
-          }
-          .chevronUp>i, .chevronDown>i {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            -moz-transform: translate(-50%, -50%);
-            -ms-transform: translate(-50%, -50%);
-            -o-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
-            transition-duration: .3s;
-            display: block;
-            height: 25px;
-            width: 25px;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            border-radius: 50%;
-            cursor: pointer;
-          }
           @media not all and (pointer: coarse) {
             .controller:hover, .controller:active {
               cursor: pointer;
@@ -366,21 +303,6 @@ function buildFeedControllerJsx(id, announcementsTheme, icons) {
             }
             .controller:hover>p, .controller:active>p {
               font-size: 2rem;
-            }
-            .white .chevronUp>i:hover, .white .chevronUp>i:active,
-            .white .chevronDown>i:hover, .white .chevronDown>i:active {
-              background-color: #24316F;
-              background-image: url(${icons.chevronDown.white});
-            }
-            .blue .chevronUp>i:hover, .blue .chevronUp>i:active,
-            .blue .chevronDown>i:hover, .blue .chevronDown>i:active {
-              background-color: #fff;
-              background-image: url(${icons.chevronDown.blue});
-            }
-            .chevronUp>i:hover, .chevronUp>i:active,
-            .chevronDown>i:hover, .chevronDown>i:active {
-              height: 35px;
-              width: 35px;
             }
           }
         `}
@@ -393,7 +315,7 @@ export default function Announcements({ announcements }) {
   const id = isDefined(announcements.name) ? announcements.name : 'announcements';
   const theme = getTheme(announcements.theme);
   const postListJsx = buildPostListJsx(id, theme, announcements.postList);
-  const feedControllerJsx = buildFeedControllerJsx(id, theme, announcements.icons);
+  const feedControllerJsx = buildFeedControllerJsx(id, theme);
 
   return (
     <div id={`${id}Announcements`} style={{ maxHeight: 650 + 'px', overflow: 'hidden' }}>

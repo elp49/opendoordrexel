@@ -1,21 +1,9 @@
 import outreach from './outreach.json'
-import styles from './outreach.module.css'
-import Layout from '../components/Layout'
+import Layout, { isDefined, sortListByOrder } from '../components/Layout'
 import Section from '../components/Section'
 import Carousel from '../components/Carousel'
 
 const PAGE_NAME = 'outreach';
-
-function isDefined(a) {
-  if (typeof a !== 'undefined')
-    return true;
-
-  return false;
-}
-
-function sortListByOrder(list) {
-  return list.sort((a, b) => { a.order - b.order });
-}
 
 function buildIntroSection(intro) {
   if (!isDefined(intro))

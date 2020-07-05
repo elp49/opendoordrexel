@@ -1,27 +1,15 @@
 import testimonies from './testimonies.json'
-import styles from './testimonies.module.css'
-import Layout from '../components/Layout'
+import Layout, { isDefined, sortListByOrder } from '../components/Layout'
 import Section from '../components/Section'
 
 const PAGE_NAME = 'testimonies';
-
-function isDefined(a) {
-  if (typeof a !== 'undefined')
-    return true;
-
-  return false;
-}
-
-function sortListByOrder(list) {
-  return list.sort((a, b) => a.order - b.order);
-}
 
 function buildIntroLinks(links) {
   if (!isDefined(links))
     return '';
 
   return (
-    <p className={styles.introLinks}>
+    <p className={'introLinks'}>
       {
         links.map((link, i) => {
           const key = `introLink-${i}`;
@@ -29,12 +17,13 @@ function buildIntroLinks(links) {
           const spacer = i > 0 ? ' | ' : '';
 
           return (
-            <span key={key} className={styles.link}>
+            <span key={key} className={'link'}>
               {spacer}<a href={href}>{text}</a>
             </span>
           );
         })
       }
+      <style jsx>{``}</style>
     </p>
   );
 }

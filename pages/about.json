@@ -15,16 +15,11 @@
           "We ask questions and together search out answers, believing God speaks to us in a multitude of ways. We help one another along our faith journey, whether that is just beginning or life-long.",
           "We believe our faith shapes our lives, giving us meaning and purpose in everything we do. From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation."
         ]
-      },
-      "icons": {
-        "chevronDown": {
-          "white": "/icons/chevron-down-white.svg",
-          "blue": "/icons/chevron-down-blue.svg"
-        }
       }
     },
     "timeline": {
       "order": 2,
+      "theme": "blue",
       "sectionDetails": {
         "name": "timeline",
         "theme": "blue",
@@ -36,13 +31,7 @@
         ],
         "descriptions": []
       },
-      "icons": {
-        "magnifyingGlass": {
-          "white": "/icons/magnifying-glass.svg",
-          "blue": "/icons/magnifying-glass.svg"
-        }
-      },
-      "events": [
+      "eventList": [
         {
           "month": "Jan",
           "year": "2015",

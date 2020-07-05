@@ -1,14 +1,8 @@
 import styles from './Carousel.module.css'
+import { isDefined, getTheme, sortListByReverseOrder } from './Layout'
 
 const LEFT = -1;
 const RIGHT = 1;
-
-function isDefined(a) {
-  if (typeof a !== 'undefined')
-    return true;
-
-  return false;
-}
 
 function getCarouselElementById(carouselId) {
   return document.getElementById(`${carouselId}Carousel`);
@@ -127,10 +121,6 @@ function checkKey(carouselId) {
     scrollCarousel(carouselId, RIGHT);
 }
 
-function sortListByReverseOrder(list) {
-  return list.sort((a, b) => b.reverseOrder - a.reverseOrder);
-}
-
 function fixCardImagePaths(list) {
   return list.map(card => card.image.replace(/\\/g, '/'));
 }
@@ -185,12 +175,13 @@ export default function Carousel({ carousel }) {
     return;
 
   const id = isDefined(carousel.name) ? carousel.name : 'carousel';
+  const theme = getTheme(carousel.theme);
   const cardList = buildCardList(carousel.cardList);
 
   componentDidMount(id);
 
   return (
-    <div className={carousel.theme}>
+    <div className={theme}>
       <div id={`${id}CarouselContainer`} className={styles.carouselContainer}>
         <ol id={`${id}Carousel`} className={styles.carousel}>
           <span className={styles.close} onClick={() => exitFullScreen(id)}>&times;</span>

@@ -2,11 +2,30 @@ import layout from './Layout.json'
 import Overlay from './Overlay'
 import styles from './Layout.module.css'
 
-function isDefined(a) {
+export const DEFAULT_THEME = 'white';
+export const THEME_LIST = [DEFAULT_THEME, 'blue'];
+export const ICONS = layout.icons;
+
+export function isDefined(a) {
   if (typeof a !== 'undefined')
     return true;
 
   return false;
+}
+
+export function getTheme(theme) {
+  if (isDefined(theme) && THEME_LIST.includes(theme))
+    return theme;
+
+  return DEFAULT_THEME;
+}
+
+export function sortListByOrder(list) {
+  return list.sort((a, b) => a.order - b.order);
+}
+
+export function sortListByReverseOrder(list) {
+  return list.sort((a, b) => b.reverseOrder - a.reverseOrder);
 }
 
 function toggleOverlay(id) {
@@ -14,57 +33,49 @@ function toggleOverlay(id) {
   document.getElementById(`${id}Overlay`).classList.toggle(styles.overlayActive);
 };
 
-function sortListByOrder(list) {
-  return list.sort((a, b) => a.order - b.order);
-}
-
 function getLastSection(layoutChildren) {
-  //console.log(layoutChildren);
+  if (!isDefined(layoutChildren) || layoutChildren.length === 0)
+    return;
 
-
-  // if ((!isDefined(layoutChildren) || layoutChildren.length === 0)
-  //   || (!isDefined(layoutChildren.props) && layoutChildren.length === 1))
-  //   return;
-
-  // let lastSection;
-  // if (layoutChildren.length > 1) {
-  //   for (let i = layoutChildren.length - 1; i >= 0; i--) {
-  //     // if (!isDefined(layoutChildren[i].props))
-  //     //   continue;
-  //     console.log(`layoutChildren[${i}].props:`);
-  //     console.log(layoutChildren[i])
-  //     // lastSection = layoutChildren[i].props.children.props.section;
-  //     // if (isDefined(lastSection))
-  //     //   return lastSection;
-  //   }
-  // } else {
-  //   lastSection = layoutChildren.props.section;
-  //   if (isDefined(lastSection))
-  //     return lastSection;
-  // }
-
-  // return;
+  for (let i = layoutChildren.length - 1; i >= 0; i++) {
+    const child = layoutChildren[i];
+    if (isDefined(child) && isDefined(child.props)
+      && isDefined(child.props.children) && isDefined(child.props.children.props))
+      return child.props.children.props;
+  }
 }
 
 function getLastSectionTheme(layoutChildren) {
   let lastSection = getLastSection(layoutChildren);
-  if (!isDefined(lastSection) || !isDefined(lastSection.theme))
-    return 'white';
+  if (isDefined(lastSection) && isDefined(lastSection.sectionDetails)
+    && isDefined(lastSection.sectionDetails.theme)
+    && THEME_LIST.includes(lastSection.sectionDetails.theme))
+    return lastSection.sectionDetails.theme;
 
-  return lastSection.theme;
+  return DEFAULT_THEME;
+}
+
+function getFooterTheme(lastSectionTheme) {
+  if (lastSectionTheme === DEFAULT_THEME)
+    return THEME_LIST[1];
+
+  return DEFAULT_THEME
 }
 
 export default function Layout({ children }) {
   const id = isDefined(layout.name) ? layout.name : 'layout';
+  const theme = isDefined(layout.themes) ? getTheme(layout.themes.layout) : DEFAULT_THEME;
   const pageList = sortListByOrder(layout.pageList);
   const socialMedia = sortListByOrder(layout.socialMedia);
   const lastSectionTheme = getLastSectionTheme(children);
-  console.log(lastSectionTheme);
-  const footerTheme = lastSectionTheme === 'blue' ? 'white' : 'blue';
+  const footerTheme = getFooterTheme(lastSectionTheme);
+  const donate = layout.donate;
+  const mailingList = layout.mailingList;
+  const footer = layout.footer;
 
   return (
     <div id={id} className={styles.layout}>
-      <header className={layout.themes.layout}>
+      <header className={theme}>
         <div className={styles.header}>
           <div className={styles.headerLogo}>
             <a href='/' title={'Open Door'}>
@@ -118,8 +129,8 @@ export default function Layout({ children }) {
               })
             }
           </ol>
-          <a className={'donate'} href={layout.donate.href} title={layout.donate.buttonText}>
-            {layout.donate.buttonText}
+          <a className={'donate'} href={donate.href} title={donate.buttonText}>
+            {donate.buttonText}
           </a>
         </div>
       </div>
@@ -142,18 +153,18 @@ export default function Layout({ children }) {
             }
           </ol>
           <div className={styles.mailingList}>
-            <p>{layout.mailingList.description}</p>
+            <p>{mailingList.description}</p>
             <form className={styles.emailForm}>
-              <input type='email' id='email' name='email' placeholder={layout.mailingList.placeholder} />
+              <input type='email' id='email' name='email' placeholder={mailingList.placeholder} />
               <button type='submit'>
                 <i className={'arrowUp'}></i>
               </button>
             </form>
           </div>
           <div className={styles.footerCaption}>
-            <p>{layout.footer.contact.location}</p>
-            <p>{layout.footer.contact.address}</p>
-            <p>{layout.footer.contact.phone} - <a href={`mailto:${layout.footer.contact.email}`} title='Email'>{layout.footer.contact.email}</a></p>
+            <p>{footer.contact.location}</p>
+            <p>{footer.contact.address}</p>
+            <p>{footer.contact.phone} - <a href={`mailto:${footer.contact.email}`} title='Email'>{footer.contact.email}</a></p>
             <small>Copyright &copy; {new Date().getFullYear()} <strong>Open Door Christian Community.</strong> All Rights Reserved</small>
           </div>
         </div>
@@ -171,28 +182,28 @@ export default function Layout({ children }) {
             background-size: contain;
           }
           .white .logo {
-            background-image: url(${layout.icons.logo.blue});
+            background-image: url(${ICONS.logo.blue});
           }
           .blue .logo {
-            background-image: url(${layout.icons.logo.white});
+            background-image: url(${ICONS.logo.white});
           }
           .white .arrowUp {
-            background-image: url(${layout.icons.arrowUp.white});
+            background-image: url(${ICONS.arrowUp.white});
           }
           .blue .arrowUp {
-            background-image: url(${layout.icons.arrowUp.blue});
+            background-image: url(${ICONS.arrowUp.blue});
           }
           .white .facebook {
-            background-image: url(${layout.icons.facebook.blue});
+            background-image: url(${ICONS.facebook.blue});
           }
           .blue .facebook {
-            background-image: url(${layout.icons.facebook.white});
+            background-image: url(${ICONS.facebook.white});
           }
           .white .instagram {
-            background-image: url(${layout.icons.instagram.blue});
+            background-image: url(${ICONS.instagram.blue});
           }
           .blue .instagram {
-            background-image: url(${layout.icons.instagram.white});
+            background-image: url(${ICONS.instagram.white});
           }
           .white, .blue button, .blue .donate {
             background-color: #fff;
@@ -231,10 +242,10 @@ export default function Layout({ children }) {
           }
           @media not all and (pointer: coarse) {
             .white .facebook:hover, .blue .facebook:hover {
-              background-image: url(${layout.icons.facebook.grey});
+              background-image: url(${ICONS.facebook.grey});
             }
             .white .instagram:hover, .blue .instagram:hover {
-              background-image: url(${layout.icons.instagram.grey});
+              background-image: url(${ICONS.instagram.grey});
             }
             .white p>a:hover {
               color: #24316F;

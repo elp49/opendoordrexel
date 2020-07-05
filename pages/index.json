@@ -1,10 +1,10 @@
 {
   "name": "home",
   "sections": {
-    "slideshow": {
+    "welcome": {
       "order": 1,
       "sectionDetails": {
-        "name": "slideshow",
+        "name": "welcome",
         "theme": "white",
         "titles": [],
         "subtitles": [],
@@ -14,7 +14,8 @@
         {
           "order": 1,
           "slideshow": {
-            "name": "home",
+            "name": "welcome",
+            "theme": "white",
             "timeoutDuration": 7,
             "slideList": [
               {
@@ -207,13 +208,7 @@
                 "header": "This is another announcement",
                 "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
               }
-            ],
-            "icons": {
-              "chevronDown": {
-                "white": "/icons/chevron-down-white.svg",
-                "blue": "/icons/chevron-down-blue.svg"
-              }
-            }
+            ]
           }
         }
       ]
@@ -368,7 +363,7 @@
               },
               {
                 "reverseOrder": "33",
-                "image": "\\images\\activities\\activities-33.jpg"
+                "image": "/images/activities/activities-33.jpg"
               }
             ]
           }

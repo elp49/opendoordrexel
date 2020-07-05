@@ -1,21 +1,9 @@
 import tuesdays from './tuesdays.json'
-import styles from './tuesdays.module.css'
-import Layout from '../components/Layout'
+import Layout, { isDefined, sortListByOrder } from '../components/Layout'
 import Section from '../components/Section'
 import Carousel from '../components/Carousel';
 
 const PAGE_NAME = 'tuesdays';
-
-function isDefined(a) {
-  if (typeof a !== 'undefined')
-    return true;
-
-  return false;
-}
-
-function sortListByOrder(list) {
-  return list.sort((a, b) => a.order - b.order);
-}
 
 function buildCarouselSection(section) {
   if (!isDefined(section))

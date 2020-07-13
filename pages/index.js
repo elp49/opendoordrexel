@@ -28,6 +28,7 @@ function buildWelcomeSection(welcome) {
 
   return {
     order: welcome.order,
+    name: welcome.sectionDetails.name,
     jsx: slideshowListJsx
   };
 }
@@ -92,6 +93,7 @@ function buildIntroSection(intro) {
 
   return {
     order: intro.order,
+    name: intro.sectionDetails.name,
     jsx: introJsx
   };
 }
@@ -118,6 +120,7 @@ function buildNewsSection(news) {
 
   return {
     order: news.order,
+    name: news.sectionDetails.name,
     jsx: announcementsListJsx
   };
 }
@@ -141,6 +144,7 @@ function buildActivitiesSection(activities) {
 
   return {
     order: activities.order,
+    name: activities.sectionDetails.name,
     jsx: carouselListJsx
   };
 }
@@ -167,7 +171,7 @@ function buildSectionList(pageSections) {
   let sectionList = [];
   for (const s in sections)
     if (isDefined(sections[s]))
-      sectionList.push({ order: sections[s].order, jsx: sections[s].jsx });
+      sectionList.push(sections[s]);
 
   sectionList = sortListByOrder(sectionList);
 
@@ -182,9 +186,10 @@ export default function Home({ pageSections }) {
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;
+          const id = `${section.name}`;
 
           return (
-            <div key={key} id={key}>
+            <div key={key} id={id}>
               {section.jsx}
             </div>
           );

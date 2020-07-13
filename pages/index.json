@@ -27,7 +27,7 @@
                 "buttons": [
                   {
                     "text": "Learn more",
-                    "href": "/outreach"
+                    "href": "/outreach#outreach"
                   }
                 ],
                 "showOnMobile": true,
@@ -42,7 +42,7 @@
                 "buttons": [
                   {
                     "text": "Learn more",
-                    "href": "/outreach"
+                    "href": "/outreach#outreach"
                   }
                 ],
                 "showOnMobile": true,
@@ -57,7 +57,7 @@
                 "buttons": [
                   {
                     "text": "Learn more",
-                    "href": "/tuesdays"
+                    "href": "/tuesdays#worship"
                   }
                 ],
                 "showOnMobile": true,
@@ -72,7 +72,7 @@
                 "buttons": [
                   {
                     "text": "Learn more",
-                    "href": "/outreach"
+                    "href": "/outreach#donations"
                   }
                 ],
                 "showOnMobile": false,
@@ -87,7 +87,7 @@
                 "buttons": [
                   {
                     "text": "Learn more",
-                    "href": "/outreach"
+                    "href": "/outreach#donations"
                   }
                 ],
                 "showOnMobile": true,
@@ -102,7 +102,7 @@
                 "buttons": [
                   {
                     "text": "Learn more",
-                    "href": "/tuesdays"
+                    "href": "/tuesdays#dinner"
                   }
                 ],
                 "showOnMobile": false,
@@ -117,7 +117,7 @@
                 "buttons": [
                   {
                     "text": "Learn more",
-                    "href": "/tuesdays"
+                    "href": "/tuesdays#dinner"
                   }
                 ],
                 "showOnMobile": true,
@@ -132,7 +132,7 @@
                 "buttons": [
                   {
                     "text": "Learn more",
-                    "href": "/outreach"
+                    "href": "/outreach#outreach"
                   }
                 ],
                 "showOnMobile": true,

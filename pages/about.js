@@ -64,6 +64,7 @@ function buildIntroSection(intro) {
 
   return {
     order: intro.order,
+    name: intro.sectionDetails.name,
     jsx: introJsx
   };
 }
@@ -80,6 +81,7 @@ function buildTimelineSection(timeline) {
 
   return {
     order: timeline.order,
+    name: timeline.sectionDetails.name,
     jsx: timelineJsx
   };
 }
@@ -102,7 +104,7 @@ function buildSectionList(pageSections) {
   let sectionList = [];
   for (const s in sections)
     if (isDefined(sections[s]))
-      sectionList.push({ order: sections[s].order, jsx: sections[s].jsx });
+      sectionList.push(sections[s]);
 
   sectionList = sortListByOrder(sectionList);
 
@@ -117,9 +119,10 @@ export default function About() {
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;
+          const id = `${section.name}`;
 
           return (
-            <div key={key} id={key}>
+            <div key={key} id={id}>
               {section.jsx}
             </div>
           );

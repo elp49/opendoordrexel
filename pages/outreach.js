@@ -5,16 +5,16 @@ import Carousel from '../components/Carousel'
 
 const PAGE_NAME = 'outreach';
 
-function buildIntroSection(intro) {
-  if (!isDefined(intro))
+function buildCarouselSection(section) {
+  if (!isDefined(section))
     return;
 
-  const carouselList = sortListByOrder(intro.carouselList);
+  const carouselList = sortListByOrder(section.carouselList);
   const carouselListJsx = (
-    <Section sectionDetails={intro.sectionDetails}>
+    <Section sectionDetails={section.sectionDetails}>
       {
         carouselList.map((carouselListItem, i) => {
-          const key = `${intro.name}Carousel-${i}`;
+          const key = `${section.name}Carousel-${i}`;
 
           return <Carousel key={key} carousel={carouselListItem.carousel} />
         })
@@ -23,37 +23,15 @@ function buildIntroSection(intro) {
   );
 
   return {
-    order: intro.order,
-    jsx: carouselListJsx
-  };
-}
-
-function buildDonationsSection(donations) {
-  if (!isDefined(donations))
-    return;
-
-  const carouselList = sortListByOrder(donations.carouselList);
-  const carouselListJsx = (
-    <Section sectionDetails={donations.sectionDetails}>
-      {
-        carouselList.map((carouselListItem, i) => {
-          const key = `${donations.name}Carousel-${i}`;
-
-          return <Carousel key={key} carousel={carouselListItem.carousel} />
-        })
-      }
-    </Section>
-  );
-
-  return {
-    order: donations.order,
+    order: section.order,
+    name: section.sectionDetails.name,
     jsx: carouselListJsx
   };
 }
 
 function buildSections(pageSections) {
-  const introSection = buildIntroSection(pageSections.intro);
-  const donationsSection = buildDonationsSection(pageSections.donations);
+  const introSection = buildCarouselSection(pageSections.intro);
+  const donationsSection = buildCarouselSection(pageSections.donations);
 
   return {
     intro: introSection,
@@ -67,17 +45,9 @@ function buildSectionList(pageSections) {
 
   const sections = buildSections(pageSections);
   let sectionList = [];
-  for (const s in sections) {
-
-    if (isDefined(sections[s])) {
-
-      const { order, jsx } = sections[s];
-      if (isDefined(order) && isDefined(jsx))
-        sectionList.push({ order: order, jsx: jsx });
-
-    }
-
-  }
+  for (const s in sections)
+    if (isDefined(sections[s]))
+      sectionList.push(sections[s]);
 
   sortListByOrder(sectionList);
 
@@ -92,9 +62,10 @@ export default function Outreach() {
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;
+          const id = `${section.name}`;
 
           return (
-            <div key={key} id={key}>
+            <div key={key} id={id}>
               {section.jsx}
             </div>
           );

@@ -3,6 +3,12 @@ import { isDefined, getTheme, sortListByReverseOrder } from './Layout'
 const NO_SLIDES = -1;
 const MS_UNTIL_NEXT_CALL_TO_CHECKTIMEOUT = 1000;
 const DEFAULT_TIMEOUT_DURATION = 7000;
+const SLIDE_OPACITY_ACTIVE = 1;
+const SLIDE_OPACITY_INACTIVE = 0;
+const BADGE_OPACITY_ACTIVE = 0.9;
+const BADGE_OPACITY_INACTIVE = 0.3;
+const SLIDE_ZINDEX_ACTIVE = 11;
+const SLIDE_ZINDEX_INACTIVE = 10;
 
 function getSlideshowElementById(slideshowId) {
   return document.getElementById(`${slideshowId}Slideshow`);
@@ -83,14 +89,19 @@ function getNextSlideIndex(slideshowId) {
   return getSlideIndex(slides[0]);
 }
 
+function setSlideZIndex(slideshowId, currentSlideIndex, nextSlideIndex) {
+  document.getElementById(`${slideshowId}Slide-${currentSlideIndex}`).style.zIndex = SLIDE_ZINDEX_INACTIVE;
+  document.getElementById(`${slideshowId}Slide-${nextSlideIndex}`).style.zIndex = SLIDE_ZINDEX_ACTIVE;
+}
+
 function setSlideOpacity(slideshowId, currentSlideIndex, nextSlideIndex) {
-  document.getElementById(`${slideshowId}Slide-${currentSlideIndex}`).style.opacity = 0;
-  document.getElementById(`${slideshowId}Slide-${nextSlideIndex}`).style.opacity = 1;
+  document.getElementById(`${slideshowId}Slide-${currentSlideIndex}`).style.opacity = SLIDE_OPACITY_INACTIVE;
+  document.getElementById(`${slideshowId}Slide-${nextSlideIndex}`).style.opacity = SLIDE_OPACITY_ACTIVE;
 }
 
 function setBadgeOpacity(slideshowId, currentSlideIndex, nextSlideIndex) {
-  document.getElementById(`${slideshowId}Badge-${currentSlideIndex}`).getElementsByTagName('span')[0].style.opacity = 0.3;
-  document.getElementById(`${slideshowId}Badge-${nextSlideIndex}`).getElementsByTagName('span')[0].style.opacity = 0.9;
+  document.getElementById(`${slideshowId}Badge-${currentSlideIndex}`).getElementsByTagName('span')[0].style.opacity = BADGE_OPACITY_INACTIVE;
+  document.getElementById(`${slideshowId}Badge-${nextSlideIndex}`).getElementsByTagName('span')[0].style.opacity = BADGE_OPACITY_ACTIVE;
 }
 
 function showSlide(slideshowId, slideIndex) {
@@ -101,6 +112,7 @@ function showSlide(slideshowId, slideIndex) {
   if (nextSlideIndex === NO_SLIDES)
     return;
 
+  setSlideZIndex(slideshowId, currentSlideIndex, nextSlideIndex);
   setSlideOpacity(slideshowId, currentSlideIndex, nextSlideIndex);
   setBadgeOpacity(slideshowId, currentSlideIndex, nextSlideIndex);
 
@@ -219,11 +231,12 @@ export default function Slideshow({ slideshow }) {
           slideList.map((slide, i) => {
             const key = `${id}Slide-${i}`;
             const { className, image, titles, buttons } = slide;
-            const slideOpacity = i === 0 ? 1 : 0;
+            const slideOpacity = i === 0 ? SLIDE_OPACITY_ACTIVE : SLIDE_OPACITY_INACTIVE;
+            const slideZIndex = i === 0 ? SLIDE_ZINDEX_ACTIVE : SLIDE_ZINDEX_INACTIVE;
 
             return (
               // <li key={key} id={key} value={i} className={`slide ${className}`} style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${slide.image})`, opacity: slideOpacity }}>
-              <li key={key} id={key} value={i} className={`slide ${className}`} style={{ backgroundImage: `url(${image})`, opacity: slideOpacity }}>
+              <li key={key} id={key} value={i} className={`slide ${className}`} style={{ backgroundImage: `url(${image})`, opacity: slideOpacity, zIndex: slideZIndex }}>
                 {
                   titles.map(title => {
                     const titleKey = `${id}SlideTitle-${i}`;
@@ -257,12 +270,12 @@ export default function Slideshow({ slideshow }) {
           })
         }
       </ol>
-      <ol className={'badgeList'}>
+      <ol className={'badgeList'} style={{ zIndex: SLIDE_ZINDEX_ACTIVE }}>
         {
           slideList.map((slide, i) => {
             const key = `${id}Badge-${i}`;
             const { className } = slide;
-            const badgeOpacity = i === 0 ? 0.9 : 0.3;
+            const badgeOpacity = i === 0 ? BADGE_OPACITY_ACTIVE : BADGE_OPACITY_INACTIVE;
 
             return (
               <li key={key} id={key} className={`badge ${className}`} onClick={() => showSlide(id, i)}>
@@ -369,7 +382,6 @@ export default function Slideshow({ slideshow }) {
             -ms-transform: translate(-50%, -50%);
             -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
-            z-index: 51;
           }
           .badge {
             display: inline-block;

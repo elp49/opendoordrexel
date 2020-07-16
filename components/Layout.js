@@ -62,14 +62,55 @@ function getFooterTheme(lastSectionTheme) {
   return DEFAULT_THEME
 }
 
-export default function Layout({ children }) {
+function buildDonateButton(donateButton, theme, isDonationPage) {
+  if (isDonationPage)
+    return;
+
+  return (
+    <a className={`${theme} donate`} href={donateButton.href} title={donateButton.buttonText}>
+      {donateButton.buttonText}
+    <style jsx>
+      {`
+        .blue.donate {
+          background-color: #fff;
+          color: #24316F;
+        }
+        .white.donate {
+          background-color: #24316F;
+          color: #fff;
+        }
+        .donate {
+          position: absolute;
+          bottom: 2px;
+          right: 0;
+          margin-left: auto;
+          padding: 7px;
+          font-size: 1.5rem;
+          font-weight: bold;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          border-radius: 10px;
+        }
+        @media only screen and (min-width: 1000px) {
+          .donate {
+            padding: 10px;
+            font-size: 3rem;
+          }
+        }
+      `}
+    </style>
+    </a>
+  );
+}
+
+export default function Layout({ children, isDonationPage }) {
   const id = isDefined(layout.name) ? layout.name : 'layout';
   const theme = isDefined(layout.themes) ? getTheme(layout.themes.layout) : DEFAULT_THEME;
   const pageList = sortListByOrder(layout.pageList);
   const socialMedia = sortListByOrder(layout.socialMedia);
   const lastSectionTheme = getLastSectionTheme(children);
   const footerTheme = getFooterTheme(lastSectionTheme);
-  const donate = layout.donate;
+  const donateButton = buildDonateButton(layout.donate, lastSectionTheme, isDonationPage);
   const mailingList = layout.mailingList;
   const footer = layout.footer;
 
@@ -129,9 +170,7 @@ export default function Layout({ children }) {
               })
             }
           </ol>
-          <a className={'donate'} href={donate.href} title={donate.buttonText}>
-            {donate.buttonText}
-          </a>
+          {donateButton}
         </div>
       </div>
       <footer className={footerTheme}>
@@ -205,11 +244,11 @@ export default function Layout({ children }) {
           .blue .instagram {
             background-image: url(${ICONS.instagram.white});
           }
-          .white, .blue button, .blue .donate {
+          .white, .blue button {
             background-color: #fff;
             color: #24316F;
           }
-          .blue, .white button, .white .donate {
+          .blue, .white button {
             background-color: #24316F;
             color: #fff;
           }
@@ -221,24 +260,6 @@ export default function Layout({ children }) {
           }
           .white p, .white p>a {
             color: #818181;
-          }
-          .donate {
-            position: absolute;
-            bottom: 2px;
-            right: 0;
-            margin-left: auto;
-            padding: 7px;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border-radius: 10px;
-          }
-          @media only screen and (min-width: 1000px) {
-            .donate {
-              padding: 10px;
-              font-size: 3rem;
-            }
           }
           @media not all and (pointer: coarse) {
             .white .facebook:hover, .blue .facebook:hover {

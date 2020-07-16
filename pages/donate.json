@@ -1,0 +1,21 @@
+{
+  "name": "donate",
+  "sections": {
+    "donate": {
+      "order": 1,
+      "sectionDetails": {
+        "name": "donate",
+        "theme": "white",
+        "titles": [
+          "Donation Page"
+        ],
+        "subtitles": [
+          "Help us help others."
+        ],
+        "descriptions": [
+          "100% of your donation will go towards the ministry's efforts in all that it does to give back to those in need."
+        ]
+      }
+    }
+  }
+}

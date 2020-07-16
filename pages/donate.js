@@ -1,5 +1,6 @@
 import donate from './donate.json'
-import Layout from '../components/Layout'
+import Layout, { isDefined, sortListByOrder } from '../components/Layout'
+import Section from '../components/Section'
 
 const PAGE_NAME = 'donate';
 
@@ -47,7 +48,7 @@ export default function Donate() {
   const sectionList = buildSectionList(donate.sections);
 
   return (
-    <Layout>
+    <Layout isDonationPage={true}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

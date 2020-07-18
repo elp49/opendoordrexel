@@ -14,9 +14,7 @@ function getCarouselContainerElementById(carouselId) {
 }
 
 function getAllCards(carouselId) {
-  console.log(`in getAllCards(${carouselId})`)
   const carousel = getCarouselElementById(carouselId);
-  console.log(`carousel: ${carousel}`)
   return carousel.getElementsByClassName(styles.card);
 }
 
@@ -166,12 +164,12 @@ export async function componentDidMount(carouselId) {
   useEffect(() => {
     if (!isDefined(window))
       return;
-  
+
     if (/Mobi|Android/i.test(navigator.userAgent) && window.screen.width < 1000) {
       // If the user is on a mobile device with screen width less than 1000px,
       // then remove the scrollbar.
       // NOTE: exceptions to the mobile device rule are iPad pros and some tablets.
-      removeScrollbar(`${carouselId}Carousel`);
+      removeScrollbar(carouselId);
     }
   }, []);
 }

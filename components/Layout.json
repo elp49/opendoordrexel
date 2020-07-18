@@ -86,6 +86,12 @@
         "chevronDown": {
           "white": "/icons/chevron-down-white.svg",
           "blue": "/icons/chevron-down-blue.svg"
+        },
+        "stripe": {
+            "outlineLight": "/icons/stripe-outline-light.svg",
+            "outlineDark": "/icons/stripe-outline-dark.svg",
+            "solidLight": "/icons/stripe-solid-light.svg",
+            "solidDark": "/icons/stripe-solid-dark.svg"
         }
     }
 }

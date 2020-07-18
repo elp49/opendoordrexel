@@ -16,10 +16,10 @@ export function isDefined(a) {
 }
 
 export function getTheme(theme) {
-  if (isDefined(theme) && THEME_LIST.includes(theme))
-    return theme;
+  if (!isDefined(theme) || !THEME_LIST.includes(theme))
+    return DEFAULT_THEME;
 
-  return DEFAULT_THEME;
+  return theme;
 }
 
 export function sortListByOrder(list) {
@@ -28,6 +28,16 @@ export function sortListByOrder(list) {
 
 export function sortListByReverseOrder(list) {
   return list.sort((a, b) => b.reverseOrder - a.reverseOrder);
+}
+
+export function getNextSectionsId(currentSectionsId) {
+  return document.getElementById(currentSectionsId).nextSibling.id;
+}
+
+export function scrollToNextSection(currentSectionsId) {
+  const nextSectionsId = getNextSectionsId(currentSectionsId);
+  console.log(nextSectionsId);
+  document.getElementById(nextSectionsId).scrollIntoView(true);
 }
 
 function getPageDetails(pageDetails) {
@@ -161,7 +171,7 @@ export default function Layout({ children, pageDetails }) {
             {
               pageList.map((page, i) => {
                 const key = `${id}HeaderPage-${i}`;
-                const { order, href, title } = page;
+                const { order, title, href } = page;
 
                 return (
                   <li key={key} value={order}>
@@ -185,7 +195,7 @@ export default function Layout({ children, pageDetails }) {
             {
               socialMedia.map((media, i) => {
                 const key = `${id}FooterMedia-${i}`;
-                const { order, href, name } = media;
+                const { order, name, href } = media;
 
                 return (
                   <li key={key} value={order}>
@@ -206,12 +216,12 @@ export default function Layout({ children, pageDetails }) {
             {
               pageList.map((page, i) => {
                 const key = `${id}FooterPage-${i}`;
-                const { order, name, href } = page;
+                const { order, title, href } = page;
 
                 return (
                   <li key={key} value={order}>
-                    <a href={`/${href}`} title={name}>
-                      {name}
+                    <a href={`/${href}`} title={title}>
+                      {title}
                     </a>
                   </li>
                 )

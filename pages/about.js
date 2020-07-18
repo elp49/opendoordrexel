@@ -1,22 +1,19 @@
 import about from './about.json'
-import Layout, { isDefined, sortListByOrder, ICONS } from '../components/Layout'
+import Layout, { isDefined, sortListByOrder, ICONS, scrollToNextSection } from '../components/Layout'
 import Section from '../components/Section'
 import Timeline from '../components/Timeline'
 
 const PAGE_NAME = 'about';
 
-function scrollToTop(id) {
-  document.getElementById(id).scrollIntoView(true);
-}
-
 function buildIntroSection(intro) {
   if (!isDefined(intro))
     return;
 
-  const nextSectionId = `${PAGE_NAME}Section-${about.sections.timeline.order}`
+  const { order, sectionDetails } = intro;
+  const introSectionsId = sectionDetails.name;
   const introJsx = (
-    <Section sectionDetails={intro.sectionDetails}>
-      <div className={'chevronDown'} onClick={() => scrollToTop(nextSectionId)}>
+    <Section sectionDetails={sectionDetails}>
+      <div className={'chevronDown'} onClick={() => scrollToNextSection(introSectionsId)}>
         <i></i>
       </div>
       <style jsx>
@@ -38,21 +35,17 @@ function buildIntroSection(intro) {
             -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             transition-duration: .3s;
-            display: block;
             height: 30px;
             width: 30px;
             background-color: #eee;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
             background-image: url(${ICONS.chevronDown.blue});
             border-radius: 50%;
             cursor: pointer;
           }
           @media not all and (pointer: coarse) {
             .chevronDown>i:hover, .chevronDown>i:active {
-              height: 45px;
-              width: 45px;
+              height: 40px;
+              width: 40px;
               background-color: #24316F;
               background-image: url(${ICONS.chevronDown.white});
             }
@@ -63,8 +56,8 @@ function buildIntroSection(intro) {
   );
 
   return {
-    order: intro.order,
-    name: intro.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: introJsx
   };
 }
@@ -73,6 +66,7 @@ function buildTimelineSection(timeline) {
   if (!isDefined(timeline))
     return;
 
+  const { order, sectionDetails } = timeline;
   const timelineJsx = (
     <Section sectionDetails={timeline.sectionDetails}>
       <Timeline timeline={timeline} />
@@ -80,8 +74,8 @@ function buildTimelineSection(timeline) {
   );
 
   return {
-    order: timeline.order,
-    name: timeline.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: timelineJsx
   };
 }

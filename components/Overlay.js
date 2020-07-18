@@ -18,12 +18,12 @@ export default function Overlay({ overlay }) {
           {
             pageList.map((page, i) => {
               const key = `${id}OverlayPage-${i}`;
-              const { order, href, name } = page;
+              const { order, title, href } = page;
 
               return (
                 <li key={key} value={order}>
-                  <a href={href} title={name} className={styles.overlayPage}>
-                    {name}
+                  <a href={href} title={title} className={styles.overlayPage}>
+                    {title}
                   </a>
                 </li>
               )
@@ -43,7 +43,7 @@ export default function Overlay({ overlay }) {
           {
             socialMedia.map((media, i) => {
               const key = `${id}OverlayMedia-${i}`;
-              const { order, href, name } = media;
+              const { order, name, href } = media;
 
               return (
                 <li key={key} value={order}>

@@ -28,8 +28,9 @@ function buildIntroSection(intro) {
   if (!isDefined(intro))
     return;
 
+  const { order, sectionDetails } = intro;
   const introJsx = (
-    <Section sectionDetails={intro.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       <div className={'loginContainer'}>
         <form action={() => login()} method={'post'}>
           <div className={'loginInfo'}>
@@ -92,7 +93,8 @@ function buildIntroSection(intro) {
   );
 
   return {
-    order: intro.order,
+    order: order,
+    name: sectionDetails.name,
     jsx: introJsx
   };
 }

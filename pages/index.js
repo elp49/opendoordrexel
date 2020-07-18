@@ -12,9 +12,10 @@ function buildWelcomeSection(welcome) {
   if (!isDefined(welcome))
     return;
 
+  const { order, sectionDetails } = welcome;
   const slideshowList = sortListByOrder(welcome.slideshowList);
   const slideshowListJsx = (
-    <Section sectionDetails={welcome.sectionDetails} isRaw={true} isViewHeight={true}>
+    <Section sectionDetails={sectionDetails} isRaw={true} isViewHeight={true}>
       {
         slideshowList.map((slideshowListItem, i) => {
           const { slideshow } = slideshowListItem;
@@ -27,8 +28,8 @@ function buildWelcomeSection(welcome) {
   );
 
   return {
-    order: welcome.order,
-    name: welcome.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: slideshowListJsx
   };
 }
@@ -84,16 +85,17 @@ function buildIntroSection(intro) {
   if (!isDefined(intro))
     return;
 
+  const { order, sectionDetails } = intro;
   const introLinkJsx = buildIntroLinks(intro.links);
   const introJsx = (
-    <Section sectionDetails={intro.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {introLinkJsx}
     </Section>
   );
 
   return {
-    order: intro.order,
-    name: intro.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: introJsx
   };
 }
@@ -105,12 +107,13 @@ function buildNewsSection(news) {
   //const posts = announcements.posts
   // put sortListByDate(list) {} in announcements component.
 
+  const { order, sectionDetails } = news;
   const announcementsList = sortListByOrder(news.announcementsList);
   const announcementsListJsx = (
-    <Section sectionDetails={news.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {
         announcementsList.map((announcementsListItem, i) => {
-          const key = `${news.name}Announcements-${i}`;
+          const key = `${sectionDetails.name}Announcements-${i}`;
 
           return <Announcements key={key} announcements={announcementsListItem.announcements} />
         })
@@ -119,8 +122,8 @@ function buildNewsSection(news) {
   );
 
   return {
-    order: news.order,
-    name: news.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: announcementsListJsx
   };
 }
@@ -129,12 +132,13 @@ function buildActivitiesSection(activities) {
   if (!isDefined(activities))
     return;
 
+  const { order, sectionDetails } = activities;
   const carouselList = sortListByOrder(activities.carouselList);
   const carouselListJsx = (
-    <Section sectionDetails={activities.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {
         carouselList.map((carouselListItem, i) => {
-          const key = `${activities.name}Carousel-${i}`;
+          const key = `${sectionDetails.name}Carousel-${i}`;
 
           return <Carousel key={key} carousel={carouselListItem.carousel} />
         })
@@ -143,8 +147,8 @@ function buildActivitiesSection(activities) {
   );
 
   return {
-    order: activities.order,
-    name: activities.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: carouselListJsx
   };
 }

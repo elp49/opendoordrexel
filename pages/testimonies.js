@@ -32,16 +32,17 @@ function buildIntroSection(intro) {
   if (!isDefined(intro))
     return;
 
+  const { order, sectionDetails } = intro;
   const introLinkJsx = buildIntroLinks(intro.links);
   const introJsx = (
-    <Section sectionDetails={intro.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {introLinkJsx}
     </Section>
   );
 
   return {
-    order: intro.order,
-    name: intro.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: introJsx
   };
 }

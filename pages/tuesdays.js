@@ -9,12 +9,13 @@ function buildCarouselSection(section) {
   if (!isDefined(section))
     return;
 
+  const { order, sectionDetails } = section;
   const carouselList = sortListByOrder(section.carouselList);
   const carouselListJsx = (
-    <Section sectionDetails={section.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {
         carouselList.map((carouselListItem, i) => {
-          const key = `${section.name}Carousel-${i}`;
+          const key = `${sectionDetails.name}Carousel-${i}`;
 
           return <Carousel key={key} carousel={carouselListItem.carousel} />
         })
@@ -23,8 +24,8 @@ function buildCarouselSection(section) {
   );
 
   return {
-    order: section.order,
-    name: section.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: carouselListJsx
   };
 }

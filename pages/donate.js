@@ -48,7 +48,7 @@ export default function Donate() {
   const sectionList = buildSectionList(donate.sections);
 
   return (
-    <Layout isDonationPage={true}>
+    <Layout pageDetails={donate.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

@@ -58,7 +58,7 @@ export default function Tuesdays() {
   const sectionList = buildSectionList(tuesdays.sections);
 
   return (
-    <Layout>
+    <Layout pageDetails={tuesdays.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

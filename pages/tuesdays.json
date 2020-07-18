@@ -1,5 +1,8 @@
 {
     "name": "tuesdays",
+    "pageDetails": {
+      "title": "Dinner & Worship | Open Door Christian Community"
+    },
     "sections": {
         "dinner": {
             "order": 1,

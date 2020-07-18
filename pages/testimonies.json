@@ -1,5 +1,8 @@
 {
     "name": "testimonies",
+    "pageDetails": {
+      "title": "Testimonies | Open Door Christian Community"
+    },
     "sections": {
         "intro": {
             "order": 1,

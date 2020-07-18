@@ -1,5 +1,9 @@
 {
   "name": "donate",
+  "pageDetails": {
+    "title": "Donate | Open Door Christian Community",
+    "isDonationPage": true
+  },
   "sections": {
     "donate": {
       "order": 1,

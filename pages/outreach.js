@@ -58,7 +58,7 @@ export default function Outreach() {
   const sectionList = buildSectionList(outreach.sections);
 
   return (
-    <Layout>
+    <Layout pageDetails={outreach.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

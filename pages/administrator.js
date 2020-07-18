@@ -124,7 +124,7 @@ export default function Admin() {
   const sectionList = buildSectionList(admin.sections);
 
   return (
-    <Layout>
+    <Layout pageDetails={admin.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

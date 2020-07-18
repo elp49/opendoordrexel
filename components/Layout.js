@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import layout from './Layout.json'
 import Overlay from './Overlay'
 import styles from './Layout.module.css'
@@ -5,6 +6,7 @@ import styles from './Layout.module.css'
 export const DEFAULT_THEME = 'white';
 export const THEME_LIST = [DEFAULT_THEME, 'blue'];
 export const ICONS = layout.icons;
+const DEFAULT_PAGE_TITLE = 'Open Door Christian Community';
 
 export function isDefined(a) {
   if (typeof a !== 'undefined')
@@ -26,6 +28,26 @@ export function sortListByOrder(list) {
 
 export function sortListByReverseOrder(list) {
   return list.sort((a, b) => b.reverseOrder - a.reverseOrder);
+}
+
+function getPageDetails(pageDetails) {
+  if (!isDefined(pageDetails))
+    return {
+      pageTitle: DEFAULT_PAGE_TITLE,
+      isDonationPage: false
+    };
+
+  let { title, isDonationPage } = pageDetails;
+  if (!isDefined(title))
+    pageTitle = DEFAULT_PAGE_TITLE;
+
+  if (!isDefined(isDonationPage))
+    isDonationPage = false;
+
+  return {
+    pageTitle: title,
+    isDonationPage: isDonationPage
+  };
 }
 
 function toggleOverlay(id) {
@@ -69,8 +91,8 @@ function buildDonateButton(donateButton, theme, isDonationPage) {
   return (
     <a className={`${theme} donate`} href={donateButton.href} title={donateButton.buttonText}>
       {donateButton.buttonText}
-    <style jsx>
-      {`
+      <style jsx>
+        {`
         .blue.donate {
           background-color: #fff;
           color: #24316F;
@@ -98,14 +120,15 @@ function buildDonateButton(donateButton, theme, isDonationPage) {
           }
         }
       `}
-    </style>
+      </style>
     </a>
   );
 }
 
-export default function Layout({ children, isDonationPage }) {
+export default function Layout({ children, pageDetails }) {
   const id = isDefined(layout.name) ? layout.name : 'layout';
   const theme = isDefined(layout.themes) ? getTheme(layout.themes.layout) : DEFAULT_THEME;
+  const { pageTitle, isDonationPage } = getPageDetails(pageDetails);
   const pageList = sortListByOrder(layout.pageList);
   const socialMedia = sortListByOrder(layout.socialMedia);
   const lastSectionTheme = getLastSectionTheme(children);
@@ -116,6 +139,10 @@ export default function Layout({ children, isDonationPage }) {
 
   return (
     <div id={id} className={styles.layout}>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <header className={theme}>
         <div className={styles.header}>
           <div className={styles.headerLogo}>

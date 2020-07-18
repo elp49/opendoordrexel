@@ -1,5 +1,8 @@
 {
   "name": "about",
+  "pageDetails": {
+    "title": "About | Open Door Christian Community"
+  },
   "sections": {
     "intro": {
       "order": 1,

@@ -115,7 +115,7 @@ export default function About() {
   const sectionList = buildSectionList(about.sections);
 
   return (
-    <Layout>
+    <Layout pageDetails={about.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

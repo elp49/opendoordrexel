@@ -1,5 +1,8 @@
 {
   "name": "outreach",
+  "pageDetails": {
+    "title": "Outreach | Open Door Christian Community"
+  },
   "sections": {
     "intro": {
       "order": 1,

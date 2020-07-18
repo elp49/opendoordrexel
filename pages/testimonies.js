@@ -94,7 +94,7 @@ export default function Testimonies() {
   const sectionList = buildSectionList(testimonies.sections);
 
   return (
-    <Layout>
+    <Layout pageDetails={testimonies.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

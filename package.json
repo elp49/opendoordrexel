@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start -p $PORT"
+    "start": "next start"
   },
   "repository": {
     "type": "git",
@@ -22,10 +22,10 @@
     "@stripe/react-stripe-js": "^1.1.2",
     "@stripe/stripe-js": "^1.8.0",
     "axios": "^0.19.2",
-    "next": "^9.3.6",
+    "next": "^9.4.4",
     "path": "^0.12.7",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "stripe": "^8.74.0"
+    "stripe": "^8.76.0"
   }
 }

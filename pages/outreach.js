@@ -1,7 +1,7 @@
-import outreach from './outreach.json'
-import Layout, { isDefined, sortListByOrder } from '../components/Layout'
-import Section from '../components/Section'
-import Carousel from '../components/Carousel'
+import outreach from './outreach.json';
+import Layout, { isDefined, sortListByOrder } from '../components/Layout';
+import Section from '../components/Section';
+import Carousel from '../components/Carousel';
 
 const PAGE_NAME = 'outreach';
 
@@ -17,7 +17,7 @@ function buildCarouselSection(section) {
         carouselList.map((carouselListItem, i) => {
           const key = `${sectionDetails.name}Carousel-${i}`;
 
-          return <Carousel key={key} carousel={carouselListItem.carousel} />
+          return <Carousel key={key} carousel={carouselListItem.carousel} />;
         })
       }
     </Section>

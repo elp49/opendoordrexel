@@ -1,10 +1,10 @@
-import fetch from 'node-fetch'
-import home from './index.json'
-import Layout, { isDefined, sortListByOrder } from '../components/Layout'
-import Slideshow from '../components/Slideshow'
-import Section from '../components/Section'
-import Carousel from '../components/Carousel'
-import Announcements from '../components/Announcements'
+import fetch from 'node-fetch';
+import home from './index.json';
+import Layout, { isDefined, sortListByOrder } from '../components/Layout';
+import Slideshow from '../components/Slideshow';
+import Section from '../components/Section';
+import Carousel from '../components/Carousel';
+import Announcements from '../components/Announcements';
 
 const PAGE_NAME = 'home';
 
@@ -21,7 +21,7 @@ function buildWelcomeSection(welcome) {
           const { slideshow } = slideshowListItem;
           const key = `${slideshow.name}Slideshow-${i}`;
 
-          return <Slideshow key={key} slideshow={slideshow} />
+          return <Slideshow key={key} slideshow={slideshow} />;
         })
       }
     </Section>
@@ -115,7 +115,7 @@ function buildNewsSection(news) {
         announcementsList.map((announcementsListItem, i) => {
           const key = `${sectionDetails.name}Announcements-${i}`;
 
-          return <Announcements key={key} announcements={announcementsListItem.announcements} />
+          return <Announcements key={key} announcements={announcementsListItem.announcements} />;
         })
       }
     </Section>
@@ -140,7 +140,7 @@ function buildActivitiesSection(activities) {
         carouselList.map((carouselListItem, i) => {
           const key = `${sectionDetails.name}Carousel-${i}`;
 
-          return <Carousel key={key} carousel={carouselListItem.carousel} />
+          return <Carousel key={key} carousel={carouselListItem.carousel} />;
         })
       }
     </Section>

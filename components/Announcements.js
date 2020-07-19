@@ -1,4 +1,4 @@
-import { isDefined, getTheme, sortListByReverseOrder } from './Layout'
+import { isDefined, getTheme, sortListByReverseOrder } from './Layout';
 
 function getAnnouncementsById(id) {
   return document.getElementById(`${id}Announcements`);
@@ -58,9 +58,9 @@ function showMoreAnnouncements(id) {
   announcements.style.maxHeight = 'none';
 
   if (moreIsActive(id))
-    deactivateMore(id)
+    deactivateMore(id);
   if (!lessIsActive(id))
-    activateLess(id)
+    activateLess(id);
 }
 
 function showLessAnnouncements(id) {
@@ -68,9 +68,9 @@ function showLessAnnouncements(id) {
   announcements.style.maxHeight = '650px';
 
   if (lessIsActive(id))
-    deactivateLess(id)
+    deactivateLess(id);
   if (!moreIsActive(id))
-    activateMore(id)
+    activateMore(id);
 
   scrollAnnouncementsIntoView(id);
 }

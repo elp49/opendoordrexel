@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import { isDefined, getTheme, sortListByReverseOrder } from './Layout'
+import { useEffect } from 'react';
+import { isDefined, getTheme, sortListByReverseOrder } from './Layout';
 
 const NO_SLIDES = -1;
 const TIMER_FREQUENCY = 1000;
@@ -16,22 +16,22 @@ function getSlideshowElementById(slideshowId) {
 }
 
 function getSlideshowTimeoutDuration(slideshowId) {
-  const slideshow = getSlideshowElementById(slideshowId)
+  const slideshow = getSlideshowElementById(slideshowId);
   return parseInt(slideshow.getAttribute('timeout-duration'));
 }
 
 function getSlideshowTimeoutTimeRemaining(slideshowId) {
-  const slideshow = getSlideshowElementById(slideshowId)
+  const slideshow = getSlideshowElementById(slideshowId);
   return parseInt(slideshow.getAttribute('time-remaining'));
 }
 
 function setSlideshowTimeoutTimeRemaining(slideshowId, timeRemaining) {
-  const slideshow = getSlideshowElementById(slideshowId)
+  const slideshow = getSlideshowElementById(slideshowId);
   slideshow.setAttribute('time-remaining', timeRemaining);
 }
 
 function resetSlideshowTimeoutTimeRemaining(slideshowId) {
-  const timeoutDuration = getSlideshowTimeoutDuration(slideshowId)
+  const timeoutDuration = getSlideshowTimeoutDuration(slideshowId);
   setSlideshowTimeoutTimeRemaining(slideshowId, timeoutDuration);
 }
 
@@ -67,12 +67,12 @@ function getSlideIndex(slide) {
 }
 
 function getCurrentSlideIndex(slideshowId) {
-  const slideshow = getSlideshowElementById(slideshowId)
+  const slideshow = getSlideshowElementById(slideshowId);
   return parseInt(slideshow.getAttribute('current-slide-index'));
 }
 
 function setCurrentSlideIndex(slideshowId, currentSlideIndex) {
-  const slideshow = getSlideshowElementById(slideshowId)
+  const slideshow = getSlideshowElementById(slideshowId);
   slideshow.setAttribute('current-slide-index', currentSlideIndex);
 }
 
@@ -276,7 +276,7 @@ export default function Slideshow({ slideshow }) {
                   }
                 </ol>
               </li>
-            )
+            );
           })
         }
       </ol>
@@ -291,7 +291,7 @@ export default function Slideshow({ slideshow }) {
               <li key={key} id={key} className={`badge ${className}`} onClick={() => showSlide(id, i)}>
                 <span style={{ opacity: badgeOpacity }}></span>
               </li>
-            )
+            );
           })
         }
       </ol>

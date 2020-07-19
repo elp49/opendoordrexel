@@ -1,8 +1,8 @@
-import donate from './donate.json'
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import Layout, { isDefined, sortListByOrder, ICONS, getTheme } from '../components/Layout'
-import Section from '../components/Section'
+import donate from './donate.json';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
+import Layout, { isDefined, sortListByOrder, ICONS, getTheme } from '../components/Layout';
+import Section from '../components/Section';
 
 const PAGE_NAME = 'donate';
 

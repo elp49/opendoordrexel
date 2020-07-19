@@ -1,4 +1,4 @@
-import { isDefined, getTheme, sortListByOrder, ICONS } from './Layout'
+import { isDefined, getTheme, sortListByOrder, ICONS } from './Layout';
 
 function sortTimelineEventList(eventList) {
   let events = eventList;

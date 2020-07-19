@@ -1,5 +1,5 @@
-import Layout, { isDefined, sortListByOrder } from '../components/Layout'
-import Section from '../components/Section'
+import Layout, { isDefined, sortListByOrder } from '../components/Layout';
+import Section from '../components/Section';
 
 const PAGE_NAME = "admin";
 

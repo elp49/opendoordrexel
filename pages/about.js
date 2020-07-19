@@ -1,7 +1,7 @@
-import about from './about.json'
-import Layout, { isDefined, sortListByOrder, ICONS, scrollToNextSection } from '../components/Layout'
-import Section from '../components/Section'
-import Timeline from '../components/Timeline'
+import about from './about.json';
+import Layout, { isDefined, sortListByOrder, ICONS, scrollToNextSection } from '../components/Layout';
+import Section from '../components/Section';
+import Timeline from '../components/Timeline';
 
 const PAGE_NAME = 'about';
 

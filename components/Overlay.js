@@ -1,5 +1,5 @@
-import styles from './Overlay.module.css'
-import { isDefined, getTheme, sortListByOrder, DEFAULT_THEME, ICONS } from './Layout'
+import styles from './Overlay.module.css';
+import { isDefined, getTheme, sortListByOrder, DEFAULT_THEME, ICONS } from './Layout';
 
 export default function Overlay({ overlay }) {
   if (!isDefined(overlay))
@@ -26,7 +26,7 @@ export default function Overlay({ overlay }) {
                     {title}
                   </a>
                 </li>
-              )
+              );
             })
           }
         </ol>
@@ -51,7 +51,7 @@ export default function Overlay({ overlay }) {
                     <i className={name.toLowerCase()}></i>
                   </a>
                 </li>
-              )
+              );
             })
           }
         </ol>

@@ -1,7 +1,7 @@
-import Head from 'next/head'
-import layout from './Layout.json'
-import Overlay from './Overlay'
-import styles from './Layout.module.css'
+import Head from 'next/head';
+import layout from './Layout.json';
+import Overlay from './Overlay';
+import styles from './Layout.module.css';
 
 export const DEFAULT_THEME = 'white';
 export const THEME_LIST = [DEFAULT_THEME, 'blue'];
@@ -63,7 +63,7 @@ function getPageDetails(pageDetails) {
 function toggleOverlay(id) {
   document.getElementById(id).classList.toggle(styles.layoutFixed);
   document.getElementById(`${id}Overlay`).classList.toggle(styles.overlayActive);
-};
+}
 
 function getLastSection(layoutChildren) {
   if (!isDefined(layoutChildren) || layoutChildren.length === 0)
@@ -91,7 +91,7 @@ function getFooterTheme(lastSectionTheme) {
   if (lastSectionTheme === DEFAULT_THEME)
     return THEME_LIST[1];
 
-  return DEFAULT_THEME
+  return DEFAULT_THEME;
 }
 
 function buildDonateButton(donateButton, theme, isDonationPage) {
@@ -179,7 +179,7 @@ export default function Layout({ children, pageDetails }) {
                       {title}
                     </a>
                   </li>
-                )
+                );
               })
             }
           </ol>
@@ -203,7 +203,7 @@ export default function Layout({ children, pageDetails }) {
                       <i className={name.toLowerCase()}></i>
                     </a>
                   </li>
-                )
+                );
               })
             }
           </ol>
@@ -224,7 +224,7 @@ export default function Layout({ children, pageDetails }) {
                       {title}
                     </a>
                   </li>
-                )
+                );
               })
             }
           </ol>

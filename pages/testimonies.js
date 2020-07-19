@@ -1,6 +1,6 @@
-import testimonies from './testimonies.json'
-import Layout, { isDefined, sortListByOrder } from '../components/Layout'
-import Section from '../components/Section'
+import testimonies from './testimonies.json';
+import Layout, { isDefined, sortListByOrder } from '../components/Layout';
+import Section from '../components/Section';
 
 const PAGE_NAME = 'testimonies';
 

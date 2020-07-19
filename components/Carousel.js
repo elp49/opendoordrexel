@@ -1,6 +1,6 @@
-import { useEffect } from 'react'
-import { isDefined, getTheme, sortListByReverseOrder } from './Layout'
-import styles from './Carousel.module.css'
+import { useEffect } from 'react';
+import { isDefined, getTheme, sortListByReverseOrder } from './Layout';
+import styles from './Carousel.module.css';
 
 const LEFT = -1;
 const RIGHT = 1;
@@ -70,7 +70,7 @@ function exitFullScreen(carouselId) {
   const container = getCarouselContainerElementById(carouselId);
   container.classList.remove('overlay');
 
-  // Clean up key press callback.
+  // Clean up key press handle.
   document.onkeydown = null;
 }
 

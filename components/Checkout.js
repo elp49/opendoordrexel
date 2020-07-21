@@ -47,34 +47,46 @@ const CheckoutForm = ({ cardElement, success }) => {
   return (
     <form className={`${theme} checkoutForm`} onSubmit={handleSubmit}>
       <CardElement />
-      <button id={submitBtnId} type={'submit'} disable={`${!stripe}`}><p>Donate</p></button>
+      <button id={submitBtnId} type={'submit'} disable={`${!stripe}`} className={'checkoutBtn'}>
+        <p>Donate</p>
+      </button>
       <div className={'stripeBadge'}>
         <i></i>
       </div>
       <style jsx>
         {`
-          .white, .white.checkoutForm>button {
+          .white {
             background-color: #fff;
             color: #24316F;
           }
-          .blue, .blue.checkoutForm>button {
+          .blue {
             background-color: #24316F;
             color: #fff;
-          }
-          .white.checkoutForm>button {
-            border-color: #24316F;
-          }
-          .blue.checkoutForm>button {
-            border-color: #fff;
           }
           .checkoutForm {
             position: relative;
             height: 100%;
             width: 100%;
           }
-          .checkoutForm>button {
-            border-width: 2px;
-            border-radius: 10px;
+          .checkoutBtn {
+            outline-style: auto;
+            outline-width: 1px;
+          }
+          .white .checkoutBtn {
+            background-color: #24316F;
+            color: #fff;
+            outline-color: #fff;
+          }
+          .blue .checkoutBtn {
+            background-color: #fff;
+            color: #24316F;
+            outline-color: #24316F;
+          }
+          .checkoutBtn:focus {
+            outline-color: #ccc;
+          }
+          .checkoutBtn>p {
+            padding: 2px;
           }
           .stripeBadge {
             position: relative;

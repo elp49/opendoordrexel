@@ -5,15 +5,42 @@
     "isDonationPage": true
   },
   "sections": {
-    "donate": {
+    "customize": {
       "order": 1,
       "sectionDetails": {
-        "name": "donate",
+        "name": "customize",
         "theme": "white",
         "titles": [
           "Donate"
         ],
-        "subtitles": [],
+        "subtitles": [
+          "Customize"
+        ],
+        "descriptions": []
+      },
+      "amounts": [
+        5,
+        50,
+        100,
+        500
+      ],
+      "frequencies": [
+        "One Time",
+        "Monthly"
+      ],
+      "methods": [
+        "Card"
+      ]
+    },
+    "donate": {
+      "order": 99,
+      "sectionDetails": {
+        "name": "donate",
+        "theme": "white",
+        "titles": [],
+        "subtitles": [
+          "Donate"
+        ],
         "descriptions": [
           "100% of your donation will go towards the ministry's efforts in all that it does to give back to those in need."
         ]

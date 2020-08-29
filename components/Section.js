@@ -16,21 +16,21 @@ export default function Section({ sectionDetails, isRaw, isViewHeight, children 
           sectionDetails.titles.map((title, i) => {
             const key = `${id}SectionTitle-${i}`;
 
-            return <h1 key={key}>{title}</h1>;
+            return <h1 key={key} className={'title'}>{title}</h1>;
           })
         }
         {
           sectionDetails.subtitles.map((subtitle, i) => {
             const key = `${id}SectionSubtitle-${i}`;
 
-            return <h3 key={key} className={'grey'}>{subtitle}</h3>;
+            return <h3 key={key} className={'grey subtitle'}>{subtitle}</h3>;
           })
         }
         {
           sectionDetails.descriptions.map((description, i) => {
             const key = `${id}SectionDescription-${i}`;
 
-            return <p key={key} className={'grey'}>{description}</p>;
+            return <p key={key} className={'grey description'}>{description}</p>;
           })
         }
       </div>
@@ -53,12 +53,18 @@ export default function Section({ sectionDetails, isRaw, isViewHeight, children 
             margin: auto;
             text-align: center;
           }
-          .sectionTitle>h1 {
+          .title {
             margin-bottom: 20px;
             padding-top: 45px;
           }
-          .sectionTitle>h3, .sectionTitle>p {
-            max-width: 650px;
+          .subtitle {
+            max-width: 800px;
+            font-style: italic;
+          }
+          .description {
+            max-width: 1200px;
+          }
+          .subtitle, .description {
             margin: 0 auto 10px;
           }
           .sectionContent {
@@ -82,10 +88,10 @@ export default function Section({ sectionDetails, isRaw, isViewHeight, children 
             height: 100%;
           }
           @media only screen and (min-width: 1000px) {
-            .sectionTitle>h1 {
+            .title {
               margin-bottom: 30px;
             }
-            .sectionTitle>h3, .sectionTitle>p {
+            .subtitle, .description {
               margin-bottom: 15px;
             }
             .raw * {

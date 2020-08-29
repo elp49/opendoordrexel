@@ -36,7 +36,6 @@ export function getNextSectionsId(currentSectionsId) {
 
 export function scrollToNextSection(currentSectionsId) {
   const nextSectionsId = getNextSectionsId(currentSectionsId);
-  console.log(nextSectionsId);
   document.getElementById(nextSectionsId).scrollIntoView(true);
 }
 

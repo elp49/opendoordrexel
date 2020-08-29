@@ -1,6 +1,7 @@
 {
   "env": {
-    "STRIPE_SECRET": "@stripe-secret"
+    "STRIPE_SECRET": "@stripe-secret",
+    "STRIPE_PUBLIC": "@stripe-public"
   },
   "build": {
     "env": {

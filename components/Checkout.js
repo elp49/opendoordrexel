@@ -3,6 +3,8 @@ import { CardElement, Elements, useStripe, useElements } from '@stripe/react-str
 import axios from 'axios';
 import { isDefined, getTheme, ICONS } from '../components/Layout';
 
+const SUCCESS = 'success';
+
 function getCardSectionTheme(cardElement) {
   let theme;
   if (isDefined(cardElement))
@@ -19,6 +21,7 @@ function disableSubmit(id) {
 const CheckoutForm = ({ cardElement, success }) => {
   const submitBtnId = 'submitBtn';
   const theme = getCardSectionTheme(cardElement);
+
   const stripe = useStripe();
   const elements = useElements();
 
@@ -55,14 +58,14 @@ const CheckoutForm = ({ cardElement, success }) => {
       </div>
       <style jsx>
         {`
-          .white {
-            background-color: #fff;
-            color: #24316F;
-          }
-          .blue {
-            background-color: #24316F;
-            color: #fff;
-          }
+          // .white {
+          //   background-color: #fff;
+          //   color: #24316F;
+          // }
+          // .blue {
+          //   background-color: #24316F;
+          //   color: #fff;
+          // }
           .checkoutForm {
             position: relative;
             height: 100%;
@@ -72,16 +75,16 @@ const CheckoutForm = ({ cardElement, success }) => {
             outline-style: auto;
             outline-width: 1px;
           }
-          .white .checkoutBtn {
-            background-color: #24316F;
-            color: #fff;
-            outline-color: #fff;
-          }
-          .blue .checkoutBtn {
-            background-color: #fff;
-            color: #24316F;
-            outline-color: #24316F;
-          }
+          // .white .checkoutBtn {
+          //   background-color: #24316F;
+          //   color: #fff;
+          //   outline-color: #fff;
+          // }
+          // .blue .checkoutBtn {
+          //   background-color: #fff;
+          //   color: #24316F;
+          //   outline-color: #24316F;
+          // }
           .checkoutBtn:focus {
             outline-color: #ccc;
           }
@@ -98,15 +101,13 @@ const CheckoutForm = ({ cardElement, success }) => {
             position: absolute;
             top: 50%;
             left: 50%;
+            // background-image: url(${ICONS.stripe.solidDark});
             -webkit-transform: translate(-50%, -50%);
             -moz-transform: translate(-50%, -50%);
             -ms-transform: translate(-50%, -50%);
             -o-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
             transition-duration: .3s;
-          }
-          .white .stripeBadge>i {
-            background-image: url(${ICONS.stripe.solidDark});
           }
           .blue .stripeBadge>i {
             background-image: url(${ICONS.stripe.solidLight});
@@ -122,12 +123,12 @@ const stripePromise = loadStripe(process.env.STRIPE_PUBLIC);
 export default function Checkout({ cardElement }) {
   const [status, setStatus] = React.useState('ready');
 
-  if (status === 'success')
+  if (status === SUCCESS)
     return <div>Thank you for your donation!</div>;
 
   return (
     <Elements stripe={stripePromise}>
-      <CheckoutForm cardElement={cardElement} success={() => setStatus('success')} />
+      <CheckoutForm cardElement={cardElement} success={() => setStatus(SUCCESS)} />
     </Elements>
   );
 }

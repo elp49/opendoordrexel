@@ -28,12 +28,91 @@
         "One Time",
         "Monthly"
       ],
-      "methods": [
-        "Card"
-      ]
+      "anonymity": {
+        "giveOption": true,
+        "prompt": "Donate anonymously"
+      }
+    },
+    "info": {
+      "order": 2,
+      "sectionDetails": {
+        "name": "info",
+        "theme": "white",
+        "titles": [],
+        "subtitles": [
+          "Your Info"
+        ],
+        "descriptions": [],
+        "formItems": [
+          {
+            "order": 1,
+            "isHalfWidth": true,
+            "label": "First Name",
+            "name": "firstName",
+            "type": "text",
+            "placeholder": "First Name"
+          },
+          {
+            "order": 2,
+            "isHalfWidth": true,
+            "label": "Last Name",
+            "name": "lastName",
+            "type": "text",
+            "placeholder": "Last Name"
+          },
+          {
+            "order": 3,
+            "isHalfWidth": false,
+            "label": "Email",
+            "name": "email",
+            "type": "text",
+            "placeholder": "Email"
+          },
+          {
+            "order": 4,
+            "isHalfWidth": false,
+            "label": "Street Address",
+            "name": "address",
+            "type": "text",
+            "placeholder": "Street Address"
+          },
+          {
+            "order": 5,
+            "isHalfWidth": false,
+            "label": "City",
+            "name": "city",
+            "type": "text",
+            "placeholder": "City"
+          },
+          {
+            "order": 6,
+            "isHalfWidth": true,
+            "label": "State",
+            "name": "state",
+            "type": "text",
+            "placeholder": "State"
+          },
+          {
+            "order": 7,
+            "isHalfWidth": true,
+            "label": "Zip Code",
+            "name": "zip",
+            "type": "text",
+            "placeholder": "Zip Code"
+          },
+          {
+            "order": 8,
+            "isHalfWidth": false,
+            "label": "Country",
+            "name": "country",
+            "type": "text",
+            "placeholder": "Country"
+          }
+        ]
+      }
     },
     "donate": {
-      "order": 99,
+      "order": 3,
       "sectionDetails": {
         "name": "donate",
         "theme": "white",

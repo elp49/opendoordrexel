@@ -1,5 +1,8 @@
 {
     "name": "tuesdays",
+    "pageDetails": {
+      "title": "Dinner & Worship"
+    },
     "sections": {
         "dinner": {
             "order": 1,

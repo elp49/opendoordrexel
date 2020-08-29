@@ -1,5 +1,6 @@
-import styles from './Carousel.module.css'
-import { isDefined, getTheme, sortListByReverseOrder } from './Layout'
+import { useEffect } from 'react';
+import { isDefined, getTheme, sortListByReverseOrder } from './Layout';
+import styles from './Carousel.module.css';
 
 const LEFT = -1;
 const RIGHT = 1;
@@ -13,13 +14,14 @@ function getCarouselContainerElementById(carouselId) {
 }
 
 function getAllCards(carouselId) {
-  console.log(`in getAllCards(${carouselId})`)
   const carousel = getCarouselElementById(carouselId);
-  console.log(`carousel: ${carousel}`)
   return carousel.getElementsByClassName(styles.card);
 }
 
 function getCardStyle(carouselId) {
+  if (!isDefined(window))
+    return;
+
   const card = getAllCards(carouselId)[0];
   return window.getComputedStyle(card) || card.currentStyle;
 }
@@ -68,7 +70,7 @@ function exitFullScreen(carouselId) {
   const container = getCarouselContainerElementById(carouselId);
   container.classList.remove('overlay');
 
-  // Clean up key press callback.
+  // Clean up key press handle.
   document.onkeydown = null;
 }
 
@@ -111,7 +113,7 @@ function scrollCarousel(carouselId, direction) {
 // fullscreen and the user presses a key. keys other than left and right arrows
 // should be ignored.
 function checkKey(carouselId) {
-  if (!isInFullscreen(carouselId))
+  if (!isInFullscreen(carouselId) || !isDefined(window))
     return;
 
   let key = window.event.keyCode;
@@ -159,15 +161,17 @@ function removeScrollbar(carouselId) {
 }
 
 export async function componentDidMount(carouselId) {
-  if (!isDefined(window))
-    return;
+  useEffect(() => {
+    if (!isDefined(window))
+      return;
 
-  if (/Mobi|Android/i.test(navigator.userAgent) && window.screen.width < 1000) {
-    // If the user is on a mobile device with screen width less than 1000px,
-    // then remove the scrollbar.
-    // NOTE: exceptions to the mobile device rule are iPad pros and some tablets.
-    removeScrollbar(`${carouselId}Carousel`);
-  }
+    if (/Mobi|Android/i.test(navigator.userAgent) && window.screen.width < 1000) {
+      // If the user is on a mobile device with screen width less than 1000px,
+      // then remove the scrollbar.
+      // NOTE: exceptions to the mobile device rule are iPad pros and some tablets.
+      removeScrollbar(carouselId);
+    }
+  }, []);
 }
 
 export default function Carousel({ carousel }) {

@@ -1,5 +1,8 @@
 {
   "name": "outreach",
+  "pageDetails": {
+    "title": "Outreach"
+  },
   "sections": {
     "intro": {
       "order": 1,

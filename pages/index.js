@@ -1,10 +1,10 @@
-import fetch from 'node-fetch'
-import home from './index.json'
-import Layout, { isDefined, sortListByOrder } from '../components/Layout'
-import Slideshow from '../components/Slideshow'
-import Section from '../components/Section'
-import Carousel from '../components/Carousel'
-import Announcements from '../components/Announcements'
+import fetch from 'node-fetch';
+import home from './index.json';
+import Layout, { isDefined, sortListByOrder } from '../components/Layout';
+import Slideshow from '../components/Slideshow';
+import Section from '../components/Section';
+import Carousel from '../components/Carousel';
+import Announcements from '../components/Announcements';
 
 const PAGE_NAME = 'home';
 
@@ -12,23 +12,24 @@ function buildWelcomeSection(welcome) {
   if (!isDefined(welcome))
     return;
 
+  const { order, sectionDetails } = welcome;
   const slideshowList = sortListByOrder(welcome.slideshowList);
   const slideshowListJsx = (
-    <Section sectionDetails={welcome.sectionDetails} isRaw={true} isViewHeight={true}>
+    <Section sectionDetails={sectionDetails} isRaw={true} isViewHeight={true}>
       {
         slideshowList.map((slideshowListItem, i) => {
           const { slideshow } = slideshowListItem;
           const key = `${slideshow.name}Slideshow-${i}`;
 
-          return <Slideshow key={key} slideshow={slideshow} />
+          return <Slideshow key={key} slideshow={slideshow} />;
         })
       }
     </Section>
   );
 
   return {
-    order: welcome.order,
-    name: welcome.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: slideshowListJsx
   };
 }
@@ -84,16 +85,17 @@ function buildIntroSection(intro) {
   if (!isDefined(intro))
     return;
 
+  const { order, sectionDetails } = intro;
   const introLinkJsx = buildIntroLinks(intro.links);
   const introJsx = (
-    <Section sectionDetails={intro.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {introLinkJsx}
     </Section>
   );
 
   return {
-    order: intro.order,
-    name: intro.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: introJsx
   };
 }
@@ -105,22 +107,23 @@ function buildNewsSection(news) {
   //const posts = announcements.posts
   // put sortListByDate(list) {} in announcements component.
 
+  const { order, sectionDetails } = news;
   const announcementsList = sortListByOrder(news.announcementsList);
   const announcementsListJsx = (
-    <Section sectionDetails={news.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {
         announcementsList.map((announcementsListItem, i) => {
-          const key = `${news.name}Announcements-${i}`;
+          const key = `${sectionDetails.name}Announcements-${i}`;
 
-          return <Announcements key={key} announcements={announcementsListItem.announcements} />
+          return <Announcements key={key} announcements={announcementsListItem.announcements} />;
         })
       }
     </Section>
   );
 
   return {
-    order: news.order,
-    name: news.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: announcementsListJsx
   };
 }
@@ -129,22 +132,23 @@ function buildActivitiesSection(activities) {
   if (!isDefined(activities))
     return;
 
+  const { order, sectionDetails } = activities;
   const carouselList = sortListByOrder(activities.carouselList);
   const carouselListJsx = (
-    <Section sectionDetails={activities.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {
         carouselList.map((carouselListItem, i) => {
-          const key = `${activities.name}Carousel-${i}`;
+          const key = `${sectionDetails.name}Carousel-${i}`;
 
-          return <Carousel key={key} carousel={carouselListItem.carousel} />
+          return <Carousel key={key} carousel={carouselListItem.carousel} />;
         })
       }
     </Section>
   );
 
   return {
-    order: activities.order,
-    name: activities.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: carouselListJsx
   };
 }
@@ -182,7 +186,7 @@ export default function Home({ pageSections }) {
   const sectionList = buildSectionList(home.sections);
 
   return (
-    <Layout>
+    <Layout pageDetails={home.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

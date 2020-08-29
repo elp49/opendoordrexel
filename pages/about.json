@@ -1,5 +1,8 @@
 {
   "name": "about",
+  "pageDetails": {
+    "title": "About"
+  },
   "sections": {
     "intro": {
       "order": 1,

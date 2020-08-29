@@ -1,10 +1,12 @@
-import layout from './Layout.json'
-import Overlay from './Overlay'
-import styles from './Layout.module.css'
+import Head from 'next/head';
+import layout from './Layout.json';
+import Overlay from './Overlay';
+import styles from './Layout.module.css';
 
 export const DEFAULT_THEME = 'white';
 export const THEME_LIST = [DEFAULT_THEME, 'blue'];
 export const ICONS = layout.icons;
+const DEFAULT_PAGE_TITLE = 'Open Door Christian Community';
 
 export function isDefined(a) {
   if (typeof a !== 'undefined')
@@ -14,10 +16,10 @@ export function isDefined(a) {
 }
 
 export function getTheme(theme) {
-  if (isDefined(theme) && THEME_LIST.includes(theme))
-    return theme;
+  if (!isDefined(theme) || !THEME_LIST.includes(theme))
+    return DEFAULT_THEME;
 
-  return DEFAULT_THEME;
+  return theme;
 }
 
 export function sortListByOrder(list) {
@@ -28,10 +30,36 @@ export function sortListByReverseOrder(list) {
   return list.sort((a, b) => b.reverseOrder - a.reverseOrder);
 }
 
+export function getNextSectionsId(currentSectionsId) {
+  return document.getElementById(currentSectionsId).nextSibling.id;
+}
+
+export function scrollToNextSection(currentSectionsId) {
+  const nextSectionsId = getNextSectionsId(currentSectionsId);
+  document.getElementById(nextSectionsId).scrollIntoView(true);
+}
+
+function getPageDetails(pageDetails) {
+  if (!isDefined(pageDetails))
+    return {
+      pageTitle: DEFAULT_PAGE_TITLE
+    };
+
+  let { title } = pageDetails;
+  if (!isDefined(title))
+    title = DEFAULT_PAGE_TITLE;
+  else
+    title = title + " | " + DEFAULT_PAGE_TITLE;
+
+  return {
+    pageTitle: title
+  };
+}
+
 function toggleOverlay(id) {
   document.getElementById(id).classList.toggle(styles.layoutFixed);
   document.getElementById(`${id}Overlay`).classList.toggle(styles.overlayActive);
-};
+}
 
 function getLastSection(layoutChildren) {
   if (!isDefined(layoutChildren) || layoutChildren.length === 0)
@@ -59,12 +87,13 @@ function getFooterTheme(lastSectionTheme) {
   if (lastSectionTheme === DEFAULT_THEME)
     return THEME_LIST[1];
 
-  return DEFAULT_THEME
+  return DEFAULT_THEME;
 }
 
-export default function Layout({ children }) {
+export default function Layout({ children, pageDetails }) {
   const id = isDefined(layout.name) ? layout.name : 'layout';
   const theme = isDefined(layout.themes) ? getTheme(layout.themes.layout) : DEFAULT_THEME;
+  const { pageTitle } = getPageDetails(pageDetails);
   const pageList = sortListByOrder(layout.pageList);
   const socialMedia = sortListByOrder(layout.socialMedia);
   const lastSectionTheme = getLastSectionTheme(children);
@@ -75,6 +104,10 @@ export default function Layout({ children }) {
 
   return (
     <div id={id} className={styles.layout}>
+      <Head>
+        <title>{pageTitle}</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <header className={theme}>
         <div className={styles.header}>
           <div className={styles.headerLogo}>
@@ -93,7 +126,7 @@ export default function Layout({ children }) {
             {
               pageList.map((page, i) => {
                 const key = `${id}HeaderPage-${i}`;
-                const { order, href, title } = page;
+                const { order, title, href } = page;
 
                 return (
                   <li key={key} value={order}>
@@ -101,7 +134,7 @@ export default function Layout({ children }) {
                       {title}
                     </a>
                   </li>
-                )
+                );
               })
             }
           </ol>
@@ -117,7 +150,7 @@ export default function Layout({ children }) {
             {
               socialMedia.map((media, i) => {
                 const key = `${id}FooterMedia-${i}`;
-                const { order, href, name } = media;
+                const { order, name, href } = media;
 
                 return (
                   <li key={key} value={order}>
@@ -125,7 +158,7 @@ export default function Layout({ children }) {
                       <i className={name.toLowerCase()}></i>
                     </a>
                   </li>
-                )
+                );
               })
             }
           </ol>
@@ -140,15 +173,15 @@ export default function Layout({ children }) {
             {
               pageList.map((page, i) => {
                 const key = `${id}FooterPage-${i}`;
-                const { order, name, href } = page;
+                const { order, title, href } = page;
 
                 return (
                   <li key={key} value={order}>
-                    <a href={`/${href}`} title={name}>
-                      {name}
+                    <a href={href} title={title}>
+                      {title}
                     </a>
                   </li>
-                )
+                );
               })
             }
           </ol>

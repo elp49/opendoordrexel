@@ -1,4 +1,4 @@
-import { isDefined, getTheme } from './Layout'
+import { isDefined, getTheme } from './Layout';
 
 export default function Section({ sectionDetails, isRaw, isViewHeight, children }) {
   if (!isDefined(sectionDetails))
@@ -16,21 +16,21 @@ export default function Section({ sectionDetails, isRaw, isViewHeight, children 
           sectionDetails.titles.map((title, i) => {
             const key = `${id}SectionTitle-${i}`;
 
-            return <h1 key={key}>{title}</h1>
+            return <h1 key={key}>{title}</h1>;
           })
         }
         {
           sectionDetails.subtitles.map((subtitle, i) => {
             const key = `${id}SectionSubtitle-${i}`;
 
-            return <h3 key={key} className={'grey'}>{subtitle}</h3>
+            return <h3 key={key} className={'grey'}>{subtitle}</h3>;
           })
         }
         {
           sectionDetails.descriptions.map((description, i) => {
             const key = `${id}SectionDescription-${i}`;
 
-            return <p key={key} className={'grey'}>{description}</p>
+            return <p key={key} className={'grey'}>{description}</p>;
           })
         }
       </div>

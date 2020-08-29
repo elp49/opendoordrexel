@@ -1,6 +1,6 @@
-import tuesdays from './tuesdays.json'
-import Layout, { isDefined, sortListByOrder } from '../components/Layout'
-import Section from '../components/Section'
+import tuesdays from './tuesdays.json';
+import Layout, { isDefined, sortListByOrder } from '../components/Layout';
+import Section from '../components/Section';
 import Carousel from '../components/Carousel';
 
 const PAGE_NAME = 'tuesdays';
@@ -9,22 +9,23 @@ function buildCarouselSection(section) {
   if (!isDefined(section))
     return;
 
+  const { order, sectionDetails } = section;
   const carouselList = sortListByOrder(section.carouselList);
   const carouselListJsx = (
-    <Section sectionDetails={section.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {
         carouselList.map((carouselListItem, i) => {
-          const key = `${section.name}Carousel-${i}`;
+          const key = `${sectionDetails.name}Carousel-${i}`;
 
-          return <Carousel key={key} carousel={carouselListItem.carousel} />
+          return <Carousel key={key} carousel={carouselListItem.carousel} />;
         })
       }
     </Section>
   );
 
   return {
-    order: section.order,
-    name: section.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: carouselListJsx
   };
 }
@@ -58,7 +59,7 @@ export default function Tuesdays() {
   const sectionList = buildSectionList(tuesdays.sections);
 
   return (
-    <Layout>
+    <Layout pageDetails={tuesdays.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

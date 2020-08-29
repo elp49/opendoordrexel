@@ -1,4 +1,4 @@
-import { isDefined, getTheme, sortListByOrder, ICONS } from './Layout'
+import { isDefined, getTheme, sortListByOrder, ICONS } from './Layout';
 
 function sortTimelineEventList(eventList) {
   let events = eventList;
@@ -49,7 +49,7 @@ export default function Timeline({ timeline }) {
           .timeline {
             max-width: 1100px;
             margin: 30px 20px;
-            padding: 45px;
+            padding: 0;
             border-radius: 10px;
           }
           .white.timeline {
@@ -118,6 +118,7 @@ export default function Timeline({ timeline }) {
           @media only screen and (min-width: 1000px) {
             .timeline {
               margin: 55px auto;
+              padding: 45px;
             }
             .event {
               margin: 45px 0;

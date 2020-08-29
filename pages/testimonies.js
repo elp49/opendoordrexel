@@ -1,6 +1,6 @@
-import testimonies from './testimonies.json'
-import Layout, { isDefined, sortListByOrder } from '../components/Layout'
-import Section from '../components/Section'
+import testimonies from './testimonies.json';
+import Layout, { isDefined, sortListByOrder } from '../components/Layout';
+import Section from '../components/Section';
 
 const PAGE_NAME = 'testimonies';
 
@@ -32,16 +32,17 @@ function buildIntroSection(intro) {
   if (!isDefined(intro))
     return;
 
+  const { order, sectionDetails } = intro;
   const introLinkJsx = buildIntroLinks(intro.links);
   const introJsx = (
-    <Section sectionDetails={intro.sectionDetails}>
+    <Section sectionDetails={sectionDetails}>
       {introLinkJsx}
     </Section>
   );
 
   return {
-    order: intro.order,
-    name: intro.sectionDetails.name,
+    order: order,
+    name: sectionDetails.name,
     jsx: introJsx
   };
 }
@@ -94,7 +95,7 @@ export default function Testimonies() {
   const sectionList = buildSectionList(testimonies.sections);
 
   return (
-    <Layout>
+    <Layout pageDetails={testimonies.pageDetails}>
       {
         sectionList.map(section => {
           const key = `${PAGE_NAME}Section-${section.order}`;

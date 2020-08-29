@@ -112,11 +112,11 @@ export default function About() {
     <Layout pageDetails={about.pageDetails}>
       {
         sectionList.map(section => {
-          const key = `${PAGE_NAME}Section-${section.order}`;
+          // const key = `${PAGE_NAME}Section-${section.order}`;
           const id = `${section.name}`;
 
           return (
-            <div key={key} id={id}>
+            <div key={id} id={id}>
               {section.jsx}
             </div>
           );

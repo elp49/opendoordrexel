@@ -27,6 +27,11 @@
         },
         {
             "order": 5,
+            "title": "Campus Ministers",
+            "href": "/staff"
+        },
+        {
+            "order": 6,
             "title": "About",
             "href": "/about"
         }

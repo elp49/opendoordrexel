@@ -1,5 +1,36 @@
 import { isDefined, getTheme } from './Layout';
 
+function buildImageJsx(path) {
+  if (!isDefined(path))
+    return;
+
+  return (
+    <div className={'picture'} style={{ backgroundImage: `url(${path})` }}>
+      <style jsx>
+        {`
+          .picture {
+            height: 45%;
+            min-height: 200px;
+            width: 45%;
+            min-width: 200px;
+            margin: 55px auto;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+          }
+          @media only screen and (min-width: 1000px) {
+            .picture {
+              height: 450px;
+              width: 450px;
+            }
+          }
+        `}
+      </style>
+    </div>
+  );
+}
+
 export default function Section({ sectionDetails, isRaw, isViewHeight, children }) {
   if (!isDefined(sectionDetails))
     return;
@@ -8,6 +39,7 @@ export default function Section({ sectionDetails, isRaw, isViewHeight, children 
   const theme = getTheme(sectionDetails.theme);
   const raw = isRaw ? 'raw' : '';
   const viewHeight = isViewHeight ? 'viewHeight' : '';
+  const imageJsx = buildImageJsx(sectionDetails.image);
 
   return (
     <section id={`${id}Section`} className={`${theme} ${raw} ${viewHeight}`} style={{ position: 'relative' }}>
@@ -26,6 +58,7 @@ export default function Section({ sectionDetails, isRaw, isViewHeight, children 
             return <h3 key={key} className={'grey subtitle'}>{subtitle}</h3>;
           })
         }
+        {imageJsx}
         {
           sectionDetails.descriptions.map((description, i) => {
             const key = `${id}SectionDescription-${i}`;

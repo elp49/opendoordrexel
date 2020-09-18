@@ -1,6 +1,7 @@
 import testimonies from './testimonies.json';
-import Layout, { isDefined, sortListByOrder } from '../components/Layout';
+import Layout, { isDefined, sortListByOrder, getTheme } from '../components/Layout';
 import Section from '../components/Section';
+import VideoCarousel from '../components/VideoCarousel'
 
 const PAGE_NAME = 'testimonies';
 
@@ -51,18 +52,24 @@ function buildTestimoniesSection(testimonies) {
   if (!isDefined(testimonies))
     return;
 
-  // const testimonyList = sortListByOrder(testimonies.testimonyList);
-  // const testimonyListJsx = (
-  //   <Section sectionDetails={testimonies.sectionDetails}>
-  //     <Testimonies testimonies={testimonyList} />
-  //   </Section>
-  // );
-  const testimonyListJsx = <div></div>;
+  const { order, sectionDetails } = testimonies;
+  const videoCarouselList = sortListByOrder(testimonies.videoCarouselList);
+  const testimoniesJsx = (
+    <Section sectionDetails={sectionDetails}>
+      {
+        videoCarouselList.map((listItem, i) => {
+          const key = `${sectionDetails.name}VideoCarousel-${i}`;
+
+          return <VideoCarousel key={key} videoCarousel={listItem.videoCarousel} />;
+        })
+      }
+    </Section>
+  );
 
   return {
-    order: testimonies.order,
-    name: testimonies.sectionDetails.name,
-    jsx: testimonyListJsx
+    order: order,
+    name: sectionDetails.name,
+    jsx: testimoniesJsx
   };
 }
 

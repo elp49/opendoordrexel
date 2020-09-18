@@ -98,9 +98,8 @@ export default function Layout({ children, pageDetails }) {
   const socialMedia = sortListByOrder(layout.socialMedia);
   const lastSectionTheme = getLastSectionTheme(children);
   const footerTheme = getFooterTheme(lastSectionTheme);
-  const donate = layout.donate;
-  const mailingList = layout.mailingList;
-  const footer = layout.footer;
+  const { donate, mailingList } = layout;
+  const { contact } = layout.footer;
 
   return (
     <div id={id} className={styles.layout}>
@@ -195,9 +194,9 @@ export default function Layout({ children, pageDetails }) {
             </form>
           </div>
           <div className={styles.footerCaption}>
-            <p>{footer.contact.location}</p>
-            <p>{footer.contact.address}</p>
-            <p>{footer.contact.phone} - <a href={`mailto:${footer.contact.email}`} title='Email'>{footer.contact.email}</a></p>
+            <p>{contact.location}</p>
+            <p>{contact.address}</p>
+            <p>{contact.phone} - <a href={`mailto:${contact.email}`} title='Email'>{contact.email}</a></p>
             <small>Copyright &copy; {new Date().getFullYear()} <strong>Open Door Christian Community.</strong> All Rights Reserved</small>
           </div>
         </div>

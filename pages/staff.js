@@ -9,7 +9,7 @@ function buildMinisterSection(minister) {
   if (!isDefined(minister))
     return;
 
-  const { order, sectionDetails, image } = minister;
+  const { order, sectionDetails} = minister;
   const ministerJsx = <Section sectionDetails={sectionDetails}></Section>;
 
   return {

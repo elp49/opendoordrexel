@@ -5,24 +5,36 @@ function buildImageJsx(path) {
     return;
 
   return (
-    <div className={'picture'} style={{ backgroundImage: `url(${path})` }}>
+    <div className={'pictureContainer'}>
+      <div className={'picture'} style={{ backgroundImage: `url(${path})` }}></ div>
       <style jsx>
         {`
+          .pictureContainer {
+            width: 100%;
+            height: 150px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+          }
           .picture {
-            height: 45%;
-            min-height: 200px;
-            width: 45%;
-            min-width: 200px;
-            margin: 55px auto;
+            height: 100%;
+            margin: auto;
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
-            border-radius: 10px;
+            background-size: contain;
+          }
+          @media only screen and (min-width: 500px) {
+            .pictureContainer {
+              height: 200px;
+            }
+          }
+          @media only screen and (min-width: 800px) {
+            .pictureContainer {
+              height: 300px;
+            }
           }
           @media only screen and (min-width: 1000px) {
             .picture {
-              height: 450px;
-              width: 450px;
+              max-width: 650px;
             }
           }
         `}

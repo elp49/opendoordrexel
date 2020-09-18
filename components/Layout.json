@@ -54,7 +54,7 @@
     ],
     "donate": {
         "buttonText": "Donate",
-        "href": "/"
+        "href": "/donate"
     },
     "footer": {
         "contact": {

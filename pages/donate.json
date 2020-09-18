@@ -1,0 +1,25 @@
+{
+    "name": "donate",
+    "sections": {
+        "info": {
+            "order": 1,
+            "sectionDetails": {
+                "name": "info",
+                "theme": "white",
+                "titles": [
+                    "Donate to help those in need."
+                ],
+                "subtitles": [],
+                "descriptions": [
+                    "Send checks to:",
+                    "Eastern PA Conference c/o Wesley Student Foundation",
+                    "P.O. Box 820 Valley Forge, PA 19482-0820",
+                    "",
+                    "In the memo please indicate:",
+                    "Open Door Christian Community",
+                    ""
+                ]
+            }
+        }
+    }
+}

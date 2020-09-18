@@ -312,13 +312,16 @@ function buildFeedControllerJsx(id, announcementsTheme) {
 }
 
 export default function Announcements({ announcements }) {
+  if (!isDefined(announcements))
+    return;
+
   const id = isDefined(announcements.name) ? announcements.name : 'announcements';
   const theme = getTheme(announcements.theme);
   const postListJsx = buildPostListJsx(id, theme, announcements.postList);
   const feedControllerJsx = buildFeedControllerJsx(id, theme);
 
   return (
-    <div id={`${id}Announcements`} style={{ maxHeight: 650 + 'px', overflow: 'hidden' }}>
+    <div id={id} style={{ maxHeight: 650 + 'px', overflow: 'hidden' }}>
       {postListJsx}
       {feedControllerJsx}
     </div>

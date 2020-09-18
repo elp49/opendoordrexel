@@ -39,6 +39,10 @@ export function scrollToNextSection(currentSectionsId) {
   document.getElementById(nextSectionsId).scrollIntoView(true);
 }
 
+export function fixFilePath(file) {
+  return file.replace(/\\/g, '/');
+}
+
 function getPageDetails(pageDetails) {
   if (!isDefined(pageDetails))
     return {

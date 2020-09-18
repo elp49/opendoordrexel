@@ -14,7 +14,7 @@ function buildWelcomeSection(welcome) {
 
   const { order, sectionDetails } = welcome;
   const slideshowList = sortListByOrder(welcome.slideshowList);
-  const slideshowListJsx = (
+  const welcomeJsx = (
     <Section sectionDetails={sectionDetails} isRaw={true} isViewHeight={true}>
       {
         slideshowList.map((slideshowListItem, i) => {
@@ -30,7 +30,7 @@ function buildWelcomeSection(welcome) {
   return {
     order: order,
     name: sectionDetails.name,
-    jsx: slideshowListJsx
+    jsx: welcomeJsx
   };
 }
 
@@ -109,7 +109,7 @@ function buildNewsSection(news) {
 
   const { order, sectionDetails } = news;
   const announcementsList = sortListByOrder(news.announcementsList);
-  const announcementsListJsx = (
+  const newsJsx = (
     <Section sectionDetails={sectionDetails}>
       {
         announcementsList.map((announcementsListItem, i) => {
@@ -124,7 +124,7 @@ function buildNewsSection(news) {
   return {
     order: order,
     name: sectionDetails.name,
-    jsx: announcementsListJsx
+    jsx: newsJsx
   };
 }
 
@@ -134,7 +134,7 @@ function buildActivitiesSection(activities) {
 
   const { order, sectionDetails } = activities;
   const carouselList = sortListByOrder(activities.carouselList);
-  const carouselListJsx = (
+  const activitiesJsx = (
     <Section sectionDetails={sectionDetails}>
       {
         carouselList.map((carouselListItem, i) => {
@@ -149,7 +149,7 @@ function buildActivitiesSection(activities) {
   return {
     order: order,
     name: sectionDetails.name,
-    jsx: carouselListJsx
+    jsx: activitiesJsx
   };
 }
 

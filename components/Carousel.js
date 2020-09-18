@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { isDefined, getTheme, sortListByReverseOrder } from './Layout';
+import { isDefined, getTheme, sortListByReverseOrder, fixFilePath } from './Layout';
 import styles from './Carousel.module.css';
 
 const LEFT = -1;
@@ -123,16 +123,17 @@ function checkKey(carouselId) {
     scrollCarousel(carouselId, RIGHT);
 }
 
-function fixCardImagePaths(list) {
-  return list.map(card => card.image.replace(/\\/g, '/'));
-}
-
 function buildCardList(list) {
   if (!isDefined(list) || list.length === 0)
     return [];
 
   let cardList = sortListByReverseOrder(list);
-  cardList = fixCardImagePaths(cardList);
+  cardList = cardList.filter(card => {
+    if (isDefined(card.image))
+      return true;
+  }).map((card) => {
+    return fixFilePath(card.image);
+  });
 
   return cardList;
 }

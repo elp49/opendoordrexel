@@ -16,22 +16,11 @@
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  /* cursor: move;
-  cursor: grab;
-  cursor: -moz-grab;
-  cursor: -webkit-grab; */
   overflow-y: hidden;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
 }
-
-/* .carousel:active {
-  cursor: move;
-  cursor: grabbing;
-  cursor: -moz-grabbing;
-  cursor: -webkit-grabbing;
-} */
 
 .carousel::-webkit-scrollbar {
   height: 10px;

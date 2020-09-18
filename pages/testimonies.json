@@ -19,19 +19,6 @@
                     "More content coming soon..."
                 ]
             },
-            "links": []
-        },
-        "testimonies": {
-            "order": 2,
-            "sectionDetails": {
-                "name": "testimonies",
-                "theme": "blue",
-                "titles": [
-                    "Their Stories"
-                ],
-                "subtitles": [],
-                "descriptions": []
-            },
             "videoCarouselList": [
                 {
                     "order": 1,

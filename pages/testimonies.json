@@ -15,14 +15,12 @@
                 "subtitles": [
                     "Learn what some of our members have to say."
                 ],
-                "descriptions": [
-                    "More content coming soon..."
-                ]
+                "descriptions": []
             },
-            "videoCarouselList": [
+            "videoPlayerList": [
                 {
                     "order": 1,
-                    "videoCarousel": {
+                    "videoPlayer": {
                         "name": "testimonies",
                         "theme": "white",
                         "videoList": [

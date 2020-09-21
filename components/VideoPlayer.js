@@ -1,6 +1,6 @@
 import ReactPlayer from 'react-player'
-import { isDefined, sortListByReverseOrder, getTheme, fixFilePath } from '../components/Layout';
-import styles from './VideoCarousel.module.css'
+import { isDefined, sortListByReverseOrder, getTheme, fixFilePath } from './Layout';
+import styles from './VideoPlayer.module.css'
 
 function buildVideoList(list) {
   if (!isDefined(list) || list.length === 0)
@@ -18,18 +18,18 @@ function buildVideoList(list) {
   return videoList;
 }
 
-export default function VideoCarousel({ videoCarousel }) {
-  if (!isDefined(videoCarousel))
+export default function VideoPlayer({ videoPlayer }) {
+  if (!isDefined(videoPlayer))
     return;
 
-  const id = isDefined(videoCarousel.name) ? videoCarousel.name : 'videoCarousel';
-  const theme = getTheme(videoCarousel.theme);
-  const videoList = buildVideoList(videoCarousel.videoList);
+  const id = isDefined(videoPlayer.name) ? videoPlayer.name : 'videoPlayer';
+  const theme = getTheme(videoPlayer.theme);
+  const videoList = buildVideoList(videoPlayer.videoList);
 
   return (
     <div className={theme}>
-      <div id={`videoCarouselContainer`}>
-        <ol id={id}>
+      <div id={`videoPlayerContainer`}>
+        <ol id={id} className={styles.videoList}>
           {
             videoList.map((listItem, i) => {
               const videoId = `${id}Video-${i}`;
@@ -38,10 +38,12 @@ export default function VideoCarousel({ videoCarousel }) {
 
               return (
                 <li key={videoId} id={videoId} className={`${styles.testimony} ${className}`}>
-                  <h1 className={styles.title}>{title}</h1>
-                  <ReactPlayer url={video} controls
-                    width={'100%'} height={'auto'}
-                    style={{ margin: 'auto' }} />
+                  <h2 className={styles.title}>{title}</h2>
+                  <div className={styles.playerWrapper}>
+                    <ReactPlayer url={video} controls
+                    height={'100%'} width={'100%'}
+                    className={styles.reactPlayer} />
+                  </div>
                 </li>
               );
             })

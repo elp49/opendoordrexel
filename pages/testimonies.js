@@ -1,7 +1,7 @@
 import testimonies from './testimonies.json';
 import Layout, { isDefined, sortListByOrder, getTheme } from '../components/Layout';
 import Section from '../components/Section';
-import VideoCarousel from '../components/VideoCarousel'
+import VideoPlayer from '../components/VideoPlayer'
 
 const PAGE_NAME = 'testimonies';
 
@@ -10,14 +10,14 @@ function buildIntroSection(intro) {
     return;
 
   const { order, sectionDetails } = intro;
-  const videoCarouselList = sortListByOrder(intro.videoCarouselList);
+  const videoPlayerList = sortListByOrder(intro.videoPlayerList);
   const introJsx = (
     <Section sectionDetails={sectionDetails}>
       {
-        videoCarouselList.map((listItem, i) => {
-          const key = `${sectionDetails.name}VideoCarousel-${i}`;
+        videoPlayerList.map((listItem, i) => {
+          const key = `${sectionDetails.name}VideoPlayer-${i}`;
 
-          return <VideoCarousel key={key} videoCarousel={listItem.videoCarousel} />;
+          return <VideoPlayer key={key} videoPlayer={listItem.videoPlayer} />;
         })
       }
     </Section>

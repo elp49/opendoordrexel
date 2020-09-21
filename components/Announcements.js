@@ -321,7 +321,7 @@ export default function Announcements({ announcements }) {
   const feedControllerJsx = buildFeedControllerJsx(id, theme);
 
   return (
-    <div id={id} style={{ maxHeight: 650 + 'px', overflow: 'hidden' }}>
+    <div id={`${id}Announcements`} style={{ maxHeight: 650 + 'px', overflow: 'hidden' }}>
       {postListJsx}
       {feedControllerJsx}
     </div>

@@ -163,61 +163,11 @@
         }
       ]
     },
-    "news": {
+    "activities": {
       "order": 3,
       "sectionDetails": {
-        "name": "news",
-        "theme": "blue",
-        "titles": [
-          "Announcements"
-        ],
-        "subtitles": [
-          "Sign up for our mailing list to stay up to date on our latest announcements."
-        ],
-        "descriptions": []
-      },
-      "announcementsList": [
-        {
-          "order": 1,
-          "announcements": {
-            "name": "general",
-            "theme": "blue",
-            "postList": [
-              {
-                "date": "2020-04-30T14:29:45.708Z",
-                "header": "Read this to know what happened",
-                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that. Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you."
-              },
-              {
-                "date": "2020-05-01T14:29:45.708Z",
-                "header": "We have something to announce",
-                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that. Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
-              },
-              {
-                "date": "2020-05-02T14:29:45.708Z",
-                "header": "This is another announcement",
-                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
-              },
-              {
-                "date": "2020-06-03T14:29:45.708Z",
-                "header": "We have some news",
-                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you."
-              },
-              {
-                "date": "2020-07-29T14:29:45.708Z",
-                "header": "This is another announcement",
-                "details": "Something happend and now we would like to tell you about it. Read this to find out what it is we want to tell you. If something else happens we will also let you know about that."
-              }
-            ]
-          }
-        }
-      ]
-    },
-    "activities": {
-      "order": 4,
-      "sectionDetails": {
         "name": "activities",
-        "theme": "white",
+        "theme": "blue",
         "titles": [
           "Activities"
         ],
@@ -226,12 +176,43 @@
         ],
         "descriptions": []
       },
+      "activitiesList": [
+        {
+          "order": 1,
+          "activities": {
+            "name": "activities",
+            "theme": "blue",
+            "postList": [
+              {
+                "date": "Mondays 8 pm ET",
+                "header": "Spiritual Discussions with Jack",
+                "details": "This is an open discussion without judgement and is not a teaching bible study - it is a discussion on spirituality and its effect on one’s life. Questions like: \"Is there a God?\", \"Why does Evil exist?\", \"What is Love?\", \"How do I manage all my new choices?\" \"Why are there so many religions?\""
+              },
+              {
+                "date": "Tuesdays 6-7 pm ET",
+                "header": "Spiritual Spiels",
+                "details": "Join an interactive discussion series on topics that are relevant and practical in today’s world. In addition the topics will explore how individuals can grow in their faith and relationship with God. Are you looking to explore your relationship with others and with God?"
+              },
+              {
+                "date": "Tuesdays 7-8 pm ET",
+                "header": "Ignite Your Prayer Life",
+                "details": "Experience God in a diversity of ways through this reflective and experiential service. Connecting with God using ancient and modern ways from a variety of faiths will be explored. Are you ready to see God differently?"
+              },
+              {
+                "date": "Fridays 10-11:30 pm ET",
+                "header": "Virtual Game Nights",
+                "details": "Join a virtual game night where you can meet other members and compete against fellow gamers."
+              }
+            ]
+          }
+        }
+      ],
       "carouselList": [
         {
           "order": 1,
           "carousel": {
             "name": "activities",
-            "theme": "blue",
+            "theme": "white",
             "cardList": [
               {
                 "reverseOrder": "1",

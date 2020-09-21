@@ -91,23 +91,23 @@ function dateObjectIsValid(dateObject) {
   return false;
 }
 
-function getDateString(date) {
-  let dateObj = new Date(date);
-  if (!dateObjectIsValid(dateObj))
-    dateObj = new Date(Date.now());
+// function getDateString(date) {
+//   let dateObj = new Date(date);
+//   if (!dateObjectIsValid(dateObj))
+//     dateObj = new Date(Date.now());
 
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const dateStr = dateObj.toLocaleDateString(undefined, options);
-  return dateStr;
-}
+//   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+//   const dateStr = dateObj.toLocaleDateString(undefined, options);
+//   return dateStr;
+// }
 
 function postListReducerCallback(list, post) {
   if (postIsValid(post)) {
     const { date, header, details } = post;
-    const dateStr = getDateString(date);
+    // const dateStr = getDateString(date);
 
     list.push({
-      date: dateStr,
+      date: date,
       header: header,
       details: details
     });

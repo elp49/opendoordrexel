@@ -100,47 +100,27 @@ function buildIntroSection(intro) {
   };
 }
 
-function buildNewsSection(news) {
-  if (!isDefined(news))
-    return;
-
-  //const posts = announcements.posts
-  // put sortListByDate(list) {} in announcements component.
-
-  const { order, sectionDetails } = news;
-  const announcementsList = sortListByOrder(news.announcementsList);
-  const newsJsx = (
-    <Section sectionDetails={sectionDetails}>
-      {
-        announcementsList.map((announcementsListItem, i) => {
-          const key = `${sectionDetails.name}Announcements-${i}`;
-
-          return <Announcements key={key} announcements={announcementsListItem.announcements} />;
-        })
-      }
-    </Section>
-  );
-
-  return {
-    order: order,
-    name: sectionDetails.name,
-    jsx: newsJsx
-  };
-}
-
 function buildActivitiesSection(activities) {
   if (!isDefined(activities))
     return;
 
   const { order, sectionDetails } = activities;
+  const activitiesList = sortListByOrder(activities.activitiesList);
   const carouselList = sortListByOrder(activities.carouselList);
   const activitiesJsx = (
     <Section sectionDetails={sectionDetails}>
-      {
-        carouselList.map((carouselListItem, i) => {
-          const key = `${sectionDetails.name}Carousel-${i}`;
+    {
+      carouselList.map((carouselListItem, i) => {
+        const key = `${sectionDetails.name}Carousel-${i}`;
 
-          return <Carousel key={key} carousel={carouselListItem.carousel} />;
+        return <Carousel key={key} carousel={carouselListItem.carousel} />;
+      })
+    }
+      {
+        activitiesList.map((activitiesListItem, i) => {
+          const key = `${sectionDetails.name}Activites-${i}`;
+
+          return <Announcements key={key} announcements={activitiesListItem.activities} />;
         })
       }
     </Section>
@@ -156,13 +136,11 @@ function buildActivitiesSection(activities) {
 function buildSections(pageSections) {
   const welcomeSection = buildWelcomeSection(pageSections.welcome);
   const introSection = buildIntroSection(pageSections.intro);
-  const newsSection = buildNewsSection(pageSections.news);
   const activitiesSection = buildActivitiesSection(pageSections.activities);
 
   return {
     welcome: welcomeSection,
     intro: introSection,
-    news: newsSection,
     activities: activitiesSection
   };
 }

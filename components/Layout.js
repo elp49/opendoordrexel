@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Head from 'next/head';
 import layout from './Layout.json';
 import Overlay from './Overlay';
@@ -5,6 +6,8 @@ import styles from './Layout.module.css';
 
 export const DEFAULT_THEME = 'white';
 export const THEME_LIST = [DEFAULT_THEME, 'blue'];
+const WHITE = '#fff';
+const BLUE = '#24316F'
 export const ICONS = layout.icons;
 const DEFAULT_PAGE_TITLE = 'Open Door Christian Community';
 
@@ -94,6 +97,30 @@ function getFooterTheme(lastSectionTheme) {
   return DEFAULT_THEME;
 }
 
+function getThemeColor(theme) {
+  switch (theme) {
+    case 'blue':
+      return BLUE;
+    default:
+      return WHITE;
+  }
+}
+
+function setBackgroundColor(theme) {
+  const color = getThemeColor(theme);
+  document.getElementsByTagName('html')[0].style.backgroundColor = color;
+  document.getElementsByTagName('body')[0].style.backgroundColor = color;
+}
+
+export async function componentDidMount(footerTheme) {
+  useEffect(() => {
+    if (!isDefined(window))
+      return;
+
+    setBackgroundColor(footerTheme);
+  }, []);
+}
+
 export default function Layout({ children, pageDetails }) {
   const id = isDefined(layout.name) ? layout.name : 'layout';
   const theme = isDefined(layout.themes) ? getTheme(layout.themes.layout) : DEFAULT_THEME;
@@ -104,6 +131,8 @@ export default function Layout({ children, pageDetails }) {
   const footerTheme = getFooterTheme(lastSectionTheme);
   const { donate, mailingList } = layout;
   const { contact } = layout.footer;
+
+  componentDidMount(footerTheme);
 
   return (
     <div id={id} className={styles.layout}>

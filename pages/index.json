@@ -184,21 +184,25 @@
             "theme": "blue",
             "postList": [
               {
+                "dateIsSpecial": true,
                 "date": "Mondays 8 pm ET",
                 "header": "Spiritual Discussions with Jack",
                 "details": "This is an open discussion without judgement and is not a teaching bible study - it is a discussion on spirituality and its effect on one’s life. Questions like: \"Is there a God?\", \"Why does Evil exist?\", \"What is Love?\", \"How do I manage all my new choices?\" \"Why are there so many religions?\""
               },
               {
+                "dateIsSpecial": true,
                 "date": "Tuesdays 6-7 pm ET",
                 "header": "Spiritual Spiels",
                 "details": "Join an interactive discussion series on topics that are relevant and practical in today’s world. In addition the topics will explore how individuals can grow in their faith and relationship with God. Are you looking to explore your relationship with others and with God?"
               },
               {
+                "dateIsSpecial": true,
                 "date": "Tuesdays 7-8 pm ET",
                 "header": "Ignite Your Prayer Life",
                 "details": "Experience God in a diversity of ways through this reflective and experiential service. Connecting with God using ancient and modern ways from a variety of faiths will be explored. Are you ready to see God differently?"
               },
               {
+                "dateIsSpecial": true,
                 "date": "Fridays 10-11:30 pm ET",
                 "header": "Virtual Game Nights",
                 "details": "Join a virtual game night where you can meet other members and compete against fellow gamers."

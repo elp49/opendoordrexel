@@ -239,7 +239,7 @@
                                 "image": "/images/worship/worship-19.jpg"
                             },
                             {
-                                "reverseOrder": 999,
+                                "reverseOrder": 20,
                                 "image": "/images/worship/worship-20.jpg"
                             },
                             {
@@ -247,7 +247,7 @@
                                 "image": "/images/worship/worship-21.jpg"
                             },
                             {
-                                "reverseOrder": 997,
+                                "reverseOrder": 22,
                                 "image": "/images/worship/worship-22.jpg"
                             },
                             {
@@ -275,15 +275,15 @@
                                 "image": "/images/worship/worship-28.jpg"
                             },
                             {
-                                "reverseOrder": 998,
+                                "reverseOrder": 29,
                                 "image": "/images/worship/worship-29.jpg"
                             },
                             {
-                                "reverseOrder": 30,
+                                "reverseOrder": 998,
                                 "image": "/images/worship/worship-30.jpg"
                             },
                             {
-                                "reverseOrder": 31,
+                                "reverseOrder": 999,
                                 "image": "/images/worship/worship-31.jpg"
                             },
                             {
@@ -297,6 +297,14 @@
                             {
                                 "reverseOrder": 34,
                                 "image": "/images/worship/worship-34.jpg"
+                            },
+                            {
+                                "reverseOrder": 35,
+                                "image": "/images/worship/worship-35.jpg"
+                            },
+                            {
+                                "reverseOrder": 36,
+                                "image": "/images/worship/worship-36.jpg"
                             }
                         ]
                     }

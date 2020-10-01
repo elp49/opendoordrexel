@@ -245,7 +245,6 @@ export default function Slideshow({ slideshow }) {
             const slideZIndex = i === 0 ? SLIDE_ZINDEX_ACTIVE : SLIDE_ZINDEX_INACTIVE;
 
             return (
-              // <li key={key} id={key} value={i} className={`slide ${className}`} style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${slide.image})`, opacity: slideOpacity }}>
               <li key={key} id={key} value={i} className={`slide ${className}`} style={{ backgroundImage: `url(${image})`, opacity: slideOpacity, zIndex: slideZIndex }}>
                 {
                   titles.map(title => {
@@ -332,10 +331,15 @@ export default function Slideshow({ slideshow }) {
           .slideHeader {
             position: absolute;
             top: 15px;
-            left: 0;
-            width: 100%;
+            left: 50%;
+            width: 110%;
             margin-bottom: 10px;
             padding: 10px 0;
+            -webkit-transform: translate(-50%, 0);
+            -moz-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+            -o-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
           }
           .slideHeader>h1 {
             width: 100%;

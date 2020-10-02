@@ -44,7 +44,7 @@ function buildSectionList(pageSections) {
   return sectionList;
 }
 
-export default function Donate({}) {
+export default function Donate() {
   const sectionList = buildSectionList(donate.sections);
 
   return (

@@ -1,6 +1,11 @@
 import { isDefined, getTheme, sortListByReverseOrder } from './Layout';
 
-function getAnnouncementsById(id) {
+// Uncomment the following code to add the functionality to toggle more / less
+// announcements or activites.
+// Note: also uncomment the buildFeedControllerJsx function, the related 
+// comments in the Announcements function.
+
+/* function getAnnouncementsById(id) {
   return document.getElementById(`${id}Announcements`);
 }
 
@@ -73,7 +78,7 @@ function showLessAnnouncements(id) {
     activateMore(id);
 
   scrollAnnouncementsIntoView(id);
-}
+} */
 
 function postIsValid(post) {
   const { header, details } = post;
@@ -91,23 +96,27 @@ function dateObjectIsValid(dateObject) {
   return false;
 }
 
-// function getDateString(date) {
-//   let dateObj = new Date(date);
-//   if (!dateObjectIsValid(dateObj))
-//     dateObj = new Date(Date.now());
+function getDateString(date) {
+  let dateObj = new Date(date);
+  if (!dateObjectIsValid(dateObj))
+    dateObj = new Date(Date.now());
 
-//   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-//   const dateStr = dateObj.toLocaleDateString(undefined, options);
-//   return dateStr;
-// }
+  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+  const dateStr = dateObj.toLocaleDateString(undefined, options);
+  return dateStr;
+}
 
 function postListReducerCallback(list, post) {
   if (postIsValid(post)) {
-    const { date, header, details } = post;
-    // const dateStr = getDateString(date);
+    const { dateIsSpecial, date, header, details } = post;
+    let dateStr;
+    if (dateIsSpecial)
+      dateStr = getDateString(date);
+    else
+      dateStr = date;
 
     list.push({
-      date: date,
+      date: dateStr,
       header: header,
       details: details
     });
@@ -228,7 +237,7 @@ function buildPostListJsx(id, announcementsTheme, list) {
   );
 }
 
-function buildFeedControllerJsx(id, announcementsTheme) {
+/* function buildFeedControllerJsx(id, announcementsTheme) {
   return (
     <div className={`${announcementsTheme} feedController`}>
       <div className={'blurredArea'}></div>
@@ -242,10 +251,15 @@ function buildFeedControllerJsx(id, announcementsTheme) {
         {`
           .feedController {
             position: absolute;
-            bottom: 20px;
-            left: 0;
-            width: 100%;
+            bottom: -20px;
+            left: 50%;
+            width: 120%;
             height: 80px;
+            -webkit-transform: translate(-50%, 0);
+            -moz-transform: translate(-50%, 0);
+            -ms-transform: translate(-50%, 0);
+            -o-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
           }
           .blurredArea {
             position: absolute;
@@ -309,7 +323,7 @@ function buildFeedControllerJsx(id, announcementsTheme) {
       </style>
     </div>
   );
-}
+} */
 
 export default function Announcements({ announcements }) {
   if (!isDefined(announcements))
@@ -318,12 +332,16 @@ export default function Announcements({ announcements }) {
   const id = isDefined(announcements.name) ? announcements.name : 'announcements';
   const theme = getTheme(announcements.theme);
   const postListJsx = buildPostListJsx(id, theme, announcements.postList);
-  const feedControllerJsx = buildFeedControllerJsx(id, theme);
+  // const feedControllerJsx = buildFeedControllerJsx(id, theme);
 
   return (
-    <div id={`${id}Announcements`} style={{ maxHeight: 650 + 'px', overflow: 'hidden' }}>
+    <div id={`${id}Announcements`} style={{
+      position: 'relative',
+      // maxHeight: 650 + 'px',
+      overflow: 'hidden'
+    }}>
       {postListJsx}
-      {feedControllerJsx}
+      {/* {feedControllerJsx} */}
     </div>
   );
 }

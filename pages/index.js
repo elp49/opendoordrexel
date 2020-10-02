@@ -109,13 +109,13 @@ function buildActivitiesSection(activities) {
   const carouselList = sortListByOrder(activities.carouselList);
   const activitiesJsx = (
     <Section sectionDetails={sectionDetails}>
-    {
-      carouselList.map((carouselListItem, i) => {
-        const key = `${sectionDetails.name}Carousel-${i}`;
+      {
+        carouselList.map((carouselListItem, i) => {
+          const key = `${sectionDetails.name}Carousel-${i}`;
 
-        return <Carousel key={key} carousel={carouselListItem.carousel} />;
-      })
-    }
+          return <Carousel key={key} carousel={carouselListItem.carousel} />;
+        })
+      }
       {
         activitiesList.map((activitiesListItem, i) => {
           const key = `${sectionDetails.name}Activites-${i}`;

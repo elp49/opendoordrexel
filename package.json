@@ -19,10 +19,13 @@
   },
   "homepage": "https://github.com/elp49/opendoordrexel#readme",
   "dependencies": {
-    "next": "^9.5.3",
+    "next": "^10.1.2",
     "path": "^0.12.7",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-player": "^2.6.2"
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-player": "^2.9.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.23.1"
   }
 }

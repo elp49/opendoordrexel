@@ -1,315 +1,315 @@
 {
-    "name": "tuesdays",
-    "pageDetails": {
-      "title": "Dinner & Worship"
-    },
-    "sections": {
-        "dinner": {
-            "order": 1,
-            "sectionDetails": {
-                "name": "dinner",
-                "theme": "white",
-                "titles": [
-                    "Dinner"
-                ],
-                "subtitles": [
-                    "We serve a free dinner every tuesday night."
-                ],
-                "descriptions": [
-                    "Jesus, himself, used food and conversations as methods to teach and learn. Open Door Christian Community follows this method by provide a home-cooked meal to all – all faiths and backgrounds. Those that join us for dinner come from Christian, Hindu, Baha’I, Buddhist, Jewish, Muslim, Agnostic, and Atheist backgrounds. Students are able to eat a meal that nourishes their physical bodies while holding conversations about life. During this time, showing the love of Christ is showing hospitality and providing a listening and empathetic ear. Jesus said feed the hungry and in recent years there has been a growing awareness of food insecurity on college campuses. Open Door strives to feed students at Drexel University physically and spiritually."
-                ]
-            },
-            "carouselList": [
-                {
-                    "order": 1,
-                    "carousel": {
-                        "name": "dinner",
-                        "theme": "blue",
-                        "cardList": [
-                            {
-                                "reverseOrder": 1,
-                                "image": "/images/dinner/dinner-1.jpg"
-                            },
-                            {
-                                "reverseOrder": 2,
-                                "image": "/images/dinner/dinner-2.jpg"
-                            },
-                            {
-                                "reverseOrder": 3,
-                                "image": "/images/dinner/dinner-3.jpg"
-                            },
-                            {
-                                "reverseOrder": 4,
-                                "image": "/images/dinner/dinner-4.jpg"
-                            },
-                            {
-                                "reverseOrder": 5,
-                                "image": "/images/dinner/dinner-5.jpg"
-                            },
-                            {
-                                "reverseOrder": 6,
-                                "image": "/images/dinner/dinner-6.jpg"
-                            },
-                            {
-                                "reverseOrder": 7,
-                                "image": "/images/dinner/dinner-7.jpg"
-                            },
-                            {
-                                "reverseOrder": 8,
-                                "image": "/images/dinner/dinner-8.jpg"
-                            },
-                            {
-                                "reverseOrder": 9,
-                                "image": "/images/dinner/dinner-9.jpg"
-                            },
-                            {
-                                "reverseOrder": 10,
-                                "image": "/images/dinner/dinner-10.jpg"
-                            },
-                            {
-                                "reverseOrder": 11,
-                                "image": "/images/dinner/dinner-11.jpg"
-                            },
-                            {
-                                "reverseOrder": 12,
-                                "image": "/images/dinner/dinner-12.jpg"
-                            },
-                            {
-                                "reverseOrder": 13,
-                                "image": "/images/dinner/dinner-13.jpg"
-                            },
-                            {
-                                "reverseOrder": 14,
-                                "image": "/images/dinner/dinner-14.jpg"
-                            },
-                            {
-                                "reverseOrder": 15,
-                                "image": "/images/dinner/dinner-15.jpg"
-                            },
-                            {
-                                "reverseOrder": 16,
-                                "image": "/images/dinner/dinner-16.jpg"
-                            },
-                            {
-                                "reverseOrder": 999,
-                                "image": "/images/dinner/dinner-17.jpg"
-                            },
-                            {
-                                "reverseOrder": 18,
-                                "image": "/images/dinner/dinner-18.jpg"
-                            },
-                            {
-                                "reverseOrder": 19,
-                                "image": "/images/dinner/dinner-19.jpg"
-                            },
-                            {
-                                "reverseOrder": 20,
-                                "image": "/images/dinner/dinner-20.jpg"
-                            },
-                            {
-                                "reverseOrder": 998,
-                                "image": "/images/dinner/dinner-21.jpg"
-                            },
-                            {
-                                "reverseOrder": 22,
-                                "image": "/images/dinner/dinner-22.jpg"
-                            },
-                            {
-                                "reverseOrder": 23,
-                                "image": "/images/dinner/dinner-23.jpg"
-                            },
-                            {
-                                "reverseOrder": 24,
-                                "image": "/images/dinner/dinner-24.jpg"
-                            },
-                            {
-                                "reverseOrder": 25,
-                                "image": "/images/dinner/dinner-25.jpg"
-                            },
-                            {
-                                "reverseOrder": 26,
-                                "image": "/images/dinner/dinner-26.jpg"
-                            },
-                            {
-                                "reverseOrder": 27,
-                                "image": "/images/dinner/dinner-27.jpg"
-                            }
-                        ]
-                    }
-                }
+  "name": "tuesdays",
+  "pageDetails": {
+    "title": "Dinner & Worship"
+  },
+  "sections": {
+    "dinner": {
+      "order": 1,
+      "sectionDetails": {
+        "name": "dinner",
+        "theme": "white",
+        "titles": [
+          "Dinner"
+        ],
+        "subtitles": [
+          "We serve a free dinner every tuesday night."
+        ],
+        "descriptions": [
+          "Jesus, himself, used food and conversations as methods to teach and learn. Open Door Christian Community follows this method by provide a home-cooked meal to all – all faiths and backgrounds. Those that join us for dinner come from Christian, Hindu, Baha’I, Buddhist, Jewish, Muslim, Agnostic, and Atheist backgrounds. Students are able to eat a meal that nourishes their physical bodies while holding conversations about life. During this time, showing the love of Christ is showing hospitality and providing a listening and empathetic ear. Jesus said feed the hungry and in recent years there has been a growing awareness of food insecurity on college campuses. Open Door strives to feed students at Drexel University physically and spiritually."
+        ]
+      },
+      "carouselList": [
+        {
+          "order": 1,
+          "carousel": {
+            "name": "dinner",
+            "theme": "blue",
+            "cardList": [
+              {
+                "reverseOrder": 1,
+                "image": "/images/dinner/dinner-1.jpg"
+              },
+              {
+                "reverseOrder": 2,
+                "image": "/images/dinner/dinner-2.jpg"
+              },
+              {
+                "reverseOrder": 3,
+                "image": "/images/dinner/dinner-3.jpg"
+              },
+              {
+                "reverseOrder": 4,
+                "image": "/images/dinner/dinner-4.jpg"
+              },
+              {
+                "reverseOrder": 5,
+                "image": "/images/dinner/dinner-5.jpg"
+              },
+              {
+                "reverseOrder": 6,
+                "image": "/images/dinner/dinner-6.jpg"
+              },
+              {
+                "reverseOrder": 7,
+                "image": "/images/dinner/dinner-7.jpg"
+              },
+              {
+                "reverseOrder": 8,
+                "image": "/images/dinner/dinner-8.jpg"
+              },
+              {
+                "reverseOrder": 9,
+                "image": "/images/dinner/dinner-9.jpg"
+              },
+              {
+                "reverseOrder": 10,
+                "image": "/images/dinner/dinner-10.jpg"
+              },
+              {
+                "reverseOrder": 11,
+                "image": "/images/dinner/dinner-11.jpg"
+              },
+              {
+                "reverseOrder": 12,
+                "image": "/images/dinner/dinner-12.jpg"
+              },
+              {
+                "reverseOrder": 13,
+                "image": "/images/dinner/dinner-13.jpg"
+              },
+              {
+                "reverseOrder": 14,
+                "image": "/images/dinner/dinner-14.jpg"
+              },
+              {
+                "reverseOrder": 15,
+                "image": "/images/dinner/dinner-15.jpg"
+              },
+              {
+                "reverseOrder": 16,
+                "image": "/images/dinner/dinner-16.jpg"
+              },
+              {
+                "reverseOrder": 999,
+                "image": "/images/dinner/dinner-17.jpg"
+              },
+              {
+                "reverseOrder": 18,
+                "image": "/images/dinner/dinner-18.jpg"
+              },
+              {
+                "reverseOrder": 19,
+                "image": "/images/dinner/dinner-19.jpg"
+              },
+              {
+                "reverseOrder": 20,
+                "image": "/images/dinner/dinner-20.jpg"
+              },
+              {
+                "reverseOrder": 998,
+                "image": "/images/dinner/dinner-21.jpg"
+              },
+              {
+                "reverseOrder": 22,
+                "image": "/images/dinner/dinner-22.jpg"
+              },
+              {
+                "reverseOrder": 23,
+                "image": "/images/dinner/dinner-23.jpg"
+              },
+              {
+                "reverseOrder": 24,
+                "image": "/images/dinner/dinner-24.jpg"
+              },
+              {
+                "reverseOrder": 25,
+                "image": "/images/dinner/dinner-25.jpg"
+              },
+              {
+                "reverseOrder": 26,
+                "image": "/images/dinner/dinner-26.jpg"
+              },
+              {
+                "reverseOrder": 27,
+                "image": "/images/dinner/dinner-27.jpg"
+              }
             ]
-        },
-        "worship": {
-            "order": 2,
-            "sectionDetails": {
-                "name": "worship",
-                "theme": "blue",
-                "titles": [
-                    "Worship"
-                ],
-                "subtitles": [
-                    "We ask questions and together search out answers, believing God speaks to us in a multitude of ways.  We help one another along our faith journey, whether that is just beginning or life-long."
-                ],
-                "descriptions": [
-                    "Open Door Christian Community offers an ecumenical worship experience that is open to all faiths and backgrounds. The service has music by professional musicians, prayer, scripture, and reflection on the scripture delivered in an actionable way that students can relate to and integrate into their daily lives.",
-                    "Our worship speaks to non-Christians as both Christians and non-Christians attend worship. It is amazing to worship next to a Muslim or Hindu and be able to praise God and share in God’s love."
-                ]
-            },
-            "carouselList": [
-                {
-                    "order": 1,
-                    "carousel": {
-                        "name": "worship",
-                        "theme": "white",
-                        "cardList": [
-                            {
-                                "reverseOrder": 1,
-                                "image": "/images/worship/worship-1.jpg"
-                            },
-                            {
-                                "reverseOrder": 2,
-                                "image": "/images/worship/worship-2.jpg"
-                            },
-                            {
-                                "reverseOrder": 3,
-                                "image": "/images/worship/worship-3.jpg"
-                            },
-                            {
-                                "reverseOrder": 4,
-                                "image": "/images/worship/worship-4.jpg"
-                            },
-                            {
-                                "reverseOrder": 5,
-                                "image": "/images/worship/worship-5.jpg"
-                            },
-                            {
-                                "reverseOrder": 6,
-                                "image": "/images/worship/worship-6.jpg"
-                            },
-                            {
-                                "reverseOrder": 7,
-                                "image": "/images/worship/worship-7.jpg"
-                            },
-                            {
-                                "reverseOrder": 8,
-                                "image": "/images/worship/worship-8.jpg"
-                            },
-                            {
-                                "reverseOrder": 9,
-                                "image": "/images/worship/worship-9.jpg"
-                            },
-                            {
-                                "reverseOrder": 10,
-                                "image": "/images/worship/worship-10.jpg"
-                            },
-                            {
-                                "reverseOrder": 11,
-                                "image": "/images/worship/worship-11.jpg"
-                            },
-                            {
-                                "reverseOrder": 12,
-                                "image": "/images/worship/worship-12.jpg"
-                            },
-                            {
-                                "reverseOrder": 13,
-                                "image": "/images/worship/worship-13.jpg"
-                            },
-                            {
-                                "reverseOrder": 14,
-                                "image": "/images/worship/worship-14.jpg"
-                            },
-                            {
-                                "reverseOrder": 15,
-                                "image": "/images/worship/worship-15.jpg"
-                            },
-                            {
-                                "reverseOrder": 16,
-                                "image": "/images/worship/worship-16.jpg"
-                            },
-                            {
-                                "reverseOrder": 17,
-                                "image": "/images/worship/worship-17.jpg"
-                            },
-                            {
-                                "reverseOrder": 18,
-                                "image": "/images/worship/worship-18.jpg"
-                            },
-                            {
-                                "reverseOrder": 19,
-                                "image": "/images/worship/worship-19.jpg"
-                            },
-                            {
-                                "reverseOrder": 20,
-                                "image": "/images/worship/worship-20.jpg"
-                            },
-                            {
-                                "reverseOrder": 21,
-                                "image": "/images/worship/worship-21.jpg"
-                            },
-                            {
-                                "reverseOrder": 22,
-                                "image": "/images/worship/worship-22.jpg"
-                            },
-                            {
-                                "reverseOrder": 23,
-                                "image": "/images/worship/worship-23.jpg"
-                            },
-                            {
-                                "reverseOrder": 24,
-                                "image": "/images/worship/worship-24.jpg"
-                            },
-                            {
-                                "reverseOrder": 25,
-                                "image": "/images/worship/worship-25.jpg"
-                            },
-                            {
-                                "reverseOrder": 26,
-                                "image": "/images/worship/worship-26.jpg"
-                            },
-                            {
-                                "reverseOrder": 27,
-                                "image": "/images/worship/worship-27.jpg"
-                            },
-                            {
-                                "reverseOrder": 28,
-                                "image": "/images/worship/worship-28.jpg"
-                            },
-                            {
-                                "reverseOrder": 29,
-                                "image": "/images/worship/worship-29.jpg"
-                            },
-                            {
-                                "reverseOrder": 998,
-                                "image": "/images/worship/worship-30.jpg"
-                            },
-                            {
-                                "reverseOrder": 999,
-                                "image": "/images/worship/worship-31.jpg"
-                            },
-                            {
-                                "reverseOrder": 32,
-                                "image": "/images/worship/worship-32.jpg"
-                            },
-                            {
-                                "reverseOrder": 33,
-                                "image": "/images/worship/worship-33.jpg"
-                            },
-                            {
-                                "reverseOrder": 34,
-                                "image": "/images/worship/worship-34.jpg"
-                            },
-                            {
-                                "reverseOrder": 35,
-                                "image": "/images/worship/worship-35.jpg"
-                            },
-                            {
-                                "reverseOrder": 36,
-                                "image": "/images/worship/worship-36.jpg"
-                            }
-                        ]
-                    }
-                }
-            ]
+          }
         }
+      ]
+    },
+    "worship": {
+      "order": 2,
+      "sectionDetails": {
+        "name": "worship",
+        "theme": "blue",
+        "titles": [
+          "Worship"
+        ],
+        "subtitles": [
+          "We ask questions and together search out answers, believing God speaks to us in a multitude of ways.  We help one another along our faith journey, whether that is just beginning or life-long."
+        ],
+        "descriptions": [
+          "Open Door Christian Community offers an ecumenical worship experience that is open to all faiths and backgrounds. The service has music by professional musicians, prayer, scripture, and reflection on the scripture delivered in an actionable way that students can relate to and integrate into their daily lives.",
+          "Our worship speaks to non-Christians as both Christians and non-Christians attend worship. It is amazing to worship next to a Muslim or Hindu and be able to praise God and share in God’s love."
+        ]
+      },
+      "carouselList": [
+        {
+          "order": 1,
+          "carousel": {
+            "name": "worship",
+            "theme": "white",
+            "cardList": [
+              {
+                "reverseOrder": 1,
+                "image": "/images/worship/worship-1.jpg"
+              },
+              {
+                "reverseOrder": 2,
+                "image": "/images/worship/worship-2.jpg"
+              },
+              {
+                "reverseOrder": 3,
+                "image": "/images/worship/worship-3.jpg"
+              },
+              {
+                "reverseOrder": 4,
+                "image": "/images/worship/worship-4.jpg"
+              },
+              {
+                "reverseOrder": 5,
+                "image": "/images/worship/worship-5.jpg"
+              },
+              {
+                "reverseOrder": 6,
+                "image": "/images/worship/worship-6.jpg"
+              },
+              {
+                "reverseOrder": 7,
+                "image": "/images/worship/worship-7.jpg"
+              },
+              {
+                "reverseOrder": 8,
+                "image": "/images/worship/worship-8.jpg"
+              },
+              {
+                "reverseOrder": 9,
+                "image": "/images/worship/worship-9.jpg"
+              },
+              {
+                "reverseOrder": 10,
+                "image": "/images/worship/worship-10.jpg"
+              },
+              {
+                "reverseOrder": 11,
+                "image": "/images/worship/worship-11.jpg"
+              },
+              {
+                "reverseOrder": 12,
+                "image": "/images/worship/worship-12.jpg"
+              },
+              {
+                "reverseOrder": 13,
+                "image": "/images/worship/worship-13.jpg"
+              },
+              {
+                "reverseOrder": 14,
+                "image": "/images/worship/worship-14.jpg"
+              },
+              {
+                "reverseOrder": 15,
+                "image": "/images/worship/worship-15.jpg"
+              },
+              {
+                "reverseOrder": 16,
+                "image": "/images/worship/worship-16.jpg"
+              },
+              {
+                "reverseOrder": 17,
+                "image": "/images/worship/worship-17.jpg"
+              },
+              {
+                "reverseOrder": 18,
+                "image": "/images/worship/worship-18.jpg"
+              },
+              {
+                "reverseOrder": 19,
+                "image": "/images/worship/worship-19.jpg"
+              },
+              {
+                "reverseOrder": 20,
+                "image": "/images/worship/worship-20.jpg"
+              },
+              {
+                "reverseOrder": 21,
+                "image": "/images/worship/worship-21.jpg"
+              },
+              {
+                "reverseOrder": 22,
+                "image": "/images/worship/worship-22.jpg"
+              },
+              {
+                "reverseOrder": 23,
+                "image": "/images/worship/worship-23.jpg"
+              },
+              {
+                "reverseOrder": 24,
+                "image": "/images/worship/worship-24.jpg"
+              },
+              {
+                "reverseOrder": 25,
+                "image": "/images/worship/worship-25.jpg"
+              },
+              {
+                "reverseOrder": 26,
+                "image": "/images/worship/worship-26.jpg"
+              },
+              {
+                "reverseOrder": 27,
+                "image": "/images/worship/worship-27.jpg"
+              },
+              {
+                "reverseOrder": 28,
+                "image": "/images/worship/worship-28.jpg"
+              },
+              {
+                "reverseOrder": 29,
+                "image": "/images/worship/worship-29.jpg"
+              },
+              {
+                "reverseOrder": 998,
+                "image": "/images/worship/worship-30.jpg"
+              },
+              {
+                "reverseOrder": 999,
+                "image": "/images/worship/worship-31.jpg"
+              },
+              {
+                "reverseOrder": 32,
+                "image": "/images/worship/worship-32.jpg"
+              },
+              {
+                "reverseOrder": 33,
+                "image": "/images/worship/worship-33.jpg"
+              },
+              {
+                "reverseOrder": 34,
+                "image": "/images/worship/worship-34.jpg"
+              },
+              {
+                "reverseOrder": 35,
+                "image": "/images/worship/worship-35.jpg"
+              },
+              {
+                "reverseOrder": 36,
+                "image": "/images/worship/worship-36.jpg"
+              }
+            ]
+          }
+        }
+      ]
     }
+  }
 }

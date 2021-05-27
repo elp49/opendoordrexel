@@ -35,10 +35,29 @@
   border-radius: 10px;
 }
 
+.customButton {
+  color: inherit;
+  outline: none;
+  background: none;
+  margin: 0;
+  border: none;
+  padding: 0;
+  line-height: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.cardButton {
+  width: 100%;
+  height: 100%;
+}
+
 .close {
   position: absolute;
   top: 0;
   right: 0;
+  height: 7rem;
   width: 7rem;
   padding: 1rem;
   color: #ddd;
@@ -69,10 +88,9 @@
   padding: 10px;
   border-radius: 10px;
   scroll-snap-align: center;
-  cursor: pointer;
 }
 
-.card>div {
+.cardImage {
   height: 150px;
   width: 150px;
   background-position: center;
@@ -94,7 +112,7 @@
     margin: 0 20px;
     padding: 20px;
   }
-  .card>div {
+  .cardImage {
     height: 450px;
     width: 450px;
   }

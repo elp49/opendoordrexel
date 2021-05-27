@@ -1,46 +1,42 @@
-import { isDefined, getTheme, sortListByOrder, ICONS } from './Layout';
+import icons from "./Icons.json"
+import { isDefined, getTheme, sortListByOrder } from "../utils/utils"
 
-function sortTimelineEventList(eventList) {
-  let events = eventList;
-  events.forEach(event => {
-    const { month, year } = event;
-    event.order = Date.parse(`01 ${month} ${year}`);
-  });
+function sortTimelineEventList(events) {
+  events.forEach(e => {
+    const { month, year } = e
+    e.order = Date.parse(`01 ${month} ${year}`)
+  })
 
-  events = sortListByOrder(events);
-  return events;
+  return sortListByOrder(events)
 }
 
 export default function Timeline({ timeline }) {
-  if (!isDefined(timeline))
-    return;
-
-  const id = isDefined(timeline.name) ? timeline.name : 'timeline';
-  const theme = getTheme(timeline.theme);
-  const eventList = sortTimelineEventList(timeline.eventList);
+  const id = isDefined(timeline.name) ? timeline.name : "timeline"
+  const theme = getTheme(timeline.theme)
+  const eventList = sortTimelineEventList(timeline.eventList)
 
   return (
     <div id={`${id}Timeline`} className={`${theme} timeline`}>
-      <ol className={'eventList'}>
+      <ol className="eventList">
         {
           eventList.map((event, i) => {
-            const key = `${id}Event-${i}`;
-            const { month, year, details } = event;
+            const key = `${id}Event-${i}`
+            const { month, year, details } = event
 
             return (
-              <li key={key} id={key} className={'event'}>
-                <div className={'eventMarker'}>
-                  <i></i>
+              <li key={key} id={key} className="event">
+                <div className="eventMarker">
+                  <i />
                 </div>
-                <div className={'eventDate'}>
+                <div className="eventDate">
                   <h2>{month}</h2>
                   <h2>{year}</h2>
                 </div>
-                <div className={'eventDetails'}>
+                <div className="eventDetails">
                   <p>{details}</p>
                 </div>
               </li>
-            );
+            )
           })
         }
       </ol>
@@ -88,10 +84,10 @@ export default function Timeline({ timeline }) {
             background-size: cover;
           }
           .white .eventMarker>i {
-            background-image: url(${ICONS.magnifyingGlass.blue});
+            background-image: url(${icons.magnifyingGlass.blue});
           }
           .blue .eventMarker>i {
-            background-image: url(${ICONS.magnifyingGlass.white});
+            background-image: url(${icons.magnifyingGlass.white});
           }
           .eventDate {
             margin-left: 20px;
@@ -134,5 +130,5 @@ export default function Timeline({ timeline }) {
         `}
       </style>
     </div>
-  );
+  )
 }

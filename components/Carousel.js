@@ -1,211 +1,183 @@
-import { useEffect } from 'react';
-import { isDefined, getTheme, sortListByReverseOrder, fixFilePath } from './Layout';
-import styles from './Carousel.module.css';
+import { useEffect } from "react"
+import { isDefined, atoi, getTheme, sortListByReverseOrder, fixFilePath } from "../utils/utils"
+import styles from "./Carousel.module.css"
 
-const LEFT = -1;
-const RIGHT = 1;
+const LEFT = -1
+const RIGHT = 1
 
 function getCarouselElementById(carouselId) {
-  return document.getElementById(`${carouselId}Carousel`);
+  return document.getElementById(`${carouselId}Carousel`)
 }
 
 function getCarouselContainerElementById(carouselId) {
-  return document.getElementById(`${carouselId}CarouselContainer`);
+  return document.getElementById(`${carouselId}CarouselContainer`)
 }
 
 function getAllCards(carouselId) {
-  const carousel = getCarouselElementById(carouselId);
-  return carousel.getElementsByClassName(styles.card);
+  const carousel = getCarouselElementById(carouselId)
+  return carousel.getElementsByClassName(styles.card)
 }
 
 function getCardStyle(carouselId) {
-  if (!isDefined(window))
-    return;
+  let style
+  if (isDefined(window)) {
+    const card = getAllCards(carouselId)[0]
+    style = window.getComputedStyle(card) || card.currentStyle
+  }
 
-  const card = getAllCards(carouselId)[0];
-  return window.getComputedStyle(card) || card.currentStyle;
+  return style
 }
 
 function getCardScrollDistance(carouselId) {
-  const cardStyle = getCardStyle(carouselId);
-  const cardWidth = parseInt(cardStyle.width);
-  const cardMarginLeft = parseInt(cardStyle.marginLeft);
-  const cardMarginRight = parseInt(cardStyle.marginRight);
-  return cardWidth + cardMarginLeft + cardMarginRight;
+  const cardStyle = getCardStyle(carouselId)
+  const cardWidth = atoi(cardStyle.width)
+  const cardMarginLeft = atoi(cardStyle.marginLeft)
+  const cardMarginRight = atoi(cardStyle.marginRight)
+  return cardWidth + cardMarginLeft + cardMarginRight
 }
 
 function scrollToSelectedCard(carouselId, selectedCard) {
-  const carousel = getCarouselElementById(carouselId);
-  const cardScrollDist = getCardScrollDistance(carouselId);
-  const xScroll = cardScrollDist * selectedCard;
-  carousel.scrollTo(xScroll, 0);
+  const carousel = getCarouselElementById(carouselId)
+  const cardScrollDist = getCardScrollDistance(carouselId)
+  const xScroll = cardScrollDist * selectedCard
+  carousel.scrollTo(xScroll, 0)
 }
 
 function isInFullscreen(carouselId) {
-  const container = getCarouselContainerElementById(carouselId);
-  if (container.classList.contains('overlay'))
-    return true;
-
-  return false;
-}
-
-function enterFullscreen(carouselId, selectedCard) {
-  if (isInFullscreen(carouselId))
-    return;
-
-  if (isDefined(selectedCard))
-    scrollToSelectedCard(carouselId, selectedCard);
-
-  const container = getCarouselContainerElementById(carouselId);
-  container.classList.add('overlay');
-
-  // Enable keyboard arrow scrolling.
-  document.onkeydown = () => checkKey(carouselId);
-}
-
-function exitFullScreen(carouselId) {
-  if (!isInFullscreen(carouselId))
-    return;
-
-  const container = getCarouselContainerElementById(carouselId);
-  container.classList.remove('overlay');
-
-  // Clean up key press handle.
-  document.onkeydown = null;
-}
-
-function isLeftArrowKey(key) {
-  if (key == '37')
-    return true;
-
-  return false;
-}
-
-function isRightArrowKey(key) {
-  if (key == '39')
-    return true;
-
-  return false;
+  const container = getCarouselContainerElementById(carouselId)
+  return container.classList.contains("overlay")
 }
 
 function scrollCarousel(carouselId, direction) {
-  const carousel = getCarouselElementById(carouselId);
-  const cardScrollDist = getCardScrollDistance(carouselId);
-  const cards = getAllCards(carouselId);
-  const numCards = cards.length;
+  const carousel = getCarouselElementById(carouselId)
+  const cardScrollDist = getCardScrollDistance(carouselId)
+  const cards = getAllCards(carouselId)
+  const numCards = cards.length
 
-  const maxScrollDist = cardScrollDist * (numCards - 1);
-  let xScroll = carousel.scrollLeft + (cardScrollDist * direction);
+  const maxScrollDist = cardScrollDist * (numCards - 1)
+  let xScroll = carousel.scrollLeft + (cardScrollDist * direction)
 
   if (xScroll > maxScrollDist) {
-    // If the user scrolled to the right on the right-most card, 
+    // If the user scrolled to the right on the right-most card,
     // then scroll to the left-most card.
-    xScroll = 0;
+    xScroll = 0
   } else if (xScroll < 0) {
     // Vice versa.
-    xScroll = maxScrollDist;
+    xScroll = maxScrollDist
   }
 
-  carousel.scrollTo(xScroll, 0);
+  carousel.scrollTo(xScroll, 0)
 }
 
-// checkKey is meant to be called anytime that the carousel is being viewed in 
-// fullscreen and the user presses a key. keys other than left and right arrows
-// should be ignored.
-function checkKey(carouselId) {
-  if (!isInFullscreen(carouselId) || !isDefined(window))
-    return;
-
-  let key = window.event.keyCode;
-  if (isLeftArrowKey(key))
-    scrollCarousel(carouselId, LEFT);
-  else if (isRightArrowKey(key))
-    scrollCarousel(carouselId, RIGHT);
+function scrollCarouselLeft(carouselId) {
+  scrollCarousel(carouselId, LEFT)
 }
 
-function buildCardList(list) {
-  if (!isDefined(list) || list.length === 0)
-    return [];
+function scrollCarouselRight(carouselId) {
+  scrollCarousel(carouselId, RIGHT)
+}
 
-  let cardList = sortListByReverseOrder(list);
-  cardList = cardList.filter(card => {
-    if (isDefined(card.image))
-      return true;
-  }).map((card) => {
-    return fixFilePath(card.image);
-  });
+function enterFullscreen(carouselId, selectedCard) {
+  if (!isInFullscreen(carouselId)) {
+    if (isDefined(selectedCard))
+      scrollToSelectedCard(carouselId, selectedCard)
 
-  return cardList;
+    const container = getCarouselContainerElementById(carouselId)
+    container.classList.add("overlay")
+  }
+}
+
+function exitFullScreen(carouselId) {
+  if (isInFullscreen(carouselId)) {
+    const container = getCarouselContainerElementById(carouselId)
+    container.classList.remove("overlay")
+  }
 }
 
 function getCarouselClassName(carouselId) {
-  const carousel = getCarouselElementById(carouselId);
+  const carousel = getCarouselElementById(carouselId)
+  let className
   for (let i = 0; i < carousel.classList.length; i++) {
-
-    let className = carousel.classList[i];
-    if (className.includes('carousel'))
-      return className;
-
+    className = carousel.classList[i]
+    if (className.includes("carousel"))
+      break
   }
+
+  return className
 }
 
 function removeScrollbar(carouselId) {
-  const carouselClassName = getCarouselClassName(carouselId);
-  let style = document.createElement('style');
+  const carouselClassName = getCarouselClassName(carouselId)
+  const style = document.createElement("style")
   style.innerHTML = `
     .${carouselClassName}::-webkit-scrollbar {
       display: none;
     }
-  `;
+  `
 
-  document.head.appendChild(style);
+  document.head.appendChild(style)
+}
+
+function buildCardList(list) {
+  let cardList = []
+  if (isDefined(list) && list.length > 0) {
+    cardList = sortListByReverseOrder(list)
+    cardList = cardList
+      .filter(card => isDefined(card.image))
+      .map((card) => fixFilePath(card.image))
+  }
+
+  return cardList
 }
 
 export async function componentDidMount(carouselId) {
-  useEffect(() => {
-    if (!isDefined(window))
-      return;
-
+  if (isDefined(window)) {
     if (/Mobi|Android/i.test(navigator.userAgent) && window.screen.width < 1000) {
       // If the user is on a mobile device with screen width less than 1000px,
       // then remove the scrollbar.
       // NOTE: exceptions to the mobile device rule are iPad pros and some tablets.
-      removeScrollbar(carouselId);
+      removeScrollbar(carouselId)
     }
-  }, []);
+  }
 }
 
 export default function Carousel({ carousel }) {
-  if (!isDefined(carousel))
-    return;
+  const id = isDefined(carousel.name) ? carousel.name : "carousel"
+  const theme = getTheme(carousel.theme)
+  const cardList = buildCardList(carousel.cardList)
 
-  const id = isDefined(carousel.name) ? carousel.name : 'carousel';
-  const theme = getTheme(carousel.theme);
-  const cardList = buildCardList(carousel.cardList);
-
-  componentDidMount(id);
+  useEffect(() => {
+    componentDidMount(id)
+  }, [id])
 
   return (
     <div className={theme}>
       <div id={`${id}CarouselContainer`} className={styles.carouselContainer}>
         <ol id={`${id}Carousel`} className={styles.carousel}>
-          <span className={styles.close} onClick={() => exitFullScreen(id)}>&times;</span>
-          <span className={styles.arrow} style={{ left: 0 }} onClick={() => scrollCarousel(id, -1)}>&lang;</span>
-          <span className={styles.arrow} style={{ right: 0 }} onClick={() => scrollCarousel(id, 1)}>&rang;</span>
-          <li value={999999} className={'dummy'}></li>
+          <button className={`${styles.customButton} ${styles.close}`} type="button" onClick={() => exitFullScreen(id)}>
+            <span>&times;</span>
+          </button>
+          <button className={`${styles.customButton} ${styles.arrow}`} style={{ left: 0 }} type="button" onClick={() => scrollCarouselLeft(id)}>
+            <span>&lang;</span>
+          </button>
+          <button className={`${styles.customButton} ${styles.arrow}`} style={{ right: 0 }} type="button" onClick={() => scrollCarouselRight(id)}>
+            <span>&rang;</span>
+          </button>
+          <li value={999999} className="dummy" />
           {
             cardList.map((image, i) => {
-              const key = `${id}CarouselCard-${i}`;
-
+              const key = `${id}CarouselCard-${i}`
               return (
-                <li key={key} id={key} value={i} className={styles.card} onClick={() => enterFullscreen(id, i)}>
-                  {/* <div style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${image})` }}></div> */}
-                  <div style={{ backgroundImage: `url(${image})` }}></div>
+                <li key={key} id={key} value={i} className={styles.card}>
+                  <button className={`${styles.customButton} ${styles.cardButton}`} type="button" onClick={() => enterFullscreen(id, i)}>
+                    {/* <div style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${image})` }}></div> */}
+                    <div className={styles.cardImage} style={{ backgroundImage: `url(${image})` }} />
+                  </button>
                 </li>
               )
             })
           }
-          <li value={0} className={'dummy'}></li>
+          <li value={0} className="dummy" />
         </ol>
       </div>
       <style jsx>
@@ -255,16 +227,19 @@ export default function Carousel({ carousel }) {
             border-radius: 0;
             cursor: initial;
           }
-          .overlay li>div {
+          .overlay li>button>div {
             height: 100%;
             width: 100%;
             background-size: contain;
             border-radius: 0;
           }
+          .overlay li>button {
+            cursor: auto;
+          }
           span {
             display: none;
           }
-          .overlay>ol>span {
+          .overlay>ol>button>span {
             display: block;
           }
           @media only screen and (min-width: 1000px) {
@@ -280,5 +255,5 @@ export default function Carousel({ carousel }) {
         `}
       </style>
     </div>
-  );
+  )
 }

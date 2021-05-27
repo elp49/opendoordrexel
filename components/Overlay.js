@@ -1,24 +1,22 @@
-import styles from './Overlay.module.css';
-import { isDefined, getTheme, sortListByOrder, DEFAULT_THEME, ICONS } from './Layout';
+import styles from "./Overlay.module.css"
+import icons from "./Icons.json"
+import { isDefined, getTheme, sortListByOrder, DEFAULT_THEME } from "../utils/utils"
 
 export default function Overlay({ overlay }) {
-  if (!isDefined(overlay))
-    return;
-
-  const id = isDefined(overlay.name) ? overlay.name : 'overlay';
-  const theme = isDefined(overlay.themes) ? getTheme(overlay.themes.overlay) : DEFAULT_THEME;
-  const pageList = sortListByOrder(overlay.pageList);
-  const socialMedia = sortListByOrder(overlay.socialMedia);
-  const mailingList = overlay.mailingList;
+  const id = isDefined(overlay.name) ? overlay.name : "overlay"
+  const theme = isDefined(overlay.themes) ? getTheme(overlay.themes.overlay) : DEFAULT_THEME
+  const pageList = sortListByOrder(overlay.pageList)
+  const socialMedia = sortListByOrder(overlay.socialMedia)
+  const { mailingList } = overlay
 
   return (
-    <div className={theme} style={{ minHeight: 100 + '%' }}>
+    <div className={theme} style={{ minHeight: "100%" }}>
       <div className={styles.overlay}>
         <ol className={styles.overlayPages}>
           {
             pageList.map((page, i) => {
-              const key = `${id}OverlayPage-${i}`;
-              const { order, title, href } = page;
+              const key = `${id}OverlayPage-${i}`
+              const { order, title, href } = page
 
               return (
                 <li key={key} value={order}>
@@ -26,32 +24,32 @@ export default function Overlay({ overlay }) {
                     {title}
                   </a>
                 </li>
-              );
+              )
             })
           }
         </ol>
         <div className={styles.mailingList}>
           <p>{mailingList.description}</p>
           <form className={styles.emailForm}>
-            <input type='email' id='email' name='email' placeholder={mailingList.placeholder} />
-            <button type='submit'>
-              <i className={'arrowUp'}></i>
+            <input type="email" id="email" name="email" placeholder={mailingList.placeholder} />
+            <button type="submit">
+              <i className="arrowUp" />
             </button>
           </form>
         </div>
         <ol className={styles.socialMedia}>
           {
             socialMedia.map((media, i) => {
-              const key = `${id}OverlayMedia-${i}`;
-              const { order, name, href } = media;
+              const key = `${id}OverlayMedia-${i}`
+              const { order, name, href } = media
 
               return (
                 <li key={key} value={order}>
-                  <a href={href} title={name} target='_blank' >
-                    <i className={name.toLowerCase()}></i>
+                  <a href={href} title={name} target="_blank" rel="noreferrer" >
+                    <i className={name.toLowerCase()} />
                   </a>
                 </li>
-              );
+              )
             })
           }
         </ol>
@@ -59,22 +57,22 @@ export default function Overlay({ overlay }) {
       <style jsx>
         {`
           .white .arrowUp {
-            background-image: url(${ICONS.arrowUp.white});
+            background-image: url(${icons.arrowUp.white});
           }
           .blue .arrowUp {
-            background-image: url(${ICONS.arrowUp.blue});
+            background-image: url(${icons.arrowUp.blue});
           }
           .white .facebook {
-            background-image: url(${ICONS.facebook.blue});
+            background-image: url(${icons.facebook.blue});
           }
           .blue .facebook {
-            background-image: url(${ICONS.facebook.white});
+            background-image: url(${icons.facebook.white});
           }
           .white .instagram {
-            background-image: url(${ICONS.instagram.blue});
+            background-image: url(${icons.instagram.blue});
           }
           .blue .instagram {
-            background-image: url(${ICONS.instagram.white});
+            background-image: url(${icons.instagram.white});
           }
           .white, .blue button {
             background-color: #fff;
@@ -95,10 +93,10 @@ export default function Overlay({ overlay }) {
           }
           @media not all and (pointer: coarse) {
             .white .facebook:hover, .blue .facebook:hover {
-              background-image: url(${ICONS.facebook.grey});
+              background-image: url(${icons.facebook.grey});
             }
             .white .instagram:hover, .blue .instagram:hover {
-              background-image: url(${ICONS.instagram.grey});
+              background-image: url(${icons.instagram.grey});
             }
             .white p>a:hover {
               color: #24316F;
@@ -110,5 +108,5 @@ export default function Overlay({ overlay }) {
         `}
       </style>
     </div>
-  );
+  )
 }

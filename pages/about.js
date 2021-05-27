@@ -1,23 +1,24 @@
-import about from './about.json';
-import Layout, { isDefined, sortListByOrder, ICONS, scrollToNextSection } from '../components/Layout';
-import Section from '../components/Section';
-import Timeline from '../components/Timeline';
+import about from "./about.json"
+import icons from "../components/Icons.json"
+import { buildSectionList, isDefined, scrollToNextSection } from "../utils/utils"
+import Layout from "../components/Layout"
+import Section from "../components/Section"
+import Timeline from "../components/Timeline"
 
-const PAGE_NAME = 'about';
+const PAGE_NAME = "about"
 
 function buildIntroSection(intro) {
-  if (!isDefined(intro))
-    return;
-
-  const { order, sectionDetails } = intro;
-  const introSectionsId = sectionDetails.name;
-  const introJsx = (
-    <Section sectionDetails={sectionDetails}>
-      <div className={'chevronDown'} onClick={() => scrollToNextSection(introSectionsId)}>
-        <i></i>
-      </div>
-      <style jsx>
-        {`
+  let section
+  if (isDefined(intro)) {
+    const { order, sectionDetails } = intro
+    const introSectionsId = sectionDetails.name
+    const introJsx = (
+      <Section sectionDetails={sectionDetails}>
+        <button className="chevronDown" type="button" onClick={() => scrollToNextSection(introSectionsId)} >
+          <i />
+        </button>
+        <style jsx>
+          {`
           .chevronDown {
             position: relative;
             display: block;
@@ -38,7 +39,7 @@ function buildIntroSection(intro) {
             height: 30px;
             width: 30px;
             background-color: #eee;
-            background-image: url(${ICONS.chevronDown.blue});
+            background-image: url(${icons.chevronDown.blue});
             border-radius: 50%;
             cursor: pointer;
           }
@@ -47,81 +48,71 @@ function buildIntroSection(intro) {
               height: 40px;
               width: 40px;
               background-color: #24316F;
-              background-image: url(${ICONS.chevronDown.white});
+              background-image: url(${icons.chevronDown.white});
             }
           }
         `}
-      </style>
-    </Section>
-  );
+        </style>
+      </Section>
+    )
 
-  return {
-    order: order,
-    name: sectionDetails.name,
-    jsx: introJsx
-  };
+    section = {
+      order: order,
+      name: sectionDetails.name,
+      jsx: introJsx,
+    }
+  }
+
+  return section
 }
 
 function buildTimelineSection(timeline) {
-  if (!isDefined(timeline))
-    return;
+  let section
+  if (!isDefined(timeline)) {
+    const { order, sectionDetails } = timeline
+    const timelineJsx = (
+      <Section sectionDetails={timeline.sectionDetails}>
+        <Timeline timeline={timeline} />
+      </Section>
+    )
 
-  const { order, sectionDetails } = timeline;
-  const timelineJsx = (
-    <Section sectionDetails={timeline.sectionDetails}>
-      <Timeline timeline={timeline} />
-    </Section>
-  );
+    section = {
+      order: order,
+      name: sectionDetails.name,
+      jsx: timelineJsx,
+    }
+  }
 
-  return {
-    order: order,
-    name: sectionDetails.name,
-    jsx: timelineJsx
-  };
+  return section
 }
 
 function buildSections(pageSections) {
-  const introSection = buildIntroSection(pageSections.intro);
-  const timelineSection = buildTimelineSection(pageSections.timeline);
+  const introSection = buildIntroSection(pageSections.intro)
+  const timelineSection = buildTimelineSection(pageSections.timeline)
 
-  return {
-    intro: introSection,
-    timeline: timelineSection,
-  };
-}
-
-function buildSectionList(pageSections) {
-  if (!isDefined(pageSections))
-    return;
-
-  const sections = buildSections(pageSections);
-  let sectionList = [];
-  for (const s in sections)
-    if (isDefined(sections[s]))
-      sectionList.push(sections[s]);
-
-  sectionList = sortListByOrder(sectionList);
-
-  return sectionList;
+  return [
+    introSection,
+    timelineSection,
+  ]
 }
 
 export default function About() {
-  const sectionList = buildSectionList(about.sections);
+  const sectionList = buildSectionList(about.sections, buildSections)
 
   return (
     <Layout pageDetails={about.pageDetails}>
       {
         sectionList.map(section => {
-          const key = `${PAGE_NAME}Section-${section.order}`;
-          const id = `${section.name}`;
+          const key = `${PAGE_NAME}Section-${section.order}`
+          const id = `${section.name}`
 
           return (
             <div key={key} id={id}>
               {section.jsx}
             </div>
-          );
+          )
         })
       }
     </Layout>
-  );
+  )
 }

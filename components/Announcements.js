@@ -1,171 +1,122 @@
-import { isDefined, getTheme, sortListByReverseOrder } from './Layout';
+import { isDefined, getTheme, sortListByOrder } from "../utils/utils"
 
 // Uncomment the following code to add the functionality to toggle more / less
 // announcements or activites.
-// Note: also uncomment the buildFeedControllerJsx function, the related 
+// Note: also uncomment the buildFeedControllerJsx function, the related
 // comments in the Announcements function.
 
 /* function getAnnouncementsById(id) {
-  return document.getElementById(`${id}Announcements`);
+  return document.getElementById(`${id}Announcements`)
 }
 
 function getMoreById(id) {
-  return document.getElementById(`${id}MorePosts`);
+  return document.getElementById(`${id}MorePosts`)
 }
 
 function getLessById(id) {
-  return document.getElementById(`${id}LessPosts`);
+  return document.getElementById(`${id}LessPosts`)
 }
 
 function moreIsActive(id) {
-  const more = getMoreById(id);
-  if (more.classList.contains('active'))
-    return true;
+  const more = getMoreById(id)
+  if (more.classList.contains("active"))
+    return true
 
-  return false;
+  return false
 }
 
 function lessIsActive(id) {
-  const less = getLessById(id);
-  if (less.classList.contains('active'))
-    return true;
+  const less = getLessById(id)
+  if (less.classList.contains("active"))
+    return true
 
-  return false;
+  return false
 }
 
 function activateMore(id) {
-  const more = getMoreById(id);
-  more.classList.add('active');
+  const more = getMoreById(id)
+  more.classList.add("active")
 }
 
 function activateLess(id) {
-  const less = getLessById(id);
-  less.classList.add('active');
+  const less = getLessById(id)
+  less.classList.add("active")
 }
 
 function deactivateMore(id) {
-  const more = getMoreById(id);
-  more.classList.remove('active');
+  const more = getMoreById(id)
+  more.classList.remove("active")
 }
 
 function deactivateLess(id) {
-  const less = getLessById(id);
-  less.classList.remove('active');
+  const less = getLessById(id)
+  less.classList.remove("active")
 }
 
 function scrollAnnouncementsIntoView(id) {
-  const announcements = getAnnouncementsById(id);
-  announcements.scrollIntoView(true);
+  const announcements = getAnnouncementsById(id)
+  announcements.scrollIntoView(true)
 }
 
 function showMoreAnnouncements(id) {
-  const announcements = getAnnouncementsById(id);
-  announcements.style.maxHeight = 'none';
+  const announcements = getAnnouncementsById(id)
+  announcements.style.maxHeight = "none"
 
   if (moreIsActive(id))
-    deactivateMore(id);
+    deactivateMore(id)
   if (!lessIsActive(id))
-    activateLess(id);
+    activateLess(id)
 }
 
 function showLessAnnouncements(id) {
-  const announcements = getAnnouncementsById(id);
-  announcements.style.maxHeight = '650px';
+  const announcements = getAnnouncementsById(id)
+  announcements.style.maxHeight = "650px"
 
   if (lessIsActive(id))
-    deactivateLess(id);
+    deactivateLess(id)
   if (!moreIsActive(id))
-    activateMore(id);
+    activateMore(id)
 
-  scrollAnnouncementsIntoView(id);
+  scrollAnnouncementsIntoView(id)
 } */
 
-function postIsValid(post) {
-  const { header, details } = post;
-  if (isDefined(header) && header !== ''
-    && isDefined(details) && details !== '')
-    return true;
-
-  return false;
+function isPostValid(post) {
+  const { header, details } = post
+  return isDefined(header) && header !== "" && isDefined(details) && details !== ""
 }
 
-function dateObjectIsValid(dateObject) {
-  if (isDefined(dateObject) && dateObject != 'Invalid Date')
-    return true;
-
-  return false;
-}
-
-function getDateString(date) {
-  let dateObj = new Date(date);
-  if (!dateObjectIsValid(dateObj))
-    dateObj = new Date(Date.now());
-
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const dateStr = dateObj.toLocaleDateString(undefined, options);
-  return dateStr;
-}
-
-function postListReducerCallback(list, post) {
-  if (postIsValid(post)) {
-    const { dateIsSpecial, date, header, details } = post;
-    let dateStr;
-    if (dateIsSpecial)
-      dateStr = getDateString(date);
-    else
-      dateStr = date;
-
-    list.push({
-      date: dateStr,
-      header: header,
-      details: details
-    });
-  }
-
-  return list;
-}
-
-function reducePostList(postList) {
-  return postList.reduce((list, post) => postListReducerCallback(list, post), []);
-}
-
-function sortPostList(postList) {
-  let posts = postList;
-  posts.forEach(post => post.reverseOrder = Date.parse(post.date));
-  posts = sortListByReverseOrder(posts);
-  return posts;
+function buildPostList(list) {
+  const filteredList = list.filter(post => isPostValid(post))
+  return sortListByOrder(filteredList)
 }
 
 function buildPostListJsx(id, announcementsTheme, list) {
-  if (!isDefined(list) || list.length === 0)
-    return;
+  let postListJsx
+  if (isDefined(list) && list.length > 0) {
+    const postList = buildPostList(list)
+    postListJsx = (
+      <ul className={`${announcementsTheme} postList`}>
+        {
+          postList.map((post, i) => {
+            const key = `${id}Post-${i}`
+            const className = i % 2 === 0 ? "leftPost" : "rightPost"
+            const { date, header, details } = post
 
-  let postList = reducePostList(list);
-  postList = sortPostList(postList);
-
-  return (
-    <ul className={`${announcementsTheme} postList`}>
-      {
-        postList.map((post, i) => {
-          const key = `${id}Post-${i}`;
-          const className = i % 2 === 0 ? 'leftPost' : 'rightPost';
-          const { date, header, details } = post;
-
-          return (
-            <li key={key} className={className} >
-              <div className={'postHeader'}>
-                <h1>{header}</h1>
-                <p>{date}</p>
-              </div>
-              <div className={'postDetails'}>
-                <p>{details}</p>
-              </div>
-            </li>
-          );
-        })
-      }
-      <style jsx>
-        {`
+            return (
+              <li key={key} className={className} >
+                <div className="postHeader">
+                  <h1>{header}</h1>
+                  <p>{date}</p>
+                </div>
+                <div className="postDetails">
+                  <p>{details}</p>
+                </div>
+              </li>
+            )
+          })
+        }
+        <style jsx>
+          {`
           .postList {
             padding-bottom: 55px;
           }
@@ -232,19 +183,22 @@ function buildPostListJsx(id, announcementsTheme, list) {
             }
           }
         `}
-      </style>
-    </ul>
-  );
+        </style>
+      </ul>
+    )
+  }
+
+  return postListJsx
 }
 
 /* function buildFeedControllerJsx(id, announcementsTheme) {
   return (
     <div className={`${announcementsTheme} feedController`}>
-      <div className={'blurredArea'}></div>
-      <div id={`${id}MorePosts`} className={'controller active'}>
+      <div className="blurredArea"></div>
+      <div id={`${id}MorePosts`} className="controller active">
         <p onClick={() => showMoreAnnouncements(id)}>more</p>
       </div>
-      <div id={`${id}LessPosts`} className={'controller'}>
+      <div id={`${id}LessPosts`} className="controller">
         <p onClick={() => showLessAnnouncements(id)}>less</p>
       </div>
       <style jsx>
@@ -326,22 +280,19 @@ function buildPostListJsx(id, announcementsTheme, list) {
 } */
 
 export default function Announcements({ announcements }) {
-  if (!isDefined(announcements))
-    return;
-
-  const id = isDefined(announcements.name) ? announcements.name : 'announcements';
-  const theme = getTheme(announcements.theme);
-  const postListJsx = buildPostListJsx(id, theme, announcements.postList);
-  // const feedControllerJsx = buildFeedControllerJsx(id, theme);
+  const id = isDefined(announcements.name) ? announcements.name : "announcements"
+  const theme = getTheme(announcements.theme)
+  const postListJsx = buildPostListJsx(id, theme, announcements.postList)
+  // const feedControllerJsx = buildFeedControllerJsx(id, theme)
 
   return (
     <div id={`${id}Announcements`} style={{
-      position: 'relative',
-      // maxHeight: 650 + 'px',
-      overflow: 'hidden'
+      position: "relative",
+      // maxHeight: "650px",
+      overflow: "hidden",
     }}>
       {postListJsx}
       {/* {feedControllerJsx} */}
     </div>
-  );
+  )
 }

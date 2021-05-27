@@ -1,14 +1,13 @@
-import { isDefined, getTheme } from './Layout';
+import { isDefined, getTheme } from "../utils/utils"
 
 function buildImageJsx(path) {
-  if (!isDefined(path))
-    return;
-
-  return (
-    <div className={'pictureContainer'}>
-      <div className={'picture'} style={{ backgroundImage: `url(${path})` }}></ div>
-      <style jsx>
-        {`
+  let imageJsx
+  if (isDefined(path)) {
+    imageJsx = (
+      <div className="pictureContainer">
+        <div className="picture" style={{ backgroundImage: `url(${path})` }} />
+        <style jsx>
+          {`
           .pictureContainer {
             width: 100%;
             height: 150px;
@@ -38,48 +37,45 @@ function buildImageJsx(path) {
             }
           }
         `}
-      </style>
-    </div>
-  );
+        </style>
+      </div>
+    )
+  }
+
+  return imageJsx
 }
 
 export default function Section({ sectionDetails, isRaw, isViewHeight, children }) {
-  if (!isDefined(sectionDetails))
-    return;
-
-  const id = isDefined(sectionDetails.name) ? sectionDetails.name : 'section';
-  const theme = getTheme(sectionDetails.theme);
-  const raw = isRaw ? 'raw' : '';
-  const viewHeight = isViewHeight ? 'viewHeight' : '';
-  const imageJsx = buildImageJsx(sectionDetails.image);
+  const id = isDefined(sectionDetails.name) ? sectionDetails.name : "section"
+  const theme = getTheme(sectionDetails.theme)
+  const raw = isRaw ? "raw" : ""
+  const viewHeight = isViewHeight ? "viewHeight" : ""
+  const imageJsx = buildImageJsx(sectionDetails.image)
 
   return (
-    <section id={`${id}Section`} className={`${theme} ${raw} ${viewHeight}`} style={{ position: 'relative' }}>
-      <div className={'sectionTitle'}>
+    <section id={`${id}Section`} className={`${theme} ${raw} ${viewHeight}`} style={{ position: "relative" }}>
+      <div className="sectionTitle">
         {
           sectionDetails.titles.map((title, i) => {
-            const key = `${id}SectionTitle-${i}`;
-
-            return <h1 key={key} className={'title'}>{title}</h1>;
+            const key = `${id}SectionTitle-${i}`
+            return <h1 key={key} className="title">{title}</h1>
           })
         }
         {
           sectionDetails.subtitles.map((subtitle, i) => {
-            const key = `${id}SectionSubtitle-${i}`;
-
-            return <h3 key={key} className={'grey subtitle'}>{subtitle}</h3>;
+            const key = `${id}SectionSubtitle-${i}`
+            return <h3 key={key} className="grey subtitle">{subtitle}</h3>
           })
         }
         {imageJsx}
         {
           sectionDetails.descriptions.map((description, i) => {
-            const key = `${id}SectionDescription-${i}`;
-
-            return <p key={key} className={'grey description'}>{description}</p>;
+            const key = `${id}SectionDescription-${i}`
+            return <p key={key} className="grey description">{description}</p>
           })
         }
       </div>
-      <div className={'sectionContent'}>{children}</div>
+      <div className="sectionContent">{children}</div>
       <style jsx>
         {`
           .white {
@@ -150,5 +146,5 @@ export default function Section({ sectionDetails, isRaw, isViewHeight, children 
         `}
       </style>
     </section>
-  );
+  )
 }

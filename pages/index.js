@@ -1,60 +1,62 @@
-import fetch from 'node-fetch';
-import home from './index.json';
-import Layout, { isDefined, sortListByOrder } from '../components/Layout';
-import Slideshow from '../components/Slideshow';
-import Section from '../components/Section';
-import Carousel from '../components/Carousel';
-import Announcements from '../components/Announcements';
+// import fetch from "node-fetch"
+import home from "./index.json"
+import { buildSectionList, isDefined, sortListByOrder } from "../utils/utils"
+import Layout from "../components/Layout"
+import Slideshow from "../components/Slideshow"
+import Section from "../components/Section"
+import Carousel from "../components/Carousel"
+import Announcements from "../components/Announcements"
 
-const PAGE_NAME = 'home';
+const PAGE_NAME = "home"
 
 function buildWelcomeSection(welcome) {
-  if (!isDefined(welcome))
-    return;
+  let section
+  if (isDefined(welcome)) {
+    const { order, sectionDetails, slideshowList } = welcome
+    const orderedList = sortListByOrder(slideshowList)
+    const welcomeJsx = (
+      <Section sectionDetails={sectionDetails} isRaw isViewHeight>
+        {
+          orderedList.map((slideshowListItem, i) => {
+            const { slideshow } = slideshowListItem
+            const key = `${slideshow.name}Slideshow-${i}`
 
-  const { order, sectionDetails } = welcome;
-  const slideshowList = sortListByOrder(welcome.slideshowList);
-  const welcomeJsx = (
-    <Section sectionDetails={sectionDetails} isRaw={true} isViewHeight={true}>
-      {
-        slideshowList.map((slideshowListItem, i) => {
-          const { slideshow } = slideshowListItem;
-          const key = `${slideshow.name}Slideshow-${i}`;
+            return <Slideshow key={key} slideshow={slideshow} />
+          })
+        }
+      </Section>
+    )
 
-          return <Slideshow key={key} slideshow={slideshow} />;
-        })
-      }
-    </Section>
-  );
+    section = {
+      order: order,
+      name: sectionDetails.name,
+      jsx: welcomeJsx,
+    }
+  }
 
-  return {
-    order: order,
-    name: sectionDetails.name,
-    jsx: welcomeJsx
-  };
+  return section
 }
 
 function buildIntroLinks(links) {
-  if (!isDefined(links))
-    return '';
+  let linkJsx
+  if (isDefined(links)) {
+    linkJsx = (
+      <p className="introLinks">
+        {
+          links.map((link, i) => {
+            const key = `introLink-${i}`
+            const { text, href } = link
+            const spacer = i > 0 ? " | " : ""
 
-  return (
-    <p className={'introLinks'}>
-      {
-        links.map((link, i) => {
-          const key = `introLink-${i}`;
-          const { text, href } = link;
-          const spacer = i > 0 ? ' | ' : '';
-
-          return (
-            <span key={key} className={'link'}>
-              {spacer}<a href={href}>{text}</a>
-            </span>
-          );
-        })
-      }
-      <style jsx>
-        {`
+            return (
+              <span key={key} className="link">
+                {spacer}<a href={href}>{text}</a>
+              </span>
+            )
+          })
+        }
+        <style jsx>
+          {`
           .introLinks {
             text-align: center;
           }
@@ -76,117 +78,109 @@ function buildIntroLinks(links) {
             }
           }
         `}
-      </style>
-    </p>
-  );
+        </style>
+      </p>
+    )
+  }
+
+  return linkJsx
 }
 
 function buildIntroSection(intro) {
-  if (!isDefined(intro))
-    return;
+  let section
+  if (isDefined(intro)) {
+    const { order, sectionDetails, links } = intro
+    const introLinkJsx = buildIntroLinks(links)
+    const introJsx = (
+      <Section sectionDetails={sectionDetails}>
+        {introLinkJsx}
+      </Section>
+    )
 
-  const { order, sectionDetails } = intro;
-  const introLinkJsx = buildIntroLinks(intro.links);
-  const introJsx = (
-    <Section sectionDetails={sectionDetails}>
-      {introLinkJsx}
-    </Section>
-  );
+    section = {
+      order: order,
+      name: sectionDetails.name,
+      jsx: introJsx,
+    }
+  }
 
-  return {
-    order: order,
-    name: sectionDetails.name,
-    jsx: introJsx
-  };
+  return section
 }
 
 function buildActivitiesSection(activities) {
-  if (!isDefined(activities))
-    return;
+  let section
+  if (isDefined(activities)) {
+    const { order, sectionDetails } = activities
+    const { sectionName } = sectionDetails
+    const activitiesList = sortListByOrder(activities.activitiesList)
+    const carouselList = sortListByOrder(activities.carouselList)
+    const activitiesJsx = (
+      <Section sectionDetails={sectionDetails}>
+        {
+          carouselList.map((carouselListItem, i) => {
+            const key = `${sectionName}Carousel-${i}`
+            return <Carousel key={key} carousel={carouselListItem.carousel} />
+          })
+        }
+        {
+          activitiesList.map((activitiesListItem, i) => {
+            const key = `${sectionName}Activites-${i}`
+            return <Announcements key={key} announcements={activitiesListItem.activities} />
+          })
+        }
+      </Section>
+    )
 
-  const { order, sectionDetails } = activities;
-  const activitiesList = sortListByOrder(activities.activitiesList);
-  const carouselList = sortListByOrder(activities.carouselList);
-  const activitiesJsx = (
-    <Section sectionDetails={sectionDetails}>
-      {
-        carouselList.map((carouselListItem, i) => {
-          const key = `${sectionDetails.name}Carousel-${i}`;
+    section = {
+      order: order,
+      name: sectionName,
+      jsx: activitiesJsx,
+    }
+  }
 
-          return <Carousel key={key} carousel={carouselListItem.carousel} />;
-        })
-      }
-      {
-        activitiesList.map((activitiesListItem, i) => {
-          const key = `${sectionDetails.name}Activites-${i}`;
-
-          return <Announcements key={key} announcements={activitiesListItem.activities} />;
-        })
-      }
-    </Section>
-  );
-
-  return {
-    order: order,
-    name: sectionDetails.name,
-    jsx: activitiesJsx
-  };
+  return section
 }
 
 function buildSections(pageSections) {
-  const welcomeSection = buildWelcomeSection(pageSections.welcome);
-  const introSection = buildIntroSection(pageSections.intro);
-  const activitiesSection = buildActivitiesSection(pageSections.activities);
+  const welcomeSection = buildWelcomeSection(pageSections.welcome)
+  const introSection = buildIntroSection(pageSections.intro)
+  const activitiesSection = buildActivitiesSection(pageSections.activities)
 
-  return {
-    welcome: welcomeSection,
-    intro: introSection,
-    activities: activitiesSection
-  };
+  return [
+    welcomeSection,
+    introSection,
+    activitiesSection,
+  ]
 }
 
-function buildSectionList(pageSections) {
-  if (!isDefined(pageSections))
-    return;
-
-  const sections = buildSections(pageSections);
-  let sectionList = [];
-  for (const s in sections)
-    if (isDefined(sections[s]))
-      sectionList.push(sections[s]);
-
-  sectionList = sortListByOrder(sectionList);
-
-  return sectionList;
-}
-
-export default function Home({ pageSections }) {
-  const sectionList = buildSectionList(home.sections);
+// export default function Home({ pageSections }) {
+export default function Home() {
+  const sectionList = buildSectionList(home.sections, buildSections)
 
   return (
     <Layout pageDetails={home.pageDetails}>
       {
         sectionList.map(section => {
-          const key = `${PAGE_NAME}Section-${section.order}`;
-          const id = `${section.name}`;
+          const key = `${PAGE_NAME}Section-${section.order}`
+          const id = `${section.name}`
 
           return (
             <div key={key} id={id}>
               {section.jsx}
             </div>
-          );
+          )
         })
       }
     </Layout>
-  );
+  )
 }
 
 // export async function getStaticProps() {
-//   const res = await fetch(process.env.OPEN_DOOR_API + `/pages/${PAGE_NAME}/sections`);
-//   const page = await res.json();
+//   //   const res = await fetch(process.env.OPEN_DOOR_API + `/pages/${PAGE_NAME}/sections`)
+//   //   const page = await res.json()
 //   return {
 //     props: {
-//       pageSections: page.sections
-//     }
-//   };
+//       page: home,
+//     },
+//   }
 // }

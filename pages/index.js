@@ -117,11 +117,11 @@ function buildActivitiesSection(activities) {
         })
       }
       {
-        activitiesList.map((activitiesListItem, i) => {
+        /* activitiesList.map((activitiesListItem, i) => {
           const key = `${sectionDetails.name}Activites-${i}`;
 
           return <Announcements key={key} announcements={activitiesListItem.activities} />;
-        })
+        }) */
       }
     </Section>
   );

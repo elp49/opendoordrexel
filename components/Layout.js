@@ -217,7 +217,7 @@ export default function Layout({ children, pageDetails }) {
               })
             }
           </ol>
-          <div className={styles.mailingList}>
+          {/* <div className={styles.mailingList}>
             <p>{mailingList.description}</p>
             <form className={styles.emailForm}>
               <input type='email' id='email' name='email' placeholder={mailingList.placeholder} />
@@ -225,7 +225,7 @@ export default function Layout({ children, pageDetails }) {
                 <i className={'arrowUp'}></i>
               </button>
             </form>
-          </div>
+          </div> */}
           <div className={styles.footerCaption}>
             <p>{contact.location}</p>
             <p>{contact.address}</p>

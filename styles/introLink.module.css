@@ -1,0 +1,14 @@
+.link {
+  font-size: 2rem;
+  font-weight: bold;
+  text-decoration: none;
+  transition-duration: 0.5s;
+}
+
+@media not all and (pointer: coarse) {
+  .link a:hover,
+  .link a:focus {
+    text-decoration: underline;
+    opacity: 1;
+  }
+}

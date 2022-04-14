@@ -1,0 +1,65 @@
+{
+  "themes": {
+    "layout": 1,
+    "overlay": 1
+  },
+  "pageList": [
+    {
+      "order": 1,
+      "text": "Home",
+      "href": "/"
+    },
+    {
+      "order": 3,
+      "text": "Dinner & Worship",
+      "href": "/tuesdays"
+    },
+    {
+      "order": 2,
+      "text": "Outreach",
+      "href": "/outreach"
+    },
+    {
+      "order": 4,
+      "text": "Testimonies",
+      "href": "/testimonies"
+    },
+    {
+      "order": 5,
+      "text": "Campus Ministers",
+      "href": "/staff"
+    },
+    {
+      "order": 6,
+      "text": "About",
+      "href": "/about"
+    }
+  ],
+  "mailingList": {
+    "description": "Sign up for our mailing list to find out what’s for dinner each week.",
+    "placeholder": "Email"
+  },
+  "socialMedia": [
+    {
+      "order": 1,
+      "text": "Facebook",
+      "href": "https://www.facebook.com/groups/opendoorchristiancommunity"
+    },
+    {
+      "order": 2,
+      "text": "Instagram",
+      "href": "https://www.instagram.com/drexelopendoor"
+    }
+  ],
+  "donate": {
+    "order": 1,
+    "text": "Donate",
+    "href": "/donate"
+  },
+  "contact": {
+    "location": "Drexel University, James E. Marks Intercultural Center, ",
+    "address": "3225 Arch St, Philadelphia, PA 19104, Office 012B",
+    "phone": "814-883-0118",
+    "email": "opendoordrexel@gmail.com"
+  }
+}

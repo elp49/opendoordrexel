@@ -1,0 +1,346 @@
+{
+  "name": "home",
+  "title": "Home",
+  "sections": {
+    "welcome": {
+      "order": 1,
+      "sectionDetails": {
+        "name": "welcome",
+        "theme": 0,
+        "titles": [],
+        "subtitles": [],
+        "links": [],
+        "image": "",
+        "descriptions": [],
+        "isRaw": true,
+        "isViewHeight": true,
+        "hasScrollButton": false
+      },
+      "slideshow": {
+        "theme": 0,
+        "timeoutDurationInSeconds": 7,
+        "slideList": [
+          {
+            "order": 1,
+            "image": "/images/outreach/outreach-37-edit-1.jpg",
+            "titles": ["Help those with the greatest needs"],
+            "buttons": [
+              {
+                "order": 1,
+                "text": "Learn more",
+                "href": "/outreach#outreach"
+              }
+            ],
+            "showOnMobile": true,
+            "showOnDesktop": true
+          },
+          {
+            "order": 2,
+            "image": "/images/outreach/outreach-34.jpg",
+            "titles": ["Find out where your donations go"],
+            "buttons": [
+              {
+                "order": 1,
+                "text": "Learn more",
+                "href": "/outreach#outreach"
+              }
+            ],
+            "showOnMobile": true,
+            "showOnDesktop": true
+          },
+          {
+            "order": 3,
+            "image": "/images/worship/worship-20.jpg",
+            "titles": ["Worship with us on Tuesday nights"],
+            "buttons": [
+              {
+                "order": 1,
+                "text": "Learn more",
+                "href": "/tuesdays#worship"
+              }
+            ],
+            "showOnMobile": true,
+            "showOnDesktop": true
+          },
+          {
+            "order": 4,
+            "image": "/images/donations/donations-13.jpg",
+            "titles": ["Always accepting clothing donations"],
+            "buttons": [
+              {
+                "order": 1,
+                "text": "Learn more",
+                "href": "/outreach#donations"
+              }
+            ],
+            "showOnMobile": false,
+            "showOnDesktop": true
+          },
+          {
+            "order": 5,
+            "image": "/images/dinner/dinner-17.jpg",
+            "titles": ["Free dinner every Tuesday night"],
+            "buttons": [
+              {
+                "order": 1,
+                "text": "Learn more",
+                "href": "/tuesdays#dinner"
+              }
+            ],
+            "showOnMobile": false,
+            "showOnDesktop": true
+          },
+          {
+            "order": 6,
+            "image": "/images/dinner/dinner-26.jpg",
+            "titles": ["Free dinner every Tuesday night"],
+            "buttons": [
+              {
+                "order": 1,
+                "text": "Learn more",
+                "href": "/tuesdays#dinner"
+              }
+            ],
+            "showOnMobile": true,
+            "showOnDesktop": false
+          },
+          {
+            "order": 7,
+            "image": "/images/outreach/outreach-35-edit-1.jpg",
+            "titles": ["Find out where your donations go"],
+            "buttons": [
+              {
+                "order": 1,
+                "text": "Learn more",
+                "href": "/outreach#outreach"
+              }
+            ],
+            "showOnMobile": true,
+            "showOnDesktop": true
+          }
+        ]
+      }
+    },
+    "intro": {
+      "order": 2,
+      "sectionDetails": {
+        "name": "intro",
+        "theme": 0,
+        "titles": ["Welcome to Open Door Christian Community"],
+        "subtitles": [
+          "We are an open, welcoming Christian community that believes God’s love and mercy is for all people.  We invite you to gather with us."
+        ],
+        "links": [
+          {
+            "order": 1,
+            "text": "Learn more about us",
+            "href": "/about"
+          }
+        ],
+        "image": "",
+        "descriptions": [],
+        "isRaw": false,
+        "isViewHeight": false,
+        "hasScrollButton": false
+      }
+    },
+    "announcements": {
+      "order": 3,
+      "sectionDetails": {
+        "name": "announcements",
+        "theme": 1,
+        "titles": ["Weekly Events"],
+        "subtitles": [],
+        "links": [],
+        "image": "",
+        "descriptions": [],
+        "isRaw": false,
+        "isViewHeight": false,
+        "hasScrollButton": false
+      },
+      "events": {
+        "theme": 1,
+        "postList": [
+          {
+            "order": 1,
+            "date": "Mondays 8 pm ET",
+            "header": "Spiritual Discussions with Jack",
+            "details": "This is an open discussion without judgement and is not a teaching bible study - it is a discussion on spirituality and its effect on one’s life. Questions like: \"Is there a God?\", \"Why does Evil exist?\", \"What is Love?\", \"How do I manage all my new choices?\" \"Why are there so many religions?\""
+          },
+          {
+            "order": 2,
+            "date": "Tuesdays 6-7 pm ET",
+            "header": "Spiritual Spiels",
+            "details": "Join an interactive discussion series on topics that are relevant and practical in today’s world. In addition the topics will explore how individuals can grow in their faith and relationship with God. Are you looking to explore your relationship with others and with God?"
+          },
+          {
+            "order": 3,
+            "date": "Tuesdays 7-8 pm ET",
+            "header": "Ignite Your Prayer Life",
+            "details": "Experience God in a diversity of ways through this reflective and experiential service. Connecting with God using ancient and modern ways from a variety of faiths will be explored. Are you ready to see God differently?"
+          },
+          {
+            "order": 4,
+            "date": "Fridays 10-11:30 pm ET",
+            "header": "Virtual Game Nights",
+            "details": "Join a virtual game night where you can meet other members and compete against fellow gamers."
+          }
+        ]
+      }
+    },
+    "activities": {
+      "order": 4,
+      "sectionDetails": {
+        "name": "activities",
+        "theme": 0,
+        "titles": ["Activities"],
+        "subtitles": [
+          "Open Door’s ministry on campus is constantly growing. We create fun and inclusive events where people from all walks of life are welcome."
+        ],
+        "links": [],
+        "image": "",
+        "descriptions": [],
+        "isRaw": false,
+        "isViewHeight": false,
+        "hasScrollButton": false
+      },
+      "carousel": {
+        "theme": 1,
+        "cardList": [
+          {
+            "order": 1,
+            "image": "/images/activities/activities-1.jpg"
+          },
+          {
+            "order": 2,
+            "image": "/images/activities/activities-2.jpg"
+          },
+          {
+            "order": 3,
+            "image": "/images/activities/activities-3.jpg"
+          },
+          {
+            "order": 4,
+            "image": "/images/activities/activities-4.jpg"
+          },
+          {
+            "order": 5,
+            "image": "/images/activities/activities-5.jpg"
+          },
+          {
+            "order": 6,
+            "image": "/images/activities/activities-6.jpg"
+          },
+          {
+            "order": 7,
+            "image": "/images/activities/activities-7.jpg"
+          },
+          {
+            "order": 8,
+            "image": "/images/activities/activities-8.jpg"
+          },
+          {
+            "order": 9,
+            "image": "/images/activities/activities-9.jpg"
+          },
+          {
+            "order": 10,
+            "image": "/images/activities/activities-10.jpg"
+          },
+          {
+            "order": 11,
+            "image": "/images/activities/activities-11.jpg"
+          },
+          {
+            "order": 12,
+            "image": "/images/activities/activities-12.jpg"
+          },
+          {
+            "order": 13,
+            "image": "/images/activities/activities-13.jpg"
+          },
+          {
+            "order": 14,
+            "image": "/images/activities/activities-14.jpg"
+          },
+          {
+            "order": 15,
+            "image": "/images/activities/activities-15.jpg"
+          },
+          {
+            "order": 16,
+            "image": "/images/activities/activities-16.jpg"
+          },
+          {
+            "order": 17,
+            "image": "/images/activities/activities-17.jpg"
+          },
+          {
+            "order": 18,
+            "image": "/images/activities/activities-18.jpg"
+          },
+          {
+            "order": 19,
+            "image": "/images/activities/activities-19.jpg"
+          },
+          {
+            "order": 20,
+            "image": "/images/activities/activities-20.jpg"
+          },
+          {
+            "order": 21,
+            "image": "/images/activities/activities-21.jpg"
+          },
+          {
+            "order": 22,
+            "image": "/images/activities/activities-22.jpg"
+          },
+          {
+            "order": 23,
+            "image": "/images/activities/activities-23.jpg"
+          },
+          {
+            "order": 24,
+            "image": "/images/activities/activities-24.jpg"
+          },
+          {
+            "order": 25,
+            "image": "/images/activities/activities-25.jpg"
+          },
+          {
+            "order": 26,
+            "image": "/images/activities/activities-26.jpg"
+          },
+          {
+            "order": 27,
+            "image": "/images/activities/activities-27.jpg"
+          },
+          {
+            "order": 28,
+            "image": "/images/activities/activities-28.jpg"
+          },
+          {
+            "order": 29,
+            "image": "/images/activities/activities-29.jpg"
+          },
+          {
+            "order": 30,
+            "image": "/images/activities/activities-30.jpg"
+          },
+          {
+            "order": 31,
+            "image": "/images/activities/activities-31.jpg"
+          },
+          {
+            "order": 32,
+            "image": "/images/activities/activities-32.jpg"
+          },
+          {
+            "order": 33,
+            "image": "/images/activities/activities-33.jpg"
+          }
+        ]
+      }
+    }
+  }
+}

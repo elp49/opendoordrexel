@@ -1,0 +1,97 @@
+.announcements {
+  position: relative;
+  overflow: hidden;
+}
+
+/* BEGIN POST LIST STYLES */
+.postList {
+  padding-bottom: 55px;
+}
+
+.leftPost,
+.rightPost {
+  position: relative;
+  display: inline-block;
+  display: inline-table;
+  margin: 20px 20px 20px 0;
+  border-radius: 10px;
+  list-style: none;
+}
+
+.postHeader {
+  margin: 20px 20px 0;
+}
+
+.postHeader > h1 {
+  font-weight: normal;
+}
+
+.postHeader > p {
+  margin-top: 20px;
+}
+
+.postDetails {
+  margin: 0 -20px -20px 20px;
+  padding: 20px;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .leftPost,
+  .rightPost {
+    width: 40%;
+    margin: 45px 45px 45px 0;
+  }
+  .leftPost {
+    margin-left: 5%;
+  }
+  .rightPost {
+    margin-left: 55px;
+    margin-left: calc(10% - 45px);
+    margin-right: 5%;
+  }
+  .postHeader {
+    margin: 45px 45px 0;
+  }
+  .postHeader > p {
+    margin-top: 45px;
+  }
+  .postDetails {
+    margin: 0 -45px -45px 45px;
+    padding: 45px;
+  }
+}
+/* END POST LIST STYLES */
+
+/* BEGIN FEED CONTROLLER STYLES */
+.feedController {
+  height: 30px;
+  width: 100%;
+  /* text-align: center; */
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.feedController > button {
+  /* position: absolute;
+  top: 50%;
+  -webkit-transform: translate(-50%, 0);
+  -moz-transform: translate(-50%, 0);
+  -ms-transform: translate(-50%, 0);
+  -o-transform: translate(-50%, 0);
+  transform: translate(-50%, 0); */
+  display: block;
+  margin: auto;
+  transition-duration: 0.3s;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+@media not all and (pointer: coarse) {
+  .feedController > button:hover {
+    font-size: 2rem;
+  }
+}
+/* END FEED CONTROLLER STYLES */

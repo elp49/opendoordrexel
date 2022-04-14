@@ -1,0 +1,149 @@
+{
+  "name": "about",
+  "title": "About",
+  "sections": {
+    "intro": {
+      "order": 1,
+      "sectionDetails": {
+        "name": "about",
+        "theme": 0,
+        "titles": ["About Us"],
+        "subtitles": [
+          "gather. discover. engage.",
+          "We gather together to be nurtured and challenged, discover what it means to follow Jesus, and engage our lives with God’s empowering presence in the world."
+        ],
+        "links": [],
+        "image": "",
+        "descriptions": [
+          "We are an open, welcoming Christian community that believes God’s love and mercy is for all people. We ask questions and together search out answers, believing God speaks to us in a multitude of ways. We help one another along our faith journey, whether that is just beginning or life-long. We believe our faith shapes our lives, giving us meaning and purpose in everything we do. From figuring out our career paths to spending time serving others, we hope to make the world more reflective of God’s dream for creation.",
+          "Open Door Christian Community formerly the Asbury ministry, is a ministry of The Wesley Foundation of Philadelphia at Drexel University. The Wesley Foundation of Philadelphia is a Methodist foundation of the Eastern PA Conference of The United Methodist Church. Open Door Christian Community is an Ecumenical Protestant student organization committed to supporting the spiritual lives of students, regardless of background or religious identity. Open Door Christian Community seeks to be a safe and welcoming place in which students can question and explore a spiritual life that feels authentic. We seek to foster students’ spiritual development through Christian discipleship rooted in scripture and mission outreach. We reach a broad group of students from different backgrounds who come together to share differing perspectives that expands their worldview through conversation and community service.",
+          "We value authentic relationship over rigid dogma, working to build a community of mutual care and respect where we are free to be our whole selves--all that God has created and is creating us to be. And a place where--in relationship with God and each other--we are nurtured and challenged to grow toward the fullness of life which is our calling, and to explore together what it means to follow Jesus.",
+          "We believe the journey of faith is both inward and outward, personal and social; personal in the ways we relate to God and experience God’s presence in our lives; social in the ways we reflect God’s love for ALL people and ALL of creation, moving as Jesus did beyond token acts of charity to ongoing work for justice and peace in our own communities and throughout the world. Through worship, study, prayer, fellowship, service and social action, we seek to deepen our understanding and practice of Christianity."
+        ],
+        "isRaw": false,
+        "isViewHeight": false,
+        "hasScrollButton": true
+      }
+    },
+    "timeline": {
+      "order": 2,
+      "sectionDetails": {
+        "name": "timeline",
+        "theme": 1,
+        "titles": ["Our Story"],
+        "subtitles": ["It all started with 2 crockpots and a few people..."],
+        "links": [],
+        "image": "",
+        "descriptions": [],
+        "isRaw": false,
+        "isViewHeight": false,
+        "hasScrollButton": true
+      },
+      "timeline": {
+        "theme": 1,
+        "eventList": [
+          {
+            "month": 0,
+            "year": 2015,
+            "details": "Piltz begins"
+          },
+          {
+            "month": 8,
+            "year": 2015,
+            "details": "Diana begins"
+          },
+          {
+            "month": 9,
+            "year": 2015,
+            "details": "2 crockpots"
+          },
+          {
+            "month": 2,
+            "year": 2016,
+            "details": "Blind-Side All-Campus Discussion: Human Potential"
+          },
+          {
+            "month": 4,
+            "year": 2016,
+            "details": "Outside BBQ with 100 attendees"
+          },
+          {
+            "month": 5,
+            "year": 2016,
+            "details": "Conversations Unfiltered at Saxby’s"
+          },
+          {
+            "month": 8,
+            "year": 2016,
+            "details": "Eddie begins"
+          },
+          {
+            "month": 9,
+            "year": 2016,
+            "details": "Student executive board begins"
+          },
+          {
+            "month": 2,
+            "year": 2017,
+            "details": "Collaborated with local church ministries"
+          },
+          {
+            "month": 2,
+            "year": 2017,
+            "details": "Dinner numbers grow from 10 to 50 & Worship numbers grow from 5 to 15"
+          },
+          {
+            "month": 9,
+            "year": 2017,
+            "details": "Prayer Labyrinth"
+          },
+          {
+            "month": 4,
+            "year": 2018,
+            "details": "Blood Diamond movie discussion"
+          },
+          {
+            "month": 8,
+            "year": 2018,
+            "details": "Jack begins and starts Bible study/spiritual discussion"
+          },
+          {
+            "month": 8,
+            "year": 2018,
+            "details": "Dinner numbers grow from 50 to 80 & Worship numbers grow from 15 to 25 and now crockpots"
+          },
+          {
+            "month": 9,
+            "year": 2018,
+            "details": "Kensington outreach begins"
+          },
+          {
+            "month": 2,
+            "year": 2019,
+            "details": "Dinner numbers grow from 80 to 120 and now roasters"
+          },
+          {
+            "month": 9,
+            "year": 2019,
+            "details": "Kensington outreach grows: 13 clothing drive locations and partnerships created"
+          },
+          {
+            "month": 0,
+            "year": 2020,
+            "details": "Student musicians from within the group added to music rotation"
+          },
+          {
+            "month": 2,
+            "year": 2020,
+            "details": "Went online"
+          },
+          {
+            "month": 8,
+            "year": 2020,
+            "details": "Diversified student leadership board"
+          }
+        ]
+      }
+    }
+  }
+}

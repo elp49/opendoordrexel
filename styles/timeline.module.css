@@ -1,0 +1,60 @@
+.timeline {
+  max-width: 1100px;
+  margin: 30px 20px 0 20px;
+  padding: 0;
+  border-radius: 10px;
+}
+
+.eventList {
+  border-left-width: 2px;
+  border-left-style: solid;
+  border-style: dotted;
+}
+
+.event {
+  position: relative;
+  top: -10px;
+  width: 100%;
+  margin: 20px 0;
+  list-style: none;
+}
+
+.eventMarker {
+  position: absolute;
+  left: -3.83rem;
+  height: 5rem;
+  width: 5rem;
+}
+
+.eventMarker > i {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.eventDate {
+  margin-left: 20px;
+}
+
+.eventDetails {
+  margin-left: 20px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 1000px) {
+  .timeline {
+    margin: auto;
+    padding: 45px;
+  }
+  .event {
+    margin: 45px 0;
+  }
+  .eventDate {
+    margin-left: 45px;
+  }
+  .eventDetails {
+    margin-left: 45px;
+    padding: 25px;
+  }
+}

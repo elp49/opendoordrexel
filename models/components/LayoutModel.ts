@@ -1,5 +1,5 @@
-import { Theme } from '../../utils/theme';
 import { TextLink } from '../shared';
+import { Theme } from '../ThemedModel';
 
 type LayoutThemes = {
   layout: Theme;

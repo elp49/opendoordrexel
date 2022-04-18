@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import icons from '../../data/icons.json';
-import { TextLink } from '../../models/shared';
-import { Color, getThemeName, Theme, ThemeName } from '../../models/ThemedModel';
+import TextLink from '../../models/shared/TextLink';
+import { Color, getThemeName, Theme, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/layout.module.css';
 import PageList from './PageList';
 

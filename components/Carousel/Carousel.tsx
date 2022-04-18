@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react';
 import CarouselModel, { CardModel } from '../../models/components/CarouselModel';
-import { Color, getThemeName, ThemeName } from '../../models/ThemedModel';
+import { Color, getThemeName, Theme, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/carousel.module.css';
-import { createStyle, fixFilePath, isMobileDevice, sortByReverseOrder } from '../../utils/utils';
+import {
+  createStyle,
+  fixFilePath,
+  isMobileDevice,
+  lockVerticalScroll,
+  sortByReverseOrder,
+  unlockVerticalScroll,
+} from '../../utils/utils';
 import Card from './Card';
 import Controls from './Controls';
 
@@ -19,13 +26,12 @@ enum KeyboardEventCode {
 }
 
 type CarouselProps = {
-  sectionName: string;
+  id: string;
+  theme: Theme;
   model: CarouselModel;
 };
 
-const Carousel = ({ sectionName, model }: CarouselProps) => {
-  const id = sectionName !== '' ? sectionName : 'carousel';
-
+const Carousel = ({ id, theme, model }: CarouselProps) => {
   const getCardList = () => {
     const isCardValid = ({ image }: CardModel) => image !== '';
 
@@ -38,7 +44,7 @@ const Carousel = ({ sectionName, model }: CarouselProps) => {
   };
 
   const cardList = getCardList();
-  const themeName = getThemeName(model.theme);
+  const themeName = getThemeName(theme);
 
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
   const [isAutoScrollActive, setIsAutoScrollActive] = useState<boolean>(false);
@@ -69,8 +75,10 @@ const Carousel = ({ sectionName, model }: CarouselProps) => {
 
   const toggleFullscreen = (cardIndex: number) => {
     if (isFullscreen) {
+      unlockVerticalScroll();
       exitFullscreen();
     } else {
+      lockVerticalScroll();
       enterFullscreen(cardIndex);
     }
   };
@@ -141,11 +149,11 @@ const Carousel = ({ sectionName, model }: CarouselProps) => {
   });
 
   return (
-    <div id={`${id}CarouselContainer`} className={`${styles.carouselContainer} ${themeName}`}>
-      <ul id={`${id}Carousel`} className={`${styles.carousel} ${isFullscreen ? styles.overlay : ''}`}>
+    <div id={id} className={`${styles.carouselContainer} ${themeName}`}>
+      <ul className={`${styles.carousel} ${isFullscreen ? styles.overlay : ''}`}>
         <li className={styles.dummy} />
         {cardList.map((card, i) => {
-          const cardId = `${id}CarouselCard-${i}`;
+          const cardId = `${id}CarouselCard${i}`;
           return (
             <Card
               key={cardId}

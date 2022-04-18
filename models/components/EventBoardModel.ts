@@ -1,5 +1,4 @@
-import OrderedItem from '../OrderedItem';
-import ThemedModel from '../ThemedModel';
+import OrderedItem from '../shared/OrderedItem';
 
 export type PostModel = OrderedItem & {
   date: string;
@@ -7,7 +6,7 @@ export type PostModel = OrderedItem & {
   details: string;
 };
 
-type EventBoardModel = ThemedModel & {
+type EventBoardModel = {
   postList: PostModel[];
 };
 

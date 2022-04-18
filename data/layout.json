@@ -5,32 +5,32 @@
   },
   "pageList": [
     {
-      "order": 1,
+      "order": 0,
       "text": "Home",
       "href": "/"
     },
     {
-      "order": 3,
+      "order": 2,
       "text": "Dinner & Worship",
       "href": "/tuesdays"
     },
     {
-      "order": 2,
+      "order": 1,
       "text": "Outreach",
       "href": "/outreach"
     },
     {
-      "order": 4,
+      "order": 3,
       "text": "Testimonies",
       "href": "/testimonies"
     },
     {
-      "order": 5,
+      "order": 4,
       "text": "Campus Ministers",
       "href": "/staff"
     },
     {
-      "order": 6,
+      "order": 5,
       "text": "About",
       "href": "/about"
     }
@@ -41,18 +41,18 @@
   },
   "socialMedia": [
     {
-      "order": 1,
+      "order": 0,
       "text": "Facebook",
       "href": "https://www.facebook.com/groups/opendoorchristiancommunity"
     },
     {
-      "order": 2,
+      "order": 1,
       "text": "Instagram",
       "href": "https://www.instagram.com/drexelopendoor"
     }
   ],
   "donate": {
-    "order": 1,
+    "order": 0,
     "text": "Donate",
     "href": "/donate"
   },

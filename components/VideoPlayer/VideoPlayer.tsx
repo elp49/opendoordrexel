@@ -1,17 +1,16 @@
 import VideoPlayerModel, { VideoModel } from '../../models/components/VideoPlayerModel';
-import { getThemeName } from '../../models/ThemedModel';
+import { getThemeName, Theme } from '../../models/shared/ThemedModel';
 import styles from '../../styles/videoPlayer.module.css';
 import { fixFilePath, sortByReverseOrder } from '../../utils/utils';
 import Video from './Video';
 
 type VideoPlayerProps = {
-  sectionName: string;
+  id: string;
+  theme: Theme;
   model: VideoPlayerModel;
 };
 
-const VideoPlayer = ({ sectionName, model }: VideoPlayerProps) => {
-  const id = sectionName !== '' ? sectionName : 'videoPlayer';
-
+const VideoPlayer = ({ id, theme, model }: VideoPlayerProps) => {
   const getVideoList = () => {
     const isVideoValid = ({ video }: VideoModel) => video !== '';
 
@@ -24,10 +23,10 @@ const VideoPlayer = ({ sectionName, model }: VideoPlayerProps) => {
   };
 
   const videoList = getVideoList();
-  const themeName = getThemeName(model.theme);
+  const themeName = getThemeName(theme);
 
   return (
-    <div className={themeName}>
+    <div id={id} className={themeName}>
       <ol className={styles.videoList}>
         {videoList.map((video, i) => (
           <Video key={`${id}Video-${i}`} className={i % 2 === 0 ? styles.leftVideo : styles.rightVideo} video={video} />

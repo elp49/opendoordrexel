@@ -1,8 +1,8 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import LayoutModel from '../../models/components/LayoutModel';
-import { getTextLinks } from '../../models/shared';
-import { Theme } from '../../models/ThemedModel';
+import { getTextLinks } from '../../models/shared/TextLink';
+import { Theme } from '../../models/shared/ThemedModel';
 import styles from '../../styles/layout.module.css';
 import Footer from './Footer';
 import Header from './Header';

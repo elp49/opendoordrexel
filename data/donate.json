@@ -1,11 +1,10 @@
 {
   "name": "donate",
   "title": "Donate",
-  "sections": {
-    "info": {
-      "order": 1,
+  "sections": [
+    {
+      "order": 0,
       "sectionDetails": {
-        "name": "info",
         "theme": 0,
         "titles": ["Donate to help those in need."],
         "subtitles": [],
@@ -23,7 +22,8 @@
         "isRaw": false,
         "isViewHeight": false,
         "hasScrollButton": false
-      }
+      },
+      "components": []
     }
-  }
+  ]
 }

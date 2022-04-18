@@ -1,11 +1,10 @@
 {
   "name": "tuesdays",
   "title": "Dinner & Worship",
-  "sections": {
-    "dinner": {
-      "order": 1,
+  "sections": [
+    {
+      "order": 0,
       "sectionDetails": {
-        "name": "dinner",
         "theme": 0,
         "titles": ["Dinner"],
         "subtitles": ["We serve a free dinner every tuesday night."],
@@ -18,120 +17,125 @@
         "isViewHeight": false,
         "hasScrollButton": false
       },
-      "carousel": {
-        "theme": 1,
-        "cardList": [
-          {
-            "order": 1,
-            "image": "/images/dinner/dinner-1.jpg"
-          },
-          {
-            "order": 2,
-            "image": "/images/dinner/dinner-2.jpg"
-          },
-          {
-            "order": 3,
-            "image": "/images/dinner/dinner-3.jpg"
-          },
-          {
-            "order": 4,
-            "image": "/images/dinner/dinner-4.jpg"
-          },
-          {
-            "order": 5,
-            "image": "/images/dinner/dinner-5.jpg"
-          },
-          {
-            "order": 6,
-            "image": "/images/dinner/dinner-6.jpg"
-          },
-          {
-            "order": 7,
-            "image": "/images/dinner/dinner-7.jpg"
-          },
-          {
-            "order": 8,
-            "image": "/images/dinner/dinner-8.jpg"
-          },
-          {
-            "order": 9,
-            "image": "/images/dinner/dinner-9.jpg"
-          },
-          {
-            "order": 10,
-            "image": "/images/dinner/dinner-10.jpg"
-          },
-          {
-            "order": 11,
-            "image": "/images/dinner/dinner-11.jpg"
-          },
-          {
-            "order": 12,
-            "image": "/images/dinner/dinner-12.jpg"
-          },
-          {
-            "order": 13,
-            "image": "/images/dinner/dinner-13.jpg"
-          },
-          {
-            "order": 14,
-            "image": "/images/dinner/dinner-14.jpg"
-          },
-          {
-            "order": 15,
-            "image": "/images/dinner/dinner-15.jpg"
-          },
-          {
-            "order": 999,
-            "image": "/images/dinner/dinner-17.jpg"
-          },
-          {
-            "order": 18,
-            "image": "/images/dinner/dinner-18.jpg"
-          },
-          {
-            "order": 19,
-            "image": "/images/dinner/dinner-19.jpg"
-          },
-          {
-            "order": 20,
-            "image": "/images/dinner/dinner-20.jpg"
-          },
-          {
-            "order": 998,
-            "image": "/images/dinner/dinner-21.jpg"
-          },
-          {
-            "order": 22,
-            "image": "/images/dinner/dinner-22.jpg"
-          },
-          {
-            "order": 23,
-            "image": "/images/dinner/dinner-23.jpg"
-          },
-          {
-            "order": 24,
-            "image": "/images/dinner/dinner-24.jpg"
-          },
-          {
-            "order": 25,
-            "image": "/images/dinner/dinner-25.jpg"
-          },
-          {
-            "order": 26,
-            "image": "/images/dinner/dinner-26.jpg"
-          },
-          {
-            "order": 27,
-            "image": "/images/dinner/dinner-27.jpg"
+      "components": [
+        {
+          "order": 0,
+          "componentType": 2,
+          "theme": 1,
+          "model": {
+            "cardList": [
+              {
+                "order": 1,
+                "image": "/images/dinner/dinner-1.jpg"
+              },
+              {
+                "order": 2,
+                "image": "/images/dinner/dinner-2.jpg"
+              },
+              {
+                "order": 3,
+                "image": "/images/dinner/dinner-3.jpg"
+              },
+              {
+                "order": 4,
+                "image": "/images/dinner/dinner-4.jpg"
+              },
+              {
+                "order": 5,
+                "image": "/images/dinner/dinner-5.jpg"
+              },
+              {
+                "order": 6,
+                "image": "/images/dinner/dinner-6.jpg"
+              },
+              {
+                "order": 7,
+                "image": "/images/dinner/dinner-7.jpg"
+              },
+              {
+                "order": 8,
+                "image": "/images/dinner/dinner-8.jpg"
+              },
+              {
+                "order": 9,
+                "image": "/images/dinner/dinner-9.jpg"
+              },
+              {
+                "order": 10,
+                "image": "/images/dinner/dinner-10.jpg"
+              },
+              {
+                "order": 11,
+                "image": "/images/dinner/dinner-11.jpg"
+              },
+              {
+                "order": 12,
+                "image": "/images/dinner/dinner-12.jpg"
+              },
+              {
+                "order": 13,
+                "image": "/images/dinner/dinner-13.jpg"
+              },
+              {
+                "order": 14,
+                "image": "/images/dinner/dinner-14.jpg"
+              },
+              {
+                "order": 15,
+                "image": "/images/dinner/dinner-15.jpg"
+              },
+              {
+                "order": 999,
+                "image": "/images/dinner/dinner-17.jpg"
+              },
+              {
+                "order": 18,
+                "image": "/images/dinner/dinner-18.jpg"
+              },
+              {
+                "order": 19,
+                "image": "/images/dinner/dinner-19.jpg"
+              },
+              {
+                "order": 20,
+                "image": "/images/dinner/dinner-20.jpg"
+              },
+              {
+                "order": 998,
+                "image": "/images/dinner/dinner-21.jpg"
+              },
+              {
+                "order": 22,
+                "image": "/images/dinner/dinner-22.jpg"
+              },
+              {
+                "order": 23,
+                "image": "/images/dinner/dinner-23.jpg"
+              },
+              {
+                "order": 24,
+                "image": "/images/dinner/dinner-24.jpg"
+              },
+              {
+                "order": 25,
+                "image": "/images/dinner/dinner-25.jpg"
+              },
+              {
+                "order": 26,
+                "image": "/images/dinner/dinner-26.jpg"
+              },
+              {
+                "order": 27,
+                "image": "/images/dinner/dinner-27.jpg"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     },
-    "worship": {
-      "order": 2,
+    {
+      "order": 1,
       "sectionDetails": {
-        "name": "worship",
         "theme": 1,
         "titles": ["Worship"],
         "subtitles": [
@@ -147,155 +151,161 @@
         "isViewHeight": false,
         "hasScrollButton": false
       },
-      "carousel": {
-        "theme": 0,
-        "cardList": [
-          {
-            "order": 1,
-            "image": "/images/worship/worship-1.jpg"
-          },
-          {
-            "order": 2,
-            "image": "/images/worship/worship-2.jpg"
-          },
-          {
-            "order": 3,
-            "image": "/images/worship/worship-3.jpg"
-          },
-          {
-            "order": 4,
-            "image": "/images/worship/worship-4.jpg"
-          },
-          {
-            "order": 5,
-            "image": "/images/worship/worship-5.jpg"
-          },
-          {
-            "order": 6,
-            "image": "/images/worship/worship-6.jpg"
-          },
-          {
-            "order": 7,
-            "image": "/images/worship/worship-7.jpg"
-          },
-          {
-            "order": 8,
-            "image": "/images/worship/worship-8.jpg"
-          },
-          {
-            "order": 9,
-            "image": "/images/worship/worship-9.jpg"
-          },
-          {
-            "order": 10,
-            "image": "/images/worship/worship-10.jpg"
-          },
-          {
-            "order": 11,
-            "image": "/images/worship/worship-11.jpg"
-          },
-          {
-            "order": 12,
-            "image": "/images/worship/worship-12.jpg"
-          },
-          {
-            "order": 13,
-            "image": "/images/worship/worship-13.jpg"
-          },
-          {
-            "order": 14,
-            "image": "/images/worship/worship-14.jpg"
-          },
-          {
-            "order": 15,
-            "image": "/images/worship/worship-15.jpg"
-          },
-          {
-            "order": 16,
-            "image": "/images/worship/worship-16.jpg"
-          },
-          {
-            "order": 17,
-            "image": "/images/worship/worship-17.jpg"
-          },
-          {
-            "order": 18,
-            "image": "/images/worship/worship-18.jpg"
-          },
-          {
-            "order": 19,
-            "image": "/images/worship/worship-19.jpg"
-          },
-          {
-            "order": 20,
-            "image": "/images/worship/worship-20.jpg"
-          },
-          {
-            "order": 21,
-            "image": "/images/worship/worship-21.jpg"
-          },
-          {
-            "order": 22,
-            "image": "/images/worship/worship-22.jpg"
-          },
-          {
-            "order": 23,
-            "image": "/images/worship/worship-23.jpg"
-          },
-          {
-            "order": 24,
-            "image": "/images/worship/worship-24.jpg"
-          },
-          {
-            "order": 25,
-            "image": "/images/worship/worship-25.jpg"
-          },
-          {
-            "order": 26,
-            "image": "/images/worship/worship-26.jpg"
-          },
-          {
-            "order": 27,
-            "image": "/images/worship/worship-27.jpg"
-          },
-          {
-            "order": 28,
-            "image": "/images/worship/worship-28.jpg"
-          },
-          {
-            "order": 29,
-            "image": "/images/worship/worship-29.jpg"
-          },
-          {
-            "order": 998,
-            "image": "/images/worship/worship-30.jpg"
-          },
-          {
-            "order": 999,
-            "image": "/images/worship/worship-31.jpg"
-          },
-          {
-            "order": 32,
-            "image": "/images/worship/worship-32.jpg"
-          },
-          {
-            "order": 33,
-            "image": "/images/worship/worship-33.jpg"
-          },
-          {
-            "order": 34,
-            "image": "/images/worship/worship-34.jpg"
-          },
-          {
-            "order": 35,
-            "image": "/images/worship/worship-35.jpg"
-          },
-          {
-            "order": 36,
-            "image": "/images/worship/worship-36.jpg"
+      "components": [
+        {
+          "order": 0,
+          "componentType": 2,
+          "theme": 1,
+          "model": {
+            "cardList": [
+              {
+                "order": 1,
+                "image": "/images/worship/worship-1.jpg"
+              },
+              {
+                "order": 2,
+                "image": "/images/worship/worship-2.jpg"
+              },
+              {
+                "order": 3,
+                "image": "/images/worship/worship-3.jpg"
+              },
+              {
+                "order": 4,
+                "image": "/images/worship/worship-4.jpg"
+              },
+              {
+                "order": 5,
+                "image": "/images/worship/worship-5.jpg"
+              },
+              {
+                "order": 6,
+                "image": "/images/worship/worship-6.jpg"
+              },
+              {
+                "order": 7,
+                "image": "/images/worship/worship-7.jpg"
+              },
+              {
+                "order": 8,
+                "image": "/images/worship/worship-8.jpg"
+              },
+              {
+                "order": 9,
+                "image": "/images/worship/worship-9.jpg"
+              },
+              {
+                "order": 10,
+                "image": "/images/worship/worship-10.jpg"
+              },
+              {
+                "order": 11,
+                "image": "/images/worship/worship-11.jpg"
+              },
+              {
+                "order": 12,
+                "image": "/images/worship/worship-12.jpg"
+              },
+              {
+                "order": 13,
+                "image": "/images/worship/worship-13.jpg"
+              },
+              {
+                "order": 14,
+                "image": "/images/worship/worship-14.jpg"
+              },
+              {
+                "order": 15,
+                "image": "/images/worship/worship-15.jpg"
+              },
+              {
+                "order": 16,
+                "image": "/images/worship/worship-16.jpg"
+              },
+              {
+                "order": 17,
+                "image": "/images/worship/worship-17.jpg"
+              },
+              {
+                "order": 18,
+                "image": "/images/worship/worship-18.jpg"
+              },
+              {
+                "order": 19,
+                "image": "/images/worship/worship-19.jpg"
+              },
+              {
+                "order": 20,
+                "image": "/images/worship/worship-20.jpg"
+              },
+              {
+                "order": 21,
+                "image": "/images/worship/worship-21.jpg"
+              },
+              {
+                "order": 22,
+                "image": "/images/worship/worship-22.jpg"
+              },
+              {
+                "order": 23,
+                "image": "/images/worship/worship-23.jpg"
+              },
+              {
+                "order": 24,
+                "image": "/images/worship/worship-24.jpg"
+              },
+              {
+                "order": 25,
+                "image": "/images/worship/worship-25.jpg"
+              },
+              {
+                "order": 26,
+                "image": "/images/worship/worship-26.jpg"
+              },
+              {
+                "order": 27,
+                "image": "/images/worship/worship-27.jpg"
+              },
+              {
+                "order": 28,
+                "image": "/images/worship/worship-28.jpg"
+              },
+              {
+                "order": 29,
+                "image": "/images/worship/worship-29.jpg"
+              },
+              {
+                "order": 998,
+                "image": "/images/worship/worship-30.jpg"
+              },
+              {
+                "order": 999,
+                "image": "/images/worship/worship-31.jpg"
+              },
+              {
+                "order": 32,
+                "image": "/images/worship/worship-32.jpg"
+              },
+              {
+                "order": 33,
+                "image": "/images/worship/worship-33.jpg"
+              },
+              {
+                "order": 34,
+                "image": "/images/worship/worship-34.jpg"
+              },
+              {
+                "order": 35,
+                "image": "/images/worship/worship-35.jpg"
+              },
+              {
+                "order": 36,
+                "image": "/images/worship/worship-36.jpg"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     }
-  }
+  ]
 }

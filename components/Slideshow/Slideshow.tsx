@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import SlideshowModel, { SlideModel } from '../../models/components/SlideshowModel';
-import { getThemeName } from '../../models/ThemedModel';
+import { getThemeName, Theme } from '../../models/shared/ThemedModel';
 import styles from '../../styles/slideshow.module.css';
 import { fixFilePath, isDefined, isMobileDevice, sortByReverseOrder } from '../../utils/utils';
 import Badge from './Badge';
@@ -9,14 +9,12 @@ import Slide from './Slide';
 const DEFAULT_TIMEOUT_DURATION = 7000;
 
 type SlideshowProps = {
-  sectionName: string;
+  id: string;
+  theme: Theme;
   model: SlideshowModel;
 };
 
-const Slideshow = ({ sectionName, model }: SlideshowProps): JSX.Element => {
-  const id = sectionName !== '' ? sectionName : 'slideshow';
-  const slideshowId = `${id}Slideshow`;
-
+const Slideshow = ({ id, theme, model }: SlideshowProps): JSX.Element => {
   const getSlideList = () => {
     const isSlideActive = (slide: SlideModel) => slide.showOnMobile || slide.showOnDesktop;
 
@@ -31,7 +29,7 @@ const Slideshow = ({ sectionName, model }: SlideshowProps): JSX.Element => {
   const slideList = getSlideList();
   const timeoutDuration =
     model.timeoutDurationInSeconds > 0 ? model.timeoutDurationInSeconds * 1000 : DEFAULT_TIMEOUT_DURATION;
-  const themeName = getThemeName(model.theme);
+  const themeName = getThemeName(theme);
 
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
@@ -103,10 +101,10 @@ const Slideshow = ({ sectionName, model }: SlideshowProps): JSX.Element => {
   }, []);
 
   return (
-    <div id={slideshowId} className={`${styles.slideshow} ${themeName}`}>
+    <div id={id} className={`${styles.slideshow} ${themeName}`}>
       <ol className={styles.slideList}>
         {slideList.map((slide, i) => {
-          const slideId = `${id}Slide-${i}`;
+          const slideId = `${id}Slide${i}`;
           return (
             <Slide
               key={slideId}
@@ -121,7 +119,7 @@ const Slideshow = ({ sectionName, model }: SlideshowProps): JSX.Element => {
       {slideList.length > 1 && (
         <ol className={styles.badgeList}>
           {slideList.map((_, i) => {
-            const badgeId = `${id}Badge-${i}`;
+            const badgeId = `${id}Badge${i}`;
             return (
               isSlideVisible(isMobileScreen, i) && (
                 <Badge

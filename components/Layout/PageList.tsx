@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { TextLink } from '../../models/shared';
-import { Color, ThemeName } from '../../models/ThemedModel';
+import TextLink from '../../models/shared/TextLink';
+import { Color, ThemeName } from '../../models/shared/ThemedModel';
 
 type PageListProps = {
   id: string;

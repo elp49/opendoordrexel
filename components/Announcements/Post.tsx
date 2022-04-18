@@ -1,5 +1,5 @@
 import { PostModel } from '../../models/components/EventBoardModel';
-import { Color, ThemeName } from '../../models/ThemedModel';
+import { Color, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/announcements.module.css';
 
 type PostListProps = {

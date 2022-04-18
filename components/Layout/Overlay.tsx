@@ -1,8 +1,7 @@
 import { MailingListModel } from '../../models/components/LayoutModel';
-import { TextLink } from '../../models/shared';
-import { getThemeName, Theme, ThemeName } from '../../models/ThemedModel';
+import TextLink from '../../models/shared/TextLink';
+import { getThemeName, Theme, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/layout.module.css';
-import MailingList from './MailingList';
 import PageList from './PageList';
 import SocialMedia from './SocialMedia';
 
@@ -29,12 +28,13 @@ const Overlay = ({ id, theme, pageList, mailingList, socialMedia, isActive }: Ov
             listClassName={styles.overlayPageList}
             linkClassName={styles.overlayPage}
           />
+          {/* TODO: implement subscribing to mailing list.
           <MailingList
             themeName={themeName}
             mailingList={mailingList}
             containerClassName={styles.overlayMailingListContainer}
             className={styles.overlayMailingList}
-          />
+          /> */}
           <SocialMedia
             id={id}
             themeName={themeName}

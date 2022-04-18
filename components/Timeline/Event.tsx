@@ -1,7 +1,7 @@
 import icons from '../../data/icons.json';
 import { EventModel } from '../../models/components/TimelineModel';
-import { getMonthName } from '../../models/shared';
-import { Color, ThemeName } from '../../models/ThemedModel';
+import { getMonthName } from '../../models/shared/Month';
+import { Color, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/timeline.module.css';
 
 type TimelineEventProps = {

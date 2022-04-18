@@ -1,36 +1,18 @@
 import { NextPage } from 'next';
 import SectionedPage from '../components/SectionedPage';
-import Timeline from '../components/Timeline/Timeline';
 import data from '../data/about.json';
-import PageModel, { filterValidSectionDetailImages } from '../models/PageModel';
-import AboutPageModel, { TimelineSection } from '../models/pages/AboutPageModel';
-import PageSection from '../models/PageSection';
+import PageModel from '../models/PageModel';
+import { filterValidData } from '../models/shared/filters';
 
-const buildTimelineSection = ({ order, sectionDetails, timeline }: TimelineSection): PageSection => {
-  const children = <Timeline sectionName={sectionDetails.name} model={timeline} />;
-  return { order, sectionDetails, children };
-};
-
-const buildAboutPageSections = ({ intro, timeline }: AboutPageModel): PageSection[] => {
-  const timelineSection = buildTimelineSection(timeline);
-  return [intro, timelineSection];
-};
-
-type AboutPageProps = {
-  model: PageModel<AboutPageModel>;
-};
-
-const About: NextPage<AboutPageProps> = ({ model }) => (
-  <SectionedPage model={model} buildPageSections={buildAboutPageSections} />
-);
+const About: NextPage<PageModel> = (model) => <SectionedPage model={model} />;
 
 export const getStaticProps = async () => {
-  const model = { ...data };
+  const model: PageModel = { ...data };
 
   // Filter out invalid file paths.
-  model.sections = filterValidSectionDetailImages(model.sections);
+  model.sections = filterValidData(model.sections);
 
-  return { props: { model } };
+  return { props: model };
 };
 
 export default About;

@@ -1,11 +1,10 @@
 {
   "name": "about",
   "title": "About",
-  "sections": {
-    "intro": {
-      "order": 1,
+  "sections": [
+    {
+      "order": 0,
       "sectionDetails": {
-        "name": "about",
         "theme": 0,
         "titles": ["About Us"],
         "subtitles": [
@@ -23,12 +22,12 @@
         "isRaw": false,
         "isViewHeight": false,
         "hasScrollButton": true
-      }
+      },
+      "components": []
     },
-    "timeline": {
-      "order": 2,
+    {
+      "order": 1,
       "sectionDetails": {
-        "name": "timeline",
         "theme": 1,
         "titles": ["Our Story"],
         "subtitles": ["It all started with 2 crockpots and a few people..."],
@@ -39,111 +38,117 @@
         "isViewHeight": false,
         "hasScrollButton": true
       },
-      "timeline": {
-        "theme": 1,
-        "eventList": [
-          {
-            "month": 0,
-            "year": 2015,
-            "details": "Piltz begins"
-          },
-          {
-            "month": 8,
-            "year": 2015,
-            "details": "Diana begins"
-          },
-          {
-            "month": 9,
-            "year": 2015,
-            "details": "2 crockpots"
-          },
-          {
-            "month": 2,
-            "year": 2016,
-            "details": "Blind-Side All-Campus Discussion: Human Potential"
-          },
-          {
-            "month": 4,
-            "year": 2016,
-            "details": "Outside BBQ with 100 attendees"
-          },
-          {
-            "month": 5,
-            "year": 2016,
-            "details": "Conversations Unfiltered at Saxby’s"
-          },
-          {
-            "month": 8,
-            "year": 2016,
-            "details": "Eddie begins"
-          },
-          {
-            "month": 9,
-            "year": 2016,
-            "details": "Student executive board begins"
-          },
-          {
-            "month": 2,
-            "year": 2017,
-            "details": "Collaborated with local church ministries"
-          },
-          {
-            "month": 2,
-            "year": 2017,
-            "details": "Dinner numbers grow from 10 to 50 & Worship numbers grow from 5 to 15"
-          },
-          {
-            "month": 9,
-            "year": 2017,
-            "details": "Prayer Labyrinth"
-          },
-          {
-            "month": 4,
-            "year": 2018,
-            "details": "Blood Diamond movie discussion"
-          },
-          {
-            "month": 8,
-            "year": 2018,
-            "details": "Jack begins and starts Bible study/spiritual discussion"
-          },
-          {
-            "month": 8,
-            "year": 2018,
-            "details": "Dinner numbers grow from 50 to 80 & Worship numbers grow from 15 to 25 and now crockpots"
-          },
-          {
-            "month": 9,
-            "year": 2018,
-            "details": "Kensington outreach begins"
-          },
-          {
-            "month": 2,
-            "year": 2019,
-            "details": "Dinner numbers grow from 80 to 120 and now roasters"
-          },
-          {
-            "month": 9,
-            "year": 2019,
-            "details": "Kensington outreach grows: 13 clothing drive locations and partnerships created"
-          },
-          {
-            "month": 0,
-            "year": 2020,
-            "details": "Student musicians from within the group added to music rotation"
-          },
-          {
-            "month": 2,
-            "year": 2020,
-            "details": "Went online"
-          },
-          {
-            "month": 8,
-            "year": 2020,
-            "details": "Diversified student leadership board"
+      "components": [
+        {
+          "order": 0,
+          "componentType": 4,
+          "theme": 1,
+          "model": {
+            "eventList": [
+              {
+                "month": 0,
+                "year": 2015,
+                "details": "Piltz begins"
+              },
+              {
+                "month": 8,
+                "year": 2015,
+                "details": "Diana begins"
+              },
+              {
+                "month": 9,
+                "year": 2015,
+                "details": "2 crockpots"
+              },
+              {
+                "month": 2,
+                "year": 2016,
+                "details": "Blind-Side All-Campus Discussion: Human Potential"
+              },
+              {
+                "month": 4,
+                "year": 2016,
+                "details": "Outside BBQ with 100+ attendees"
+              },
+              {
+                "month": 5,
+                "year": 2016,
+                "details": "Conversations Unfiltered at Saxby’s"
+              },
+              {
+                "month": 8,
+                "year": 2016,
+                "details": "Eddie begins"
+              },
+              {
+                "month": 9,
+                "year": 2016,
+                "details": "Student executive board begins"
+              },
+              {
+                "month": 2,
+                "year": 2017,
+                "details": "Collaborated with local church ministries"
+              },
+              {
+                "month": 2,
+                "year": 2017,
+                "details": "Dinner numbers grow from 10 to 50 & Worship numbers grow from 5 to 15"
+              },
+              {
+                "month": 9,
+                "year": 2017,
+                "details": "Prayer Labyrinth"
+              },
+              {
+                "month": 4,
+                "year": 2018,
+                "details": "Blood Diamond movie discussion"
+              },
+              {
+                "month": 8,
+                "year": 2018,
+                "details": "Jack begins and starts Bible study/spiritual discussion"
+              },
+              {
+                "month": 8,
+                "year": 2018,
+                "details": "Dinner numbers grow from 50 to 80 & Worship numbers grow from 15 to 25 and new crockpots"
+              },
+              {
+                "month": 9,
+                "year": 2018,
+                "details": "Kensington outreach begins"
+              },
+              {
+                "month": 2,
+                "year": 2019,
+                "details": "Dinner numbers grow from 80 to 120 and new roasters"
+              },
+              {
+                "month": 9,
+                "year": 2019,
+                "details": "Kensington outreach grows: 13 clothing drive locations and partnerships created"
+              },
+              {
+                "month": 0,
+                "year": 2020,
+                "details": "Student musicians from within the group added to music rotation"
+              },
+              {
+                "month": 2,
+                "year": 2020,
+                "details": "Went online"
+              },
+              {
+                "month": 8,
+                "year": 2020,
+                "details": "Diversified student leadership board"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     }
-  }
+  ]
 }

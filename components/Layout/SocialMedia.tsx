@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import icons from '../../data/icons.json';
-import { TextLink } from '../../models/shared';
-import { ThemeName } from '../../models/ThemedModel';
+import TextLink from '../../models/shared/TextLink';
+import { ThemeName } from '../../models/shared/ThemedModel';
 
 type SocialMediaProps = {
   id: string;

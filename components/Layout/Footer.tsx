@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { ContactInfoModel, MailingListModel } from '../../models/components/LayoutModel';
-import { TextLink } from '../../models/shared';
-import { Color, getThemeName, Theme, ThemeName, themeToColor } from '../../models/ThemedModel';
+import TextLink from '../../models/shared/TextLink';
+import { Color, getThemeName, Theme, ThemeName, themeToColor } from '../../models/shared/ThemedModel';
 import styles from '../../styles/layout.module.css';
-import MailingList from './MailingList';
+import { createStyle } from '../../utils/utils';
 import PageList from './PageList';
 import SocialMedia from './SocialMedia';
 
@@ -18,9 +19,18 @@ type FooterProps = {
 };
 
 const Footer = ({ id, lastSectionTheme, socialMedia, donate, pageList, mailingList, contact }: FooterProps) => {
-  const themeName = getThemeName(lastSectionTheme === Theme.White ? Theme.Blue : Theme.White);
-  const themeColor = themeToColor(lastSectionTheme);
+  const footerTheme = lastSectionTheme === Theme.White ? Theme.Blue : Theme.White;
+  const footerThemeName = getThemeName(footerTheme);
   const lastSectionThemeName = getThemeName(lastSectionTheme);
+
+  useEffect(() => {
+    const themeColor = themeToColor(footerTheme);
+    createStyle(`
+      html, body {
+        background-color: ${themeColor};
+      }
+    `);
+  }, [footerTheme]);
 
   return (
     <>
@@ -40,21 +50,22 @@ const Footer = ({ id, lastSectionTheme, socialMedia, donate, pageList, mailingLi
           </Link>
         </div>
       </div>
-      <footer id={id} className={themeName}>
+      <footer id={id} className={footerThemeName}>
         <div className={styles.footer}>
           <PageList
             id={id}
-            themeName={themeName}
+            themeName={footerThemeName}
             pageList={pageList}
             listClassName={styles.footerPageList}
             linkClassName={styles.footerPage}
           />
+          {/* TODO: implement subscribing to mailing list.
           <MailingList
             themeName={themeName}
             mailingList={mailingList}
             containerClassName={styles.footerMailingListContainer}
             className={styles.footerMailingList}
-          />
+          /> */}
           <div className={styles.footerCaption}>
             <p>{contact.location}</p>
             <p>{contact.address}</p>
@@ -75,10 +86,6 @@ const Footer = ({ id, lastSectionTheme, socialMedia, donate, pageList, mailingLi
       </footer>
       <style jsx>
         {`
-          html,
-          body {
-            background-color: ${themeColor};
-          }
           .${ThemeName.White}, .${ThemeName.Blue} .${styles.donate} {
             background-color: ${Color.White};
             color: ${Color.Blue};
@@ -88,25 +95,18 @@ const Footer = ({ id, lastSectionTheme, socialMedia, donate, pageList, mailingLi
             color: ${Color.White};
           }
           .${ThemeName.White} .footerMailTo {
-            color: ${Color.Grey};
+            color: ${Color.Blue};
           }
           .${ThemeName.Blue} .footerMailTo {
             color: ${Color.White};
           }
           @media not all and (pointer: coarse) {
-            .${ThemeName.White} .footerMailTo:hover {
-              color: ${Color.Blue};
-            }
-            .${ThemeName.White}
-              .${styles.donate}:hover,
-              .${ThemeName.White}
-              .${styles.donate}:focus,
-              .${ThemeName.Blue}
-              .${styles.donate}:hover,
-              .${ThemeName.Blue}
-              .${styles.donate}:focus,
-              .${ThemeName.Blue}
-              .footerMailTo:hover {
+            .${ThemeName.White} .${styles.donate}:hover,
+              .${ThemeName.White} .${styles.donate}:focus,
+              .${ThemeName.Blue} .${styles.donate}:hover,
+              .${ThemeName.Blue} .${styles.donate}:focus,
+              .${ThemeName.Blue} .footerMailTo:hover,
+              .${ThemeName.White} .footerMailTo:hover
               color: ${Color.Grey};
             }
           }

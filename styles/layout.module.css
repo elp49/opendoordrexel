@@ -121,7 +121,6 @@
   padding: 7px;
   font-size: 1.5rem;
   font-weight: bold;
-  text-transform: uppercase;
   letter-spacing: 1px;
   border-radius: 10px;
 }
@@ -252,7 +251,7 @@
   }
   .donate {
     padding: 10px;
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   .footerSocialMedia {
     height: 4rem;
@@ -267,7 +266,6 @@
     margin-top: 20px;
   }
   .footerPage {
-    width: 30%;
     font-size: 2rem;
   }
   /* .footerLogo {

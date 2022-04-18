@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { TextLink } from '../../models/shared';
-import { Color } from '../../models/ThemedModel';
+import TextLink from '../../models/shared/TextLink';
+import { Color } from '../../models/shared/ThemedModel';
 import styles from '../../styles/introLink.module.css';
 
 type IntroLinkProps = {

@@ -1,7 +1,5 @@
-import { isFilePathValid } from '../../utils/fs-handler';
-import OrderedItem from '../OrderedItem';
-import { TextLink } from '../shared';
-import ThemedModel from '../ThemedModel';
+import OrderedItem from '../shared/OrderedItem';
+import TextLink from '../shared/TextLink';
 
 export type SlideModel = OrderedItem & {
   image: string;
@@ -11,11 +9,9 @@ export type SlideModel = OrderedItem & {
   showOnDesktop: boolean;
 };
 
-type SlideshowModel = ThemedModel & {
+type SlideshowModel = {
   timeoutDurationInSeconds: number;
   slideList: SlideModel[];
 };
-
-export const filterValidSlides = (slideList: SlideModel[]) => slideList.filter(({ image }) => isFilePathValid(image));
 
 export default SlideshowModel;

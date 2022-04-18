@@ -1,19 +1,18 @@
 import { SectionDetails } from '../../models/SectionModel';
-import { getTextLinks } from '../../models/shared';
-import { Color, getThemeName, ThemeName } from '../../models/ThemedModel';
+import { getTextLinks } from '../../models/shared/TextLink';
+import { Color, getThemeName, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/section.module.css';
 import IntroLink from './IntroLink';
-import ScrollButton from './ScrollButton';
+import ScrollButton, { ScrollButtonOptions } from './ScrollButton';
 
 type SectionProps = {
   id: string;
   sectionDetails: SectionDetails;
-  nextSectionId: string;
-  isScrollDown: boolean;
+  scrollOptions: ScrollButtonOptions;
   children?: React.ReactNode;
 };
 
-const Section = ({ id, sectionDetails, nextSectionId, isScrollDown, children }: SectionProps): JSX.Element => {
+const Section = ({ id, sectionDetails, scrollOptions, children }: SectionProps): JSX.Element => {
   const { titles, subtitles, links, image, descriptions, isRaw, isViewHeight, hasScrollButton } = sectionDetails;
 
   const themeName = getThemeName(sectionDetails.theme);
@@ -52,9 +51,7 @@ const Section = ({ id, sectionDetails, nextSectionId, isScrollDown, children }: 
           </p>
         )}
         {children}
-        {hasScrollButton && (
-          <ScrollButton themeName={themeName} nextSectionId={nextSectionId} isScrollDown={isScrollDown} />
-        )}
+        {hasScrollButton && <ScrollButton themeName={themeName} scrollOptions={scrollOptions} />}
       </div>
       <style jsx>
         {`

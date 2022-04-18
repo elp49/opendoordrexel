@@ -1,19 +1,17 @@
 import { useState } from 'react';
 import EventBoardModel, { PostModel } from '../../models/components/EventBoardModel';
-import { Color, getThemeName, ThemeName } from '../../models/ThemedModel';
+import { Color, getThemeName, Theme, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/announcements.module.css';
 import { sortByOrder } from '../../utils/utils';
 import Post from './Post';
 
 type AnnouncementsProps = {
-  sectionName: string;
+  id: string;
+  theme: Theme;
   model: EventBoardModel;
 };
 
-const Announcements = ({ sectionName, model }: AnnouncementsProps): JSX.Element => {
-  const id = sectionName !== '' ? sectionName : 'announcements';
-  const announcementsId = `${id}Announcements`;
-
+const Announcements = ({ id, theme, model }: AnnouncementsProps): JSX.Element => {
   const getPostList = (): PostModel[] => {
     const isPostValid = (post: PostModel) => post.details !== '';
     const filteredList = model.postList.filter(isPostValid);
@@ -21,15 +19,15 @@ const Announcements = ({ sectionName, model }: AnnouncementsProps): JSX.Element 
   };
 
   const postList = getPostList();
-  const themeName = getThemeName(model.theme);
+  const themeName = getThemeName(theme);
 
   const [isMore, setIsMore] = useState<boolean>(false);
 
   return (
-    <div id={announcementsId} className={styles.announcements}>
+    <div id={id} className={styles.announcements}>
       <ul className={`${styles.postList} ${themeName}`} style={{ maxHeight: !isMore ? '650px' : '' }}>
         {postList.map((post, i) => (
-          <Post key={`${announcementsId}Post${i}`} model={post} themeName={themeName} isLeftPost={i % 2 === 0} />
+          <Post key={`${id}Post${i}`} model={post} themeName={themeName} isLeftPost={i % 2 === 0} />
         ))}
       </ul>
       <div className={`${styles.feedController} ${themeName}`}>

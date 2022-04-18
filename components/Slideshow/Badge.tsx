@@ -1,4 +1,4 @@
-import { Color } from '../../models/ThemedModel';
+import { Color } from '../../models/shared/ThemedModel';
 import styles from '../../styles/slideshow.module.css';
 
 type BadgeProps = {

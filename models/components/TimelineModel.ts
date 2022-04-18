@@ -1,5 +1,4 @@
-import { Month } from '../shared';
-import ThemedModel from '../ThemedModel';
+import Month from '../shared/Month';
 
 export type EventModel = {
   month: Month;
@@ -7,7 +6,7 @@ export type EventModel = {
   details: string;
 };
 
-type TimelineModel = ThemedModel & {
+type TimelineModel = {
   eventList: EventModel[];
 };
 

@@ -1,14 +1,20 @@
 import icons from '../../data/icons.json';
-import { Color, ThemeName } from '../../models/ThemedModel';
+import { Color, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/scrollButton.module.css';
 
-type ScrollButtonProps = {
-  themeName: string;
+export type ScrollButtonOptions = {
   nextSectionId: string;
   isScrollDown: boolean;
 };
 
-const ScrollButton = ({ themeName, nextSectionId, isScrollDown }: ScrollButtonProps): JSX.Element => {
+type ScrollButtonProps = {
+  themeName: string;
+  scrollOptions: ScrollButtonOptions;
+};
+
+const ScrollButton = ({ themeName, scrollOptions }: ScrollButtonProps): JSX.Element => {
+  const { nextSectionId, isScrollDown } = scrollOptions;
+
   const scrollToNextSection = () => {
     const nextSection = document.getElementById(nextSectionId);
     if (nextSection) {

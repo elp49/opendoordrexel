@@ -1,5 +1,5 @@
-import { TextLink } from '../shared';
-import { Theme } from '../ThemedModel';
+import TextLink from '../shared/TextLink';
+import { Theme } from '../shared/ThemedModel';
 
 type LayoutThemes = {
   layout: Theme;

@@ -1,12 +1,11 @@
 {
   "name": "staff",
   "title": "Staff",
-  "sections": {
-    "piltz": {
+  "sections": [
+    {
       "order": 1,
       "sectionDetails": {
-        "name": "piltz",
-        "theme": 0,
+        "theme": 1,
         "titles": ["Rev. Dave Piltz"],
         "subtitles": ["Executive Director of the Wesley Student Foundation & Campus Minister"],
         "links": [],
@@ -20,13 +19,13 @@
         "isRaw": false,
         "isViewHeight": false,
         "hasScrollButton": false
-      }
+      },
+      "components": []
     },
-    "diana": {
-      "order": 2,
+    {
+      "order": 0,
       "sectionDetails": {
-        "name": "diana",
-        "theme": 1,
+        "theme": 0,
         "titles": ["Diana"],
         "subtitles": ["Campus Minister"],
         "links": [],
@@ -42,7 +41,8 @@
         "isRaw": false,
         "isViewHeight": false,
         "hasScrollButton": false
-      }
+      },
+      "components": []
     }
-  }
+  ]
 }

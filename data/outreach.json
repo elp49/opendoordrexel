@@ -1,11 +1,10 @@
 {
   "name": "outreach",
   "title": "Outreach",
-  "sections": {
-    "outreach": {
-      "order": 1,
+  "sections": [
+    {
+      "order": 0,
       "sectionDetails": {
-        "name": "outreach",
         "theme": 0,
         "titles": ["Outreach"],
         "subtitles": ["See how we reach out to those with the greatest needs."],
@@ -19,200 +18,205 @@
         "isViewHeight": false,
         "hasScrollButton": false
       },
-      "carousel": {
-        "theme": 1,
-        "cardList": [
-          {
-            "order": 1,
-            "image": "/images/outreach/outreach-1.jpg"
-          },
-          {
-            "order": 2,
-            "image": "/images/outreach/outreach-2.jpg"
-          },
-          {
-            "order": 3,
-            "image": "/images/outreach/outreach-3.jpg"
-          },
-          {
-            "order": 4,
-            "image": "/images/outreach/outreach-4.jpg"
-          },
-          {
-            "order": 5,
-            "image": "/images/outreach/outreach-5.jpg"
-          },
-          {
-            "order": 6,
-            "image": "/images/outreach/outreach-6.jpg"
-          },
-          {
-            "order": 7,
-            "image": "/images/outreach/outreach-7.jpg"
-          },
-          {
-            "order": 8,
-            "image": "/images/outreach/outreach-8.jpg"
-          },
-          {
-            "order": 9,
-            "image": "/images/outreach/outreach-9.jpg"
-          },
-          {
-            "order": 10,
-            "image": "/images/outreach/outreach-10.jpg"
-          },
-          {
-            "order": 11,
-            "image": "/images/outreach/outreach-11.jpg"
-          },
-          {
-            "order": 12,
-            "image": "/images/outreach/outreach-12.jpg"
-          },
-          {
-            "order": 13,
-            "image": "/images/outreach/outreach-13.jpg"
-          },
-          {
-            "order": 14,
-            "image": "/images/outreach/outreach-14.jpg"
-          },
-          {
-            "order": 15,
-            "image": "/images/outreach/outreach-15.jpg"
-          },
-          {
-            "order": 16,
-            "image": "/images/outreach/outreach-16.jpg"
-          },
-          {
-            "order": 17,
-            "image": "/images/outreach/outreach-17.jpg"
-          },
-          {
-            "order": 18,
-            "image": "/images/outreach/outreach-18.jpg"
-          },
-          {
-            "order": 19,
-            "image": "/images/outreach/outreach-19.jpg"
-          },
-          {
-            "order": 20,
-            "image": "/images/outreach/outreach-20.jpg"
-          },
-          {
-            "order": 21,
-            "image": "/images/outreach/outreach-21.jpg"
-          },
-          {
-            "order": 22,
-            "image": "/images/outreach/outreach-22.jpg"
-          },
-          {
-            "order": 23,
-            "image": "/images/outreach/outreach-23.jpg"
-          },
-          {
-            "order": 24,
-            "image": "/images/outreach/outreach-24.jpg"
-          },
-          {
-            "order": 25,
-            "image": "/images/outreach/outreach-25.jpg"
-          },
-          {
-            "order": 26,
-            "image": "/images/outreach/outreach-26.jpg"
-          },
-          {
-            "order": 27,
-            "image": "/images/outreach/outreach-27.jpg"
-          },
-          {
-            "order": 998,
-            "image": "/images/outreach/outreach-28.jpg"
-          },
-          {
-            "order": 989,
-            "image": "/images/outreach/outreach-29.jpg"
-          },
-          {
-            "order": 990,
-            "image": "/images/outreach/outreach-30.jpg"
-          },
-          {
-            "order": 991,
-            "image": "/images/outreach/outreach-31.jpg"
-          },
-          {
-            "order": 992,
-            "image": "/images/outreach/outreach-32.jpg"
-          },
-          {
-            "order": 993,
-            "image": "/images/outreach/outreach-33.jpg"
-          },
-          {
-            "order": 994,
-            "image": "/images/outreach/outreach-34.jpg"
-          },
-          {
-            "order": 995,
-            "image": "/images/outreach/outreach-35.jpg"
-          },
-          {
-            "order": 996,
-            "image": "/images/outreach/outreach-36.jpg"
-          },
-          {
-            "order": 997,
-            "image": "/images/outreach/outreach-37.jpg"
-          },
-          {
-            "order": 38,
-            "image": "/images/outreach/outreach-38.jpg"
-          },
-          {
-            "order": 39,
-            "image": "/images/outreach/outreach-39.jpg"
-          },
-          {
-            "order": 40,
-            "image": "/images/outreach/outreach-40.jpg"
-          },
-          {
-            "order": 41,
-            "image": "/images/outreach/outreach-41.jpg"
-          },
-          {
-            "order": 999,
-            "image": "/images/outreach/outreach-42.jpg"
-          },
-          {
-            "order": 43,
-            "image": "/images/outreach/outreach-43.jpg"
-          },
-          {
-            "order": 44,
-            "image": "/images/outreach/outreach-44.jpg"
-          },
-          {
-            "order": 45,
-            "image": "/images/outreach/outreach-45.jpg"
-          },
-          {
-            "order": 46,
-            "image": "/images/outreach/outreach-46.jpg"
+      "components": [
+        {
+          "order": 0,
+          "componentType": 2,
+          "theme": 1,
+          "model": {
+            "cardList": [
+              {
+                "order": 1,
+                "image": "/images/outreach/outreach-1.jpg"
+              },
+              {
+                "order": 2,
+                "image": "/images/outreach/outreach-2.jpg"
+              },
+              {
+                "order": 3,
+                "image": "/images/outreach/outreach-3.jpg"
+              },
+              {
+                "order": 4,
+                "image": "/images/outreach/outreach-4.jpg"
+              },
+              {
+                "order": 5,
+                "image": "/images/outreach/outreach-5.jpg"
+              },
+              {
+                "order": 6,
+                "image": "/images/outreach/outreach-6.jpg"
+              },
+              {
+                "order": 7,
+                "image": "/images/outreach/outreach-7.jpg"
+              },
+              {
+                "order": 8,
+                "image": "/images/outreach/outreach-8.jpg"
+              },
+              {
+                "order": 9,
+                "image": "/images/outreach/outreach-9.jpg"
+              },
+              {
+                "order": 10,
+                "image": "/images/outreach/outreach-10.jpg"
+              },
+              {
+                "order": 11,
+                "image": "/images/outreach/outreach-11.jpg"
+              },
+              {
+                "order": 12,
+                "image": "/images/outreach/outreach-12.jpg"
+              },
+              {
+                "order": 13,
+                "image": "/images/outreach/outreach-13.jpg"
+              },
+              {
+                "order": 14,
+                "image": "/images/outreach/outreach-14.jpg"
+              },
+              {
+                "order": 15,
+                "image": "/images/outreach/outreach-15.jpg"
+              },
+              {
+                "order": 16,
+                "image": "/images/outreach/outreach-16.jpg"
+              },
+              {
+                "order": 17,
+                "image": "/images/outreach/outreach-17.jpg"
+              },
+              {
+                "order": 18,
+                "image": "/images/outreach/outreach-18.jpg"
+              },
+              {
+                "order": 19,
+                "image": "/images/outreach/outreach-19.jpg"
+              },
+              {
+                "order": 20,
+                "image": "/images/outreach/outreach-20.jpg"
+              },
+              {
+                "order": 21,
+                "image": "/images/outreach/outreach-21.jpg"
+              },
+              {
+                "order": 22,
+                "image": "/images/outreach/outreach-22.jpg"
+              },
+              {
+                "order": 23,
+                "image": "/images/outreach/outreach-23.jpg"
+              },
+              {
+                "order": 24,
+                "image": "/images/outreach/outreach-24.jpg"
+              },
+              {
+                "order": 25,
+                "image": "/images/outreach/outreach-25.jpg"
+              },
+              {
+                "order": 26,
+                "image": "/images/outreach/outreach-26.jpg"
+              },
+              {
+                "order": 27,
+                "image": "/images/outreach/outreach-27.jpg"
+              },
+              {
+                "order": 998,
+                "image": "/images/outreach/outreach-28.jpg"
+              },
+              {
+                "order": 989,
+                "image": "/images/outreach/outreach-29.jpg"
+              },
+              {
+                "order": 990,
+                "image": "/images/outreach/outreach-30.jpg"
+              },
+              {
+                "order": 991,
+                "image": "/images/outreach/outreach-31.jpg"
+              },
+              {
+                "order": 992,
+                "image": "/images/outreach/outreach-32.jpg"
+              },
+              {
+                "order": 993,
+                "image": "/images/outreach/outreach-33.jpg"
+              },
+              {
+                "order": 994,
+                "image": "/images/outreach/outreach-34.jpg"
+              },
+              {
+                "order": 995,
+                "image": "/images/outreach/outreach-35.jpg"
+              },
+              {
+                "order": 996,
+                "image": "/images/outreach/outreach-36.jpg"
+              },
+              {
+                "order": 997,
+                "image": "/images/outreach/outreach-37.jpg"
+              },
+              {
+                "order": 38,
+                "image": "/images/outreach/outreach-38.jpg"
+              },
+              {
+                "order": 39,
+                "image": "/images/outreach/outreach-39.jpg"
+              },
+              {
+                "order": 40,
+                "image": "/images/outreach/outreach-40.jpg"
+              },
+              {
+                "order": 41,
+                "image": "/images/outreach/outreach-41.jpg"
+              },
+              {
+                "order": 999,
+                "image": "/images/outreach/outreach-42.jpg"
+              },
+              {
+                "order": 43,
+                "image": "/images/outreach/outreach-43.jpg"
+              },
+              {
+                "order": 44,
+                "image": "/images/outreach/outreach-44.jpg"
+              },
+              {
+                "order": 45,
+                "image": "/images/outreach/outreach-45.jpg"
+              },
+              {
+                "order": 46,
+                "image": "/images/outreach/outreach-46.jpg"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     },
-    "donations": {
-      "order": 2,
+    {
+      "order": 1,
       "sectionDetails": {
-        "name": "donations",
         "theme": 1,
         "titles": ["Donations"],
         "subtitles": [
@@ -225,167 +229,173 @@
         "isViewHeight": false,
         "hasScrollButton": false
       },
-      "carousel": {
-        "theme": 0,
-        "cardList": [
-          {
-            "order": 1,
-            "image": "/images/donations/donations-1.jpg"
-          },
-          {
-            "order": 2,
-            "image": "/images/donations/donations-2.jpg"
-          },
-          {
-            "order": 3,
-            "image": "/images/donations/donations-3.jpg"
-          },
-          {
-            "order": 4,
-            "image": "/images/donations/donations-4.jpg"
-          },
-          {
-            "order": 5,
-            "image": "/images/donations/donations-5.jpg"
-          },
-          {
-            "order": 6,
-            "image": "/images/donations/donations-6.jpg"
-          },
-          {
-            "order": 7,
-            "image": "/images/donations/donations-7.jpg"
-          },
-          {
-            "order": 8,
-            "image": "/images/donations/donations-8.jpg"
-          },
-          {
-            "order": 9,
-            "image": "/images/donations/donations-9.jpg"
-          },
-          {
-            "order": 10,
-            "image": "/images/donations/donations-10.jpg"
-          },
-          {
-            "order": 11,
-            "image": "/images/donations/donations-11.jpg"
-          },
-          {
-            "order": 12,
-            "image": "/images/donations/donations-12.jpg"
-          },
-          {
-            "order": 13,
-            "image": "/images/donations/donations-13.jpg"
-          },
-          {
-            "order": 14,
-            "image": "/images/donations/donations-14.jpg"
-          },
-          {
-            "order": 15,
-            "image": "/images/donations/donations-15.jpg"
-          },
-          {
-            "order": 16,
-            "image": "/images/donations/donations-16.jpg"
-          },
-          {
-            "order": 17,
-            "image": "/images/donations/donations-17.jpg"
-          },
-          {
-            "order": 18,
-            "image": "/images/donations/donations-18.jpg"
-          },
-          {
-            "order": 19,
-            "image": "/images/donations/donations-19.jpg"
-          },
-          {
-            "order": 20,
-            "image": "/images/donations/donations-20.jpg"
-          },
-          {
-            "order": 21,
-            "image": "/images/donations/donations-21.jpg"
-          },
-          {
-            "order": 22,
-            "image": "/images/donations/donations-22.jpg"
-          },
-          {
-            "order": 23,
-            "image": "/images/donations/donations-23.jpg"
-          },
-          {
-            "order": 24,
-            "image": "/images/donations/donations-24.jpg"
-          },
-          {
-            "order": 25,
-            "image": "/images/donations/donations-25.jpg"
-          },
-          {
-            "order": 26,
-            "image": "/images/donations/donations-26.jpg"
-          },
-          {
-            "order": 27,
-            "image": "/images/donations/donations-27.jpg"
-          },
-          {
-            "order": 28,
-            "image": "/images/donations/donations-28.jpg"
-          },
-          {
-            "order": 29,
-            "image": "/images/donations/donations-29.jpg"
-          },
-          {
-            "order": 30,
-            "image": "/images/donations/donations-30.jpg"
-          },
-          {
-            "order": 31,
-            "image": "/images/donations/donations-31.jpg"
-          },
-          {
-            "order": 32,
-            "image": "/images/donations/donations-32.jpg"
-          },
-          {
-            "order": 33,
-            "image": "/images/donations/donations-33.jpg"
-          },
-          {
-            "order": 34,
-            "image": "/images/donations/donations-34.jpg"
-          },
-          {
-            "order": 35,
-            "image": "/images/donations/donations-35.jpg"
-          },
-          {
-            "order": 36,
-            "image": "/images/donations/donations-36.jpg"
-          },
-          {
-            "order": 37,
-            "image": "/images/donations/donations-37.jpg"
-          },
-          {
-            "order": 38,
-            "image": "/images/donations/donations-38.jpg"
-          },
-          {
-            "order": 39,
-            "image": "/images/donations/donations-39.jpg"
+      "components": [
+        {
+          "order": 0,
+          "componentType": 2,
+          "theme": 0,
+          "model": {
+            "cardList": [
+              {
+                "order": 1,
+                "image": "/images/donations/donations-1.jpg"
+              },
+              {
+                "order": 2,
+                "image": "/images/donations/donations-2.jpg"
+              },
+              {
+                "order": 3,
+                "image": "/images/donations/donations-3.jpg"
+              },
+              {
+                "order": 4,
+                "image": "/images/donations/donations-4.jpg"
+              },
+              {
+                "order": 5,
+                "image": "/images/donations/donations-5.jpg"
+              },
+              {
+                "order": 6,
+                "image": "/images/donations/donations-6.jpg"
+              },
+              {
+                "order": 7,
+                "image": "/images/donations/donations-7.jpg"
+              },
+              {
+                "order": 8,
+                "image": "/images/donations/donations-8.jpg"
+              },
+              {
+                "order": 9,
+                "image": "/images/donations/donations-9.jpg"
+              },
+              {
+                "order": 10,
+                "image": "/images/donations/donations-10.jpg"
+              },
+              {
+                "order": 11,
+                "image": "/images/donations/donations-11.jpg"
+              },
+              {
+                "order": 12,
+                "image": "/images/donations/donations-12.jpg"
+              },
+              {
+                "order": 13,
+                "image": "/images/donations/donations-13.jpg"
+              },
+              {
+                "order": 14,
+                "image": "/images/donations/donations-14.jpg"
+              },
+              {
+                "order": 15,
+                "image": "/images/donations/donations-15.jpg"
+              },
+              {
+                "order": 16,
+                "image": "/images/donations/donations-16.jpg"
+              },
+              {
+                "order": 17,
+                "image": "/images/donations/donations-17.jpg"
+              },
+              {
+                "order": 18,
+                "image": "/images/donations/donations-18.jpg"
+              },
+              {
+                "order": 19,
+                "image": "/images/donations/donations-19.jpg"
+              },
+              {
+                "order": 20,
+                "image": "/images/donations/donations-20.jpg"
+              },
+              {
+                "order": 21,
+                "image": "/images/donations/donations-21.jpg"
+              },
+              {
+                "order": 22,
+                "image": "/images/donations/donations-22.jpg"
+              },
+              {
+                "order": 23,
+                "image": "/images/donations/donations-23.jpg"
+              },
+              {
+                "order": 24,
+                "image": "/images/donations/donations-24.jpg"
+              },
+              {
+                "order": 25,
+                "image": "/images/donations/donations-25.jpg"
+              },
+              {
+                "order": 26,
+                "image": "/images/donations/donations-26.jpg"
+              },
+              {
+                "order": 27,
+                "image": "/images/donations/donations-27.jpg"
+              },
+              {
+                "order": 28,
+                "image": "/images/donations/donations-28.jpg"
+              },
+              {
+                "order": 29,
+                "image": "/images/donations/donations-29.jpg"
+              },
+              {
+                "order": 30,
+                "image": "/images/donations/donations-30.jpg"
+              },
+              {
+                "order": 31,
+                "image": "/images/donations/donations-31.jpg"
+              },
+              {
+                "order": 32,
+                "image": "/images/donations/donations-32.jpg"
+              },
+              {
+                "order": 33,
+                "image": "/images/donations/donations-33.jpg"
+              },
+              {
+                "order": 34,
+                "image": "/images/donations/donations-34.jpg"
+              },
+              {
+                "order": 35,
+                "image": "/images/donations/donations-35.jpg"
+              },
+              {
+                "order": 36,
+                "image": "/images/donations/donations-36.jpg"
+              },
+              {
+                "order": 37,
+                "image": "/images/donations/donations-37.jpg"
+              },
+              {
+                "order": 38,
+                "image": "/images/donations/donations-38.jpg"
+              },
+              {
+                "order": 39,
+                "image": "/images/donations/donations-39.jpg"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     }
-  }
+  ]
 }

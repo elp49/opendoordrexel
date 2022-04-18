@@ -1,6 +1,6 @@
 import TimelineModel, { EventModel } from '../../models/components/TimelineModel';
-import OrderedItem from '../../models/OrderedItem';
-import { Color, getThemeName, ThemeName } from '../../models/ThemedModel';
+import OrderedItem from '../../models/shared/OrderedItem';
+import { Color, getThemeName, Theme, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/timeline.module.css';
 import { sortByOrder } from '../../utils/utils';
 import TimelineEvent from './Event';
@@ -9,13 +9,12 @@ import TimelineEvent from './Event';
 type OrderableEvent = OrderedItem & EventModel;
 
 type TimelineProps = {
-  sectionName: string;
+  id: string;
+  theme: Theme;
   model: TimelineModel;
 };
 
-const Timeline = ({ sectionName, model }: TimelineProps): JSX.Element => {
-  const id = sectionName !== '' ? sectionName : 'timeline';
-
+const Timeline = ({ id, theme, model }: TimelineProps): JSX.Element => {
   const getEventList = () => {
     const isEventValid = ({ details }: EventModel) => details !== '';
 
@@ -28,13 +27,13 @@ const Timeline = ({ sectionName, model }: TimelineProps): JSX.Element => {
   };
 
   const eventList = getEventList();
-  const themeName = getThemeName(model.theme);
+  const themeName = getThemeName(theme);
 
   return (
-    <div id={`${id}Timeline`} className={`${styles.timeline} ${themeName}`}>
+    <div id={id} className={`${styles.timeline} ${themeName}`}>
       <ol className={styles.eventList}>
         {eventList.map((event, i) => (
-          <TimelineEvent key={`${sectionName}Event-${i}`} themeName={themeName} model={event} />
+          <TimelineEvent key={`${id}Event${i}`} themeName={themeName} model={event} />
         ))}
       </ol>
       <style jsx>

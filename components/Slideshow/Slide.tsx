@@ -1,8 +1,8 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { SlideModel } from '../../models/components/SlideshowModel';
-import { getTextLinks } from '../../models/shared';
-import { Color } from '../../models/ThemedModel';
+import { getTextLinks } from '../../models/shared/TextLink';
+import { Color } from '../../models/shared/ThemedModel';
 import styles from '../../styles/slideshow.module.css';
 
 type SlideProps = {
@@ -47,7 +47,7 @@ const Slide = ({ id, model, isCurrentSlide, isMobileScreen }: SlideProps) => {
       }}
     >
       {titles.map((title, i) => (
-        <div key={`${id}SlideTitle-${i}`} className={styles.slideHeader}>
+        <div key={`${id}SlideTitle${i}`} className={styles.slideHeader}>
           <h1 className={styles.blurred}>{title}</h1>
           <h1 className={styles.clear}>{title}</h1>
         </div>
@@ -55,7 +55,7 @@ const Slide = ({ id, model, isCurrentSlide, isMobileScreen }: SlideProps) => {
       {buttons.length > 0 && (
         <ol className={styles.buttonList}>
           {buttons.map(({ href, text }, i) => (
-            <li key={`${id}SlideButton-${i}`} className={styles.slideButton}>
+            <li key={`${id}SlideButton${i}`} className={styles.slideButton}>
               <Link href={href}>
                 <a>
                   <p>{text}</p>

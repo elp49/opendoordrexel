@@ -1,11 +1,10 @@
 {
   "name": "testimonies",
   "title": "Testimonies",
-  "sections": {
-    "testimonies": {
-      "order": 1,
+  "sections": [
+    {
+      "order": 0,
       "sectionDetails": {
-        "name": "testimonies",
         "theme": 0,
         "titles": ["Testimonies"],
         "subtitles": ["Learn what some of our members have to say."],
@@ -16,36 +15,42 @@
         "isViewHeight": false,
         "hasScrollButton": false
       },
-      "videoPlayer": {
-        "theme": 0,
-        "videoList": [
-          {
-            "order": 1,
-            "title": "Adeeb, Eddie, Diana",
-            "video": "/images/testimonies/testimonies-1.mp4"
-          },
-          {
-            "order": 2,
-            "title": "Jack",
-            "video": "/images/testimonies/testimonies-2.mp4"
-          },
-          {
-            "order": 3,
-            "title": "Josh",
-            "video": "/images/testimonies/testimonies-3.mp4"
-          },
-          {
-            "order": 4,
-            "title": "Taylor",
-            "video": "/images/testimonies/testimonies-4.mp4"
-          },
-          {
-            "order": 5,
-            "title": "Will",
-            "video": "/images/testimonies/testimonies-5.mp4"
+      "components": [
+        {
+          "order": 0,
+          "componentType": 5,
+          "theme": 0,
+          "model": {
+            "videoList": [
+              {
+                "order": 1,
+                "title": "Adeeb, Eddie, Diana",
+                "video": "/images/testimonies/testimonies-1.mp4"
+              },
+              {
+                "order": 2,
+                "title": "Jack",
+                "video": "/images/testimonies/testimonies-2.mp4"
+              },
+              {
+                "order": 3,
+                "title": "Josh",
+                "video": "/images/testimonies/testimonies-3.mp4"
+              },
+              {
+                "order": 4,
+                "title": "Taylor",
+                "video": "/images/testimonies/testimonies-4.mp4"
+              },
+              {
+                "order": 5,
+                "title": "Will",
+                "video": "/images/testimonies/testimonies-5.mp4"
+              }
+            ]
           }
-        ]
-      }
+        }
+      ]
     }
-  }
+  ]
 }

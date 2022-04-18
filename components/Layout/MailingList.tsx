@@ -1,6 +1,6 @@
 import icons from '../../data/icons.json';
 import { MailingListModel } from '../../models/components/LayoutModel';
-import { Color, ThemeName } from '../../models/ThemedModel';
+import { Color, ThemeName } from '../../models/shared/ThemedModel';
 
 type MailingListProps = {
   themeName: string;

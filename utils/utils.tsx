@@ -1,4 +1,4 @@
-import OrderedItem from '../models/OrderedItem';
+import OrderedItem from '../models/shared/OrderedItem';
 
 export const isDefined = (a: any) => typeof a !== 'undefined';
 
@@ -24,4 +24,14 @@ export const createStyle = (styles: string) => {
   const styleElement = document.createElement('style');
   styleElement.innerHTML = styles;
   document.head.appendChild(styleElement);
+};
+
+export const lockVerticalScroll = () => {
+  document.querySelector('html')?.classList.add('verticalScrollLocked');
+  document.querySelector('body')?.classList.add('verticalScrollLocked');
+};
+
+export const unlockVerticalScroll = () => {
+  document.querySelector('html')?.classList.remove('verticalScrollLocked');
+  document.querySelector('body')?.classList.remove('verticalScrollLocked');
 };

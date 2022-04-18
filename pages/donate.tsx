@@ -1,27 +1,18 @@
 import { NextPage } from 'next';
 import SectionedPage from '../components/SectionedPage';
 import data from '../data/donate.json';
-import PageModel, { filterValidSectionDetailImages } from '../models/PageModel';
-import DonatePageModel from '../models/pages/DonatePageModel';
-import PageSection from '../models/PageSection';
+import PageModel from '../models/PageModel';
+import { filterValidData } from '../models/shared/filters';
 
-const buildDonatePageSections = ({ info }: DonatePageModel): PageSection[] => [info];
-
-type DonatePageProps = {
-  model: PageModel<DonatePageModel>;
-};
-
-const Donate: NextPage<DonatePageProps> = ({ model }) => (
-  <SectionedPage model={model} buildPageSections={buildDonatePageSections} />
-);
+const Donate: NextPage<PageModel> = (model) => <SectionedPage model={model} />;
 
 export const getStaticProps = async () => {
-  const model = { ...data };
+  const model: PageModel = { ...data };
 
   // Filter out invalid file paths.
-  model.sections = filterValidSectionDetailImages(model.sections);
+  model.sections = filterValidData(model.sections);
 
-  return { props: { model } };
+  return { props: model };
 };
 
 export default Donate;

@@ -1,18 +1,4 @@
-import { sortByOrder } from '../utils/utils';
-import OrderedItem from './OrderedItem';
-
-export type TextLink = OrderedItem & {
-  text: string;
-  href: string;
-};
-
-export const getTextLinks = (links: TextLink[]) => {
-  const isTextLinkValid = ({ text, href }: TextLink) => text !== '' && href !== '';
-  const filteredLinks = links.filter(isTextLinkValid);
-  return sortByOrder(filteredLinks);
-};
-
-export enum Month {
+enum Month {
   January = 0,
   February = 1,
   March = 2,
@@ -100,3 +86,5 @@ export const getMonthName = (month: Month) => {
 
   return monthName;
 };
+
+export default Month;

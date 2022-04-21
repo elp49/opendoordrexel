@@ -2,7 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import SlideshowModel, { SlideModel } from '../../models/components/SlideshowModel';
 import { getThemeName, Theme } from '../../models/shared/ThemedModel';
 import styles from '../../styles/slideshow.module.css';
-import { fixFilePath, isDefined, isMobileDevice, sortByReverseOrder } from '../../utils/utils';
+import { fixFilePath, isDefined, isMobileScreenSize, sortByReverseOrder } from '../../utils/utils';
 import Badge from './Badge';
 import Slide from './Slide';
 
@@ -34,7 +34,7 @@ const Slideshow = ({ id, theme, model }: SlideshowProps): JSX.Element => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState<number>(0);
   const [isMobileScreen, setIsMobileScreen] = useState<boolean>(false);
 
-  // Slide visibility depends if user agent is a mobile or dekstop device.
+  // Slide visibility depends on screen size. Some slides don't look good on smaller/larger screens.
   const isSlideVisible = useCallback(
     (isScreenCurrentlyMobile: boolean, slideIndex: number) => {
       const { showOnMobile, showOnDesktop } = slideList[slideIndex];
@@ -67,13 +67,15 @@ const Slideshow = ({ id, theme, model }: SlideshowProps): JSX.Element => {
     [currentSlideIndex, isMobileScreen, isSlideVisible, slideList.length]
   );
 
+  // Set slideshow window resize event.
   useEffect(() => {
+    /**
+     * If the screen size changed from either mobile or desktop to the other, then update the
+     * screen size and set the current slide (some slides are only shown on mobile or desktop
+     * screen sizes because of how they fit on the screen).
+     */
     const windowResizeListener = () => {
-      /**
-       * If the screen size changed from either mobile or desktop to the other, then update the
-       * screen size and set the current slide (some slides are only shown on mobile or desktop).
-       */
-      const isMobile = isMobileDevice();
+      const isMobile = isMobileScreenSize();
       if (isMobileScreen !== isMobile) {
         setIsMobileScreen(isMobile);
 
@@ -86,8 +88,9 @@ const Slideshow = ({ id, theme, model }: SlideshowProps): JSX.Element => {
     window.addEventListener('resize', windowResizeListener);
 
     return () => window.removeEventListener('resize', windowResizeListener);
-  }, [currentSlideIndex, isMobileScreen, isSlideVisible, showNextVisibleSlide, slideList]);
+  }, [currentSlideIndex, isMobileScreen, isSlideVisible, showNextVisibleSlide]);
 
+  // Set slideshow timeout.
   useEffect(() => {
     if (slideList.length > 1) {
       // Set a timeout to move to the next slide.
@@ -96,8 +99,9 @@ const Slideshow = ({ id, theme, model }: SlideshowProps): JSX.Element => {
     }
   }, [showNextVisibleSlide, slideList.length, timeoutDuration]);
 
+  // Initialize isMobileScreen.
   useEffect(() => {
-    setIsMobileScreen(isMobileDevice());
+    setIsMobileScreen(isMobileScreenSize());
   }, []);
 
   return (

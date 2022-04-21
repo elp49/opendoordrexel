@@ -6,8 +6,10 @@ export const isDefined = (a: any) => typeof a !== 'undefined';
  * Determines if the user is on a mobile device or the window width is less than 1000px.
  * NOTE: exceptions to the mobile device rule are iPad pros and some tablets.
  */
-const USER_AGENT_REGEXP: RegExp = /Mobi|Android/i;
-export const isMobileDevice = () => window.innerWidth < 1000 || USER_AGENT_REGEXP.test(navigator.userAgent);
+const USER_AGENT_REGEXP: RegExp = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+export const isMobileDevice = () => USER_AGENT_REGEXP.test(navigator.userAgent);
+
+export const isMobileScreenSize = () => window.innerWidth < 1000;
 
 export const atoi = (string: string, radix: number = 10) => parseInt(string, radix);
 

@@ -108,7 +108,7 @@
   height: 170px;
   width: 170px;
   margin: 0 10px;
-  padding: 10px;
+  padding: 4px;
   border-radius: 10px;
   scroll-snap-align: center;
 }
@@ -116,9 +116,9 @@
 .cardImage {
   width: 100%;
   height: 100%;
+  border-radius: 10px;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: cover;
 }
 
 @media only screen and (min-width: 1000px) {
@@ -133,9 +133,7 @@
     height: 20px;
   }
   .arrow {
-    margin: 0 2rem;
-    width: 5rem;
-    font-size: 9rem;
+    display: none;
   }
   .dummy {
     width: 40px;
@@ -151,10 +149,10 @@
     height: 450px;
     width: 450px;
   } */
-  .cardImage {
+  /* .cardImage {
     height: 450px;
     width: 450px;
-  }
+  } */
 }
 
 @media not all and (pointer: coarse) {
@@ -165,7 +163,7 @@
     color: #bbb;
     font-size: 9rem;
   }
-  .arrow:hover {
+  /* .arrow:hover {
     height: 7rem;
     color: #bbb;
     font-size: 7rem;
@@ -174,7 +172,7 @@
     .arrow:hover {
       font-size: 11rem;
     }
-  }
+  } */
 }
 
 /* BEGIN CSS THAT WAS IN STYLE TAG */
@@ -203,9 +201,9 @@
   cursor: initial;
   background-color: transparent;
 }
-.cardImage {
+/* .cardImage {
   height: 100%;
   width: 100%;
   background-size: contain;
-}
+} */
 /* END CSS THAT WAS IN STYLE TAG */

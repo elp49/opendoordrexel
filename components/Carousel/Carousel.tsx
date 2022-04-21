@@ -2,14 +2,7 @@ import { useEffect, useState } from 'react';
 import CarouselModel, { CardModel } from '../../models/components/CarouselModel';
 import { Color, getThemeName, Theme, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/carousel.module.css';
-import {
-  createStyle,
-  fixFilePath,
-  isMobileDevice,
-  lockVerticalScroll,
-  sortByReverseOrder,
-  unlockVerticalScroll,
-} from '../../utils/utils';
+import { fixFilePath, lockVerticalScroll, sortByReverseOrder, unlockVerticalScroll } from '../../utils/utils';
 import Card from './Card';
 import Controls from './Controls';
 
@@ -90,21 +83,6 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
     // the carousel into view on page load.
     setIsAutoScrollActive(true);
   };
-
-  useEffect(() => {
-    const removeScrollbar = () => {
-      createStyle(`
-        .${styles.carousel}::-webkit-scrollbar {
-          display: none;
-        }
-      `);
-    };
-
-    // If the user is on a mobile device, then remove the carousel scrollbar.
-    if (isMobileDevice()) {
-      removeScrollbar();
-    }
-  }, []);
 
   /**
    * The fullscreen keydown event listener will be set on every render because no dependency array

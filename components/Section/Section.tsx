@@ -46,7 +46,7 @@ const Section = ({ id, sectionDetails, scrollOptions, children }: SectionProps):
         {introLinks.length > 0 && (
           <p style={{ textAlign: 'center' }}>
             {introLinks.map((link, i) => (
-              <IntroLink key={`${id}IntroLink-${i}`} model={link} index={i} />
+              <IntroLink key={`${id}IntroLink-${i}`} themeName={themeName} model={link} index={i} />
             ))}
           </p>
         )}

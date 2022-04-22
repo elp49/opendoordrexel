@@ -132,9 +132,6 @@
   .carousel::-webkit-scrollbar {
     height: 20px;
   }
-  .arrow {
-    display: none;
-  }
   .dummy {
     width: 40px;
     width: calc(45vw - ((490px / 2) + 40px + 20px));
@@ -163,7 +160,7 @@
     color: #bbb;
     font-size: 9rem;
   }
-  /* .arrow:hover {
+  .arrow:hover {
     height: 7rem;
     color: #bbb;
     font-size: 7rem;
@@ -172,7 +169,7 @@
     .arrow:hover {
       font-size: 11rem;
     }
-  } */
+  }
 }
 
 /* BEGIN CSS THAT WAS IN STYLE TAG */
@@ -189,7 +186,7 @@
   display: none;
 }
 .overlay > .dummy {
-  width: 0;
+  display: none;
 }
 .fullscreenCard {
   display: inline-block;

@@ -43,6 +43,30 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
   const [isAutoScrollActive, setIsAutoScrollActive] = useState<boolean>(false);
   const [currentCardIndex, setCurrentCardIndex] = useState<number>(0);
 
+  const [lastScrollTime, setLastScrollTime] = useState<number>(0);
+
+  const onCarouselScroll = () => {
+    // See comments in cardClickHandler() for how the lastScrollTime is used.
+    setLastScrollTime(new Date().getTime());
+  };
+
+  const cardClickHandler = (index: number) => {
+    /**
+     * Disable opening a card fullscreen until the carousel has finished scrolling (approximately
+     * 50 milliseconds has passed since last scroll). When a card is clicked, the carousel scrolls
+     * it into view and enters fullscreen mode. If the user clicks a card while the carousel is
+     * moving, then the wrong card is opened because the scroll distance is off.
+     */
+    const milliseconds = new Date().getTime() - lastScrollTime;
+    if (milliseconds > 50) {
+      toggleFullscreen(index);
+
+      // Auto scroll should be turned off until a card is clicked to prevent the page from scrolling
+      // the carousel into view on page load.
+      setIsAutoScrollActive(true);
+    }
+  };
+
   // Scroll the carousel to the next card based on a given direction.
   const scrollToNextCard = (direction: ScrollDirection) => {
     let nextCardIndex = currentCardIndex + direction;
@@ -74,14 +98,6 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
       lockVerticalScroll();
       enterFullscreen(cardIndex);
     }
-  };
-
-  const cardClickHandler = (index: number) => {
-    toggleFullscreen(index);
-
-    // Auto scroll should be turned off until a card is clicked to prevent the page from scrolling
-    // the carousel into view on page load.
-    setIsAutoScrollActive(true);
   };
 
   /**
@@ -128,7 +144,7 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
 
   return (
     <div id={id} className={`${styles.carouselContainer} ${themeName}`}>
-      <ul className={`${styles.carousel} ${isFullscreen ? styles.overlay : ''}`}>
+      <ul className={`${styles.carousel} ${isFullscreen ? styles.overlay : ''}`} onScroll={onCarouselScroll}>
         <li className={styles.dummy} />
         {cardList.map((card, i) => {
           const cardId = `${id}CarouselCard${i}`;

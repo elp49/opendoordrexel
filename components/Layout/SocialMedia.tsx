@@ -14,7 +14,7 @@ type SocialMediaProps = {
 const SocialMedia = ({ id, themeName, socialMedia, listClassName, iconClassName }: SocialMediaProps) => (
   <ol className={`${listClassName} ${themeName}`}>
     {socialMedia.map(({ text, href }, i) => (
-      <li key={`${id}SocialMedia-${i}`} className={iconClassName}>
+      <li key={`${id}Link-${i}`} className={iconClassName}>
         <Link href={href}>
           <a title={text} target="_blank" rel="noreferrer">
             <i className={text.toLowerCase()} />

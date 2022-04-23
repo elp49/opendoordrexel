@@ -16,7 +16,7 @@ const Controls = ({ exitFullscreen, scrollCarousel }: ControlsProps) => (
     >
       <span>&times;</span>
     </button>
-    {isMobileDevice() && (
+    {!isMobileDevice() && (
       <>
         <button
           className={`${styles.customButton} ${styles.control} ${styles.arrow} ${styles.left}`}

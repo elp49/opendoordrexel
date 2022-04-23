@@ -38,16 +38,16 @@ const ScrollButton = ({ themeName, scrollOptions }: ScrollButtonProps): JSX.Elem
           }
           @media not all and (pointer: coarse) {
             .${ThemeName.White} > .chevronDown:hover,
-            .${ThemeName.White} > .chevronDown:active {
+            .${ThemeName.White} > .chevronDown:focus {
               background-color: ${Color.Blue};
               background-image: url(${icons.chevronDown.white});
             }
             .${ThemeName.White} > .chevronUp:hover,
-            .${ThemeName.White} > .chevronUp:active {
+            .${ThemeName.White} > .chevronUp:focus {
               background-color: ${Color.Blue};
               background-image: url(${icons.chevronUp.white});
             }
-            .${ThemeName.Blue} > .${styles.icon}:hover, .${ThemeName.Blue} > .${styles.icon}:active {
+            .${ThemeName.Blue} > .${styles.icon}:hover, .${ThemeName.Blue} > .${styles.icon}:focus {
               background-color: ${Color.White};
             }
           }

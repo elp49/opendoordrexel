@@ -82,8 +82,8 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
   };
 
   const enterFullscreen = (cardIndex: number) => {
-    setCurrentCardIndex(cardIndex);
     setIsFullscreen(true);
+    setCurrentCardIndex(cardIndex);
   };
 
   const exitFullscreen = () => {

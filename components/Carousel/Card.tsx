@@ -27,10 +27,7 @@ const Card = ({
   useEffect(() => {
     // If this card is the current card and auto scroll is active, then scroll the carousel to it.
     if (isCurrentCard && isAutoScrollActive) {
-      const card = document.getElementById(id);
-      if (card) {
-        card.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
-      }
+      document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
     }
   }, [id, isCurrentCard, isAutoScrollActive]);
 

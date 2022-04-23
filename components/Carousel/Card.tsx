@@ -42,7 +42,6 @@ const Card = ({
           className={styles.cardImage}
           style={{ backgroundImage: `url(${image})`, backgroundSize: isFullscreen ? 'contain' : 'cover' }}
         />
-        {/* <Image alt="" src={image} layout="fill" objectFit={objectFit} objectPosition="50% 50%" /> */}
       </button>
       <style jsx>
         {`

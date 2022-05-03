@@ -9,35 +9,26 @@ type CardProps = {
   model: CardModel;
   isFullscreen: boolean;
   isCurrentCard: boolean;
-  isAutoScrollActive: boolean;
   cardClickHandler: () => void;
 };
 
-const Card = ({
-  id,
-  themeName,
-  model,
-  isFullscreen,
-  isCurrentCard,
-  isAutoScrollActive,
-  cardClickHandler,
-}: CardProps) => {
+const Card = ({ id, themeName, model, isFullscreen, isCurrentCard, cardClickHandler }: CardProps) => {
   const { image } = model;
+  const backgroundSize = isFullscreen ? 'contain' : 'cover';
 
   useEffect(() => {
-    // If this card is the current card and auto scroll is active, then scroll the carousel to it.
-    if (isCurrentCard && isAutoScrollActive) {
+    // If this card is the current card and carousel is in fullscreen, then scroll the carousel to it.
+    if (isCurrentCard && isFullscreen) {
       document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
     }
-  }, [id, isCurrentCard, isAutoScrollActive]);
+  }, [id, isCurrentCard, isFullscreen]);
 
   return (
     <li id={id} className={`${styles.card} ${isFullscreen ? styles.fullscreenCard : ''} ${themeName}`}>
       <button className={`${styles.customButton} ${styles.cardButton}`} type="button" onClick={cardClickHandler}>
-        {/* <div style={{ backgroundImage: `url(${process.env.OPEN_DOOR_API}${image})` }}></div> */}
         <div
           className={styles.cardImage}
-          style={{ backgroundImage: `url(${image})`, backgroundSize: isFullscreen ? 'contain' : 'cover' }}
+          style={{ backgroundImage: `url(${image})`, backgroundSize: backgroundSize }}
         />
       </button>
       <style jsx>

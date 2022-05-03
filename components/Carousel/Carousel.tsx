@@ -39,14 +39,16 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
   const cardList = getCardList();
   const themeName = getThemeName(theme);
 
+  // Initialize currentCardIndex to -1 to prevent page from scrolling carousel into view on load.
+  const [currentCardIndex, setCurrentCardIndex] = useState<number>(-1);
   const [isFullscreen, setIsFullscreen] = useState<boolean>(false);
-  const [isAutoScrollActive, setIsAutoScrollActive] = useState<boolean>(false);
-  const [currentCardIndex, setCurrentCardIndex] = useState<number>(0);
 
+  // There is no way of telling if the carousel is currently scrolling. Record the last scroll
+  // time to prevent opening a new card while the carousel is still scrolling.
   const [lastScrollTime, setLastScrollTime] = useState<number>(0);
 
   const onCarouselScroll = () => {
-    // See comments in cardClickHandler() for how the lastScrollTime is used.
+    // See comments in cardClickHandler for how the lastScrollTime is used.
     setLastScrollTime(new Date().getTime());
   };
 
@@ -60,10 +62,6 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
     const milliseconds = new Date().getTime() - lastScrollTime;
     if (milliseconds > 50) {
       toggleFullscreen(index);
-
-      // Auto scroll should be turned off until a card is clicked to prevent the page from scrolling
-      // the carousel into view on page load.
-      setIsAutoScrollActive(true);
     }
   };
 
@@ -83,6 +81,8 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
 
   const enterFullscreen = (cardIndex: number) => {
     setIsFullscreen(true);
+    // might need to break these two up into separate ones. like use a useeffect with dependency on isfullscreen
+    // and if true then set current ccard index.
     setCurrentCardIndex(cardIndex);
   };
 
@@ -156,7 +156,6 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
               model={card}
               isFullscreen={isFullscreen}
               isCurrentCard={currentCardIndex === i}
-              isAutoScrollActive={isAutoScrollActive}
               cardClickHandler={() => cardClickHandler(i)}
             />
           );

@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { CardModel } from '../../models/components/CarouselModel';
 import { Color, ThemeName } from '../../models/shared/ThemedModel';
 import styles from '../../styles/carousel.module.css';
@@ -15,13 +14,6 @@ type CardProps = {
 const Card = ({ id, themeName, model, isFullscreen, isCurrentCard, cardClickHandler }: CardProps) => {
   const { image } = model;
   const backgroundSize = isFullscreen ? 'contain' : 'cover';
-
-  useEffect(() => {
-    // If this card is the current card and carousel is in fullscreen, then scroll the carousel to it.
-    if (isCurrentCard && isFullscreen) {
-      document.getElementById(id)?.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
-    }
-  }, [id, isCurrentCard, isFullscreen]);
 
   return (
     <li id={id} className={`${styles.card} ${isFullscreen ? styles.fullscreenCard : ''} ${themeName}`}>

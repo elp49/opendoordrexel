@@ -81,10 +81,17 @@ const Carousel = ({ id, theme, model }: CarouselProps) => {
 
   const enterFullscreen = (cardIndex: number) => {
     setIsFullscreen(true);
-    // might need to break these two up into separate ones. like use a useeffect with dependency on isfullscreen
-    // and if true then set current ccard index.
+    // will these two states update at the same time?
     setCurrentCardIndex(cardIndex);
   };
+
+  useEffect(() => {
+    if (isFullscreen) {
+      document
+        .getElementById(`${id}CarouselCard${currentCardIndex}`)
+        ?.scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });
+    }
+  }, [currentCardIndex, id, isFullscreen]);
 
   const exitFullscreen = () => {
     setIsFullscreen(false);

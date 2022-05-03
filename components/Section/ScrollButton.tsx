@@ -15,12 +15,7 @@ type ScrollButtonProps = {
 const ScrollButton = ({ themeName, scrollOptions }: ScrollButtonProps): JSX.Element => {
   const { nextSectionId, isScrollDown } = scrollOptions;
 
-  const scrollToNextSection = () => {
-    const nextSection = document.getElementById(nextSectionId);
-    if (nextSection) {
-      nextSection.scrollIntoView(true);
-    }
-  };
+  const scrollToNextSection = () => document.getElementById(nextSectionId)?.scrollIntoView(true);
 
   return (
     <button className={`${styles.chevronButton} ${themeName}`} type="button" onClick={scrollToNextSection}>

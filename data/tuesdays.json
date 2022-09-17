@@ -155,7 +155,7 @@
         {
           "order": 0,
           "componentType": 2,
-          "theme": 1,
+          "theme": 0,
           "model": {
             "cardList": [
               {

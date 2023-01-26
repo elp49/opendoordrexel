@@ -1,0 +1,48 @@
+{
+  "name": "staff",
+  "title": "Staff",
+  "sections": [
+    {
+      "order": 1,
+      "sectionDetails": {
+        "theme": 1,
+        "titles": ["Rev. Dave Piltz"],
+        "subtitles": ["Executive Director of the Wesley Student Foundation & Campus Minister"],
+        "links": [],
+        "image": "/images/staff/staff-1.jpg",
+        "descriptions": [
+          "Rev. Dave Piltz, a licensed Pastor of the United Methodist Church, commonly referred to by everyone as just Piltz has 25 years of experience of being a youth leader/director. He has 10 years of mission trip experience both domestically and internationally. And has been serving as the lead Pastor to local United Methodist Churches since 2016 and a Campus Clergy/Minister at Drexel University since 2015. He also is the EPA Conference Youth and Young Adult Coordinator since 2014.",
+          "In addition Piltz has created and facilitated Adult Sunday School classes on Biblical Negotiation, taught youth Sunday school, created and facilitated training for youth leaders and Sunday school teachers, created and facilitated church staff training on personality styles, conflict management, emotional intelligence, interactive bible studies and strategic planning and has provided coaching to lead pastors on organizational development issues. Piltz is often a presenter at Tools for Ministry and Laity Academy.",
+          "In his non-church work, he is a specialist in instructional design, organization design and in developing interactive learning tools, simulations, training games, and unique facilitation tools and methods. Currently, he is a Marriage and Family therapist and owns M.E. Matters, LLC.",
+          "Piltz holds a Bachelor of Science degree in aerospace engineering and a Master’s Degree in Marriage and Family Therapy. He has completed the Eastern PA United Methodist Church Licensing School. In addition, Dave holds certification in game design, is a master practitioner of the MBTI®, and trained in Neurofeedback. He has authored numerous articles on learning, training, game design and co-authored A Guide to Success for Technical Managers: Supervising in Research, Development, and Engineering published by John Wiley."
+        ],
+        "isRaw": false,
+        "isViewHeight": false,
+        "hasScrollButton": false
+      },
+      "components": []
+    },
+    {
+      "order": 0,
+      "sectionDetails": {
+        "theme": 0,
+        "titles": ["Diana"],
+        "subtitles": ["Campus Minister"],
+        "links": [],
+        "image": "/images/staff/staff-2.JPG",
+        "descriptions": [
+          "Rev. Diana Esposito is an Ordained Deacon in The United Methodist Church who strives to love God and love neighbor every day.  Diana is a Drexel alumna who served at Open Door as a ministry intern during the 2015-2016 school year.  She was appointed to continue serving with Open Door as Campus Clergy member starting July 1, 2016. ",
+          "She adores the way God moves through Open’s Door’s ministry building new relationships among the students, creating opportunities to worship God, helping students nurture their faith, and where they can all walk together through their highs and lows. Diana believes in empowering young adults to have a more active role in ministry both within ministries designated “for young adults”, but also among broader ministries. She’s a firm believer that all ministries should be “with” a community instead of simply “for” or “to” them.",
+          "As a student at Drexel, Diana was proud to serve as the Alternative Spring Break Coordinator for Habitat for Humanity trips spanning four years; the Layout Manager, Managing Editor, and Editor-in-Chief of The Triangle; and crew member of many productions with the Drexel Players. She is also joyfully an alumna of Pi Nu Epsilon, the co-ed honorary music fraternity on campus.",
+          "In addition to her appointment at Open Door, Diana is also appointed at Grove Church in West Chester, PA where she serves as the Pastor of Youth and Young Adult Ministries. Through this appointment, she has the joy of leading the Sweet Fellowship ministry with students at West Chester University. In the summer months, Diana can normally be found connecting youth and young adults with outreach ministries, such as Appalachia Service Project and Mission Blitz.",
+          "As a Deacon, Diana believes in the importance of connecting Church and Community. She serves with the West Chester Area Communities That Care to reduce drug and alcohol abuse in the community and is trained in Mental Health First Aid. At the Conference level, Diana serves on The Commission of Religion and Race and the Camping and Retreat Ministry Board. She is also active in the Eastern PA Conference serving as a counselor and program director at Camp Innabah. Diana has worked in youth, young adult, and Christian Education ministries for more than half her life.",
+          "Diana graduated from Drexel University in 2006 with a Bachelor’s Degree in Elementary Education with a minor in Theater. She spent time working with children, youth, and young adults in schools and churches before she felt called to the role of the Deacon in Ordained Ministry. In 2016, she graduated from Lutheran Theological Seminary at Philadelphia (now called United Lutheran Seminary) with a Master of Arts in Religion and a specialization in Youth and Family Ministry. She was Commissioned as a Deacon in Provisional Connection in 2016 and Ordained as a Deacon in Full Connection in 2018."
+        ],
+        "isRaw": false,
+        "isViewHeight": false,
+        "hasScrollButton": false
+      },
+      "components": []
+    }
+  ]
+}

@@ -1,0 +1,400 @@
+.layout {
+  position: relative;
+  width: 100%;
+}
+
+.header {
+  position: relative;
+  height: 45px;
+  width: 100%;
+}
+
+.overlayContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 0%;
+  width: 100%;
+  -webkit-transition-duration: 0.7s;
+  -moz-transition-duration: 0.7s;
+  -ms-transition-duration: 0.7s;
+  -o-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  overflow: auto;
+  z-index: 101;
+}
+
+.headerLogoContainer {
+  position: relative;
+  float: left;
+  height: 100%;
+  width: 70px;
+}
+
+.headerLogoContainer > a {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  height: 70%;
+  width: 100%;
+}
+
+.headerLogo {
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  -ms-background-size: contain;
+  -o-background-size: contain;
+  background-size: contain;
+}
+
+.hamburgerContainer {
+  position: relative;
+  float: right;
+  height: 100%;
+  width: 25px;
+}
+
+.hamburger {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(0%, -50%);
+  -moz-transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  -o-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  width: 100%;
+  display: block;
+  cursor: pointer;
+}
+
+.hamburger > span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  margin: 3px 0;
+  background-color: #fff;
+  border-radius: 10px;
+}
+
+.headerPageList {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  -webkit-transform: translate(0%, -50%);
+  -moz-transform: translate(0%, -50%);
+  -ms-transform: translate(0%, -50%);
+  -o-transform: translate(0%, -50%);
+  transform: translate(0%, -50%);
+  font-size: 2rem;
+  list-style-type: none;
+}
+
+.headerPage {
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  width: 90vw;
+  margin: auto;
+  padding-top: 20px;
+}
+
+.donate {
+  position: absolute;
+  bottom: 2px;
+  right: 0;
+  margin-left: auto;
+  padding: 7px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 10px;
+}
+
+.footerSocialMediaList {
+  display: inline-block;
+  margin-right: auto;
+  list-style-type: none;
+}
+
+.footerSocialMedia {
+  float: left;
+  height: 2rem;
+  width: 2rem;
+  margin-right: 20px;
+}
+
+.footer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 10px;
+  text-align: center;
+  overflow: hidden;
+}
+
+.footerPageList {
+  max-width: 800px;
+  margin: 10px auto 0;
+  font-size: 1.5rem;
+  text-align: start;
+  list-style-type: none;
+}
+
+.footerPage {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+}
+
+/* .footerLogo {
+  display: inline-block;
+  height: 35px;
+  width: 70px;
+  margin: 10px auto 0;
+} */
+
+.footerMailingListContainer {
+  display: inline-block;
+  width: 60%;
+  max-width: 350px;
+  margin-top: 20px;
+}
+
+.footerMailingListContainer > p {
+  font-size: 1.2rem;
+}
+
+.footerMailingList {
+  position: relative;
+  margin: 10px auto 0;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+
+.footerMailingList > input {
+  width: 100%;
+  padding-right: 2.5rem;
+  padding-bottom: 2px;
+  background-color: transparent;
+  font-size: 1.5rem;
+  border: none;
+}
+
+.footerMailingList > input:focus {
+  outline-width: 0;
+}
+
+.footerMailingList > button {
+  position: absolute;
+  right: 2px;
+  bottom: 2px;
+  height: 2rem;
+  width: 2rem;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.footerCaption {
+  margin: 20px auto 0;
+}
+
+.footerCaption > p {
+  margin-top: 0;
+  font-size: 0.8rem;
+}
+
+.footerCaption a {
+  text-decoration: none;
+}
+
+@media only screen and (max-width: 999px) {
+  .layoutFixed {
+    position: fixed;
+  }
+  .overlayActive {
+    height: 100%;
+  }
+  .headerPageList {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .footerPage {
+    width: 33.33%;
+    width: calc(100% / 3);
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .header {
+    height: 70px;
+  }
+  .hamburger {
+    display: none;
+  }
+  .donate {
+    padding: 10px;
+    font-size: 2.5rem;
+  }
+  .footerSocialMedia {
+    height: 4rem;
+    width: 4rem;
+    margin-top: 20px;
+    margin-right: 45px;
+  }
+  .footer {
+    margin-bottom: 20px;
+  }
+  .footerPageList {
+    margin-top: 20px;
+  }
+  .footerPage {
+    font-size: 2rem;
+  }
+  /* .footerLogo {
+    height: 60px;
+    margin-top: 20px;
+  } */
+  .overlayMailingListContainer {
+    max-width: 600px;
+    margin-top: 45px;
+  }
+  .overlayMailingListContainer > p {
+    font-size: 1.8rem;
+  }
+  .footerMailingList {
+    margin: 20px 10px 0;
+  }
+  .footerMailingList > input {
+    padding-right: 3.5rem;
+    padding-bottom: 4px;
+    font-size: 2rem;
+  }
+  .footerMailingList > button {
+    right: 4px;
+    bottom: 4px;
+    height: 3rem;
+    width: 3rem;
+  }
+  .footerCaption {
+    margin-top: 45px;
+  }
+  .footerCaption > p {
+    font-size: 1.5rem;
+  }
+}
+
+/* BEGIN OVERLAY STYLES */
+.overlay {
+  height: 100%;
+  width: 100%;
+  padding: 45px 0;
+  text-align: center;
+}
+
+.overlayPageList {
+  margin: 0 20px 45px;
+  list-style-type: none;
+}
+
+.overlayPage {
+  padding: 8px;
+  margin: 5px 0;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  font-size: 2.5rem;
+}
+
+.overlayMailingListContainer {
+  margin: 0 20px 45px;
+}
+
+.overlayMailingListContainer > p {
+  margin-bottom: 20px;
+}
+
+.overlayMailingList {
+  margin-bottom: 45px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+
+.overlayMailingList > input {
+  width: 100%;
+  padding-right: 45px;
+  padding-bottom: 8px;
+  background-color: transparent;
+  font-size: 2.5rem;
+  border: none;
+}
+
+.overlayMailingList > input:focus {
+  outline-width: 0;
+}
+
+.overlayMailingList > button {
+  position: absolute;
+  right: 20px;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.overlaySocialMediaList {
+  list-style-type: none;
+}
+
+.overlaySocialMedia {
+  display: inline-block;
+  height: 3rem;
+  width: 3rem;
+  margin: 0 45px;
+}
+
+@media only screen and (min-width: 300px) {
+  .overlayPage {
+    font-size: 3rem;
+  }
+  .overlayMailingList > input {
+    font-size: 3rem;
+  }
+}
+
+@media only screen and (min-width: 380px) {
+  .overlayPage {
+    font-size: 3.5rem;
+  }
+  .overlayMailingList > input {
+    font-size: 3.5rem;
+  }
+}
+
+@media only screen and (min-width: 500px) {
+  .overlayPage {
+    font-size: 4rem;
+  }
+  .overlayMailingList > input {
+    font-size: 4rem;
+  }
+}
+/* END OVERLAY STYLES */
